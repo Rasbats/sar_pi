@@ -131,7 +131,7 @@ include("cmake/PluginConfigure.cmake")
 
 add_definitions(-DUSE_S57)
 
-SET(SRCS
+SET(SRC_SAR
 		src/SAR_pi.h
         src/SAR_pi.cpp
         src/icons.h
