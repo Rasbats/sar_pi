@@ -48,18 +48,24 @@ set(TP_COMMENT "  * Release for O5 using CI")
 
 set(PARENT "opencpn")
 
-# The next line allows for setting up your own local webserver with git on it for testing purposes, the default is github.com
+#Used to set up a local webserver with git loaded, for testing purposes.
 set(GIT_REPOSITORY_SERVER "github.com")
 
+#No longer needed, queried.
+#set(GIT_USER "rgleason")
+#set(GIT_REPOSITORY_NAME "sar_pi")
 # Specifies cloudsmith repository sufficies
 set(PROD "prod") # Standard Repos
 set(BETA "beta") # Standard Repos
 set(ALPHA "alpha") # Standard Repos
 
+#set(CLOUDSMITH_USER "mike-rossiter")
+#set(CLOUDSMITH_USER "rick-gleason")
 set(CLOUDSMITH_USER "opencpn")
-# set this if your cloudsmith repository name does not match your git repository name set(CLOUDSMITH_BASE_REPOSITORY "SAR_pi")
-set(CLOUDSMITH_BASE_REPOSITORY "sar")
 
+# set this if your cloudsmith repository name does not match your git repository name set(CLOUDSMITH_BASE_REPOSITORY "sar_pi")
+set(CLOUDSMITH_BASE_REPOSITORY "sar")  #without the pi
+ 
 set(XML_INFO_URL "https://opencpn.org/wiki/dokuwiki/doku.php?id=opencpn:supplementary_software:chart_work:sar_search_patterns")
 set(XML_SUMMARY "Plugin to create search patterns for Search and Rescue")
 set(XML_DESCRIPTION "SAR Plugin is used to create search patterns for SAR")
