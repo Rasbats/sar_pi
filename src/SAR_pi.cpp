@@ -72,7 +72,7 @@ SAR_pi::SAR_pi(void *ppimgr)
 	  fn.SetPath(tmp_path);
 	  fn.AppendDir(_T("data"));
 	  fn.SetFullName("sar_panel_icon.png");
-	  m_panelBitmap= fn.GetFullPath();	  	
+	  m_panelBitmap = wxBitmap(fn.GetFullPath());	  	
 
 	  m_bShowSAR = false;
 }
