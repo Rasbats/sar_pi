@@ -38,7 +38,7 @@ SET(PACKAGE "sar")
 SET(VERSION_MAJOR "2")
 SET(VERSION_MINOR "6")
 
-set(VERSION_PATCH "15")
+set(VERSION_PATCH "16")
 set(VERSION_TWEAK "0")
 set(VERSION_DATE "19/06/2020")
 set(OCPN_MIN_VERSION "ov50")
@@ -59,7 +59,7 @@ set(PROD "prod") # Standard Repos
 set(BETA "beta") # Standard Repos
 set(ALPHA "alpha") # Standard Repos
 
-set(CLOUDSMITH_USER "mike-rossiter")
+set(CLOUDSMITH_USER "opencpn")
 # set this if your cloudsmith repository name does not match your git repository name set(CLOUDSMITH_BASE_REPOSITORY "sar")
 set(CLOUDSMITH_BASE_REPOSITORY "sar")
 
