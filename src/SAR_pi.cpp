@@ -71,14 +71,8 @@ SAR_pi::SAR_pi(void *ppimgr)
 	  tmp_path = GetPluginDataDir("sar_pi");
 	  fn.SetPath(tmp_path);
 	  fn.AppendDir(_T("data"));
-
-	  wxString shareLocn = fn.GetFullPath();
-	  wxImage panelIcon(shareLocn +  wxFileName::GetPathSeparator() + "sar_panel_icon.png");
-
-	  if (panelIcon.IsOk())
-		  m_panelBitmap = wxBitmap(panelIcon);
-	  else
-		  wxLogMessage(_("    SAR panel icon has NOT been loaded"));
+	  fn.SetFullName("sar_panel_icon.png");
+	  m_panelBitmap= fn.GetFullPath();	  	
 
 	  m_bShowSAR = false;
 }
