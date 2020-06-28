@@ -1,5 +1,5 @@
 #define PLUGIN_NAME sar
-#define PLUGIN_CATALOG_NAME wxS("mike-rossiter-sar")
+#define PLUGIN_CATALOG_NAME wxS("opencpn-sar")
 #define PLUGIN_VERSION_MAJOR 2
 #define PLUGIN_VERSION_MINOR 6
 #define PLUGIN_VERSION_PATCH 18
