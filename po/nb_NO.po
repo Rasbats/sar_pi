@@ -320,12 +320,15 @@ msgid "n"
 msgstr "n"
 #
 #
+#
 #~ msgid "Approach course"
 #~ msgstr "Anløpskurs"
 #
 #
+#
 #~ msgid "Decimal Degree"
 #~ msgstr "Desimal grader"
+#
 #
 #
 #, fuzzy
@@ -333,9 +336,11 @@ msgstr "n"
 #~ msgstr "Grader"
 #
 #
+#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "S"
+#
 #
 #
 #~ msgid ""
@@ -346,8 +351,10 @@ msgstr "n"
 #~ " søk"
 #
 #
+#
 #~ msgid "For Ship Number      "
 #~ msgstr "For skip nummer      "
+#
 #
 #
 #, fuzzy
@@ -355,12 +362,15 @@ msgstr "n"
 #~ msgstr "Leggdistanse          "
 #
 #
+#
 #~ msgid "Number of cycles"
 #~ msgstr "Antall sykluser"
 #
 #
+#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Oljerigg søk"
+#
 #
 #
 #, fuzzy
@@ -368,37 +378,46 @@ msgstr "n"
 #~ msgstr "S"
 #
 #
+#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Parallellsøk"
+#
 #
 #
 #~ msgid "Results"
 #~ msgstr "Resultat"
 #
 #
+#
 #~ msgid "Route"
 #~ msgstr "Rute"
+#
 #
 #
 #~ msgid "SAR: Oil Rig"
 #~ msgstr "SAR: Oljerigg"
 #
 #
+#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR: Sektorsøk"
+#
 #
 #
 #~ msgid "SAR: Trackline"
 #~ msgstr "SAR: Sporings-strek"
 #
 #
+#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Søkemønster navn for GPX-fil"
 #
 #
+#
 #~ msgid "Search Speed         "
 #~ msgstr "Søkefart         "
+#
 #
 #
 #, fuzzy
@@ -406,8 +425,10 @@ msgstr "n"
 #~ msgstr "S"
 #
 #
+#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
+#
 #
 #
 #~ msgid "\\u00b0 ' \""

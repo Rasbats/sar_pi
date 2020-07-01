@@ -321,12 +321,15 @@ msgid "n"
 msgstr "n"
 #
 #
+#
 #~ msgid "Approach course"
 #~ msgstr "COG de recherche"
 #
 #
+#
 #~ msgid "Decimal Degree"
 #~ msgstr "Degré décimal"
+#
 #
 #
 #, fuzzy
@@ -334,9 +337,11 @@ msgstr "n"
 #~ msgstr "Degrés"
 #
 #
+#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "S"
+#
 #
 #
 #~ msgid ""
@@ -347,8 +352,10 @@ msgstr "n"
 #~ "     "
 #
 #
+#
 #~ msgid "For Ship Number      "
 #~ msgstr "Pour le bateau numéro"
+#
 #
 #
 #, fuzzy
@@ -356,12 +363,15 @@ msgstr "n"
 #~ msgstr "Longueur du segment"
 #
 #
+#
 #~ msgid "Number of cycles"
 #~ msgstr "Nombre de cycles"
 #
 #
+#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Recherche dans un secteur angulaire"
+#
 #
 #
 #, fuzzy
@@ -369,37 +379,46 @@ msgstr "n"
 #~ msgstr "S"
 #
 #
+#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Recherche par segments parallèles"
+#
 #
 #
 #~ msgid "Results"
 #~ msgstr "Résultats"
 #
 #
+#
 #~ msgid "Route"
 #~ msgstr "Route"
+#
 #
 #
 #~ msgid "SAR: Oil Rig"
 #~ msgstr "SAR: Dans un secteur angulaire"
 #
 #
+#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR : Par zones triangulaires"
+#
 #
 #
 #~ msgid "SAR: Trackline"
 #~ msgstr "SAR : Par segments parallèles"
 #
 #
+#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Recherche par nom de modèle pour le fichier GPX"
 #
 #
+#
 #~ msgid "Search Speed         "
 #~ msgstr "vitesse de recherche"
+#
 #
 #
 #, fuzzy
@@ -407,8 +426,10 @@ msgstr "n"
 #~ msgstr "S"
 #
 #
+#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
+#
 #
 #
 #~ msgid "\\u00b0 ' \""

@@ -320,12 +320,15 @@ msgid "n"
 msgstr "n"
 #
 #
+#
 #~ msgid "Approach course"
 #~ msgstr "Lähestymiskurssi"
 #
 #
+#
 #~ msgid "Decimal Degree"
 #~ msgstr "Desimaaliaste"
+#
 #
 #
 #, fuzzy
@@ -333,9 +336,11 @@ msgstr "n"
 #~ msgstr "Astetta"
 #
 #
+#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "S"
+#
 #
 #
 #~ msgid ""
@@ -346,8 +351,10 @@ msgstr "n"
 #~ " Haku"
 #
 #
+#
 #~ msgid "For Ship Number      "
 #~ msgstr "Alukselle Numero      "
+#
 #
 #
 #, fuzzy
@@ -355,12 +362,15 @@ msgstr "n"
 #~ msgstr "Reittiosan pituus          "
 #
 #
+#
 #~ msgid "Number of cycles"
 #~ msgstr "Jaksojen lukumäärä"
 #
 #
+#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Öljytornihaku"
+#
 #
 #
 #, fuzzy
@@ -368,37 +378,46 @@ msgstr "n"
 #~ msgstr "S"
 #
 #
+#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Rinnakkaishaku"
+#
 #
 #
 #~ msgid "Results"
 #~ msgstr "Tulokset"
 #
 #
+#
 #~ msgid "Route"
 #~ msgstr "Reitti"
+#
 #
 #
 #~ msgid "SAR: Oil Rig"
 #~ msgstr "SAR: Öljytorni"
 #
 #
+#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR: Sektorihaku"
+#
 #
 #
 #~ msgid "SAR: Trackline"
 #~ msgstr "SAR: Jälkiviiva"
 #
 #
+#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Etsi kuvion nimi GPX-tiedostolle"
 #
 #
+#
 #~ msgid "Search Speed         "
 #~ msgstr "Hakunopeus         "
+#
 #
 #
 #, fuzzy
@@ -406,8 +425,10 @@ msgstr "n"
 #~ msgstr "S"
 #
 #
+#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
+#
 #
 #
 #~ msgid "\\u00b0 ' \""

@@ -320,12 +320,15 @@ msgid "n"
 msgstr "n"
 #
 #
+#
 #~ msgid "Approach course"
 #~ msgstr "Rumb d'aproximació"
 #
 #
+#
 #~ msgid "Decimal Degree"
 #~ msgstr "Graus decimals"
+#
 #
 #
 #, fuzzy
@@ -333,9 +336,11 @@ msgstr "n"
 #~ msgstr "Graus"
 #
 #
+#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "S"
+#
 #
 #
 #~ msgid ""
@@ -346,8 +351,10 @@ msgstr "n"
 #~ " el Quadrat"
 #
 #
+#
 #~ msgid "For Ship Number      "
 #~ msgstr "Per al vaixell número      "
+#
 #
 #
 #, fuzzy
@@ -355,12 +362,15 @@ msgstr "n"
 #~ msgstr "Longitud del segment          "
 #
 #
+#
 #~ msgid "Number of cycles"
 #~ msgstr "Nombre de cicles"
 #
 #
+#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Cerca de Plataforma petroliera"
+#
 #
 #
 #, fuzzy
@@ -368,37 +378,46 @@ msgstr "n"
 #~ msgstr "S"
 #
 #
+#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Cerca Paral·lela"
+#
 #
 #
 #~ msgid "Results"
 #~ msgstr "Resultats"
 #
 #
+#
 #~ msgid "Route"
 #~ msgstr "Ruta"
+#
 #
 #
 #~ msgid "SAR: Oil Rig"
 #~ msgstr "SAR: Plataforma petroliera"
 #
 #
+#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR: Cerca de Sector"
+#
 #
 #
 #~ msgid "SAR: Trackline"
 #~ msgstr "SAR: Línia de recorregut"
 #
 #
+#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Buscar nom de plantilla per al fitxer GPX"
 #
 #
+#
 #~ msgid "Search Speed         "
 #~ msgstr "Buscar velocitat         "
+#
 #
 #
 #, fuzzy
@@ -406,8 +425,10 @@ msgstr "n"
 #~ msgstr "S"
 #
 #
+#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
+#
 #
 #
 #~ msgid "\\u00b0 ' \""

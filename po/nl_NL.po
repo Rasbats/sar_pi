@@ -321,12 +321,15 @@ msgid "n"
 msgstr " "
 #
 #
+#
 #~ msgid "Approach course"
 #~ msgstr "Naderingskoers   "
 #
 #
+#
 #~ msgid "Decimal Degree"
 #~ msgstr "Decimale graden"
+#
 #
 #
 #, fuzzy
@@ -334,9 +337,11 @@ msgstr " "
 #~ msgstr "graden"
 #
 #
+#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "Z"
+#
 #
 #
 #~ msgid ""
@@ -345,8 +350,10 @@ msgstr " "
 #~ msgstr "Vierkant zoekpatroon"
 #
 #
+#
 #~ msgid "For Ship Number      "
 #~ msgstr "Voor vaartuig nr "
+#
 #
 #
 #, fuzzy
@@ -354,12 +361,15 @@ msgstr " "
 #~ msgstr "Lijnlengte             "
 #
 #
+#
 #~ msgid "Number of cycles"
 #~ msgstr "Aantal cycli          "
 #
 #
+#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Platform zoekpatroon"
+#
 #
 #
 #, fuzzy
@@ -367,37 +377,46 @@ msgstr " "
 #~ msgstr "Z"
 #
 #
+#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Lijn zoekpatroon"
+#
 #
 #
 #~ msgid "Results"
 #~ msgstr "Resultaten"
 #
 #
+#
 #~ msgid "Route"
 #~ msgstr "Route    "
+#
 #
 #
 #~ msgid "SAR: Oil Rig"
 #~ msgstr "SAR: Platform zoekpatroon"
 #
 #
+#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR: Sector zoekpatroon"
+#
 #
 #
 #~ msgid "SAR: Trackline"
 #~ msgstr "SAR: Lijn zoekpatroon"
 #
 #
+#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Naam zoekpatroon voor GPX-bestand"
 #
 #
+#
 #~ msgid "Search Speed         "
 #~ msgstr "Zoeksnelheid        "
+#
 #
 #
 #, fuzzy
@@ -405,8 +424,10 @@ msgstr " "
 #~ msgstr "Z"
 #
 #
+#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
+#
 #
 #
 #~ msgid "\\u00b0 ' \""
