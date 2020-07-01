@@ -85,7 +85,7 @@ SAR_pi::SAR_pi(void *ppimgr)
 
 int SAR_pi::Init(void)
 {
-      AddLocaleCatalog( PLUGIN_CATALOG_NAME );
+      AddLocaleCatalog(_T("opencpn-sar_pi"));
 
       // Set some default private member parameters
       m_route_dialog_x = 0;
