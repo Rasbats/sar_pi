@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-26 10:53+0100\n"
+"POT-Creation-Date: 2020-06-17 16:32+0200\n"
 "PO-Revision-Date: 2016-02-25 08:05-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Estonian\n"
@@ -73,8 +73,9 @@ msgstr "Muuda kraadiks"
 msgid "Copy ship position (GPS fix required)"
 msgstr "Kopeeri laeva asukoht (GPS'i koht vajalik)"
 #
-#, fuzzy
-msgid "Creates GPX files with Search and Rescue patterns"
+msgid ""
+"Creates GPX files with\n"
+"Search and rescue patterns."
 msgstr ""
 "Loo GPX-fail koos otsingu\n"
 "ja pääste mustritega."
@@ -320,16 +321,13 @@ msgstr "tk"
 #
 #
 #
-#
 #~ msgid "Approach course"
 #~ msgstr "Lähenemiskurss"
 #
 #
 #
-#
 #~ msgid "Decimal Degree"
 #~ msgstr "Kraadi kümnendikes"
-#
 #
 #
 #
@@ -339,11 +337,9 @@ msgstr "tk"
 #
 #
 #
-#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "S"
-#
 #
 #
 #
@@ -356,10 +352,8 @@ msgstr "tk"
 #
 #
 #
-#
 #~ msgid "For Ship Number      "
 #~ msgstr "Laeva nr .. jaoks"
-#
 #
 #
 #
@@ -369,16 +363,13 @@ msgstr "tk"
 #
 #
 #
-#
 #~ msgid "Number of cycles"
 #~ msgstr "Korduste arv"
 #
 #
 #
-#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Suureneva ala otsing"
-#
 #
 #
 #
@@ -388,11 +379,9 @@ msgstr "tk"
 #
 #
 #
-#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Rööpotsing"
-#
 #
 #
 #
@@ -401,10 +390,8 @@ msgstr "tk"
 #
 #
 #
-#
 #~ msgid "Route"
 #~ msgstr "Teekond"
-#
 #
 #
 #
@@ -413,10 +400,8 @@ msgstr "tk"
 #
 #
 #
-#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR: sektorotsing"
-#
 #
 #
 #
@@ -425,16 +410,13 @@ msgstr "tk"
 #
 #
 #
-#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Otsingu mustri GPX-faili nimi"
 #
 #
 #
-#
 #~ msgid "Search Speed         "
 #~ msgstr "Kiirus otsingul    "
-#
 #
 #
 #
@@ -444,10 +426,8 @@ msgstr "tk"
 #
 #
 #
-#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
-#
 #
 #
 #

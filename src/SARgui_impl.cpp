@@ -1696,10 +1696,14 @@ void Dlg::OnSelectNumberShips(wxCommandEvent& event) {
 			m_NPortStbd->Hide();
 			break;
 		}
+
+		default:
+		{
+			break;
+		}
 	}
 	
 	this->Fit(); // refresh
-	RequestRefresh(this); // refresh main window
 }
 
 void Dlg::OnSelectVectorMethod(wxCommandEvent& event) {

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-26 10:53+0100\n"
+"POT-Creation-Date: 2020-06-17 16:32+0200\n"
 "PO-Revision-Date: 2016-02-18 16:08-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Greek\n"
@@ -73,8 +73,9 @@ msgstr "Μετατροπή σε μοίρες"
 msgid "Copy ship position (GPS fix required)"
 msgstr "Αντίγραφο θέσης πλοίου (απαιτείται στίγμα GPS)"
 #
-#, fuzzy
-msgid "Creates GPX files with Search and Rescue patterns"
+msgid ""
+"Creates GPX files with\n"
+"Search and rescue patterns."
 msgstr ""
 "Δημιουργεί αρχεία GPX με\n"
 "μοτίβα Έρευνας και Διάσωσης."
@@ -320,16 +321,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Approach course"
 #~ msgstr "Πορεία προσέγγισης"
 #
 #
 #
-#
 #~ msgid "Decimal Degree"
 #~ msgstr "Μοίρες με δεκαδικά"
-#
 #
 #
 #
@@ -339,11 +337,9 @@ msgstr "n"
 #
 #
 #
-#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "Ν"
-#
 #
 #
 #
@@ -356,10 +352,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "For Ship Number      "
 #~ msgstr "Για το πλοίο #      "
-#
 #
 #
 #
@@ -369,16 +363,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Number of cycles"
 #~ msgstr "Αριθμός κύκλων"
 #
 #
 #
-#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Αναζήτηση πλατφόρμας πετρελαίου"
-#
 #
 #
 #
@@ -388,11 +379,9 @@ msgstr "n"
 #
 #
 #
-#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Παράλληλη έρευνα"
-#
 #
 #
 #
@@ -401,10 +390,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Route"
 #~ msgstr "Διαδρομή"
-#
 #
 #
 #
@@ -413,10 +400,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR: Τομέας έρευνας"
-#
 #
 #
 #
@@ -425,16 +410,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Όνομα μοτίβου αναζήτησης για το αρχείο GPX"
 #
 #
 #
-#
 #~ msgid "Search Speed         "
 #~ msgstr "Ταχύτητα αναζήτησης         "
-#
 #
 #
 #
@@ -444,10 +426,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
-#
 #
 #
 #

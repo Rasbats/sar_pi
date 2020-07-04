@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-26 10:53+0100\n"
+"POT-Creation-Date: 2020-06-17 16:32+0200\n"
 "PO-Revision-Date: 2015-12-31 15:36-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Catalan\n"
@@ -73,8 +73,9 @@ msgstr "Convertir a graus"
 msgid "Copy ship position (GPS fix required)"
 msgstr "Copiar posició del vaixell (Necessari GPS fix)"
 #
-#, fuzzy
-msgid "Creates GPX files with Search and Rescue patterns"
+msgid ""
+"Creates GPX files with\n"
+"Search and rescue patterns."
 msgstr ""
 "Crea fitxers GPX amb les plantilles\n"
 "Cerca i rescat."
@@ -320,16 +321,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Approach course"
 #~ msgstr "Rumb d'aproximació"
 #
 #
 #
-#
 #~ msgid "Decimal Degree"
 #~ msgstr "Graus decimals"
-#
 #
 #
 #
@@ -339,11 +337,9 @@ msgstr "n"
 #
 #
 #
-#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "S"
-#
 #
 #
 #
@@ -356,10 +352,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "For Ship Number      "
 #~ msgstr "Per al vaixell número      "
-#
 #
 #
 #
@@ -369,16 +363,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Number of cycles"
 #~ msgstr "Nombre de cicles"
 #
 #
 #
-#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Cerca de Plataforma petroliera"
-#
 #
 #
 #
@@ -388,11 +379,9 @@ msgstr "n"
 #
 #
 #
-#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Cerca Paral·lela"
-#
 #
 #
 #
@@ -401,10 +390,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Route"
 #~ msgstr "Ruta"
-#
 #
 #
 #
@@ -413,10 +400,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR: Cerca de Sector"
-#
 #
 #
 #
@@ -425,16 +410,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Buscar nom de plantilla per al fitxer GPX"
 #
 #
 #
-#
 #~ msgid "Search Speed         "
 #~ msgstr "Buscar velocitat         "
-#
 #
 #
 #
@@ -444,10 +426,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
-#
 #
 #
 #

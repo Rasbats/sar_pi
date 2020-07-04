@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-26 10:53+0100\n"
+"POT-Creation-Date: 2020-06-17 16:32+0200\n"
 "PO-Revision-Date: 2016-01-16 20:59-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Danish\n"
@@ -73,8 +73,9 @@ msgstr "Konverter til grader"
 msgid "Copy ship position (GPS fix required)"
 msgstr "Kopier skibets position (GPS fix kræves)"
 #
-#, fuzzy
-msgid "Creates GPX files with Search and Rescue patterns"
+msgid ""
+"Creates GPX files with\n"
+"Search and rescue patterns."
 msgstr ""
 "Skaber GPX filer med\n"
 "eftersøgningsmønstre."
@@ -317,16 +318,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Approach course"
 #~ msgstr "Indfaldskurs"
 #
 #
 #
-#
 #~ msgid "Decimal Degree"
 #~ msgstr "Decimalgrader"
-#
 #
 #
 #
@@ -336,17 +334,14 @@ msgstr "n"
 #
 #
 #
-#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "Ø"
 #
 #
 #
-#
 #~ msgid "For Ship Number      "
 #~ msgstr "For skip nummer      "
-#
 #
 #
 #
@@ -356,16 +351,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Number of cycles"
 #~ msgstr "Antal gentagelser"
 #
 #
 #
-#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Borerig-søgning"
-#
 #
 #
 #
@@ -375,10 +367,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Results"
 #~ msgstr "Resultater"
-#
 #
 #
 #
@@ -387,10 +377,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "SAR: Oil Rig"
 #~ msgstr "SAR: Borerig"
-#
 #
 #
 #
@@ -399,16 +387,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "SAR: Trackline"
 #~ msgstr "SAR: Spor"
 #
 #
 #
-#
 #~ msgid "Search Speed         "
 #~ msgstr "Søgehastighed         "
-#
 #
 #
 #

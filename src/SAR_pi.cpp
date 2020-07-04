@@ -65,31 +65,19 @@ SAR_pi::SAR_pi(void *ppimgr)
       // Create the PlugIn icons
       initialize_images();
 
-	  wxString shareLocn = *GetpSharedDataLocation() +
-		  "plugins" + wxFileName::GetPathSeparator() +
-		  "sar_pi" + wxFileName::GetPathSeparator()
-		  + "data" + wxFileName::GetPathSeparator();
-	  wxImage panelIcon(shareLocn + "sar_panel_icon.png");
+	  wxFileName fn;
+
+	  fn.SetPath(*GetpSharedDataLocation());
+	  fn.AppendDir("plugins");
+	  fn.AppendDir("sar_pi");
+	  fn.AppendDir("data");
+	  fn.SetFullName("sar_panel_icon.png");
+	  wxString shareLocn = fn.GetFullPath();
+	  wxImage panelIcon(shareLocn);
+
 	  if (panelIcon.IsOk())
 		  m_panelBitmap = wxBitmap(panelIcon);
 	  else
-/*
-	  wxFileName fn;
-	  wxString tmp_path;
-
-	  tmp_path = GetPluginDataDir("sar_pi");
-	  fn.SetPath(tmp_path);
-	  fn.AppendDir(_T("data"));
-
-
-	  wxString shareLocn = fn.GetFullPath();
-	  wxImage panelIcon(shareLocn +  wxFileName::GetPathSeparator() + "sar_panel_icon.png");
-
-	  if (panelIcon.IsOk())
-		  m_panelBitmap = wxBitmap(panelIcon);
-
-*/
-	 
 		  wxLogMessage(_("    SAR panel icon has NOT been loaded"));
 
 	  m_bShowSAR = false;
@@ -97,8 +85,7 @@ SAR_pi::SAR_pi(void *ppimgr)
 
 int SAR_pi::Init(void)
 {
-	AddLocaleCatalog(_T("opencpn-sar_pi"));
-	 // AddLocaleCatalog( PLUGIN_CATALOG_NAME); // for integration
+      AddLocaleCatalog(_T("opencpn-sar_pi"));
 
       // Set some default private member parameters
       m_route_dialog_x = 0;
@@ -187,8 +174,7 @@ int SAR_pi::GetPlugInVersionMinor()
 
 wxString SAR_pi::GetCommonName()
 {
-	//return _T(PLUGIN_COMMON_NAME); // for integration
-	return _("SAR");
+	return _T("SAR");
 }
 
 wxBitmap *SAR_pi::GetPlugInBitmap()

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-26 10:53+0100\n"
+"POT-Creation-Date: 2020-06-17 16:32+0200\n"
 "PO-Revision-Date: 2016-02-25 08:05-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Norwegian Bokmal\n"
@@ -73,8 +73,9 @@ msgstr "Konverter til grader"
 msgid "Copy ship position (GPS fix required)"
 msgstr "Kopier skipsposisjon (GPS-lås er påkrevd)"
 #
-#, fuzzy
-msgid "Creates GPX files with Search and Rescue patterns"
+msgid ""
+"Creates GPX files with\n"
+"Search and rescue patterns."
 msgstr ""
 "Oppretter GPX filer med\n"
 "Søk og rednings mønstre."
@@ -320,16 +321,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Approach course"
 #~ msgstr "Anløpskurs"
 #
 #
 #
-#
 #~ msgid "Decimal Degree"
 #~ msgstr "Desimal grader"
-#
 #
 #
 #
@@ -339,11 +337,9 @@ msgstr "n"
 #
 #
 #
-#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "S"
-#
 #
 #
 #
@@ -356,10 +352,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "For Ship Number      "
 #~ msgstr "For skip nummer      "
-#
 #
 #
 #
@@ -369,16 +363,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Number of cycles"
 #~ msgstr "Antall sykluser"
 #
 #
 #
-#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Oljerigg søk"
-#
 #
 #
 #
@@ -388,11 +379,9 @@ msgstr "n"
 #
 #
 #
-#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Parallellsøk"
-#
 #
 #
 #
@@ -401,10 +390,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Route"
 #~ msgstr "Rute"
-#
 #
 #
 #
@@ -413,10 +400,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR: Sektorsøk"
-#
 #
 #
 #
@@ -425,16 +410,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Søkemønster navn for GPX-fil"
 #
 #
 #
-#
 #~ msgid "Search Speed         "
 #~ msgstr "Søkefart         "
-#
 #
 #
 #
@@ -444,10 +426,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
-#
 #
 #
 #

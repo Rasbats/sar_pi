@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-26 10:53+0100\n"
+"POT-Creation-Date: 2020-06-17 16:32+0200\n"
 "PO-Revision-Date: 2016-02-27 08:04-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: French\n"
@@ -73,8 +73,9 @@ msgstr "Convertir en degré"
 msgid "Copy ship position (GPS fix required)"
 msgstr "Copier la position du bateau (Le GPS doit avoir fait sont \"fixe\")"
 #
-#, fuzzy
-msgid "Creates GPX files with Search and Rescue patterns"
+msgid ""
+"Creates GPX files with\n"
+"Search and rescue patterns."
 msgstr ""
 "Création d'un fichier GPX avec\n"
 "les modèles recherchés et sauvegardés."
@@ -321,16 +322,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Approach course"
 #~ msgstr "COG de recherche"
 #
 #
 #
-#
 #~ msgid "Decimal Degree"
 #~ msgstr "Degré décimal"
-#
 #
 #
 #
@@ -340,11 +338,9 @@ msgstr "n"
 #
 #
 #
-#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "S"
-#
 #
 #
 #
@@ -357,10 +353,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "For Ship Number      "
 #~ msgstr "Pour le bateau numéro"
-#
 #
 #
 #
@@ -370,16 +364,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Number of cycles"
 #~ msgstr "Nombre de cycles"
 #
 #
 #
-#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Recherche dans un secteur angulaire"
-#
 #
 #
 #
@@ -389,11 +380,9 @@ msgstr "n"
 #
 #
 #
-#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Recherche par segments parallèles"
-#
 #
 #
 #
@@ -402,10 +391,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Route"
 #~ msgstr "Route"
-#
 #
 #
 #
@@ -414,10 +401,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR : Par zones triangulaires"
-#
 #
 #
 #
@@ -426,16 +411,13 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Recherche par nom de modèle pour le fichier GPX"
 #
 #
 #
-#
 #~ msgid "Search Speed         "
 #~ msgstr "vitesse de recherche"
-#
 #
 #
 #
@@ -445,10 +427,8 @@ msgstr "n"
 #
 #
 #
-#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
-#
 #
 #
 #

@@ -24,31 +24,17 @@ void initialize_images(void)
 	}
 
 wxFileName fn;
-wxString tmp_path;
-
-tmp_path = GetPluginDataDir("sar_pi");
-fn.SetPath(tmp_path);
-fn.AppendDir(_T("data"));
-
-
-
-#ifdef PLUGIN_USE_SVG
 
 fn.SetPath(*GetpSharedDataLocation());
 fn.AppendDir("plugins");
 fn.AppendDir("sar_pi");
 fn.AppendDir("data");
-fn.SetFullName("sar_pi.svg");
-_svg_sar = fn.GetFullPath();
-fn.SetFullName("sar_pi_toggled.svg");
-_svg_sar_toggled = fn.GetFullPath();
 
-/*  // for integration
+#ifdef PLUGIN_USE_SVG
 fn.SetFullName("sar_pi.svg");
 _svg_sar = fn.GetFullPath();
 fn.SetFullName("sar_pi_toggled.svg");
 _svg_sar_toggled = fn.GetFullPath();
-*/
 #endif
 
 
