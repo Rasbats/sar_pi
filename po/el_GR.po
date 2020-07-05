@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 16:32+0200\n"
+"POT-Creation-Date: 2020-07-05 10:48+0100\n"
 "PO-Revision-Date: 2016-02-18 16:08-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Greek\n"
@@ -19,8 +19,10 @@ msgstr ""
 msgid "    SAR panel icon has NOT been loaded"
 msgstr ""
 #
+#
 msgid "\""
 msgstr "\""
+#
 #
 msgid "'"
 msgstr "'"
@@ -34,11 +36,13 @@ msgstr ""
 msgid "0.5"
 msgstr ""
 #
+#
 msgid "1"
 msgstr "1"
 #
 msgid "1 unit only"
 msgstr ""
+#
 #
 msgid "2"
 msgstr "2"
@@ -55,30 +59,37 @@ msgstr ""
 msgid "5"
 msgstr ""
 #
+#
 msgid "CPU saving settings"
 msgstr "Ρυθμίσεις αποθήκευσης CPU"
+#
 #
 msgid "Calculate"
 msgstr "Υπολογισμός"
 #
+#
 msgid "Capture Cursor Position"
 msgstr "Καταγραφή θέσης δρομέα"
+#
 #
 msgid "Capture Ship Position"
 msgstr "Καταγραφή θέσης πλοίου"
 #
+#
 msgid "Convert to Degree"
 msgstr "Μετατροπή σε μοίρες"
+#
 #
 msgid "Copy ship position (GPS fix required)"
 msgstr "Αντίγραφο θέσης πλοίου (απαιτείται στίγμα GPS)"
 #
-msgid ""
-"Creates GPX files with\n"
-"Search and rescue patterns."
+#
+#, fuzzy
+msgid "Creates GPX files with Search and Rescue patterns"
 msgstr ""
 "Δημιουργεί αρχεία GPX με\n"
 "μοτίβα Έρευνας και Διάσωσης."
+#
 #
 msgid "Cursor"
 msgstr "Δρομέας"
@@ -92,12 +103,15 @@ msgstr ""
 msgid "D.ddd"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "DATUM / CSP (Start of Search)"
 msgstr "Θέση (έναρξη της αναζήτησης)"
 #
+#
 msgid "Degrees"
 msgstr "Μοίρες"
+#
 #
 msgid "E"
 msgstr "Α"
@@ -105,19 +119,24 @@ msgstr "Α"
 msgid "Error"
 msgstr ""
 #
+#
 msgid "Error in calculation. Please check input!"
 msgstr "Σφάλμα στον υπολογισμό. Ελέγξτε τα δεδομένα!"
+#
 #
 #, fuzzy
 msgid "Error occurred, aborting SAR calc!"
 msgstr "Παρουσιάστηκε σφάλμα, ματαίωση υπολογισμού SAR!"
 #
+#
 #, fuzzy
 msgid "Expanding Square"
 msgstr "SAR: Επέκταση τετραγώνου"
 #
+#
 msgid "Export SAR track GPX file as"
 msgstr "Εξαγωγή ίχνους SAR ως αρχείο GPX"
+#
 #
 #, fuzzy
 msgid "First turn                    "
@@ -126,8 +145,10 @@ msgstr "Μήκος σκέλους               "
 msgid "For this search pattern the Start Point entered is the CSP"
 msgstr ""
 #
+#
 msgid "General settings"
 msgstr "Γενικές ρυθμίσεις"
+#
 #
 msgid "Generate &GPX"
 msgstr "Δημιουργία &GPX"
@@ -138,49 +159,65 @@ msgstr ""
 msgid "Icons "
 msgstr ""
 #
+#
+#, fuzzy
 msgid "Initial course"
-msgstr ""
+msgstr "Πορεία προσέγγισης     "
+#
 #
 #, fuzzy
 msgid "Initial course    "
 msgstr "Πορεία προσέγγισης     "
 #
+#
 #, fuzzy
 msgid "Initial course        "
 msgstr "Πορεία προσέγγισης     "
 #
+#
+#, fuzzy
 msgid "Initial leg course        "
-msgstr ""
+msgstr "Πορεία προσέγγισης     "
+#
 #
 msgid "Lat "
 msgstr "Πλάτος "
+#
 #
 #, fuzzy
 msgid "Latitude  "
 msgstr "Γ. Πλάτος  "
 #
+#
 msgid "Leave ticked, so that you can use cursor position."
 msgstr "Σημαδέψτε το για να χρησιμοποιήσετε τη θέση του δρομέα."
 #
+#
 msgid "Leave ticked, so you can use ship's position"
 msgstr "Σημαδέψτε το για να χρησιμοποιήσετε τη θέση του πλοίου"
+#
 #
 #, fuzzy
 msgid "Leg Space             "
 msgstr "Μήκος σκέλους              "
 #
+#
 #, fuzzy
 msgid "Leg Spacing (S)       "
 msgstr "Απόσταση σκελών                "
 #
+#
 msgid "Lon"
 msgstr "Μήκος"
+#
 #
 msgid "Longitude"
 msgstr "Γ. μήκος"
 #
+#
 msgid "N"
 msgstr "Β"
+#
 #
 msgid "NM"
 msgstr "ν. μ."
@@ -188,17 +225,21 @@ msgstr "ν. μ."
 msgid "No Datum Point has been entered"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Number of Legs  "
 msgstr "Αριθμός σκελών   "
+#
 #
 #, fuzzy
 msgid "Number of Legs      "
 msgstr "Αριθμός σκελών       "
 #
+#
 #, fuzzy
 msgid "Number of Legs        "
 msgstr "Αριθμός σκελών       "
+#
 #
 #, fuzzy
 msgid "Number of passes"
@@ -207,32 +248,40 @@ msgstr "Αριθμός τετραγώνων"
 msgid "Oil Rig (Quadrant Single)"
 msgstr ""
 #
+#
 msgid "Opacity"
 msgstr "Αδιαφάνεια"
 #
 msgid "PORT"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Parallel Track"
 msgstr "Παράλληλη έρευνα"
 #
+#
 msgid "Route Preferences"
 msgstr "Προτιμήσεις διαδρομής"
+#
 #
 #, fuzzy
 msgid "Route for Ship           "
 msgstr "Ταχύτητα έρευνας             "
 #
+#
 msgid "S"
 msgstr "Ν"
+#
 #
 msgid "SAR"
 msgstr "SAR (ΕκΔ)"
 #
+#
 #, fuzzy
 msgid "SAR Plugin by SaltyPaws/Rasbats"
 msgstr "Πρόσθετο SAR από τον SaltyPaws"
+#
 #
 msgid "SAR preferences"
 msgstr "Προτιμήσεις SAR"
@@ -240,35 +289,44 @@ msgstr "Προτιμήσεις SAR"
 msgid "STARBOARD"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Search Distance / Time"
 msgstr "Απόσταση έρευνας"
+#
 #
 #, fuzzy
 msgid "Search Leg length     "
 msgstr "Χρόνος έρευνας        "
 #
+#
 #, fuzzy
 msgid "Search Method  "
 msgstr "Χρόνος έρευνας        "
+#
 #
 #, fuzzy
 msgid "Search Radius      "
 msgstr "Χρόνος έρευνας        "
 #
+#
 #, fuzzy
 msgid "Search Speed       "
 msgstr "Ταχύτητα έρευνας        "
+#
 #
 #, fuzzy
 msgid "Search Speed           "
 msgstr "Ταχύτητα έρευνας             "
 #
+#
 msgid "Search Speed             "
 msgstr "Ταχύτητα έρευνας             "
 #
+#
 msgid "Search and Rescue Patterns"
 msgstr "Μοτίβα Έρευνας και Διάσωσης"
+#
 #
 msgid "Sector Search"
 msgstr "Αναζήτηση τομέα"
@@ -276,12 +334,15 @@ msgstr "Αναζήτηση τομέα"
 msgid "Select SAR Datum Point"
 msgstr ""
 #
+#
 msgid "Ship"
 msgstr "Πλοίο"
+#
 #
 #, fuzzy
 msgid "Start Position"
 msgstr "Καταγραφή θέσης πλοίου"
+#
 #
 #, fuzzy
 msgid ""
@@ -291,12 +352,14 @@ msgstr ""
 "Για να αντιγράψετε τη θέση του δρομέα, επιλέξτε το πεδίο είτε του πλάτους "
 "είτε του μήκους και πιέστε <CTRL>+S."
 #
+#
 #, fuzzy
 msgid "Track space (S)          "
 msgstr "Ταχύτητα έρευνας             "
 #
 msgid "USCG"
 msgstr ""
+#
 #
 msgid "W"
 msgstr "Δ"
@@ -307,17 +370,23 @@ msgstr ""
 msgid "Waypoint names     "
 msgstr ""
 #
+#
 msgid "error in input range validation"
 msgstr "σφάλμα στην επικύρωση της περιοχής"
+#
 #
 msgid "hr"
 msgstr "ώ."
 #
+#
 msgid "kts"
 msgstr "κόμβοι"
 #
+#
 msgid "n"
 msgstr "n"
+#
+#
 #
 #
 #
@@ -326,8 +395,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "Decimal Degree"
 #~ msgstr "Μοίρες με δεκαδικά"
+#
+#
 #
 #
 #
@@ -337,9 +410,13 @@ msgstr "n"
 #
 #
 #
+#
+#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "Ν"
+#
+#
 #
 #
 #
@@ -352,8 +429,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "For Ship Number      "
 #~ msgstr "Για το πλοίο #      "
+#
+#
 #
 #
 #
@@ -363,13 +444,19 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "Number of cycles"
 #~ msgstr "Αριθμός κύκλων"
 #
 #
 #
+#
+#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Αναζήτηση πλατφόρμας πετρελαίου"
+#
+#
 #
 #
 #
@@ -379,9 +466,13 @@ msgstr "n"
 #
 #
 #
+#
+#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Παράλληλη έρευνα"
+#
+#
 #
 #
 #
@@ -390,8 +481,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "Route"
 #~ msgstr "Διαδρομή"
+#
+#
 #
 #
 #
@@ -400,8 +495,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR: Τομέας έρευνας"
+#
+#
 #
 #
 #
@@ -410,13 +509,19 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Όνομα μοτίβου αναζήτησης για το αρχείο GPX"
 #
 #
 #
+#
+#
 #~ msgid "Search Speed         "
 #~ msgstr "Ταχύτητα αναζήτησης         "
+#
+#
 #
 #
 #
@@ -426,8 +531,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
+#
+#
 #
 #
 #

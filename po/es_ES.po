@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 16:32+0200\n"
+"POT-Creation-Date: 2020-07-05 10:48+0100\n"
 "PO-Revision-Date: 2016-02-18 16:08-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Spanish\n"
@@ -19,8 +19,10 @@ msgstr ""
 msgid "    SAR panel icon has NOT been loaded"
 msgstr ""
 #
+#
 msgid "\""
 msgstr "\""
+#
 #
 msgid "'"
 msgstr "'"
@@ -34,11 +36,13 @@ msgstr ""
 msgid "0.5"
 msgstr ""
 #
+#
 msgid "1"
 msgstr "1"
 #
 msgid "1 unit only"
 msgstr ""
+#
 #
 msgid "2"
 msgstr "2"
@@ -55,30 +59,37 @@ msgstr ""
 msgid "5"
 msgstr ""
 #
+#
 msgid "CPU saving settings"
 msgstr "Opciones de salvado CPU"
+#
 #
 msgid "Calculate"
 msgstr "Calcular"
 #
+#
 msgid "Capture Cursor Position"
 msgstr "Capturar posición del cursor"
+#
 #
 msgid "Capture Ship Position"
 msgstr "Capturar posición barco"
 #
+#
 msgid "Convert to Degree"
 msgstr "Convertir a grados"
+#
 #
 msgid "Copy ship position (GPS fix required)"
 msgstr "Copiar posición del barco (necesario señal GPS)"
 #
-msgid ""
-"Creates GPX files with\n"
-"Search and rescue patterns."
+#
+#, fuzzy
+msgid "Creates GPX files with Search and Rescue patterns"
 msgstr ""
 "Crear archivos GPX con\n"
 "patrones de búsqueda y rescate."
+#
 #
 msgid "Cursor"
 msgstr "Cursor"
@@ -92,12 +103,15 @@ msgstr ""
 msgid "D.ddd"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "DATUM / CSP (Start of Search)"
 msgstr "Datum (Inicio de búsqueda)"
 #
+#
 msgid "Degrees"
 msgstr "Grados"
+#
 #
 msgid "E"
 msgstr "E"
@@ -105,19 +119,24 @@ msgstr "E"
 msgid "Error"
 msgstr ""
 #
+#
 msgid "Error in calculation. Please check input!"
 msgstr "Error en cálculos. ¡Compruebe entradas!"
+#
 #
 #, fuzzy
 msgid "Error occurred, aborting SAR calc!"
 msgstr "Ha ocurrido un error, ¡se terminan los cálculos SAR!"
 #
+#
 #, fuzzy
 msgid "Expanding Square"
 msgstr "SAR: Cuadro ampliado"
 #
+#
 msgid "Export SAR track GPX file as"
 msgstr "Exportar derrota SAR como archivo GPX"
+#
 #
 #, fuzzy
 msgid "First turn                    "
@@ -126,8 +145,10 @@ msgstr "Distancia etapa               "
 msgid "For this search pattern the Start Point entered is the CSP"
 msgstr ""
 #
+#
 msgid "General settings"
 msgstr "Opciones generales"
+#
 #
 msgid "Generate &GPX"
 msgstr "Generar &GPX"
@@ -138,49 +159,65 @@ msgstr ""
 msgid "Icons "
 msgstr ""
 #
+#
+#, fuzzy
 msgid "Initial course"
-msgstr ""
+msgstr "Rumbo de aproximación     "
+#
 #
 #, fuzzy
 msgid "Initial course    "
 msgstr "Rumbo de aproximación     "
 #
+#
 #, fuzzy
 msgid "Initial course        "
 msgstr "Rumbo de aproximación     "
 #
+#
+#, fuzzy
 msgid "Initial leg course        "
-msgstr ""
+msgstr "Rumbo de aproximación     "
+#
 #
 msgid "Lat "
 msgstr "Lat "
+#
 #
 #, fuzzy
 msgid "Latitude  "
 msgstr "Latitud  "
 #
+#
 msgid "Leave ticked, so that you can use cursor position."
 msgstr "Dejarlo marcado, así puede usar la posición del cursor."
 #
+#
 msgid "Leave ticked, so you can use ship's position"
 msgstr "Dejarlo marcado, así puede usar la posición del barco"
+#
 #
 #, fuzzy
 msgid "Leg Space             "
 msgstr "Distancia etapa              "
 #
+#
 #, fuzzy
 msgid "Leg Spacing (S)       "
 msgstr "Espaciado de etapas                "
 #
+#
 msgid "Lon"
 msgstr "Lon"
+#
 #
 msgid "Longitude"
 msgstr "Longitud"
 #
+#
 msgid "N"
 msgstr "N"
+#
 #
 msgid "NM"
 msgstr "NM"
@@ -188,17 +225,21 @@ msgstr "NM"
 msgid "No Datum Point has been entered"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Number of Legs  "
 msgstr "Número de etapas   "
+#
 #
 #, fuzzy
 msgid "Number of Legs      "
 msgstr "Número de etapas       "
 #
+#
 #, fuzzy
 msgid "Number of Legs        "
 msgstr "Número de etapas       "
+#
 #
 #, fuzzy
 msgid "Number of passes"
@@ -207,32 +248,40 @@ msgstr "Número de cuadros"
 msgid "Oil Rig (Quadrant Single)"
 msgstr ""
 #
+#
 msgid "Opacity"
 msgstr "Opacidad"
 #
 msgid "PORT"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Parallel Track"
 msgstr "Búsqueda en paralelo"
 #
+#
 msgid "Route Preferences"
 msgstr "Preferencias de ruta"
+#
 #
 #, fuzzy
 msgid "Route for Ship           "
 msgstr "Velocidad de búsqueda             "
 #
+#
 msgid "S"
 msgstr "S"
+#
 #
 msgid "SAR"
 msgstr "SAR"
 #
+#
 #, fuzzy
 msgid "SAR Plugin by SaltyPaws/Rasbats"
 msgstr "SAR Plugin by SaltyPaws"
+#
 #
 msgid "SAR preferences"
 msgstr "preferencias SAR"
@@ -240,35 +289,44 @@ msgstr "preferencias SAR"
 msgid "STARBOARD"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Search Distance / Time"
 msgstr "Distancia de búsqueda"
+#
 #
 #, fuzzy
 msgid "Search Leg length     "
 msgstr "Tiempo de búsqueda        "
 #
+#
 #, fuzzy
 msgid "Search Method  "
 msgstr "Tiempo de búsqueda        "
+#
 #
 #, fuzzy
 msgid "Search Radius      "
 msgstr "Tiempo de búsqueda        "
 #
+#
 #, fuzzy
 msgid "Search Speed       "
 msgstr "Velocidad de búsqueda        "
+#
 #
 #, fuzzy
 msgid "Search Speed           "
 msgstr "Velocidad de búsqueda             "
 #
+#
 msgid "Search Speed             "
 msgstr "Velocidad de búsqueda             "
 #
+#
 msgid "Search and Rescue Patterns"
 msgstr "Patrones de Búsqueda y Rescate"
+#
 #
 msgid "Sector Search"
 msgstr "Sector de búsqueda"
@@ -276,12 +334,15 @@ msgstr "Sector de búsqueda"
 msgid "Select SAR Datum Point"
 msgstr ""
 #
+#
 msgid "Ship"
 msgstr "Barco"
+#
 #
 #, fuzzy
 msgid "Start Position"
 msgstr "Capturar posición barco"
+#
 #
 #, fuzzy
 msgid ""
@@ -291,12 +352,14 @@ msgstr ""
 "Para copiar la posición del cursor, selecciónelas del cuadro de coordenadas "
 "latitud o longitud y pulse <CTRL>+S."
 #
+#
 #, fuzzy
 msgid "Track space (S)          "
 msgstr "Velocidad de búsqueda             "
 #
 msgid "USCG"
 msgstr ""
+#
 #
 msgid "W"
 msgstr "W"
@@ -307,17 +370,23 @@ msgstr ""
 msgid "Waypoint names     "
 msgstr ""
 #
+#
 msgid "error in input range validation"
 msgstr "error en validación del alcance"
+#
 #
 msgid "hr"
 msgstr "h"
 #
+#
 msgid "kts"
 msgstr "kts"
 #
+#
 msgid "n"
 msgstr "n"
+#
+#
 #
 #
 #
@@ -326,8 +395,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "Decimal Degree"
 #~ msgstr "Grados decimales"
+#
+#
 #
 #
 #
@@ -337,9 +410,13 @@ msgstr "n"
 #
 #
 #
+#
+#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "S"
+#
+#
 #
 #
 #
@@ -352,8 +429,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "For Ship Number      "
 #~ msgstr "Para barco número      "
+#
+#
 #
 #
 #
@@ -363,13 +444,19 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "Number of cycles"
 #~ msgstr "Número de ciclos"
 #
 #
 #
+#
+#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Búsqueda Oil Rig"
+#
+#
 #
 #
 #
@@ -379,9 +466,13 @@ msgstr "n"
 #
 #
 #
+#
+#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Búsqueda en paralelo"
+#
+#
 #
 #
 #
@@ -390,8 +481,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "Route"
 #~ msgstr "Ruta"
+#
+#
 #
 #
 #
@@ -400,8 +495,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR: Sector de búsqueda"
+#
+#
 #
 #
 #
@@ -410,13 +509,19 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Nombre del patrón de búsqueda para el archivo GPX"
 #
 #
 #
+#
+#
 #~ msgid "Search Speed         "
 #~ msgstr "Velocidad de búsqueda         "
+#
+#
 #
 #
 #
@@ -426,8 +531,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
+#
+#
 #
 #
 #

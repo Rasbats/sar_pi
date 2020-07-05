@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 16:32+0200\n"
+"POT-Creation-Date: 2020-07-05 10:48+0100\n"
 "PO-Revision-Date: 2016-01-16 20:59-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Danish\n"
@@ -55,30 +55,37 @@ msgstr ""
 msgid "5"
 msgstr ""
 #
+#
 msgid "CPU saving settings"
 msgstr "Gemmer indstillinger"
+#
 #
 msgid "Calculate"
 msgstr "Beregn"
 #
+#
 msgid "Capture Cursor Position"
 msgstr "Gem markørpositionen"
+#
 #
 msgid "Capture Ship Position"
 msgstr "Gem skibets position"
 #
+#
 msgid "Convert to Degree"
 msgstr "Konverter til grader"
+#
 #
 msgid "Copy ship position (GPS fix required)"
 msgstr "Kopier skibets position (GPS fix kræves)"
 #
-msgid ""
-"Creates GPX files with\n"
-"Search and rescue patterns."
+#
+#, fuzzy
+msgid "Creates GPX files with Search and Rescue patterns"
 msgstr ""
 "Skaber GPX filer med\n"
 "eftersøgningsmønstre."
+#
 #
 msgid "Cursor"
 msgstr "Markør"
@@ -95,14 +102,17 @@ msgstr ""
 msgid "DATUM / CSP (Start of Search)"
 msgstr ""
 #
+#
 msgid "Degrees"
 msgstr "Grader"
+#
 #
 msgid "E"
 msgstr "Ø"
 #
 msgid "Error"
 msgstr ""
+#
 #
 msgid "Error in calculation. Please check input!"
 msgstr "Fejl i beregningen. Tjek venligst input!"
@@ -113,8 +123,10 @@ msgstr ""
 msgid "Expanding Square"
 msgstr ""
 #
+#
 msgid "Export SAR track GPX file as"
 msgstr "Eksporter SAR spor som GPX fil"
+#
 #
 #, fuzzy
 msgid "First turn                    "
@@ -123,8 +135,10 @@ msgstr "Længde af ben               "
 msgid "For this search pattern the Start Point entered is the CSP"
 msgstr ""
 #
+#
 msgid "General settings"
 msgstr "Generelle instillinger"
+#
 #
 msgid "Generate &GPX"
 msgstr "Generer &GPX"
@@ -135,22 +149,30 @@ msgstr ""
 msgid "Icons "
 msgstr ""
 #
+#
+#, fuzzy
 msgid "Initial course"
-msgstr ""
+msgstr "Indfaldskurs     "
+#
 #
 #, fuzzy
 msgid "Initial course    "
 msgstr "Indfaldskurs     "
 #
+#
 #, fuzzy
 msgid "Initial course        "
 msgstr "Indfaldskurs     "
 #
+#
+#, fuzzy
 msgid "Initial leg course        "
-msgstr ""
+msgstr "Indfaldskurs     "
+#
 #
 msgid "Lat "
 msgstr "Brd "
+#
 #
 #, fuzzy
 msgid "Latitude  "
@@ -162,22 +184,29 @@ msgstr ""
 msgid "Leave ticked, so you can use ship's position"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Leg Space             "
 msgstr "Længde på ben              "
+#
 #
 #, fuzzy
 msgid "Leg Spacing (S)       "
 msgstr "Afstand mellem ben                "
 #
+#
 msgid "Lon"
 msgstr "Lngd"
+#
 #
 msgid "Longitude"
 msgstr "Længdegrad"
 #
+#
+#, fuzzy
 msgid "N"
-msgstr ""
+msgstr "sømil"
+#
 #
 msgid "NM"
 msgstr "sømil"
@@ -185,17 +214,21 @@ msgstr "sømil"
 msgid "No Datum Point has been entered"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Number of Legs  "
 msgstr "Antal ben   "
+#
 #
 #, fuzzy
 msgid "Number of Legs      "
 msgstr "Antal ben       "
 #
+#
 #, fuzzy
 msgid "Number of Legs        "
 msgstr "Antal ben       "
+#
 #
 #, fuzzy
 msgid "Number of passes"
@@ -204,32 +237,42 @@ msgstr "Antal ben   "
 msgid "Oil Rig (Quadrant Single)"
 msgstr ""
 #
+#
 msgid "Opacity"
 msgstr "Gennemsigtighed"
 #
 msgid "PORT"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Parallel Track"
 msgstr "Parallel søgning"
 #
+#
 msgid "Route Preferences"
 msgstr "Ruteindstillinger"
+#
 #
 #, fuzzy
 msgid "Route for Ship           "
 msgstr "Søgehastighed             "
 #
+#
+#
+#
+#, fuzzy
 msgid "S"
-msgstr ""
+msgstr "Ø"
 #
 msgid "SAR"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "SAR Plugin by SaltyPaws/Rasbats"
 msgstr "SAR-Plugin af SaltyPaws"
+#
 #
 msgid "SAR preferences"
 msgstr "SAR Indstillinger"
@@ -237,35 +280,44 @@ msgstr "SAR Indstillinger"
 msgid "STARBOARD"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Search Distance / Time"
 msgstr "Søgeafstand"
+#
 #
 #, fuzzy
 msgid "Search Leg length     "
 msgstr "Søgetid        "
 #
+#
 #, fuzzy
 msgid "Search Method  "
 msgstr "Søgetid        "
+#
 #
 #, fuzzy
 msgid "Search Radius      "
 msgstr "Søgetid        "
 #
+#
 #, fuzzy
 msgid "Search Speed       "
 msgstr "Søgehastighed        "
+#
 #
 #, fuzzy
 msgid "Search Speed           "
 msgstr "Søgehastighed             "
 #
+#
 msgid "Search Speed             "
 msgstr "Søgehastighed             "
 #
+#
 msgid "Search and Rescue Patterns"
 msgstr "Eftersøgningsmønstre"
+#
 #
 msgid "Sector Search"
 msgstr "Sektorsøgning"
@@ -273,12 +325,15 @@ msgstr "Sektorsøgning"
 msgid "Select SAR Datum Point"
 msgstr ""
 #
+#
 msgid "Ship"
 msgstr "Skib"
+#
 #
 #, fuzzy
 msgid "Start Position"
 msgstr "Gem skibets position"
+#
 #
 #, fuzzy
 msgid ""
@@ -288,12 +343,14 @@ msgstr ""
 "For at kopiere markørens position, vælg enten bredde- eller længde-"
 "koordinatboksen, og tryk <CTRL>+ S."
 #
+#
 #, fuzzy
 msgid "Track space (S)          "
 msgstr "Søgehastighed             "
 #
 msgid "USCG"
 msgstr ""
+#
 #
 msgid "W"
 msgstr "W"
@@ -304,17 +361,23 @@ msgstr ""
 msgid "Waypoint names     "
 msgstr ""
 #
+#
 msgid "error in input range validation"
 msgstr "fejl i inputvalidering"
+#
 #
 msgid "hr"
 msgstr "timer"
 #
+#
 msgid "kts"
 msgstr "knob"
 #
+#
 msgid "n"
 msgstr "n"
+#
+#
 #
 #
 #
@@ -323,8 +386,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "Decimal Degree"
 #~ msgstr "Decimalgrader"
+#
+#
 #
 #
 #
@@ -334,14 +401,12 @@ msgstr "n"
 #
 #
 #
-#, fuzzy
-#~ msgid "ES"
-#~ msgstr "Ø"
-#
 #
 #
 #~ msgid "For Ship Number      "
 #~ msgstr "For skip nummer      "
+#
+#
 #
 #
 #
@@ -351,13 +416,19 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "Number of cycles"
 #~ msgstr "Antal gentagelser"
 #
 #
 #
+#
+#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Borerig-søgning"
+#
+#
 #
 #
 #
@@ -367,8 +438,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "Results"
 #~ msgstr "Resultater"
+#
+#
 #
 #
 #
@@ -377,8 +452,12 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "SAR: Oil Rig"
 #~ msgstr "SAR: Borerig"
+#
+#
 #
 #
 #
@@ -387,13 +466,19 @@ msgstr "n"
 #
 #
 #
+#
+#
 #~ msgid "SAR: Trackline"
 #~ msgstr "SAR: Spor"
 #
 #
 #
+#
+#
 #~ msgid "Search Speed         "
 #~ msgstr "Søgehastighed         "
+#
+#
 #
 #
 #

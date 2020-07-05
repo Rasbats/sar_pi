@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-06-17 16:32+0200\n"
+"POT-Creation-Date: 2020-07-05 10:48+0100\n"
 "PO-Revision-Date: 2016-02-25 08:05-0500\n"
 "Last-Translator: nohal <pavel@kalian.cz>\n"
 "Language-Team: Estonian\n"
@@ -19,8 +19,10 @@ msgstr ""
 msgid "    SAR panel icon has NOT been loaded"
 msgstr ""
 #
+#
 msgid "\""
 msgstr "\""
+#
 #
 msgid "'"
 msgstr "'"
@@ -34,11 +36,13 @@ msgstr ""
 msgid "0.5"
 msgstr ""
 #
+#
 msgid "1"
 msgstr "1"
 #
 msgid "1 unit only"
 msgstr ""
+#
 #
 msgid "2"
 msgstr "2"
@@ -55,30 +59,37 @@ msgstr ""
 msgid "5"
 msgstr ""
 #
+#
 msgid "CPU saving settings"
 msgstr "CPU'd säästvad seaded"
+#
 #
 msgid "Calculate"
 msgstr "Arvuta"
 #
+#
 msgid "Capture Cursor Position"
 msgstr "Haara kursori asukoht"
+#
 #
 msgid "Capture Ship Position"
 msgstr "Haara laeva asukoht"
 #
+#
 msgid "Convert to Degree"
 msgstr "Muuda kraadiks"
+#
 #
 msgid "Copy ship position (GPS fix required)"
 msgstr "Kopeeri laeva asukoht (GPS'i koht vajalik)"
 #
-msgid ""
-"Creates GPX files with\n"
-"Search and rescue patterns."
+#
+#, fuzzy
+msgid "Creates GPX files with Search and Rescue patterns"
 msgstr ""
 "Loo GPX-fail koos otsingu\n"
 "ja pääste mustritega."
+#
 #
 msgid "Cursor"
 msgstr "Kursor"
@@ -92,12 +103,15 @@ msgstr ""
 msgid "D.ddd"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "DATUM / CSP (Start of Search)"
 msgstr "Otsingu alguskoordinaadid"
 #
+#
 msgid "Degrees"
 msgstr "kraadi"
+#
 #
 msgid "E"
 msgstr "E"
@@ -105,19 +119,24 @@ msgstr "E"
 msgid "Error"
 msgstr ""
 #
+#
 msgid "Error in calculation. Please check input!"
 msgstr "Viga arvutuses. Kontrolli palun sisestatut!"
+#
 #
 #, fuzzy
 msgid "Error occurred, aborting SAR calc!"
 msgstr "Viga, katkestan SAR arvutamise!"
 #
+#
 #, fuzzy
 msgid "Expanding Square"
 msgstr "SAR: suurenev ruut"
 #
+#
 msgid "Export SAR track GPX file as"
 msgstr "Väljasta SAR-jälje GPX-fail kui"
+#
 #
 #, fuzzy
 msgid "First turn                    "
@@ -126,8 +145,10 @@ msgstr "Lõigu pikkus      "
 msgid "For this search pattern the Start Point entered is the CSP"
 msgstr ""
 #
+#
 msgid "General settings"
 msgstr "Üldised seaded"
+#
 #
 msgid "Generate &GPX"
 msgstr "Loo &GPX"
@@ -138,49 +159,65 @@ msgstr ""
 msgid "Icons "
 msgstr ""
 #
+#
+#, fuzzy
 msgid "Initial course"
-msgstr ""
+msgstr "Lähenemiskurss"
+#
 #
 #, fuzzy
 msgid "Initial course    "
 msgstr "Lähenemiskurss"
 #
+#
 #, fuzzy
 msgid "Initial course        "
 msgstr "Lähenemiskurss"
 #
+#
+#, fuzzy
 msgid "Initial leg course        "
-msgstr ""
+msgstr "Lähenemiskurss"
+#
 #
 msgid "Lat "
 msgstr "L°"
+#
 #
 #, fuzzy
 msgid "Latitude  "
 msgstr "Laiuskraad  "
 #
+#
 msgid "Leave ticked, so that you can use cursor position."
 msgstr "Jäta märgistatuks, et saaksite kasutada kursori asukohta."
 #
+#
 msgid "Leave ticked, so you can use ship's position"
 msgstr "Jäta märgistatuks, et saaksite kasutada laeva asukohta."
+#
 #
 #, fuzzy
 msgid "Leg Space             "
 msgstr "Lõigu pikkus      "
 #
+#
 #, fuzzy
 msgid "Leg Spacing (S)       "
 msgstr "Lõikude vahe    "
 #
+#
 msgid "Lon"
 msgstr "P°"
+#
 #
 msgid "Longitude"
 msgstr "Pikkuskraad"
 #
+#
 msgid "N"
 msgstr "N"
+#
 #
 msgid "NM"
 msgstr "miili"
@@ -188,17 +225,21 @@ msgstr "miili"
 msgid "No Datum Point has been entered"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Number of Legs  "
 msgstr "Lõikude arv       "
+#
 #
 #, fuzzy
 msgid "Number of Legs      "
 msgstr "Lõikude arv       "
 #
+#
 #, fuzzy
 msgid "Number of Legs        "
 msgstr "Lõikude arv       "
+#
 #
 #, fuzzy
 msgid "Number of passes"
@@ -207,32 +248,40 @@ msgstr "Ruutude arv     "
 msgid "Oil Rig (Quadrant Single)"
 msgstr ""
 #
+#
 msgid "Opacity"
 msgstr "Läbipaistmatus"
 #
 msgid "PORT"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Parallel Track"
 msgstr "Rööpotsing"
 #
+#
 msgid "Route Preferences"
 msgstr "Teekonna eelistused"
+#
 #
 #, fuzzy
 msgid "Route for Ship           "
 msgstr "Kiirus otsingul    "
 #
+#
 msgid "S"
 msgstr "S"
+#
 #
 msgid "SAR"
 msgstr "SAR"
 #
+#
 #, fuzzy
 msgid "SAR Plugin by SaltyPaws/Rasbats"
 msgstr "SaltyPaws'i SAR-plugin"
+#
 #
 msgid "SAR preferences"
 msgstr "SAR eelistused"
@@ -240,35 +289,44 @@ msgstr "SAR eelistused"
 msgid "STARBOARD"
 msgstr ""
 #
+#
 #, fuzzy
 msgid "Search Distance / Time"
 msgstr "Otsingu pikkus"
+#
 #
 #, fuzzy
 msgid "Search Leg length     "
 msgstr "Aeg otsingul   "
 #
+#
 #, fuzzy
 msgid "Search Method  "
 msgstr "Aeg otsingul   "
+#
 #
 #, fuzzy
 msgid "Search Radius      "
 msgstr "Aeg otsingul   "
 #
+#
 #, fuzzy
 msgid "Search Speed       "
 msgstr "Kiirus otsingul    "
+#
 #
 #, fuzzy
 msgid "Search Speed           "
 msgstr "Kiirus otsingul    "
 #
+#
 msgid "Search Speed             "
 msgstr "Kiirus otsingul    "
 #
+#
 msgid "Search and Rescue Patterns"
 msgstr "Otsingu ja pääste mustrid"
+#
 #
 msgid "Sector Search"
 msgstr "Sektorotsing"
@@ -276,12 +334,15 @@ msgstr "Sektorotsing"
 msgid "Select SAR Datum Point"
 msgstr ""
 #
+#
 msgid "Ship"
 msgstr "Laev"
+#
 #
 #, fuzzy
 msgid "Start Position"
 msgstr "Haara laeva asukoht"
+#
 #
 #, fuzzy
 msgid ""
@@ -291,12 +352,14 @@ msgstr ""
 "Et kopeerida kursori asukoht vali kas laius- või pikkuskoordinaadi kast ja "
 "vajuta <CTRL>+S."
 #
+#
 #, fuzzy
 msgid "Track space (S)          "
 msgstr "Kiirus otsingul    "
 #
 msgid "USCG"
 msgstr ""
+#
 #
 msgid "W"
 msgstr "W"
@@ -307,17 +370,23 @@ msgstr ""
 msgid "Waypoint names     "
 msgstr ""
 #
+#
 msgid "error in input range validation"
 msgstr "viga sisestatud ulatuse kontrollimisel"
+#
 #
 msgid "hr"
 msgstr "t"
 #
+#
 msgid "kts"
 msgstr "sõlme"
 #
+#
 msgid "n"
 msgstr "tk"
+#
+#
 #
 #
 #
@@ -326,8 +395,12 @@ msgstr "tk"
 #
 #
 #
+#
+#
 #~ msgid "Decimal Degree"
 #~ msgstr "Kraadi kümnendikes"
+#
+#
 #
 #
 #
@@ -337,9 +410,13 @@ msgstr "tk"
 #
 #
 #
+#
+#
 #, fuzzy
 #~ msgid "ES"
 #~ msgstr "S"
+#
+#
 #
 #
 #
@@ -352,8 +429,12 @@ msgstr "tk"
 #
 #
 #
+#
+#
 #~ msgid "For Ship Number      "
 #~ msgstr "Laeva nr .. jaoks"
+#
+#
 #
 #
 #
@@ -363,13 +444,19 @@ msgstr "tk"
 #
 #
 #
+#
+#
 #~ msgid "Number of cycles"
 #~ msgstr "Korduste arv"
 #
 #
 #
+#
+#
 #~ msgid "Oil Rig Search"
 #~ msgstr "Suureneva ala otsing"
+#
+#
 #
 #
 #
@@ -379,9 +466,13 @@ msgstr "tk"
 #
 #
 #
+#
+#
 #, fuzzy
 #~ msgid "Parallel Track Search"
 #~ msgstr "Rööpotsing"
+#
+#
 #
 #
 #
@@ -390,8 +481,12 @@ msgstr "tk"
 #
 #
 #
+#
+#
 #~ msgid "Route"
 #~ msgstr "Teekond"
+#
+#
 #
 #
 #
@@ -400,8 +495,12 @@ msgstr "tk"
 #
 #
 #
+#
+#
 #~ msgid "SAR: Sector Search"
 #~ msgstr "SAR: sektorotsing"
+#
+#
 #
 #
 #
@@ -410,13 +509,19 @@ msgstr "tk"
 #
 #
 #
+#
+#
 #~ msgid "Search Pattern name for GPX file"
 #~ msgstr "Otsingu mustri GPX-faili nimi"
 #
 #
 #
+#
+#
 #~ msgid "Search Speed         "
 #~ msgstr "Kiirus otsingul    "
+#
+#
 #
 #
 #
@@ -426,8 +531,12 @@ msgstr "tk"
 #
 #
 #
+#
+#
 #~ msgid "\\u00b0"
 #~ msgstr "\\u00b0"
+#
+#
 #
 #
 #
