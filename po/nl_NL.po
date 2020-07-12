@@ -2,542 +2,392 @@ msgid ""
 msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-07-05 10:48+0100\n"
-"PO-Revision-Date: 2016-02-27 08:04-0500\n"
-"Last-Translator: nohal <pavel@kalian.cz>\n"
+"POT-Creation-Date: 2020-07-05 12:28+0200\n"
+"PO-Revision-Date: 2020-07-12 19:52\n"
+"Last-Translator: \n"
 "Language-Team: Dutch\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: crowdin.com\n"
 "X-Crowdin-Project: opencpn\n"
+"X-Crowdin-Project-ID: 49843\n"
 "X-Crowdin-Language: nl\n"
 "X-Crowdin-File: /plugins/SAR_pi/po/SAR_pi.pot\n"
-#
-msgid "    SAR panel icon has NOT been loaded"
+"X-Crowdin-File-ID: 145\n"
+
+#: src\SARgui.cpp:36
+msgid "Initial leg course        "
 msgstr ""
-#
-#
-msgid "\""
-msgstr "\""
-#
-#
-msgid "'"
-msgstr "'"
-#
-msgid "0.1"
-msgstr ""
-#
-msgid "0.2"
-msgstr ""
-#
-msgid "0.5"
-msgstr ""
-#
-#
-msgid "1"
-msgstr "1"
-#
-msgid "1 unit only"
-msgstr ""
-#
-#
-msgid "2"
-msgstr "2"
-#
-msgid "2 units A&B"
-msgstr ""
-#
-msgid "3"
-msgstr ""
-#
-msgid "4"
-msgstr ""
-#
-msgid "5"
-msgstr ""
-#
-#
-msgid "CPU saving settings"
-msgstr "CPU instellingen opslaan"
-#
-#
-msgid "Calculate"
-msgstr "Bereken"
-#
-#
-msgid "Capture Cursor Position"
-msgstr "Vastleggen cursorpositie"
-#
-#
-msgid "Capture Ship Position"
-msgstr "Vastleggen eigen positie"
-#
-#
-msgid "Convert to Degree"
-msgstr "Converteer naar graden"
-#
-#
-msgid "Copy ship position (GPS fix required)"
-msgstr "Kopieer eigen positie (GPS-fix vereist)"
-#
-#
-#, fuzzy
-msgid "Creates GPX files with Search and Rescue patterns"
-msgstr ""
-"SAR PlugIn voor OpenCPN\n"
-"\n"
-"Maakt GPX-bestanden met SAR zoekpatronen."
-#
-#
-msgid "Cursor"
-msgstr "Cursor"
-#
-msgid "D MM SS"
-msgstr ""
-#
-msgid "D MM.mmm"
-msgstr ""
-#
-msgid "D.ddd"
-msgstr ""
-#
-#
-#, fuzzy
-msgid "DATUM / CSP (Start of Search)"
-msgstr "Startpositie van zoekpatroon (datum)"
-#
-#
+
+#: src\SARgui.cpp:43 src\SARgui.cpp:233 src\SARgui.cpp:366 src\SARgui.cpp:520
 msgid "Degrees"
 msgstr "graden"
-#
-#
-msgid "E"
-msgstr "O"
-#
-msgid "Error"
+
+#: src\SARgui.cpp:53
+msgid "Search Leg length     "
 msgstr ""
-#
-#
-msgid "Error in calculation. Please check input!"
-msgstr "Fout in berekening. Controleer de input!"
-#
-#
-#, fuzzy
-msgid "Error occurred, aborting SAR calc!"
-msgstr "Fout opgetreden, SAR-berekening afgebroken!"
-#
-#
-#, fuzzy
-msgid "Expanding Square"
-msgstr "SAR: Vierkant zoekpatroon"
-#
-#
-msgid "Export SAR track GPX file as"
-msgstr "Exporteer GPX-zoekpatroonbestand als"
-#
-#
-#, fuzzy
-msgid "First turn                    "
-msgstr "Lijnlengte             "
-#
-msgid "For this search pattern the Start Point entered is the CSP"
-msgstr ""
-#
-#
-msgid "General settings"
-msgstr "Algemene instellingen"
-#
-#
-msgid "Generate &GPX"
-msgstr "Maak &GPX"
-#
-msgid "IAMSAR"
-msgstr ""
-#
-msgid "Icons "
-msgstr ""
-#
-#
-#, fuzzy
-msgid "Initial course"
-msgstr "Naderingskoers   "
-#
-#
-#, fuzzy
-msgid "Initial course    "
-msgstr "Naderingskoers   "
-#
-#
-#, fuzzy
-msgid "Initial course        "
-msgstr "Naderingskoers   "
-#
-#
-#, fuzzy
-msgid "Initial leg course        "
-msgstr "Naderingskoers   "
-#
-#
-msgid "Lat "
-msgstr "Br"
-#
-#
-#, fuzzy
-msgid "Latitude  "
-msgstr "Breedte "
-#
-#
-msgid "Leave ticked, so that you can use cursor position."
-msgstr "Laat geselcteerd, zodat u de cursorpositie kunt gebruiken"
-#
-#
-msgid "Leave ticked, so you can use ship's position"
-msgstr "Laat geselecteerd, zodat u uw scheepspositie kunt gebruiken "
-#
-#
-#, fuzzy
-msgid "Leg Space             "
-msgstr "Lijnlengte             "
-#
-#
-#, fuzzy
-msgid "Leg Spacing (S)       "
-msgstr "Lijnafstand          "
-#
-#
-msgid "Lon"
-msgstr "Le"
-#
-#
-msgid "Longitude"
-msgstr "Lengte   "
-#
-#
-msgid "N"
-msgstr "N"
-#
-#
+
+#: src\SARgui.cpp:60 src\SARgui.cpp:77 src\SARgui.cpp:253 src\SARgui.cpp:386
+#: src\SARgui.cpp:540 src\SARgui.cpp:939
 msgid "NM"
 msgstr "NM"
-#
-msgid "No Datum Point has been entered"
-msgstr ""
-#
-#
-#, fuzzy
-msgid "Number of Legs  "
-msgstr "Aantal lijnen        "
-#
-#
-#, fuzzy
-msgid "Number of Legs      "
-msgstr "Aantal lijnen        "
-#
-#
-#, fuzzy
-msgid "Number of Legs        "
-msgstr "Aantal lijnen        "
-#
-#
-#, fuzzy
-msgid "Number of passes"
-msgstr "Aantal vierkanten"
-#
-msgid "Oil Rig (Quadrant Single)"
-msgstr ""
-#
-#
-msgid "Opacity"
-msgstr "Transparantie"
-#
-msgid "PORT"
-msgstr ""
-#
-#
-#, fuzzy
-msgid "Parallel Track"
-msgstr "Lijn zoekpatroon"
-#
-#
-msgid "Route Preferences"
-msgstr "Routevoorkeuren"
-#
-#
-#, fuzzy
-msgid "Route for Ship           "
-msgstr "Zoeksnelheid        "
-#
-#
-msgid "S"
-msgstr "Z"
-#
-#
-msgid "SAR"
-msgstr "SAR"
-#
-#
-#, fuzzy
-msgid "SAR Plugin by SaltyPaws/Rasbats"
-msgstr "SAR PlugIn door SaltyPaws"
-#
-#
-msgid "SAR preferences"
-msgstr "Voorkeuren SAR"
-#
-msgid "STARBOARD"
-msgstr ""
-#
-#
-#, fuzzy
-msgid "Search Distance / Time"
-msgstr "Zoekafstand"
-#
-#
-#, fuzzy
-msgid "Search Leg length     "
-msgstr "Zoektijd       "
-#
-#
-#, fuzzy
-msgid "Search Method  "
-msgstr "Zoektijd       "
-#
-#
-#, fuzzy
-msgid "Search Radius      "
-msgstr "Zoektijd       "
-#
-#
-#, fuzzy
-msgid "Search Speed       "
-msgstr "Zoeksnelheid        "
-#
-#
-#, fuzzy
-msgid "Search Speed           "
-msgstr "Zoeksnelheid        "
-#
-#
-msgid "Search Speed             "
-msgstr "Zoeksnelheid        "
-#
-#
-msgid "Search and Rescue Patterns"
-msgstr "Search and Rescue PlugIn voor zoekpatronen in OpenCPN"
-#
-#
-msgid "Sector Search"
-msgstr "Sector zoekpatroon"
-#
-msgid "Select SAR Datum Point"
-msgstr ""
-#
-#
-msgid "Ship"
-msgstr "Vaartuig"
-#
-#
-#, fuzzy
-msgid "Start Position"
-msgstr "Vastleggen eigen positie"
-#
-#
-#, fuzzy
-msgid ""
-"To copy the cursor location place the cursor on the chart \n"
-"     ...and press <CTRL>+S"
-msgstr ""
-"Om de cursorlocatie te kopiëren: selecteer het Breedte- of Lengteveld en druk "
-"op <CTRL>+S."
-#
-#
-#, fuzzy
+
+#: src\SARgui.cpp:70
 msgid "Track space (S)          "
-msgstr "Zoeksnelheid        "
-#
-msgid "USCG"
 msgstr ""
-#
-#
-msgid "W"
-msgstr "W"
-#
-msgid "Waypoint names "
+
+#: src\SARgui.cpp:87
+msgid "Number of Legs        "
 msgstr ""
-#
-msgid "Waypoint names     "
-msgstr ""
-#
-#
-msgid "error in input range validation"
-msgstr "fout bij invoervalidatie"
-#
-#
-msgid "hr"
-msgstr "u"
-#
-#
-msgid "kts"
-msgstr "knopen"
-#
-#
+
+#: src\SARgui.cpp:94 src\SARgui.cpp:270 src\SARgui.cpp:557
 msgid "n"
 msgstr " "
-#
-#
-#
-#
-#
-#~ msgid "Approach course"
-#~ msgstr "Naderingskoers   "
-#
-#
-#
-#
-#
-#~ msgid "Decimal Degree"
-#~ msgstr "Decimale graden"
-#
-#
-#
-#
-#
-#, fuzzy
-#~ msgid "Degree, Minutes"
-#~ msgstr "graden"
-#
-#
-#
-#
-#
-#, fuzzy
-#~ msgid "ES"
-#~ msgstr "Z"
-#
-#
-#
-#
-#
-#~ msgid ""
-#~ "Expanding Square\n"
-#~ "         Search"
-#~ msgstr "Vierkant zoekpatroon"
-#
-#
-#
-#
-#
-#~ msgid "For Ship Number      "
-#~ msgstr "Voor vaartuig nr "
-#
-#
-#
-#
-#
-#, fuzzy
-#~ msgid "Leg Distance        "
-#~ msgstr "Lijnlengte             "
-#
-#
-#
-#
-#
-#~ msgid "Number of cycles"
-#~ msgstr "Aantal cycli          "
-#
-#
-#
-#
-#
-#~ msgid "Oil Rig Search"
-#~ msgstr "Platform zoekpatroon"
-#
-#
-#
-#
-#
-#, fuzzy
-#~ msgid "PS"
-#~ msgstr "Z"
-#
-#
-#
-#
-#
-#, fuzzy
-#~ msgid "Parallel Track Search"
-#~ msgstr "Lijn zoekpatroon"
-#
-#
-#
-#
-#
-#~ msgid "Results"
-#~ msgstr "Resultaten"
-#
-#
-#
-#
-#
-#~ msgid "Route"
-#~ msgstr "Route    "
-#
-#
-#
-#
-#
-#~ msgid "SAR: Oil Rig"
-#~ msgstr "SAR: Platform zoekpatroon"
-#
-#
-#
-#
-#
-#~ msgid "SAR: Sector Search"
-#~ msgstr "SAR: Sector zoekpatroon"
-#
-#
-#
-#
-#
-#~ msgid "SAR: Trackline"
-#~ msgstr "SAR: Lijn zoekpatroon"
-#
-#
-#
-#
-#
-#~ msgid "Search Pattern name for GPX file"
-#~ msgstr "Naam zoekpatroon voor GPX-bestand"
-#
-#
-#
-#
-#
-#~ msgid "Search Speed         "
-#~ msgstr "Zoeksnelheid        "
-#
-#
-#
-#
-#
-#, fuzzy
-#~ msgid "VS"
-#~ msgstr "Z"
-#
-#
-#
-#
-#
-#~ msgid "\\u00b0"
-#~ msgstr "\\u00b0"
-#
-#
-#
-#
-#
-#~ msgid "\\u00b0 ' \""
-#~ msgstr "\\u00b0 ' \""
+
+#: src\SARgui.cpp:104
+msgid "Search Speed             "
+msgstr "Zoeksnelheid        "
+
+#: src\SARgui.cpp:111 src\SARgui.cpp:287 src\SARgui.cpp:403 src\SARgui.cpp:574
+msgid "kts"
+msgstr "kn"
+
+#: src\SARgui.cpp:127 src\SARgui.cpp:317 src\SARgui.cpp:449 src\SARgui.cpp:604
+msgid "Generate &GPX"
+msgstr "Maak &GPX"
+
+#: src\SARgui.cpp:161
+msgid "Route for Ship           "
+msgstr ""
+
+#: src\SARgui.cpp:165
+msgid "1 unit only"
+msgstr ""
+
+#: src\SARgui.cpp:165
+msgid "2 units A&B"
+msgstr ""
+
+#: src\SARgui.cpp:177
+msgid "First turn                    "
+msgstr ""
+
+#: src\SARgui.cpp:181
+msgid "STARBOARD"
+msgstr ""
+
+#: src\SARgui.cpp:181
+msgid "PORT"
+msgstr ""
+
+#: src\SARgui.cpp:193 src\SARgui.cpp:303 src\SARgui.cpp:435
+msgid "Waypoint names     "
+msgstr ""
+
+#: src\SARgui.cpp:197 src\SARgui.cpp:307 src\SARgui.cpp:439 src\SARgui.cpp:594
+msgid "Icons "
+msgstr ""
+
+#: src\SARgui.cpp:211
+msgid "Parallel Track"
+msgstr ""
+
+#: src\SARgui.cpp:226
+msgid "Initial course    "
+msgstr ""
+
+#: src\SARgui.cpp:243
+msgid "Leg Spacing (S)       "
+msgstr ""
+
+#: src\SARgui.cpp:247 src\SARgui.cpp:380 src\SARgui.cpp:534
+msgid "3"
+msgstr ""
+
+#: src\SARgui.cpp:247 src\SARgui.cpp:380 src\SARgui.cpp:417 src\SARgui.cpp:534
+msgid "2"
+msgstr "2"
+
+#: src\SARgui.cpp:247 src\SARgui.cpp:380 src\SARgui.cpp:417 src\SARgui.cpp:534
+msgid "1"
+msgstr "1"
+
+#: src\SARgui.cpp:247 src\SARgui.cpp:380 src\SARgui.cpp:534
+msgid "0.5"
+msgstr ""
+
+#: src\SARgui.cpp:247 src\SARgui.cpp:534
+msgid "0.2"
+msgstr ""
+
+#: src\SARgui.cpp:247 src\SARgui.cpp:534
+msgid "0.1"
+msgstr ""
+
+#: src\SARgui.cpp:263
+msgid "Number of Legs      "
+msgstr ""
+
+#: src\SARgui.cpp:280
+msgid "Search Speed           "
+msgstr ""
+
+#: src\SARgui.cpp:344
+msgid "Expanding Square"
+msgstr ""
+
+#: src\SARgui.cpp:359
+msgid "Initial course        "
+msgstr ""
+
+#: src\SARgui.cpp:376
+msgid "Search Radius      "
+msgstr ""
+
+#: src\SARgui.cpp:380
+msgid "5"
+msgstr ""
+
+#: src\SARgui.cpp:380
+msgid "4"
+msgstr ""
+
+#: src\SARgui.cpp:396 src\SARgui.cpp:567
+msgid "Search Speed       "
+msgstr ""
+
+#: src\SARgui.cpp:413
+msgid "Number of passes"
+msgstr ""
+
+#: src\SARgui.cpp:478
+msgid "Search Method  "
+msgstr ""
+
+#: src\SARgui.cpp:482
+msgid "IAMSAR"
+msgstr ""
+
+#: src\SARgui.cpp:482
+msgid "USCG"
+msgstr ""
+
+#: src\SARgui.cpp:498
+msgid "Sector Search"
+msgstr "Sector zoekpatroon"
+
+#: src\SARgui.cpp:513
+msgid "Initial course"
+msgstr ""
+
+#: src\SARgui.cpp:530
+msgid "Leg Space             "
+msgstr ""
+
+#: src\SARgui.cpp:550
+msgid "Number of Legs  "
+msgstr ""
+
+#: src\SARgui.cpp:590
+msgid "Waypoint names "
+msgstr ""
+
+#: src\SARgui.cpp:632
+msgid "Oil Rig (Quadrant Single)"
+msgstr ""
+
+#: src\SARgui.cpp:645 src\SARgui.cpp:724 src\SARgui.cpp:814
+msgid "DATUM / CSP (Start of Search)"
+msgstr ""
+
+#: src\SARgui.cpp:656
+msgid "Latitude  "
+msgstr ""
+
+#: src\SARgui.cpp:673
+msgid "Longitude"
+msgstr "Lengte   "
+
+#: src\SARgui.cpp:694
+msgid "Ship"
+msgstr "Vaartuig"
+
+#: src\SARgui.cpp:695
+msgid "Copy ship position (GPS fix required)"
+msgstr "Kopieer eigen positie (GPS-fix vereist)"
+
+#: src\SARgui.cpp:699
+msgid "Cursor"
+msgstr "Cursor"
+
+#: src\SARgui.cpp:718
+msgid "D.ddd"
+msgstr ""
+
+#: src\SARgui.cpp:732 src\SARgui.cpp:822
+msgid "Lat "
+msgstr "Br"
+
+#: src\SARgui.cpp:746 src\SARgui.cpp:776 src\SARgui.cpp:836 src\SARgui.cpp:873
+msgid "'"
+msgstr "'"
+
+#: src\SARgui.cpp:750 src\SARgui.cpp:847
+msgid "N"
+msgstr "N"
+
+#: src\SARgui.cpp:750 src\SARgui.cpp:847
+msgid "S"
+msgstr "Z"
+
+#: src\SARgui.cpp:762 src\SARgui.cpp:859
+msgid "Lon"
+msgstr "Le"
+
+#: src\SARgui.cpp:780 src\SARgui.cpp:884
+msgid "E"
+msgstr "O"
+
+#: src\SARgui.cpp:780 src\SARgui.cpp:884
+msgid "W"
+msgstr "W"
+
+#: src\SARgui.cpp:798 src\SARgui.cpp:902
+msgid "Convert to Degree"
+msgstr "Converteer naar graden"
+
+#: src\SARgui.cpp:808
+msgid "D MM.mmm"
+msgstr ""
+
+#: src\SARgui.cpp:843 src\SARgui.cpp:880
+msgid "\""
+msgstr "\""
+
+#: src\SARgui.cpp:912
+msgid "D MM SS"
+msgstr ""
+
+#: src\SARgui.cpp:926
+msgid "Calculate"
+msgstr "Bereken"
+
+#: src\SARgui.cpp:929
+msgid "Search Distance / Time"
+msgstr ""
+
+#: src\SARgui.cpp:952
+msgid "hr"
+msgstr "u"
+
+#: src\SARgui.cpp:1037
+msgid "General settings"
+msgstr "Algemene instellingen"
+
+#: src\SARgui.cpp:1044
+msgid "Opacity"
+msgstr "Transparantie"
+
+#: src\SARgui.cpp:1058
+msgid "CPU saving settings"
+msgstr "CPU instellingen opslaan"
+
+#: src\SARgui.cpp:1068
+msgid "Capture Ship Position"
+msgstr "Vastleggen eigen positie"
+
+#: src\SARgui.cpp:1070
+msgid "Leave ticked, so you can use ship's position"
+msgstr "Laat geselecteerd, zodat u uw scheepspositie kunt gebruiken "
+
+#: src\SARgui.cpp:1074
+msgid "Capture Cursor Position"
+msgstr "Vastleggen cursorpositie"
+
+#: src\SARgui.cpp:1076
+msgid "Leave ticked, so that you can use cursor position."
+msgstr "Laat geselcteerd, zodat u de cursorpositie kunt gebruiken"
+
+#: src\SARgui.h:205 src\SAR_pi.cpp:107 src\SAR_pi.cpp:110
+msgid "SAR"
+msgstr "SAR"
+
+#: src\SARgui.h:228 src\SARgui_impl.h:49
+msgid "SAR preferences"
+msgstr "Voorkeuren SAR"
+
+#: src\SARgui_impl.cpp:489
+msgid "No Datum Point has been entered"
+msgstr ""
+
+#: src\SARgui_impl.cpp:489
+msgid "Error"
+msgstr ""
+
+#: src\SARgui_impl.cpp:494
+msgid "For this search pattern the Start Point entered is the CSP"
+msgstr ""
+
+#: src\SARgui_impl.cpp:494
+msgid "Start Position"
+msgstr ""
+
+#: src\SARgui_impl.cpp:499
+msgid "Export SAR track GPX file as"
+msgstr "Exporteer GPX-zoekpatroonbestand als"
+
+#: src\SARgui_impl.cpp:512
+msgid "error in input range validation"
+msgstr "fout bij invoervalidatie"
+
+#: src\SARgui_impl.cpp:652
+msgid "Error occurred, aborting SAR calc!"
+msgstr ""
+
+#: src\SARgui_impl.cpp:1663 src\SARgui_impl.cpp:1664
+msgid "Error in calculation. Please check input!"
+msgstr "Fout in berekening. Controleer de invoer!"
+
+#: src\SARgui_impl.cpp:1828
+msgid "To copy the cursor location place the cursor on the chart \n"
+"     ...and press <CTRL>+S"
+msgstr ""
+
+#: src\SARgui_impl.h:55
+msgid "SAR Plugin by SaltyPaws/Rasbats"
+msgstr ""
+
+#: src\SAR_pi.cpp:81
+msgid "    SAR panel icon has NOT been loaded"
+msgstr ""
+
+#: src\SAR_pi.cpp:119
+msgid "Select SAR Datum Point"
+msgstr ""
+
+#: src\SAR_pi.cpp:188
+msgid "Search and Rescue Patterns"
+msgstr ""
+
+#: src\SAR_pi.cpp:193
+msgid "Creates GPX files with Search and Rescue patterns"
+msgstr ""
+
+#: src\SAR_pi.cpp:284
+msgid "Route Preferences"
+msgstr "Routevoorkeuren"
+
+#: src\SVGicons.cpp:66
+msgid "SAR_pi data location"
+msgstr ""
+
+#: src\SVGicons.cpp:86
+msgid "Failed to load all SAR_pi icons, check OCPN log for details"
+msgstr ""
+
+#: src\SVGicons.cpp:86
+msgid "OpenCPN Alert"
+msgstr ""
+

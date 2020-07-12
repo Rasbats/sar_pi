@@ -5,15 +5,15 @@ msgstr ""
 "POT-Creation-Date: 2020-07-05 12:28+0200\n"
 "PO-Revision-Date: 2020-07-12 19:52\n"
 "Last-Translator: \n"
-"Language-Team: Italian\n"
-"Language: it_IT\n"
+"Language-Team: Icelandic\n"
+"Language: is_IS\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: opencpn\n"
 "X-Crowdin-Project-ID: 49843\n"
-"X-Crowdin-Language: it\n"
+"X-Crowdin-Language: is\n"
 "X-Crowdin-File: /plugins/SAR_pi/po/SAR_pi.pot\n"
 "X-Crowdin-File-ID: 145\n"
 
@@ -56,7 +56,7 @@ msgstr ""
 
 #: src\SARgui.cpp:127 src\SARgui.cpp:317 src\SARgui.cpp:449 src\SARgui.cpp:604
 msgid "Generate &GPX"
-msgstr "Generare &GPX"
+msgstr ""
 
 #: src\SARgui.cpp:161
 msgid "Route for Ship           "
@@ -108,11 +108,11 @@ msgstr ""
 
 #: src\SARgui.cpp:247 src\SARgui.cpp:380 src\SARgui.cpp:417 src\SARgui.cpp:534
 msgid "2"
-msgstr ""
+msgstr "2"
 
 #: src\SARgui.cpp:247 src\SARgui.cpp:380 src\SARgui.cpp:417 src\SARgui.cpp:534
 msgid "1"
-msgstr ""
+msgstr "1"
 
 #: src\SARgui.cpp:247 src\SARgui.cpp:380 src\SARgui.cpp:534
 msgid "0.5"
@@ -208,11 +208,11 @@ msgstr ""
 
 #: src\SARgui.cpp:673
 msgid "Longitude"
-msgstr "Longitudine"
+msgstr "Lengdargráða"
 
 #: src\SARgui.cpp:694
 msgid "Ship"
-msgstr ""
+msgstr "Skip"
 
 #: src\SARgui.cpp:695
 msgid "Copy ship position (GPS fix required)"
@@ -220,7 +220,7 @@ msgstr ""
 
 #: src\SARgui.cpp:699
 msgid "Cursor"
-msgstr ""
+msgstr "Kross"
 
 #: src\SARgui.cpp:718
 msgid "D.ddd"
@@ -228,7 +228,7 @@ msgstr ""
 
 #: src\SARgui.cpp:732 src\SARgui.cpp:822
 msgid "Lat "
-msgstr "Latitudine "
+msgstr ""
 
 #: src\SARgui.cpp:746 src\SARgui.cpp:776 src\SARgui.cpp:836 src\SARgui.cpp:873
 msgid "'"
@@ -236,11 +236,11 @@ msgstr ""
 
 #: src\SARgui.cpp:750 src\SARgui.cpp:847
 msgid "N"
-msgstr ""
+msgstr "N"
 
 #: src\SARgui.cpp:750 src\SARgui.cpp:847
 msgid "S"
-msgstr ""
+msgstr "S"
 
 #: src\SARgui.cpp:762 src\SARgui.cpp:859
 msgid "Lon"
@@ -248,11 +248,11 @@ msgstr ""
 
 #: src\SARgui.cpp:780 src\SARgui.cpp:884
 msgid "E"
-msgstr ""
+msgstr "A"
 
 #: src\SARgui.cpp:780 src\SARgui.cpp:884
 msgid "W"
-msgstr ""
+msgstr "V"
 
 #: src\SARgui.cpp:798 src\SARgui.cpp:902
 msgid "Convert to Degree"
@@ -272,7 +272,7 @@ msgstr ""
 
 #: src\SARgui.cpp:926
 msgid "Calculate"
-msgstr "Calcolare"
+msgstr "Reikna"
 
 #: src\SARgui.cpp:929
 msgid "Search Distance / Time"
