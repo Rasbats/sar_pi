@@ -47,12 +47,12 @@ Releases] +
 https://www.cruisersforum.com/forums/f134/sar-plugin-233875-8.html[SAR
 Plugin Thread]
 
-=== Aim
+== Aim
 
 To generate search patterns for SAR, saving them as GPX files for
 importing into OpenCPN.
 
-=== Requirements
+== Requirements
 
 [source,code]
 ----
