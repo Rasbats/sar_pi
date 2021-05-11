@@ -1,5 +1,5 @@
 SAR Plugin for OpenCPN
-=======================================
+======================
 
 The purpose of this plugin is to provide Search and Rescue Patterns (SAR) plotting capability to OpenCPN.
 
@@ -8,42 +8,20 @@ The aims are to:
 1. Generate GPX files for a number of SAR patterns
 2. Plot selected SAR patterns directly in OpenCPN
 
-Changelog
-=========
-Changes to version 1.1
-- corrected Resque (FS#1446)
-- fix bugs also present in route (error, double gpx)
-- Update for O4.1
-- Update translations
+Building
+========
 
-ToDo
-=======
-Once the Navobject becomes available to the plugin API, will update to also enable direct route plotting. 
-Use coordinate input system from route_pi
-Use route export into OCPN from route_pi
-implement right click actions from route_pi
+The plugin uses a continous integration setup described in the
+[wiki](https://github.com/Rasbats/managed_plugins/wiki/Alternative-Workflow)
+This setup is also able to push all updated metadata files to a clone
+of https://github.com/OpenCPN/plugins in order to simplify pull requests
+against this site.
 
-Compiling
-=========
-You have to be able to compile OpenCPN itself - Get the info at http://opencpn.org/ocpn/developers_manual
-
-* go to the plugin subdirectory in your OpenCPN source tree
-* git clone https://github.com/SaltyPaws/SAR_pi
-
-Build as normally:
-
-* cd ..
-* cd build
-* cmake ../
-* make
-* sudo make install
-
-You will have to place the folder "bitmaps" into your build directory to see the images. I have yet to embed these into the sourcecode.
-
-Executables
-=========
-Compiled library files can be downloaded/uploaded here:
-https://sourceforge.net/projects/opencpnplugins/
+Pull Requests
+=============
+Please make any pull requests against these two repositories:
+https://github.com/Rasbats/sar_pi (Maintainer)
+https://github.com/SaltyPaws/SAR_pi (Original Source)
 
 License
 =======
