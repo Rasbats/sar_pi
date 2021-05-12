@@ -64,12 +64,10 @@ set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 set(DISPLAY_NAME sar)    # Dialogs, installer artifacts, ...
 set(PLUGIN_API_NAME sar) # As of GetCommonName() in plugin API
 set(CPACK_PACKAGE_CONTACT "Mike Rossiter")
-set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Simulate ship movements")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Produces SAR search patterns as GPX files")
 set(CPACK_PACKAGE_DESCRIPTION [=[
-Simulates navigation of a vessel. Using the sail option and a current
-grib file for wind data, simulates how a sailing vessel might react in
-those conditions. Using 'Preferences' the simulator is able to record AIS
-data from itself. This can be replayed to simulate collision situations.
+Enables production of SAR search patterns, in GPX format, that can
+be imported into OpenCPN to assist in performing searches.
 ]=])
 
 set(PKG_AUTHOR "Mike Rossiter")
