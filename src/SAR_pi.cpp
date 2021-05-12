@@ -86,10 +86,9 @@ SAR_pi::SAR_pi(void *ppimgr)
     if (panelIcon.IsOk())
         m_panelBitmap = wxBitmap(panelIcon);
     else
-	  else
-		  wxLogWarning(_("SAR panel icon has NOT been loaded"));
+		wxLogWarning(_("SAR panel icon has NOT been loaded"));
 
-	  m_bShowSAR = false;
+	m_bShowSAR = false;
 }
 
 int SAR_pi::Init(void)
