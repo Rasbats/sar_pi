@@ -184,7 +184,7 @@ int SAR_pi::GetPlugInVersionMinor()
 
 wxString SAR_pi::GetCommonName()
 {
-	return "SAR";
+	return "sar";
 }
 
 wxBitmap *SAR_pi::GetPlugInBitmap()
