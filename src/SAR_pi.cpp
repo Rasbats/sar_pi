@@ -62,23 +62,32 @@ extern "C" DECL_EXP void destroy_pi(opencpn_plugin* p)
 SAR_pi::SAR_pi(void *ppimgr)
       :opencpn_plugin_116(ppimgr)
 {
-      // Create the PlugIn icons
-      initialize_images();
+    // Create the PlugIn icons
+    initialize_images();
 
-	  wxFileName fn;
-	  wxString tmp_path;
+	wxFileName fn;
+	
 
-	  tmp_path = GetPluginDataDir("sar_pi");
-	  fn.SetPath(tmp_path);
-	  fn.AppendDir(_T("data"));
-	  fn.SetFullName("sar_panel_icon.png");
+	auto path = GetPluginDataDir("sar_pi");
+	fn.SetPath(tmp_path);
+	fn.AppendDir(_T("data"));
+	fn.SetFullName("sar_panel_icon.png");
 	  
-	  wxString shareLocn = fn.GetFullPath();
-	  wxImage panelIcon(shareLocn);
-	  if (panelIcon.IsOk())
-		  m_panelBitmap = wxBitmap(panelIcon);
+    path = fn.GetFullPath();
+
+    wxInitAllImageHandlers();
+
+    wxLogDebug(wxString("Using icon path: ") + path);
+    if (!wxImage::CanRead(path)) {
+        wxLogDebug("Initiating image handlers.");
+        wxInitAllImageHandlers();
+    }
+    wxImage panelIcon(path);
+    if (panelIcon.IsOk())
+        m_panelBitmap = wxBitmap(panelIcon);
+    else
 	  else
-		  wxLogMessage(_("    SAR panel icon has NOT been loaded"));
+		  wxLogWarning(_("SAR panel icon has NOT been loaded"));
 
 	  m_bShowSAR = false;
 }
@@ -154,12 +163,14 @@ bool SAR_pi::DeInit(void)
 
 int SAR_pi::GetAPIVersionMajor()
 {
-      return MY_API_VERSION_MAJOR;
+    return atoi(API_VERSION);
 }
 
 int SAR_pi::GetAPIVersionMinor()
 {
-      return MY_API_VERSION_MINOR;
+    std::string v(API_VERSION);
+    size_t dotpos = v.find('.');
+    return atoi(v.substr(dotpos + 1).c_str());
 }
 
 int SAR_pi::GetPlugInVersionMajor()
@@ -174,7 +185,7 @@ int SAR_pi::GetPlugInVersionMinor()
 
 wxString SAR_pi::GetCommonName()
 {
-	return _T(PLUGIN_COMMON_NAME);
+	return "SAR";
 }
 
 wxBitmap *SAR_pi::GetPlugInBitmap()

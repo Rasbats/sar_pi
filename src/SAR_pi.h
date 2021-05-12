@@ -40,10 +40,7 @@
 #include "ocpn_plugin.h" //Required for OCPN plugin functions
 #include "SARgui_impl.h"
 
-#include "version.h"
-
-#define     MY_API_VERSION_MAJOR    1
-#define     MY_API_VERSION_MINOR    16
+#include "config.h"
 
 class Dlg;
 
