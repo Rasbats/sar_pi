@@ -69,7 +69,7 @@ SAR_pi::SAR_pi(void *ppimgr)
 	
 
 	auto path = GetPluginDataDir("sar_pi");
-	fn.SetPath(tmp_path);
+	fn.SetPath(path);
 	fn.AppendDir(_T("data"));
 	fn.SetFullName("sar_panel_icon.png");
 	  
