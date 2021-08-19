@@ -39,13 +39,11 @@ search.
 
 *Links*
 
-* Source: https://github.com/Rasbats/sar_pi[Github Repository] +
+* Source: https://github.com/Rasbats/sar_pi[Github Repository]
 * Releases:
-https://github.com/Rasbats/sar_pi/releases/tag/v2.6.9.1[Github
-Releases] +
+https://github.com/Rasbats/sar_pi/releases/tag/v2.6.9.1[GithubReleases]
 * Forum:
-https://www.cruisersforum.com/forums/f134/sar-plugin-233875-8.html[SAR
-Plugin Thread]
+https://www.cruisersforum.com/forums/f134/sar-plugin-233875-8.html[SAR Plugin Thread]
 
 == Aim
 
@@ -54,7 +52,6 @@ importing into OpenCPN.
 
 == Requirements
 
-[source,code]
 ----
 OpenCPN 5.0.0 and above.
 ----
@@ -65,40 +62,12 @@ image::sar_liferaft.jpeg[]
 
 *SAR-pi (SAR = Search And Rescue)*
 
-* *link:#what_and_why[What and Why]*
-** link:#what_does_sar-pi_do[What does the SAR plugin do]
-** link:#why_should_i_want_it[Why should I want it]
-* *link:#first_things_first_choose_the_right_search-pattern[First things
-first, choose the right search-pattern]*
-* *link:#terminology[Terminology]*
-* *link:#on-scene_coordination[On-scene coordination]*
-* *link:#initiation_of_search[Initiation of search]*
-* *link:#on-board_preparation[On-board preparation]*
-* *link:#installation[Installation]*
-** link:#downloading[Downloading]
-** link:#installing[Installing]
-** link:#enabling[Enabling]
-* *link:#search_patterns[Search Patterns]*
-* *link:#standard_actions[Standard Actions]*
-** link:#top_half_of_the_window[Top half of the window]
-** link:#bottom_half_of_the_window[Bottom half of the window]
-** link:#how_to_use_the_sar-pattern_in_opencpn[How to use the SAR search
-pattern in OpenCPN]
-* *link:#operation[Operation]*
-** link:#parallel_track_search[Parallel Track]
-** link:#parallel_search_with_2_ships[Parallel Track search with 2
-ships]
-** link:#sarexpanding_square[Expanding Square]
-** link:#sarsector_search[Sector Search]
-** link:#saroil_rig[Oil Rig]
-* *link:#survival_times_in_the_water[Survival times]*
-
 === What and Why
 
 ==== What does SAR-pi do?
 
 SAR-pi is a plugin that can generate different types of Search and
-Rescue search patterns directly from within OpenCPN. +
+Rescue search patterns directly from within OpenCPN.
 You can save these patterns as GPX files.
 
 These GPX files can then be loaded in OpenCPN and used as routes to
@@ -282,38 +251,15 @@ distressed craft and/or from the RCC or, if no RCC is involved, the OSC.
 
 Now you're ready to read on….
 
-link:sar.html[Back to top of page ↑]
-
 === Installation
 
 *Note*: In this section the instructions are specifically for SAR-pi,
-but there is a dedicated page in the manual with information about
-Downloading, Installing and Enabling Plugins in general. That dedicated
-page can be found here:
-https://www.opencpn.org/wiki/dokuwiki/doku.php?id=opencpn:opencpn_user_manual:toolbar_buttons:plugins:install_and_enable[Plugins-Install
-and Enable.]
+but there is a dedicated page in the User Manual with information about
+Downloading, Installing and Enabling Plugins in general.
 
-==== Downloading
+The plugin is "managed" and is installed with the plugin manager.
 
-SAR-pi can be downloaded from http://www.opencpn.org/index.html
-
-Click “*Downloads*”
-
-Click “*Plugins for OpenCPN*” Look for “*SAR*””
-
-image::sar_download.png[]
-
-==== Installing
-
-How to install the plugin.
-
-Make sure you choose the file that is compatible with your computer
-system. In this manual we presume it's Windows, so we choose the Windows
-setup-package. Download the file (double-click). We assume you know
-where to find the files you download from the Internet (if you don't:
-quit now and read the manual of your computer before doing anything else
-with it ). Double-click the downloaded file and follow the set-up
-instructions. That's it. But before you can actually use the plugin, you
+Before you can actually use the plugin, you
 first have to enable that plug-in in OpenCPN.
 
 ==== Enabling
@@ -336,8 +282,6 @@ Now the SAR-pi icon should appear somewhere in your OpenCPN Toolbar.
 
 image::2.0.jpeg[]
 
-link:sar.html[Back to top of page ↑]
-
 === Search Patterns
 
 The ability to quickly deploy efficient search and rescue patterns is
@@ -358,8 +302,6 @@ SAR-pi can generate 4 different types of search patterns. They are:
 
 In the section “*Operation*” we will explain the patterns in some more
 detail.
-
-link:sar.html[Back to top of page ↑]
 
 === Standard Actions
 
@@ -456,8 +398,6 @@ names but also in the routes that appear when imported into OpenCPN.
 
 image::3.16.jpeg[]
 
-link:sar.html[Back to top of page ↑]
-
 ==== How to use the SAR search pattern in OpenCPN
 
 Go in the OpenCPN Toolbar to “Route & Mark Manager” and import the
@@ -490,8 +430,6 @@ nautical miles and how long it will take you to complete that search.
 route.
 
 image::3.191.jpeg[]
-
-link:sar.html[Back to top of page ↑]
 
 === Operation
 
@@ -607,8 +545,6 @@ Activate the route and start your SAR operation!
 
 image::3.196.jpeg[]
 
-link:sar.html[Back to top of page ↑]
-
 ==== Parallel Search with 2 ships.
 
 If there are two ships participating in the search, you use the option
@@ -640,8 +576,6 @@ of the mother-ship (or even from a shore-based station) and then send
 the generated GPX-file(s) via email to one or more other ships. Like
 that RIB. There that GPX-file can be received (and used!) on a mobile
 phone that has OpenCPN for Android!
-
-link:sar.html[Back to top of page ↑]
 
 === Terminology
 
@@ -750,61 +684,6 @@ distressed craft and/or from the RCC or, if no RCC is involved, the OSC.
 
 Now you're ready to read on….
 
-link:sar.html[Back to top of page ↑]
-
-=== Installation
-
-*Note*: In this section the instructions are specifically for SAR-pi,
-but there is a dedicated page in the manual with information about
-Downloading, Installing and Enabling Plugins in general. That dedicated
-page can be found here:
-https://www.opencpn.org/wiki/dokuwiki/doku.php?id=opencpn:opencpn_user_manual:toolbar_buttons:plugins:install_and_enable[Plugins-Install
-and Enable.]
-
-==== Downloading
-
-SAR-pi can be downloaded from http://www.opencpn.org/index.html
-
-Click “*Downloads*”
-
-Click “*Plugins for OpenCPN*” Look for “*SAR*”“
-
-link::sar_download.png[]
-
-==== Installing
-
-How to install the plugin.
-
-Make sure you choose the file that is compatible with your computer
-system. In this manual we presume it's Windows, so we choose the Windows
-setup-package. Download the file (double-click). We assume you know
-where to find the files you download from the Internet (if you don't:
-quit now and read the manual of your computer before doing anything else
-with it ). Double-click the downloaded file and follow the set-up
-instructions. That's it. But before you can actually use the plugin, you
-first have to enable that plug-in in OpenCPN.
-
-==== Enabling
-
-Enabling the plugin in OpenCPN.
-
-Open (or restart) OpenCPN.
-
-Click *Tools-Options-Plugins*.
-
-Scroll down untill you see the *SAR*.
-
-Click “*Enabled*”.
-
-image::1.0.jpeg[]
-
-==== 
-
-Now the SAR-pi icon should appear somewhere in your OpenCPN Toolbar.
-
-image::2.0.jpeg[]
-
-link:sar.html[Back to top of page ↑]
 
 === Search Patterns
 
@@ -826,8 +705,6 @@ SAR-pi can generate 4 different types of search patterns. They are:
 
 In the section “*Operation*” we will explain the patterns in some more
 detail.
-
-link:sar.html[Back to top of page ↑]
 
 === Standard Actions
 
@@ -924,8 +801,6 @@ names but also in the routes that appear when imported into OpenCPN.
 
 image::3.16.jpeg[]
 
-link:sar.html[Back to top of page ↑]
-
 ==== How to use the SAR search pattern in OpenCPN
 
 Go in the OpenCPN Toolbar to “Route & Mark Manager” and import the
@@ -958,8 +833,6 @@ nautical miles and how long it will take you to complete that search.
 route.
 
 image::3.191.jpeg[]
-
-link:sar.html[Back to top of page ↑]
 
 === Operation
 
@@ -1075,8 +948,6 @@ Activate the route and start your SAR operation!
 
 image::3.196.jpeg[]
 
-link:sar.html[Back to top of page ↑]
-
 ==== Parallel Search with 2 ships.
 
 If there are two ships participating in the search, you use the option
@@ -1108,8 +979,6 @@ of the mother-ship (or even from a shore-based station) and then send
 the generated GPX-file(s) via email to one or more other ships. Like
 that RIB. There that GPX-file can be received (and used!) on a mobile
 phone that has OpenCPN for Android!
-
-link:sar.html[Back to top of page ↑]
 
 === "Expanding Square"
 
@@ -1155,7 +1024,6 @@ parameters in the screenshot will give a result that looks like this:
 
 image::3.41.jpeg[]
 
-link:sar.html[Back to top of page ↑]
 
 === "Sector Search"
 
@@ -1196,8 +1064,6 @@ Following the steps described in “Standard Actions” and using the
 parameters in the screenshot will give a result that looks like this:
 
 image::3.41.jpeg[]
-
-link:sar.html[Back to top of page ↑]
 
 === "Sector Search"
 
@@ -1300,8 +1166,6 @@ If you use the option for 2 passes the result will look like this:
 
 image::5.2.jpeg[]
 
-link:sar.html[Back to top of page ↑]
-
 === "Oil Rig (Quadrant Single)"
 
 *Note:* This search pattern is not shown in the IAMSAR manual or USCG
@@ -1337,8 +1201,6 @@ parameters) will give a result that looks like this:
 
 image::6.1.jpeg[]
 
-link:sar.html[Back to top of page ↑]
-
 === Survival Times in the Water
 
 This table gives you an estimate of survival times in various water
@@ -1349,8 +1211,6 @@ effort.
 link::sar_survivaltimes.png[]
 
 End of the SAR-pi manual.
-
-link:sar.html[Back to top of page ↑]
 
 === Setting up a "Sector Search" pattern.
 
@@ -1399,8 +1259,6 @@ If you use the option for 2 passes the result will look like this:
 
 image::5.2.jpeg[]
 
-link:sar.html[Back to top of page ↑]
-
 === "Oil Rig (Quadrant Single)"
 
 *Note:* This search pattern is not shown in the IAMSAR manual or USCG
@@ -1438,8 +1296,6 @@ parameters) will give a result that looks like this:
 
 image::6.1.jpeg[]
 
-link:sar.html[Back to top of page ↑]
-
 === Survival Times in the Water
 
 This table gives you an estimate of survival times in various water
@@ -1450,8 +1306,6 @@ effort.
 link::sar_survivaltimes.png[]
 
 End of the SAR-pi manual.
-
-link:sar.html[Back to top of page ↑]
 
 === Setting up a "Expanding Square" search pattern.
 
@@ -1472,8 +1326,6 @@ Following the steps described in “Standard Actions” and using the
 parameters in the screenshot will give a result that looks like this:
 
 image::3.41.jpeg[]
-
-link:sar.html[Back to top of page ↑]
 
 === "Sector Search"
 
@@ -1577,8 +1429,6 @@ If you use the option for 2 passes the result will look like this:
 
 image::5.2.jpeg[]
 
-link:sar.html[Back to top of page ↑]
-
 === "Oil Rig (Quadrant Single)"
 
 *Note:* This search pattern is not shown in the IAMSAR manual or USCG
@@ -1614,8 +1464,6 @@ parameters) will give a result that looks like this:
 
 image::6.1.jpeg[]
 
-link:sar.html[Back to top of page ↑]
-
 === Survival Times in the Water
 
 This table gives you an estimate of survival times in various water
@@ -1623,8 +1471,6 @@ temperatures. This table is only a guideline to emphasize the need for
 fast action and not a means of setting an arbitrary limit on the search
 effort.
 
-link::sar_survivaltimes.png[]
+image::sar_survivaltimes.png[]
 
 End of the SAR-pi manual.
-
-link:sar.html[Back to top of page ↑]
