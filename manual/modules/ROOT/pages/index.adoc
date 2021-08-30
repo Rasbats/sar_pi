@@ -398,7 +398,7 @@ names but also in the routes that appear when imported into OpenCPN.
 
 image::3.16.jpeg[]
 
-==== How to use the SAR search pattern in OpenCPN
+=== How to use the SAR search pattern in OpenCPN
 
 Go in the OpenCPN Toolbar to “Route & Mark Manager” and import the
 GPX-file as a route.
