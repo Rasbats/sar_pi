@@ -1,4 +1,4 @@
-== SAR (Search and Rescue)
+= SAR (Search and Rescue)
 
 :imagesdir: ../images/
 
@@ -62,9 +62,9 @@ image::sar_liferaft.jpeg[]
 
 *SAR_pi (SAR = Search And Rescue)*
 
-=== What and Why
+== What and Why
 
-=== What does SAR_pi do?
+== What does SAR_pi do?
 
 SAR_pi is a plugin that can generate different types of Search and
 Rescue search patterns directly from within OpenCPN.
@@ -76,7 +76,7 @@ follow in order to perform an efficiënt search and rescue operation.
 *Note*: In this document “Search And Rescue will be shortened to
 “*SAR*”.
 
-=== Why should I want it?
+== Why should I want it?
 
 When a SAR operation is necessary, there is absolutely no time to lose.
 
@@ -105,7 +105,7 @@ and follow specific rules and procedures.
 *This manual is meant primarily for situations where you are on your own
 and you are the first (or only) ship in the vicinity.*
 
-=== First things first, choose the right search-pattern.
+== First things first, choose the right search-pattern.
 
 There is no time to lose, so choose a search pattern that is best suited
 for the situation.
@@ -117,7 +117,7 @@ for the situation.
 * *to search a large area when the location of the search object is
 uncertain.*
 
-=== Choose Expanding Square Search:
+== Choose Expanding Square Search:
 
 * *when the location of the search object is known within relatively
 close limits;*
@@ -127,7 +127,7 @@ little or no leeway*.
 (but keep in mind: this procedure is *less suited to be used
 simultaneously by multiple vessels)*
 
-=== Choose Sector search:
+== Choose Sector search:
 
 * *when the position of the search object is accurately known and the
 search area is small.*
@@ -135,7 +135,7 @@ search area is small.*
 (but keep in mind: this procedure is *less suited to be used
 simultaneously by multiple vessels)*
 
-=== Choose Oil Rig:
+== Choose Oil Rig:
 
 * when you want to search just *one quadrant relative to a fixed
 position*.
@@ -144,7 +144,7 @@ position*.
 and speed of the searching vessel when deciding both the search pattern
 type and the spacing used for the pattern.
 
-=== Terminology
+== Terminology
 
 Nobody is eager to get involved in a situation that necessitates a
 SAR-operation. Not as the object that has to be found and not as a
@@ -186,7 +186,7 @@ and rescue operations within a specified area.
 * *CSP: Commence Search Point*: Point, normally specified by the SMC,
 where a SRU is to begin its search pattern.
 
-=== On-scene coordination
+== On-scene coordination
 
 When two or more SRU's are working together on the same mission, one
 person on scene may be needed to coordinate the activities of all
@@ -201,7 +201,7 @@ The OSC is normally a person in charge of a:
 * ship or aircraft participating in a search, or
 * nearby facility in a position to handle OSC duties.
 
-=== Initiation of search
+== Initiation of search
 
 * *When a SRU arrives on-scene in advance of the others, it should
 proceed directly to datum and commence an expanding square search*.
@@ -221,7 +221,7 @@ will probably be better to have the first SRU break off the expanding
 square search and be available for initiation of a parallel track
 search.
 
-=== On-board preparation
+== On-board preparation
 
 Search patterns are for the “S”-part of SAR. But let's not forget the
 “R”-part (after all, that “R”-part is the one and only reason for the
@@ -251,7 +251,7 @@ distressed craft and/or from the RCC or, if no RCC is involved, the OSC.
 
 Now you're ready to read on….
 
-=== Installation
+== Installation
 
 *Note*: In this section the instructions are specifically for SAR_pi,
 but there is a dedicated page in the User Manual with information about
@@ -262,7 +262,7 @@ The plugin is "managed" and is installed with the plugin manager.
 Before you can actually use the plugin, you
 first have to enable that plug-in in OpenCPN.
 
-==== Enabling
+=== Enabling
 
 Enabling the plugin in OpenCPN.
 
@@ -276,13 +276,13 @@ Click “*Enabled*”.
 
 image::1.0.jpeg[]
 
-=== Operation 
+== Operation 
 
 Now the SAR_pi icon should appear somewhere in your OpenCPN Toolbar.
 
 image::2.0.jpeg[]
 
-=== Search Patterns
+== Search Patterns
 
 The ability to quickly deploy efficient search and rescue patterns is
 relevant since no matter how developed our means of transportation may
@@ -398,7 +398,7 @@ names but also in the routes that appear when imported into OpenCPN.
 
 image::3.16.jpeg[]
 
-=== How to use the SAR search pattern in OpenCPN
+== How to use the SAR search pattern in OpenCPN
 
 Go in the OpenCPN Toolbar to “Route & Mark Manager” and import the
 GPX-file as a route.
@@ -431,9 +431,9 @@ route.
 
 image::3.191.jpeg[]
 
-=== Operation
+== Operation
 
-=== "Parallel Track" Search
+== "Parallel Track" Search
 
 Keywords:
 
@@ -461,7 +461,7 @@ of the following considerations:
 possible consistent with safety resulting loss of search area coverage;
 * potential risk of collision
 
-=== Setting up a "Parallel Track" pattern.
+== Setting up a "Parallel Track" pattern.
 
 Click the SAR icon in the Toolbar Choose the desired search pattern. In
 this case: Parallel Track.
@@ -545,7 +545,7 @@ Activate the route and start your SAR operation!
 
 image::3.196.jpeg[]
 
-==== Parallel Search with 2 ships.
+=== Parallel Search with 2 ships.
 
 If there are two ships participating in the search, you use the option
 “2 units A&B”. We assume the “mothership” launches her (faster) RIB.
@@ -577,7 +577,7 @@ the generated GPX-file(s) via email to one or more other ships. Like
 that RIB. There that GPX-file can be received (and used!) on a mobile
 phone that has OpenCPN for Android!
 
-==== How to use the SAR search pattern in OpenCPN
+=== How to use the SAR search pattern in OpenCPN
 
 Go in the OpenCPN Toolbar to “Route & Mark Manager” and import the
 GPX-file as a route.
@@ -610,7 +610,7 @@ route.
 
 image::3.191.jpeg[]
 
-=== "Expanding Square"
+== "Expanding Square"
 
 Keywords:
 
@@ -655,7 +655,7 @@ parameters in the screenshot will give a result that looks like this:
 image::3.41.jpeg[]
 
 
-=== "Sector Search"
+== "Sector Search"
 
 Keywords:
 
@@ -672,13 +672,13 @@ area, say with each leg a length of no more than 2 to 5 NM. It is
 normally carried out in the area where the casualty or the object has
 been sighted.
 
-=== IAMSAR
+== IAMSAR
 
 The search pattern starts from the Commence Search Point (CSP). The
 initial course then passes through the datum and should be in the
 direction of the wind/tide or overall drift.
 
-=== USCG
+== USCG
 
 The search pattern starts from the datum point and continues on the
 initial course.
@@ -709,7 +709,7 @@ sector searches of the same area.
 vessels cross the datum a number of times, this procedure is less suited
 to be used simultaneously by (a lot of) multiple vessels.
 
-=== Setting up a "Sector Search" pattern.
+== Setting up a "Sector Search" pattern.
 
 Click the *SAR icon* in the Toolbar
 
@@ -756,7 +756,7 @@ If you use the option for 2 passes the result will look like this:
 
 image::5.2.jpeg[]
 
-=== "Oil Rig (Quadrant Single)"
+== "Oil Rig (Quadrant Single)"
 
 *Note:* This search pattern is not shown in the IAMSAR manual or USCG
 publications.
@@ -773,7 +773,7 @@ This pattern is meant to be used when someone has fallen from a
 stationary object (like an oil rig is, or at least is supposed to be)
 and the search area is confined to one quadrant.
 
-=== Setting up the "Oil Rig" search pattern.
+== Setting up the "Oil Rig" search pattern.
 
 Click the *SAR icon* in the Toolbar
 
@@ -791,7 +791,7 @@ parameters) will give a result that looks like this:
 
 image::6.1.jpeg[]
 
-=== Survival Times in the Water
+== Survival Times in the Water
 
 This table gives you an estimate of survival times in various water
 temperatures. This table is only a guideline to emphasize the need for
