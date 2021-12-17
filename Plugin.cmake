@@ -13,68 +13,65 @@
 # -------- Options ----------
 
 set(OCPN_TEST_REPO
-    "opencpn/shipdriver-alpha"
+    "opencpn/sar-alpha"
     CACHE STRING "Default repository for untagged builds"
 )
 set(OCPN_BETA_REPO
-    "opencpn/shipdriver-beta"
+    "opencpn/sar-beta"
     CACHE STRING
     "Default repository for tagged builds matching 'beta'"
 )
 set(OCPN_RELEASE_REPO
-    "opencpn/shipdriver-prod"
+    "opencpn/sar-prod"
     CACHE STRING
     "Default repository for tagged builds not matching 'beta'"
 )
 
-option(SHIPDRIVER_USE_SVG "Use SVG graphics" ON)
+option(PLUGIN_USE_SVG "Use SVG graphics" ON)
 
 #
 #
 # -------  Plugin setup --------
 #
-set(PKG_NAME ShipDriver_pi)
+set(PKG_NAME sar_pi)
 set(PKG_VERSION  3.0.0)
 set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 
-set(DISPLAY_NAME ShipDriver)    # Dialogs, installer artifacts, ...
-set(PLUGIN_API_NAME ShipDriver) # As of GetCommonName() in plugin API
-set(PKG_SUMMARY "Simulate ship movements")
+set(DISPLAY_NAME sar)    # Dialogs, installer artifacts, ...
+set(PLUGIN_API_NAME sar) # As of GetCommonName() in plugin API
+set(PKG_SUMMARY "Produces SAR search patterns as GPX files")
 set(PKG_DESCRIPTION [=[
-Simulates navigation of a vessel. Using the sail option and a current
-grib file for wind data, simulates how a sailing vessel might react in
-those conditions. Using 'Preferences' the simulator is able to record AIS
-data from itself. This can be replayed to simulate collision situations.
+Enables production of SAR search patterns, in GPX format, that can
+be imported into OpenCPN to assist in performing searches.
 ]=])
 
 set(PKG_AUTHOR "Mike Rossiter")
 set(PKG_IS_OPEN_SOURCE "yes")
-set(PKG_HOMEPAGE https://github.com/Rasbats/shipdriver_pi)
-set(PKG_INFO_URL https://opencpn.org/OpenCPN/plugins/shipdriver.html)
+set(PKG_HOMEPAGE https://github.com/Rasbats/sar_pi)
+set(PKG_INFO_URL https://opencpn.org/OpenCPN/plugins/sar.html)
 
-set(SRC
-    src/ShipDriver_pi.h
-    src/ShipDriver_pi.cpp
-    src/icons.h
-    src/icons.cpp
-    src/ShipDrivergui.h
-    src/ShipDrivergui.cpp
-    src/ShipDrivergui_impl.cpp
-    src/ShipDrivergui_impl.h
-    src/AisMaker.h
-    src/AisMaker.cpp
-    src/GribRecord.cpp
-    src/GribRecordSet.h
-    src/GribRecord.h
-)
-
+SET(SRC
+		src/SAR_pi.h
+        src/SAR_pi.cpp
+        src/icons.h
+        src/icons.cpp         
+	    src/SARgui.h
+	    src/SARgui.cpp
+	    src/SARgui_impl.cpp
+	    src/SARgui_impl.h
+	    src/NavFunc.h
+	    src/NavFunc.cpp
+	    src/bitmaps.h
+	    src/bitmaps.cpp		
+	)
+	
 set(PKG_API_LIB api-16)  #  A directory in libs/ e. g., api-17 or api-16
 
 macro(late_init)
   # Perform initialization after the PACKAGE_NAME library, compilers
   # and ocpn::api is available.
-  if (SHIPDRIVER_USE_SVG)
-    target_compile_definitions(${PACKAGE_NAME} PUBLIC SHIPDRIVER_USE_SVG)
+  if (PLUGIN_USE_SVG)
+    target_compile_definitions(${PACKAGE_NAME} PUBLIC PLUGIN_USE_SVG)
   endif ()
 endmacro ()
 
