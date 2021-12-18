@@ -157,6 +157,7 @@ bool SAR_pi::DeInit(void)
 			SetToolbarItemState(m_leftclick_tool_id, m_bShowSAR);
       }
       SaveConfig();
+
       return true;
 }
 
@@ -307,6 +308,8 @@ void SAR_pi::ShowPreferencesDialog( wxWindow* parent )
             SaveConfig();
       }
       delete dialog;
+	  dialog = NULL;
+
 }
 
 void SAR_pi::SetCursorLatLon(double lat, double lon)
