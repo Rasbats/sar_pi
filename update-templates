@@ -30,12 +30,26 @@ function list_sd_tags() {
         | sed  -n -e '/{}/d' -e 's|.*tags/||' -e '/^sd/p'
 }
 
+function update_dir() {
+    # Update directory $1 from shipdriver treeish $2
+    local d=$1
+    local treeish=$2
+
+    echo "Updating $d"
+    if [ -d $d ]; then git rm -rf $d/*; fi
+    git checkout $treeish $d
+    git add $d
+    git diff-index --quiet --cached HEAD -- || {
+        git commit -m "Templates: Updating $d"
+    }
+}
+
 # Exec on tmpfile to avoid file lock when updating script on Windows.
 # The directory /c exists on git bash on Windows, and hopefully only there.
 if [[ -d /c && "$0" =~ .*update-templates ]]; then
     tmpfile=$(mktemp)
     cp $0 $tmpfile
-    exec $tmpfile
+    exec $tmpfile $@
 fi
 
 # Handle options and parameters
@@ -66,11 +80,6 @@ if [ -n "$clean" ]; then
     exit 1
 fi
 
-# Fetch all available shipdriver sd* tags
-for t in $(list_sd_tags); do
-    git fetch -q shipdriver refs/tags/$t:refs/tags/$t --no-tags
-done
-
 if [ -z "$test_mode" ]; then
     # Set up the shipdriver remote
     if git ls-remote --exit-code shipdriver &>/dev/null; then
@@ -80,6 +89,11 @@ if [ -z "$test_mode" ]; then
     echo "Adding new shipdriver remote"
     git remote add shipdriver https://github.com/Rasbats/shipdriver_pi.git
     git remote update shipdriver
+
+    # Fetch all available shipdriver sd* tags
+    for t in $(list_sd_tags); do
+        git fetch -q shipdriver refs/tags/$t:refs/tags/$t --no-tags
+    done
 
     echo "Checking for updates of updates-templates script"
     if ! git diff --quiet HEAD $source_treeish -- update-templates; then
@@ -92,31 +106,16 @@ EOT
     fi
 fi
 
-echo "Updating cmake/, scripts/, buildwin/ and ci/"
-if [ -d cmake ]; then git rm -rf cmake/*; fi
-git checkout $source_treeish cmake
-git add cmake
-git commit -m "Templates: Updating cmake"
-
-if [ -d ci ]; then  git rm -rf ci/*; fi
-git checkout $source_treeish ci
-git add ci
-git commit -m "Templates: Updating ci"
-
-if [ -d scripts ]; then git rm -rf scripts/*; fi
-git checkout $source_treeish scripts
-git add scripts
-git commit -m "Templates: Updating scripts"
-
-if [ -d buildwin ]; then git rm -rf buildwin/*; fi
-git checkout $source_treeish buildwin
-git add buildwin
-git commit -m "Templates: Updating buildwin"
+# Updating  standard directories
+for dir in cmake ci scripts buildwin libs; do
+    update_dir $dir $source_treeish
+done
 
 test -d opencpn-libs || {
     echo "Adding the opencpn-libs submodule"
     git submodule add https://github.com/leamas/opencpn-libs.git
     git commit -am "Add the opencpn-libs submodule"
+    git submodule update --init opencpn-libs
 }
 
 git -C opencpn-libs pull origin master
@@ -172,7 +171,6 @@ if [ -f cmake/TemplateVersion ]; then
     our_manifest=$(echo flatpak/org.opencpn.OpenCPN.Plugin.*.yaml)
     echo "Append shipdriver flatpak manifest's log of changes to $our_manifest"
 
-    git fetch --tags ${source_treeish%/*}
     prev_commit=$(sed -n '/commit:/s/.*: *//p' cmake/TemplateVersion)
     src_manifest=flatpak/org.opencpn.OpenCPN.Plugin.shipdriver.yaml
     git checkout $source_treeish $src_manifest
