@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version Oct 26 2018)
+// C++ code generated with wxFormBuilder (version 4.0.0-0-g0efcecf)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -19,10 +19,10 @@
 #include <wx/textctrl.h>
 #include <wx/sizer.h>
 #include <wx/statline.h>
+#include <wx/button.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
-#include <wx/button.h>
 #include <wx/statbox.h>
 #include <wx/panel.h>
 #include <wx/statbmp.h>
@@ -31,7 +31,6 @@
 #include <wx/notebook.h>
 #include <wx/dialog.h>
 #include <wx/slider.h>
-
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -65,7 +64,6 @@ class DlgDef : public wxDialog
 		wxStaticLine* m_staticline8;
 		wxButton* m_button3111;
 		wxStaticBitmap* m_bitmap_trackln1;
-		wxStaticLine* m_staticline7;
 		wxStaticText* m_staticText32111111;
 		wxChoice* m_Nship;
 		wxStaticText* m_staticTextPortStbd;
@@ -178,11 +176,10 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText32211;
 		wxTextCtrl* m_Distance;
 		wxStaticText* m_staticText33211;
-		wxStaticText* m_Statictext34;
 		wxTextCtrl* m_Time;
 		wxStaticText* m_staticText331121;
 
-		// Virtual event handlers, overide them in your derived class
+		// Virtual event handlers, override them in your derived class
 		virtual void OnClose( wxCloseEvent& event ) { event.Skip(); }
 		virtual void OnPSGPX( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSelectNumberShips( wxCommandEvent& event ) { event.Skip(); }
@@ -194,7 +191,7 @@ class DlgDef : public wxDialog
 		virtual void key_shortcut( wxKeyEvent& event ) { event.Skip(); }
 		virtual void OnNoteBookFit( wxNotebookEvent& event ) { event.Skip(); }
 		virtual void OnShip( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnCursorSelect( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnCursor( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnConvertToDegree( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCalculate( wxCommandEvent& event ) { event.Skip(); }
 
@@ -203,6 +200,7 @@ class DlgDef : public wxDialog
 		wxBoxSizer* bSframe;
 
 		DlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("SAR"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE|wxMINIMIZE_BOX|wxRESIZE_BORDER );
+
 		~DlgDef();
 
 };
@@ -226,6 +224,7 @@ class CfgDlgDef : public wxDialog
 		wxCheckBox* m_CaptureCursor;
 
 		CfgDlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("SAR preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
+
 		~CfgDlgDef();
 
 };
