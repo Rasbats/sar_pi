@@ -34,7 +34,7 @@ option(PLUGIN_USE_SVG "Use SVG graphics" ON)
 # -------  Plugin setup --------
 #
 set(PKG_NAME sar_pi)
-set(PKG_VERSION  999.0.0)
+set(PKG_VERSION  4.0.0)
 set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME sar)    # Dialogs, installer artifacts, ...
@@ -51,20 +51,20 @@ set(PKG_HOMEPAGE https://github.com/Rasbats/sar_pi)
 set(PKG_INFO_URL https://opencpn.org/OpenCPN/plugins/sar.html)
 
 SET(SRC
-        src/SAR_pi.h
+		src/SAR_pi.h
         src/SAR_pi.cpp
         src/icons.h
-        src/icons.cpp
-        src/SARgui.h
-        src/SARgui.cpp
-        src/SARgui_impl.cpp
-        src/SARgui_impl.h
-        src/NavFunc.h
-        src/NavFunc.cpp
-        src/bitmaps.h
-        src/bitmaps.cpp
-    )
-
+        src/icons.cpp         
+	    src/SARgui.h
+	    src/SARgui.cpp
+	    src/SARgui_impl.cpp
+	    src/SARgui_impl.h
+	    src/NavFunc.h
+	    src/NavFunc.cpp
+	    src/bitmaps.h
+	    src/bitmaps.cpp		
+	)
+	
 set(PKG_API_LIB api-16)  #  A directory in libs/ e. g., api-17 or api-16
 
 macro(late_init)
