@@ -51,20 +51,20 @@ set(PKG_HOMEPAGE https://github.com/Rasbats/sar_pi)
 set(PKG_INFO_URL https://opencpn.org/OpenCPN/plugins/sar.html)
 
 SET(SRC
-		src/SAR_pi.h
+        src/SAR_pi.h
         src/SAR_pi.cpp
         src/icons.h
-        src/icons.cpp         
-	    src/SARgui.h
-	    src/SARgui.cpp
-	    src/SARgui_impl.cpp
-	    src/SARgui_impl.h
-	    src/NavFunc.h
-	    src/NavFunc.cpp
-	    src/bitmaps.h
-	    src/bitmaps.cpp		
-	)
-	
+        src/icons.cpp
+        src/SARgui.h
+        src/SARgui.cpp
+        src/SARgui_impl.cpp
+        src/SARgui_impl.h
+        src/NavFunc.h
+        src/NavFunc.cpp
+        src/bitmaps.h
+        src/bitmaps.cpp
+    )
+
 set(PKG_API_LIB api-16)  #  A directory in libs/ e. g., api-17 or api-16
 
 macro(late_init)
@@ -77,15 +77,10 @@ endmacro ()
 
 macro(add_plugin_libraries)
   # Add libraries required by this plugin
-  add_subdirectory("libs/tinyxml")
+  add_subdirectory("${CMAKE_SOURCE_DIR}/opencpn-libs/tinyxml")
   target_link_libraries(${PACKAGE_NAME} ocpn::tinyxml)
 
-  add_subdirectory("libs/wxJSON")
-  target_link_libraries(${PACKAGE_NAME} ocpn::wxjson)
-
-  add_subdirectory("libs/plugingl")
-  target_link_libraries(${PACKAGE_NAME} ocpn::plugingl)
-
-  add_subdirectory("libs/jsoncpp")
-  target_link_libraries(${PACKAGE_NAME} ocpn::jsoncpp)
+  # The wxsvg library enables SVG overall in the plugin
+  add_subdirectory("${CMAKE_SOURCE_DIR}/opencpn-libs/wxsvg")
+  target_link_libraries(${PACKAGE_NAME} ocpn::wxsvg)
 endmacro ()
