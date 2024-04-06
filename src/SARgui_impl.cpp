@@ -672,7 +672,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
   double approach = 0;
   double leg_distancex = 0;
   double leg_distancey = 0;
-  double leg_distancez = 0;
   double nlegs = 0;
   double speed = 0;
   double SAR_distance = 0;
@@ -1219,7 +1218,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           double latDatum, lonDatum;
           double ESheading = -approach;
           double legStretch;
-          bool checkBoxTicked = true;
 
           destRhumb(lat1, lon1, ESheading - 180, leg_distancex, &lati, &loni);
           latDatum = lat1;
@@ -1361,7 +1359,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
                   } else if (this->m_Ncycles->GetSelection() == 1) {
                     routeNameText = "-2";
                     wxString newName = defaultFileName + routeNameText;
-                    RouteName2->SetText(newName);
+                    RouteName2->SetText(newName.mb_str());
                     Route2->LinkEndChild(RouteName2);
                   }
 
@@ -1458,7 +1456,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             double latDatum, lonDatum;
             double ESheading = -approach;
             double legStretch;
-            bool checkBoxTicked = true;
 
             latDatum = lat1;
             lonDatum = lon1;
