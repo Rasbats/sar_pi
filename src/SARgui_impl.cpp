@@ -581,7 +581,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       if (nc == 0) {
         text4->SetText(defaultFileName.mb_str());
       } else if (nc == 1) {
-        text4->SetText((defaultFileName + "-1").mb_str());
+        wxString newName = defaultFileName + "-1";
+        text4->SetText(newName.mb_str());
       }
 
       writeWaypointNames = this->m_checkBox3->GetValue();
@@ -626,27 +627,27 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
     switch (Pattern) {
       case 1: {
         mySpeed = m_Speed_PS->GetValue();
-        textSpeed->SetText(mySpeed);
+        textSpeed->SetText(mySpeed.mb_str());
         break;
       }
       case 2: {
         mySpeed = m_Speed_ES->GetValue();
-        textSpeed->SetText(mySpeed);
+        textSpeed->SetText(mySpeed.mb_str());
         break;
       }
       case 3: {
         mySpeed = m_Speed_SS->GetValue();
-        textSpeed->SetText(mySpeed);
+        textSpeed->SetText(mySpeed.mb_str());
         break;
       }
       case 4: {
         mySpeed = m_Speed_OR->GetValue();
-        textSpeed->SetText(mySpeed);
+        textSpeed->SetText(mySpeed.mb_str());
         break;
       }
       default: {
         mySpeed = "0";
-        textSpeed->SetText(mySpeed);
+        textSpeed->SetText(mySpeed.mb_str());
         break;
       }
     }
@@ -764,7 +765,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
               Extensions->LinkEndChild(textSpeed);
 
-              gpxxDisplayColor->SetText(colour);
+              gpxxDisplayColor->SetText(colour.mb_str());
               gpxx->LinkEndChild(gpxxDisplayColor);
 
               Extensions->LinkEndChild(gpxx);
@@ -999,7 +1000,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
               if (i == 1) {
                 if (write_file) {
                   wxString routeNameText = "PS-AB-2";
-                  RouteName2->SetText(routeNameText);
+                  RouteName2->SetText(routeNameText.mb_str());
                   Route2->LinkEndChild(RouteName2);
 
                   Extensions2->LinkEndChild(textSpeed);
@@ -1029,7 +1030,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       case 2:  // Note the colon, not a semicolon
       {
         if (write_file) {
-          RouteName->SetText(defaultFileName);
+          RouteName->SetText(defaultFileName.mb_str());
           Route->LinkEndChild(RouteName);
 
           Extensions->LinkEndChild(textSpeed);
@@ -1155,7 +1156,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       {
         if (this->m_VSMethod->GetCurrentSelection() == 0) {
           if (write_file) {
-            RouteName->SetText(defaultFileName);
+            RouteName->SetText(defaultFileName.mb_str());
             Route->LinkEndChild(RouteName);
 
             Extensions->LinkEndChild(textSpeed);
@@ -1359,8 +1360,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
                   } else if (this->m_Ncycles->GetSelection() == 1) {
                     routeNameText = "-2";
-
-                    RouteName2->SetText(defaultFileName + routeNameText);
+                    wxString newName = defaultFileName + routeNameText;
+                    RouteName2->SetText(newName);
                     Route2->LinkEndChild(RouteName2);
                   }
 
@@ -1396,7 +1397,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           // USCG Sector search start
           if (this->m_VSMethod->GetCurrentSelection() == 1) {
             if (write_file) {
-              RouteName->SetText(defaultFileName);
+              RouteName->SetText(defaultFileName.mb_str());
               Route->LinkEndChild(RouteName);
 
               Extensions->LinkEndChild(textSpeed);
@@ -1609,7 +1610,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
                     routeNameText = defaultFileName + "-2";
                   }
 
-                  RouteName2->SetText(routeNameText);
+                  RouteName2->SetText(routeNameText.mb_str());
                   Route2->LinkEndChild(RouteName2);
 
                   Extensions2->LinkEndChild(textSpeed);
@@ -1642,7 +1643,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       {
         // Oil rig search start
         if (write_file) {
-          RouteName->SetText(defaultFileName);
+          RouteName->SetText(defaultFileName.mb_str());
           Route->LinkEndChild(RouteName);
 
           Extensions->LinkEndChild(textSpeed);
