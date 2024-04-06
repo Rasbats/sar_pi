@@ -28,8 +28,8 @@
 #ifndef _CALCULATORGUI_IMPL_H_
 #define _CALCULATORGUI_IMPL_H_
 
-//#include <cstdlib>
-//#include <cstdio>
+// #include <cstdlib>
+// #include <cstdio>
 #ifdef WX_PRECOMP
 #include "wx/wx.h"
 #endif
@@ -38,72 +38,86 @@
 #include "bitmaps.h"
 #include "SAR_pi.h"
 #include "NavFunc.h"
-#include "tinyxml.h"
+#include "tinyxml2.h"
+
 using namespace std;
+
+using namespace tinyxml2;
+
+namespace tinyxml2 {
+  class XMLDocument;
+  class XMLElement;
+  class XMLNode; 
+}  // namespace tinyxml2 
 
 class SAR_pi;
 
-class CfgDlg : public CfgDlgDef
-{
+class CfgDlg : public CfgDlgDef {
 public:
-      CfgDlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("SAR preferences"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE );
+  CfgDlg(wxWindow* parent, wxWindowID id = wxID_ANY,
+         const wxString& title = _("SAR preferences"),
+         const wxPoint& pos = wxDefaultPosition,
+         const wxSize& size = wxSize(-1, -1),
+         long style = wxDEFAULT_DIALOG_STYLE);
 };
 
-class Dlg : public DlgDef
-{
+class Dlg : public DlgDef {
 public:
-        Dlg( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("SAR Plugin by SaltyPaws/Rasbats"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxCAPTION| wxDEFAULT_DIALOG_STYLE | wxMINIMIZE_BOX | wxRESIZE_BORDER);
-        //void OnToggle( wxCommandEvent& event );
-        void OnConvertToDegree( wxCommandEvent& event );
-		void ConvertToDegree();
+  Dlg(wxWindow* parent, wxWindowID id = wxID_ANY,
+      const wxString& title = _("SAR Plugin by SaltyPaws/Rasbats"),
+      const wxPoint& pos = wxDefaultPosition,
+      const wxSize& size = wxSize(-1, -1),
+      long style = wxCAPTION | wxDEFAULT_DIALOG_STYLE | wxMINIMIZE_BOX |
+                   wxRESIZE_BORDER);
 
-        void OnNoteBookFit( wxCommandEvent& event );
-        void OnFit( wxCommandEvent& event );
+  void OnConvertToDegree(wxCommandEvent& event);
+  void ConvertToDegree();
 
-		void OnCalculate(wxCommandEvent& event);
+  void OnNoteBookFit(wxCommandEvent& event);
+  void OnFit(wxCommandEvent& event);
 
-        void OnPSGPX( wxCommandEvent& event );
-        void OnESGPX( wxCommandEvent& event );
-        void OnSSGPX( wxCommandEvent& event );
-        void OnORGPX( wxCommandEvent& event );
+  void OnCalculate(wxCommandEvent& event);
 
-		void OnSelectNumberShips(wxCommandEvent& event);
-		void OnSelectVectorMethod(wxCommandEvent& event);
-		void OnSelectPortStarboard(wxCommandEvent& event);
+  void OnPSGPX(wxCommandEvent& event);
+  void OnESGPX(wxCommandEvent& event);
+  void OnSSGPX(wxCommandEvent& event);
+  void OnORGPX(wxCommandEvent& event);
 
+  void OnSelectNumberShips(wxCommandEvent& event);
+  void OnSelectVectorMethod(wxCommandEvent& event);
+  void OnSelectPortStarboard(wxCommandEvent& event);
 
+  void OnShip(wxCommandEvent& event);
+  void OnCursor(wxCommandEvent& event);
+  void OnShip(void);
+  void OnCursor(void);
+  void key_shortcut(wxKeyEvent& event);
+  void OnCursorSelect(wxCommandEvent& event);
 
-        void OnShip( wxCommandEvent& event );
-        void OnCursor( wxCommandEvent& event );
-        void OnShip( void );
-        void OnCursor( void );
-        void key_shortcut(wxKeyEvent& event);
-        void OnCursorSelect( wxCommandEvent& event );
+  // For right click datum selection
+  void getDatum(double m_lat, double m_lon);
 
-		// For right click datum selection
-		void getDatum(double m_lat, double m_lon);
-        
-		//void mouse_shortcut(wxMouseEvent& event);
+  void Calculate(wxCommandEvent& event, bool Export, int Pattern);
 
-        void Calculate( wxCommandEvent& event, bool Export, int Pattern );
+  void Addpoint2(XMLElement* Route, wxString ptlat, wxString ptlon,
+                 wxString ptname, wxString ptsym, wxString pttype);
 
-        void Addpoint(TiXmlElement* Route, wxString ptlat, wxString ptlon, wxString ptname, wxString ptsym, wxString pttype);
+  // friend class function;
+  SAR_pi* plugin;
+  double m_ship_lon, m_ship_lat, m_cursor_lon, m_cursor_lat;
+  int shipsAvailable;
+  int PortStbd;
+  void setDDMM();
+  void OnClose(wxCloseEvent& event);
 
-		//friend class function;
-        SAR_pi *plugin;
-        double m_ship_lon,m_ship_lat,m_cursor_lon,m_cursor_lat;
-
-		void setDDMM();
-		void OnClose(wxCloseEvent& event);
+  tinyxml2::XMLDocument xmlDoc;
 
 private:
-        
-	    wxPoint xy;
-        wxSize  wh;
-        double lat1, lon1, lat2, lon2, targetAz;
-        //double F(double x);
-        bool error_found;
-        bool dbg;
+  wxPoint xy;
+  wxSize wh;
+  double lat1, lon1, lat2, lon2, targetAz;
+  bool error_found;
+  bool dbg;
 };
 
 #endif

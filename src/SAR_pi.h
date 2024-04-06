@@ -39,7 +39,7 @@
 
 #include "ocpn_plugin.h" //Required for OCPN plugin functions
 #include "SARgui_impl.h"
-
+#include "bitmaps.h"
 #include "config.h"
 
 class Dlg;

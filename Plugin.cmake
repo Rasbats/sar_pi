@@ -34,7 +34,7 @@ option(PLUGIN_USE_SVG "Use SVG graphics" ON)
 # -------  Plugin setup --------
 #
 set(PKG_NAME sar_pi)
-set(PKG_VERSION  4.0.0)
+set(PKG_VERSION  4.1.0)
 set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME sar)    # Dialogs, installer artifacts, ...
@@ -63,6 +63,8 @@ SET(SRC
         src/NavFunc.cpp
         src/bitmaps.h
         src/bitmaps.cpp
+        src/tinyxml2.cpp
+        src/tinyxml2.h
     )
 
 set(PKG_API_LIB api-16)  #  A directory in libs/ e. g., api-17 or api-16
@@ -76,10 +78,6 @@ macro(late_init)
 endmacro ()
 
 macro(add_plugin_libraries)
-  # Add libraries required by this plugin
-  add_subdirectory("${CMAKE_SOURCE_DIR}/opencpn-libs/tinyxml")
-  target_link_libraries(${PACKAGE_NAME} ocpn::tinyxml)
-
   # The wxsvg library enables SVG overall in the plugin
   add_subdirectory("${CMAKE_SOURCE_DIR}/opencpn-libs/wxsvg")
   target_link_libraries(${PACKAGE_NAME} ocpn::wxsvg)

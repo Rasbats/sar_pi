@@ -61,21 +61,21 @@ void SVGicons::initialize_images(void)
 	wxFileName fn;
 
 	fn.SetPath(GetPluginDataDir("SAR_pi"));
-	fn.AppendDir(wxT("data"));
+	fn.AppendDir("data");
 	g_SData_Locn = new wxString(fn.GetFullPath().c_str());
-	wxString s = _("SAR_pi data location");
-	wxLogMessage(wxT("%s: %s"), s.c_str(), fn.GetFullPath().c_str());
+	wxString s = "SAR_pi data location";
+	wxLogMessage("%s: %s", s.c_str(), fn.GetFullPath().c_str());
 
 	m_failedBitmapLoad = false;
 
 #ifdef PLUGIN_USE_SVG
-	fn.SetFullName(wxT("sar_panel_icon.svg"));
+	fn.SetFullName("sar_panel_icon.svg");
 	m_s_SAR_pi = fn.GetFullPath();
 	m_bm_SAR_pi = LoadSVG(fn.GetFullPath());
-	fn.SetFullName(wxT("sar_pi.svg"));
+	fn.SetFullName("sar_pi.svg");
 	m_s_SAR_grey_pi = fn.GetFullPath();
 	m_bm_SAR_grey_pi = LoadSVG(fn.GetFullPath());
-	fn.SetFullName(wxT("sar_pi_toggled.svg"));
+	fn.SetFullName("sar_pi_toggled.svg");
 	m_s_SAR_toggled_pi = fn.GetFullPath();
 	m_bm_SAR_toggled_pi = LoadSVG(fn.GetFullPath());
 #else

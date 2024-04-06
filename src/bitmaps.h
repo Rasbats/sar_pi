@@ -9,15 +9,16 @@
 # include <wx/wx.h>
 #endif
 #include <wx/mstream.h>
+#include <wx/fileconf.h>
 //
 extern void initialize_bitmaps(void);
 //
-extern wxBitmap *_img_exp_sq;
-extern wxBitmap *_img_oil_rig;
-extern wxBitmap *_img_sector;
-extern wxBitmap *_img_sector_uscg;
-extern wxBitmap *_img_trackln_both;
-extern wxBitmap *_img_trackln1;
-extern wxBitmap *_img_trackln1_port;
+extern wxBitmap _img_exp_sq;
+extern wxBitmap _img_oil_rig;
+extern wxBitmap _img_sector;
+extern wxBitmap _img_sector_uscg;
+extern wxBitmap _img_trackln_both;
+extern wxBitmap _img_trackln1;
+extern wxBitmap _img_trackln1_port;
 //
 #endif // _IMAGES_BIN2C_H_
