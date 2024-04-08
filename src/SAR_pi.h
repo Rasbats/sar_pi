@@ -50,7 +50,7 @@ class Dlg;
 
 #define CALCULATOR_TOOL_POSITION    -1          // Request default positioning of toolbar tool
 
-class SAR_pi : public opencpn_plugin_116
+class SAR_pi : public opencpn_plugin_118
 {
 public:
       SAR_pi(void *ppimgr);

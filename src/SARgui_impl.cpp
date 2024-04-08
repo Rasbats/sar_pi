@@ -27,6 +27,8 @@
 
 #include "SARgui_impl.h"
 
+using namespace tinyxml2;
+
 CfgDlg::CfgDlg(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos, const wxSize& size, long style)
     : CfgDlgDef(parent, id, title, pos, size, style) {}
@@ -386,21 +388,79 @@ void Dlg::OnCalculate(wxCommandEvent& event) {
 
 void Dlg::OnPSGPX(wxCommandEvent& event) {
   // wxMessageBox(_("Function not yet implemented :p")) ;
+  m_bSaveRTZ = false;
+  rtz_schema = 0;
+  int sel = 0;
+  switch (event.GetId()) {
+    case ID_RTZ1:
+      sel = this->m_Nship->GetSelection();
+      if (sel == 1) {
+        wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
+        m_bSaveRTZ = false;
+        return;
+      } else m_bSaveRTZ = true;
+      rtz_schema = this->m_choiceSchema1->GetSelection();
+      [[fallthrough]];  // fallthrough is explicit
+    default:
+      event.Skip();
+      break;
+  }
   Calculate(event, true, 1);
 }
 
 void Dlg::OnESGPX(wxCommandEvent& event) {
   // wxMessageBox(_("Function not yet implemented :p")) ;
+  m_bSaveRTZ = false;
+  rtz_schema = 0;
+
+  switch (event.GetId()) {
+    case ID_RTZ2:
+      m_bSaveRTZ = true;
+      rtz_schema = this->m_choiceSchema2->GetSelection();
+      [[fallthrough]];  // fallthrough is explicit
+    default:
+      event.Skip();
+      break;
+  }
   Calculate(event, true, 2);
 }
 
 void Dlg::OnSSGPX(wxCommandEvent& event) {
   // wxMessageBox(_("Function not yet implemented :p")) ;
+  m_bSaveRTZ = false;
+  rtz_schema = 0;
+  int sel = 0;
+  switch (event.GetId()) {
+    case ID_RTZ3:
+      sel = this->m_Ncycles->GetSelection();
+      if (sel == 1) {
+        wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
+        m_bSaveRTZ = false;
+        return;
+      } else m_bSaveRTZ = true;
+      rtz_schema = this->m_choiceSchema3->GetSelection();
+      [[fallthrough]];  // fallthrough is explicit
+    default:
+      event.Skip();
+      break;
+  }
   Calculate(event, true, 3);
 }
 
 void Dlg::OnORGPX(wxCommandEvent& event) {
   // wxMessageBox(_("Function not yet implemented :p")) ;
+  m_bSaveRTZ = false;
+  rtz_schema = 0;
+
+  switch (event.GetId()) {
+    case ID_RTZ4:
+      m_bSaveRTZ = true;
+      rtz_schema = this->m_choiceSchema4->GetSelection();
+      [[fallthrough]];  // fallthrough is explicit
+    default:
+      event.Skip();
+      break;
+  }
   Calculate(event, true, 4);
 }
 
@@ -414,6 +474,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 {
   shipsAvailable = this->m_Nship->GetSelection();
   PortStbd = this->m_NPortStbd->GetSelection();
+
+  m_bChartRoute = false;
 
   wxString defaultFileName = "";
   int df = PortStbd;
@@ -434,7 +496,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       break;
     }
     case 2: {  // ok as is
-      defaultFileName = "SS";
+      defaultFileName = "ES";
       break;
     }
     case 3: {
@@ -540,7 +602,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       "encoding="
       "\"UTF-8\"");
   xmlDoc.LinkEndChild(decl2);
-
   XMLElement* pRoot = xmlDoc.NewElement("gpx");
   XMLElement* Route = xmlDoc.NewElement("rte");
   XMLElement* Route2 = xmlDoc.NewElement("rte");
@@ -559,8 +620,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
   wxString mySpeed;
 
-  bool writeWaypointNames = true;
-  bool showMarkIcons = true;
+  writeWaypointNames = true;
+  showMarkIcons = true;
 
   XMLElement* text4 = xmlDoc.NewElement("");
 
@@ -628,21 +689,25 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       case 1: {
         mySpeed = m_Speed_PS->GetValue();
         textSpeed->SetText(mySpeed.mb_str());
+        if (this->m_cbChartRoute1->IsChecked()) m_bChartRoute = true;
         break;
       }
       case 2: {
         mySpeed = m_Speed_ES->GetValue();
         textSpeed->SetText(mySpeed.mb_str());
+        if (this->m_cbChartRoute2->IsChecked()) m_bChartRoute = true;
         break;
       }
       case 3: {
         mySpeed = m_Speed_SS->GetValue();
         textSpeed->SetText(mySpeed.mb_str());
+        if (this->m_cbChartRoute3->IsChecked()) m_bChartRoute = true;
         break;
       }
       case 4: {
         mySpeed = m_Speed_OR->GetValue();
         textSpeed->SetText(mySpeed.mb_str());
+        if (this->m_cbChartRoute4->IsChecked()) m_bChartRoute = true;
         break;
       }
       default: {
@@ -781,8 +846,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
             if (write_file) {
               Addpoint2(Route, wxString::Format("%f", lat1),
-                        wxString::Format("%f", lon1), "CSP",
-                        "diamond", "WPT");
+                        wxString::Format("%f", lon1), "CSP", "diamond", "WPT");
             }
 
             int ps = PortStbd;
@@ -833,8 +897,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
                 if (write_file) {
                   Addpoint2(Route, wxString::Format("%f", lati),
-                            wxString::Format("%f", loni), wpt_title,
-                            wpt_mark, "WPT");
+                            wxString::Format("%f", loni), wpt_title, wpt_mark,
+                            "WPT");
                 }
 
                 lat1 = lati;
@@ -844,8 +908,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
             if (write_file) pRoot->LinkEndChild(Route);
 
-            this->m_Distance->SetValue(
-                wxString::Format("%g", SAR_distance));
+            this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
             this->m_Time->SetValue(
                 wxString::Format("%g", (SAR_distance / speed)));
             break;
@@ -891,8 +954,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
                 }
                 if (write_file) {
                   Addpoint2(Route, wxString::Format("%f", lati),
-                            wxString::Format("%f", loni), wpt_title,
-                            wpt_mark, "WPT");
+                            wxString::Format("%f", loni), wpt_title, wpt_mark,
+                            "WPT");
                 }
                 lat1 = lati;
                 lon1 = loni;
@@ -903,8 +966,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
               if (i == 2) {
                 if (write_file) {
                   Addpoint2(Route2, wxString::Format("%f", latDatum),
-                            wxString::Format("%f", lonDatum), _T(""),
-                            "", "WPT");
+                            wxString::Format("%f", lonDatum), _T(""), "",
+                            "WPT");
                 }
                 ESheading = approach + 90.0;
                 ESdistance = leg_distancey / 2;
@@ -925,8 +988,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
                 }
                 if (write_file) {
                   Addpoint2(Route2, wxString::Format("%f", lati),
-                            wxString::Format("%f", loni), wpt_title,
-                            wpt_mark, "WPT");
+                            wxString::Format("%f", loni), wpt_title, wpt_mark,
+                            "WPT");
                 }
                 lat1 = lati;
                 lon1 = loni;
@@ -942,15 +1005,13 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
                       ESheading = approach;
                       wpt_title = "";
                       if (writeWaypointNames) {
-                        wpt_title << "" << x << "." << y + 2
-                                  << "";
+                        wpt_title << "" << x << "." << y + 2 << "";
                       }
                     } else {
                       ESheading = approach + 180.0;
                       wpt_title = "";
                       if (writeWaypointNames) {
-                        wpt_title << "" << x << "." << y + 2
-                                  << "";
+                        wpt_title << "" << x << "." << y + 2 << "";
                       }
                     }
                     ESdistance = leg_distancex;
@@ -1082,8 +1143,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         // add  datum
         if (write_file) {
           Addpoint2(Route, wxString::Format("%f", lat1),
-                    wxString::Format("%f", lon1), "Datum",
-                    "diamond", "WPT");
+                    wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
         }
 
         int multiplier = 0;
@@ -1137,16 +1197,14 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
           if (write_file) {
             Addpoint2(Route, wxString::Format("%f", lati),
-                      wxString::Format("%f", loni), wpt_title, wpt_mark,
-                      "WPT");
+                      wxString::Format("%f", loni), wpt_title, wpt_mark, "WPT");
           }
           lat1 = lati;
           lon1 = loni;
         }
         if (write_file) pRoot->LinkEndChild(Route);
         this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
-        this->m_Time->SetValue(
-            wxString::Format("%g", SAR_distance / speed));
+        this->m_Time->SetValue(wxString::Format("%g", SAR_distance / speed));
 
       }
       // Expanding Square End
@@ -1226,13 +1284,11 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           // Add the CSP to the pattern
           if (write_file) {
             Addpoint2(Route, wxString::Format("%f", lati),
-                      wxString::Format("%f", loni), "CSP",
-                      _T("circle"), "WPT");
+                      wxString::Format("%f", loni), "CSP", _T("circle"), "WPT");
           }
           if (write_file) {
             Addpoint2(Route, wxString::Format("%f", lat1),
-                      wxString::Format("%f", lon1), "Datum",
-                      "diamond", "WPT");
+                      wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
           }
 
           lat1 = lati;
@@ -1322,14 +1378,14 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             if (x > 9) {
               if (write_file) {
                 Addpoint2(Route2, wxString::Format("%f", lati),
-                          wxString::Format("%f", loni), wpt_title,
-                          wpt_mark, "WPT");
+                          wxString::Format("%f", loni), wpt_title, wpt_mark,
+                          "WPT");
               }
             } else {
               if (write_file && (x < 8)) {
                 Addpoint2(Route, wxString::Format("%f", lati),
-                          wxString::Format("%f", loni), wpt_title,
-                          wpt_mark, "WPT");
+                          wxString::Format("%f", loni), wpt_title, wpt_mark,
+                          "WPT");
               }
             }
 
@@ -1384,8 +1440,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
           if (write_file) pRoot->LinkEndChild(Route2);
           this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
-          this->m_Time->SetValue(
-              wxString::Format("%g", SAR_distance / speed));
+          this->m_Time->SetValue(wxString::Format("%g", SAR_distance / speed));
           //
           // IAMSAR Sector search end
           //
@@ -1463,8 +1518,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             // Add the CSP to the pattern
             if (write_file) {
               Addpoint2(Route, wxString::Format("%f", lat1),
-                        wxString::Format("%f", lon1), "Datum",
-                        _T("diamond"), "WPT");
+                        wxString::Format("%f", lon1), "Datum", _T("diamond"),
+                        "WPT");
             }
 
             for (int x = 1; x <= ((two_cycles) ? 16 : 8);
@@ -1570,15 +1625,15 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
                 } else {
                   if (write_file) {
                     Addpoint2(Route2, wxString::Format("%f", lati),
-                              wxString::Format("%f", loni), wpt_title,
-                              wpt_mark, "WPT");
+                              wxString::Format("%f", loni), wpt_title, wpt_mark,
+                              "WPT");
                   }
                 }
               } else {
                 if (write_file && (x < 8)) {
                   Addpoint2(Route, wxString::Format("%f", lati),
-                            wxString::Format("%f", loni), wpt_title,
-                            wpt_mark, "WPT");
+                            wxString::Format("%f", loni), wpt_title, wpt_mark,
+                            "WPT");
                 }
               }
 
@@ -1627,8 +1682,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             }
 
             if (write_file) pRoot->LinkEndChild(Route2);
-            this->m_Distance->SetValue(
-                wxString::Format("%g", SAR_distance));
+            this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
             this->m_Time->SetValue(
                 wxString::Format("%g", SAR_distance / speed));
             // IAMSAR Sector search end
@@ -1664,7 +1718,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         }  // approach course
 
         int ss = this->m_dx_OR->GetCurrentSelection();
-        this->m_dx_OR->GetString(ss).ToDouble(&leg_distancex);  // leg distance      
+        this->m_dx_OR->GetString(ss).ToDouble(&leg_distancex);  // leg distance
 
         if (!this->m_NLegs_OR->GetValue().ToDouble(&nlegs)) {
           nlegs = 1.0;
@@ -1694,8 +1748,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         // add  datum
         if (write_file) {
           Addpoint2(Route, wxString::Format("%f", lat1),
-                    wxString::Format("%f", lon1), "Datum",
-                    "diamond", "WPT");
+                    wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
         }
         int n = 0;
         int multiplier = 1;
@@ -1756,7 +1809,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
     }
 
     if (write_file) {
-
       // check if string ends with .gpx or .GPX
       if (!s.EndsWith(_T(".gpx"))) {
         s = s + _T(".gpx");
@@ -1766,6 +1818,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       xmlDoc.SaveFile(buffer.data());
       xmlDoc.Clear();
     }
+
+    CreateRoute(s);
+
     //} //end of if no error occurred
 
     if (error_occurred) {
@@ -2036,4 +2091,243 @@ void Dlg::setDDMM() {  // after entering dd.dddd from cursor, menu, lat
 
   m_Lat1_s->SetValue(wxString::Format("%.6f", SSlat1));
   m_Lon1_s->SetValue(wxString::Format("%.6f", SSlon1));
+}
+
+void Dlg::CreateRoute(wxString filename) {
+  waypoint myPoint;
+  m_waypointList.clear();
+
+  tinyxml2::XMLDocument mydoc;
+  mydoc.LoadFile(filename);
+
+  tinyxml2::XMLElement* pRoot = mydoc.RootElement();
+
+  wxString rte_name = "";
+  wxString rte_speed = "";
+  wxString rte_color = "";
+
+  int i = 0;
+  for (tinyxml2::XMLElement* e = pRoot->FirstChildElement(); e;
+       e = e->NextSiblingElement(), i++) {
+    for (tinyxml2::XMLElement* f = e->FirstChildElement(); f;
+         f = f->NextSiblingElement()) {
+      if (!strcmp(f->Value(), "extensions")) {
+        rte_speed = f->FirstChildElement("opencpn:planned_speed")->GetText();
+        rte_color = f->FirstChildElement("gpxx:RouteExtension")
+                        ->FirstChildElement("gpxx:DisplayColor")
+                        ->GetText();
+      }
+
+      if (!strcmp(f->Value(), "name")) {
+        rte_name = f->GetText();
+      }
+
+      if (!strcmp(f->Value(), "rtept")) {
+        wxString pt_lat = wxString::FromUTF8(f->Attribute("lat"));
+        wxString pt_lon = wxString::FromUTF8(f->Attribute("lon"));
+
+        wxString pt_name;
+        if (f->FirstChildElement("name") == nullptr) {
+          pt_name = "";
+          // myPoint.name_visible = false;
+
+        } else {
+          pt_name = f->FirstChildElement("name")->GetText();
+          if (pt_name == "") {
+            myPoint.name_visible = false;
+          } else
+            myPoint.name_visible = true;
+        }
+
+        myPoint.lat = pt_lat;
+        myPoint.lon = pt_lon;
+        myPoint.name = pt_name;
+
+        m_waypointList.push_back(myPoint);
+      }
+    }
+  }
+  if (m_bSaveRTZ) ExportRTZ(rte_name);
+  if (m_bChartRoute) AddChartRoute(rte_name, rte_speed, rte_color);
+}
+
+void Dlg::AddChartRoute(wxString myRoute, wxString mySpeed, wxString myColor) {
+  PlugIn_Route_Ex* newRoute =
+      new PlugIn_Route_Ex;  // for adding a route on OpenCPN chart display
+
+  newRoute->m_NameString = myRoute;
+  newRoute->m_isVisible = true;
+
+  double lati, loni, value, value1;
+  bool m_bNameVisible = true;
+
+  for (std::vector<waypoint>::iterator itp = m_waypointList.begin();
+       itp != m_waypointList.end(); itp++) {
+    PlugIn_Waypoint_Ex* wayPoint = new PlugIn_Waypoint_Ex;
+
+    wayPoint->m_MarkName = (*itp).name;
+
+    if (!(*itp).lat.ToDouble(&value)) { /* error! */
+    }
+    lati = value;
+    if (!(*itp).lon.ToDouble(&value1)) { /* error! */
+    }
+    loni = value1;
+
+    m_bNameVisible = (*itp).name_visible;
+
+    wayPoint->m_lat = lati;
+    wayPoint->m_lon = loni;
+    wayPoint->IsVisible = true;
+    wayPoint->IsNameVisible = m_bNameVisible;
+
+    if (showMarkIcons) {
+      wayPoint->IconName = "diamond";
+    } else
+      wayPoint->IconName = "Marks-Blank";
+
+    newRoute->pWaypointList->Append(wayPoint);
+  }
+
+  AddPlugInRouteEx(newRoute, true);
+
+  GetParent()->Refresh();
+}
+
+int Dlg::ExportRTZ(wxString routename) {
+  wxString rtzFileName;
+  wxString fileName;
+  wxFileDialog dlg(this, _("Save in RTZ format"), wxEmptyString, routename,
+                   _T("RTZ files (*.rtz)|*.rtz|All files (*.*)|*.*"),
+                   wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+  if (dlg.ShowModal() == wxID_CANCEL) {
+    // error_occured = true;     // the user changed idea...
+    return 999;
+  } else {
+    // dlg.ShowModal();
+    fileName = dlg.GetPath();
+    rtzFileName = dlg.GetFilename();
+    //  std::cout<<s<< std::endl;
+    if (dlg.GetPath() == wxEmptyString) {
+      wxMessageBox("Error");
+      return 999;
+    }
+  }
+
+  // put the correct version in the RTZ file
+  wxString versn;
+  int selection = rtz_schema;
+
+  if (selection == 0) {
+    versn = "1.0";
+  } else if (selection == 1) {
+    versn = "1.1";
+  } else if (selection == 2) {
+    versn = "1.2";
+  }
+
+  // Create Main level XML container
+  tinyxml2::XMLDocument xmlDoc;
+  tinyxml2::XMLDeclaration* decl = xmlDoc.NewDeclaration();
+
+  if (selection == 0) {
+    decl->SetValue(
+        "xml version="
+        "\"1.0\" "
+        "encoding="
+        "\"UTF-8\" "
+        "standalone="
+        "\"no\"");
+  } else if (selection == 1) {
+    decl->SetValue(
+        "xml version="
+        "\"1.0\" "
+        "encoding="
+        "\"UTF-8\"");
+  }
+
+  xmlDoc.LinkEndChild(decl);
+
+  // Create XML root node called animals
+  tinyxml2::XMLElement* pRoot = xmlDoc.NewElement("route");
+
+  const char* value;
+  if (selection == 0) {
+    value = "http://www.cirm.org/RTZ/1/0";
+  } else if (selection == 1) {
+    value = "http://www.cirm.org/RTZ/1/1";
+  } else if (selection == 2) {
+    value = "http://www.cirm.org/RTZ/1/2";
+  }
+
+  char* sv = (const_cast<char*>((const char*)versn.mb_str()));
+
+  pRoot->SetAttribute("xmlns", value);
+  pRoot->SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+
+  if (selection == 0) {
+    pRoot->SetAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
+  }
+
+  pRoot->SetAttribute("version", sv);
+
+  if (selection == 1) {
+    pRoot->SetAttribute("xmlns:stm", "http://stmvalidation.eu/STM/1/0/0");
+  }
+
+  // Add pRoot to xmlDoc after prolog
+  xmlDoc.InsertEndChild(pRoot);
+
+  // ************* Add routeInfo to root node *******
+
+  tinyxml2::XMLElement* routeInfo = xmlDoc.NewElement("routeInfo");
+  pRoot->InsertFirstChild(routeInfo);
+
+  // Route name must be the same as the file name, without file extension
+
+  int fl = rtzFileName.length();
+  wxString rtzFileBit = rtzFileName.SubString(0, (fl - 5));
+
+  char* rtzFN = (const_cast<char*>((const char*)rtzFileBit.mb_str()));
+  routeInfo->SetAttribute("routeName", rtzFN);
+
+  // Insert cat's name as first child of animal
+
+  // ************* Add waypoints *******
+  waypoints = xmlDoc.NewElement("waypoints");
+  pRoot->InsertEndChild(waypoints);
+
+  int nm = m_waypointList.size();
+  if (nm == 0) {
+    wxMessageBox("No waypoints available", "Warning");
+    return 999;
+  }
+
+  int idn = 0;
+
+  for (std::vector<waypoint>::iterator itOut = m_waypointList.begin();
+       itOut != m_waypointList.end(); itOut++) {
+    tinyxml2::XMLElement* m_waypoint = xmlDoc.NewElement("waypoint");
+    waypoints->InsertEndChild(m_waypoint);
+    wxString myIdn = wxString::Format(wxT("%i"), idn);
+    m_waypoint->SetAttribute("id", myIdn.mb_str());
+
+    if (selection == 2) m_waypoint->SetAttribute("revision", "0");
+
+    m_waypoint->SetAttribute("name", (*itOut).name.mb_str());
+
+    tinyxml2::XMLElement* position = xmlDoc.NewElement("position");
+
+    position->SetAttribute("lat", (*itOut).lat.mb_str());
+    position->SetAttribute("lon", (*itOut).lon.mb_str());
+    m_waypoint->InsertEndChild(position);
+
+    idn++;
+  }
+  // done adding waypoints
+  // Write xmlDoc into a file
+
+  xmlDoc.SaveFile(fileName);
+
+  return 0;
 }

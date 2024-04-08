@@ -24,17 +24,21 @@
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
+#include <wx/checkbox.h>
+#include <wx/choice.h>
 #include <wx/statbox.h>
 #include <wx/panel.h>
 #include <wx/statbmp.h>
-#include <wx/choice.h>
-#include <wx/checkbox.h>
 #include <wx/notebook.h>
 #include <wx/dialog.h>
 #include <wx/slider.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
+#define ID_RTZ1 1000
+#define ID_RTZ2 1001
+#define ID_RTZ3 1002
+#define ID_RTZ4 1003
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class DlgDef
@@ -64,6 +68,9 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText33111111;
 		wxStaticLine* m_staticline8;
 		wxButton* m_button3111;
+		wxCheckBox* m_cbChartRoute1;
+		wxButton* m_button311112121;
+		wxChoice* m_choiceSchema1;
 		wxStaticBitmap* m_bitmap_trackln1;
 		wxStaticText* m_staticText32111111;
 		wxChoice* m_Nship;
@@ -89,6 +96,9 @@ class DlgDef : public wxDialog
 		wxCheckBox* m_checkBox2;
 		wxCheckBox* m_checkBoxIcons2;
 		wxButton* m_button31111;
+		wxCheckBox* m_cbChartRoute2;
+		wxButton* m_button31111212;
+		wxChoice* m_choiceSchema2;
 		wxStaticBitmap* m_bitmap_exp_sq;
 		wxPanel* m_panel3;
 		wxPanel* m_panel8;
@@ -107,6 +117,9 @@ class DlgDef : public wxDialog
 		wxCheckBox* m_checkBox3;
 		wxCheckBox* m_checkBoxIcons3;
 		wxButton* m_button311111;
+		wxCheckBox* m_cbChartRoute3;
+		wxButton* m_button31111211;
+		wxChoice* m_choiceSchema3;
 		wxStaticBitmap* m_bitmap_sector;
 		wxStaticText* m_staticText3211111111;
 		wxChoice* m_VSMethod;
@@ -128,6 +141,9 @@ class DlgDef : public wxDialog
 		wxCheckBox* m_checkBox4;
 		wxCheckBox* m_checkBoxIcons4;
 		wxButton* m_button311112;
+		wxCheckBox* m_cbChartRoute4;
+		wxButton* m_button3111121;
+		wxChoice* m_choiceSchema4;
 		wxStaticBitmap* m_bitmap_oil_rig;
 		wxNotebook* m_wxNotebook234;
 		wxPanel* m_panel11;
@@ -199,7 +215,19 @@ class DlgDef : public wxDialog
 
 	public:
 		wxBoxSizer* bSframe;
-		wxString m_validator_string;
+		wxString m_validator_string1;
+		wxString m_validator_string2;
+		wxString m_validator_string3;
+		wxString m_validator_string4;
+		wxString m_validator_string5;
+		wxString m_validator_string6;
+		wxString m_validator_string7;
+		wxString m_validator_string8;
+		wxString m_validator_string9;
+		wxString m_validator_string10;
+		wxString m_validator_string11;
+		wxString m_validator_string12;
+		wxString m_validator_string13;
 
 		DlgDef( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("SAR"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( -1,-1 ), long style = wxDEFAULT_DIALOG_STYLE|wxMINIMIZE_BOX|wxRESIZE_BORDER );
 

@@ -51,6 +51,25 @@ namespace tinyxml2 {
 }  // namespace tinyxml2 
 
 class SAR_pi;
+class sarRoute;
+
+class waypoint {
+public:
+  wxString id;
+  wxString name;
+  wxString lat, lon;
+  bool name_visible;
+  bool icon_blank;
+};
+
+class sarRoute {
+public:
+  wxString routeName;
+  std::vector<waypoint> waypoints;
+  wxArrayString m_arrayPoints;
+};
+
+
 
 class CfgDlg : public CfgDlgDef {
 public:
@@ -111,6 +130,18 @@ public:
   void OnClose(wxCloseEvent& event);
 
   tinyxml2::XMLDocument xmlDoc;
+  void CreateRoute(wxString filename);
+  wxArrayString waypointsList;
+
+  tinyxml2::XMLNode* waypoints;
+
+  vector<waypoint> m_waypointList;
+
+  bool m_bChartRoute;
+  bool m_bSaveRTZ;
+  int rtz_schema;
+  void AddChartRoute(wxString myRoute, wxString mySpeed, wxString myColor);
+  int ExportRTZ(wxString routename);
 
 private:
   wxPoint xy;
@@ -118,6 +149,8 @@ private:
   double lat1, lon1, lat2, lon2, targetAz;
   bool error_found;
   bool dbg;
+  bool writeWaypointNames;
+  bool showMarkIcons;
 };
 
 #endif
