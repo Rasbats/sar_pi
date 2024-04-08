@@ -134,7 +134,6 @@ int SAR_pi::Init(void)
               WANTS_TOOLBAR_CALLBACK    |
               INSTALLS_TOOLBAR_TOOL     |
               WANTS_NMEA_EVENTS         |
-              WANTS_PREFERENCES         |
               WANTS_CONFIG
            );
 }
