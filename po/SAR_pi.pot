@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: sar_pi 4.2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-08 11:54+0100\n"
+"POT-Creation-Date: 2024-04-14 07:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,15 +29,15 @@ msgstr ""
 msgid "Select SAR Datum Point"
 msgstr ""
 
-#: src/SAR_pi.cpp:200
+#: src/SAR_pi.cpp:199
 msgid "Search and Rescue Patterns"
 msgstr ""
 
-#: src/SAR_pi.cpp:205
+#: src/SAR_pi.cpp:204
 msgid "Creates GPX files with Search and Rescue patterns"
 msgstr ""
 
-#: src/SAR_pi.cpp:297
+#: src/SAR_pi.cpp:296
 msgid "Route Preferences"
 msgstr ""
 
@@ -87,7 +87,7 @@ msgid "Generate &GPX"
 msgstr ""
 
 #: src/SARgui.cpp:139 src/SARgui.cpp:357 src/SARgui.cpp:514 src/SARgui.cpp:697
-msgid "Chart route"
+msgid "Add to route manager"
 msgstr ""
 
 #: src/SARgui.cpp:148 src/SARgui.cpp:366 src/SARgui.cpp:523 src/SARgui.cpp:706

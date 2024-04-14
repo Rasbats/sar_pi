@@ -136,8 +136,8 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer71->Add( m_button3111, 0, wxALL, 5 );
 
-	m_cbChartRoute1 = new wxCheckBox( sbSizer711->GetStaticBox(), wxID_ANY, _("Chart route"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer71->Add( m_cbChartRoute1, 0, wxALL, 5 );
+	m_cbChartRoute1 = new wxCheckBox( sbSizer711->GetStaticBox(), wxID_ANY, _("Add to route manager"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer71->Add( m_cbChartRoute1, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 
 	sbSizer711->Add( bSizer71, 0, wxALL, 5 );
@@ -237,7 +237,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel1->SetSizer( bSizer3 );
 	m_panel1->Layout();
 	bSizer3->Fit( m_panel1 );
-	m_notebook1->AddPage( m_panel1, _("Parallel Track"), true );
+	m_notebook1->AddPage( m_panel1, _("Parallel Track"), false );
 	m_panel2 = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxHORIZONTAL );
@@ -354,8 +354,8 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer711->Add( m_button31111, 0, wxALL, 5 );
 
-	m_cbChartRoute2 = new wxCheckBox( sbSizer71->GetStaticBox(), wxID_ANY, _("Chart route"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer711->Add( m_cbChartRoute2, 0, wxALL, 5 );
+	m_cbChartRoute2 = new wxCheckBox( sbSizer71->GetStaticBox(), wxID_ANY, _("Add to route manager"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer711->Add( m_cbChartRoute2, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 
 	sbSizer71->Add( bSizer711, 0, wxALL, 5 );
@@ -511,8 +511,8 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer7111->Add( m_button311111, 0, wxALL, 5 );
 
-	m_cbChartRoute3 = new wxCheckBox( sbSizer713->GetStaticBox(), wxID_ANY, _("Chart route"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer7111->Add( m_cbChartRoute3, 0, wxALL, 5 );
+	m_cbChartRoute3 = new wxCheckBox( sbSizer713->GetStaticBox(), wxID_ANY, _("Add to route manager"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer7111->Add( m_cbChartRoute3, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 
 	sbSizer713->Add( bSizer7111, 0, wxALL, 5 );
@@ -694,8 +694,8 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer7112->Add( m_button311112, 0, wxALL, 5 );
 
-	m_cbChartRoute4 = new wxCheckBox( sbSizer714->GetStaticBox(), wxID_ANY, _("Chart route"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer7112->Add( m_cbChartRoute4, 0, wxALL, 5 );
+	m_cbChartRoute4 = new wxCheckBox( sbSizer714->GetStaticBox(), wxID_ANY, _("Add to route manager"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer7112->Add( m_cbChartRoute4, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 
 	sbSizer714->Add( bSizer7112, 0, wxALL, 5 );
@@ -737,7 +737,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panek4->SetSizer( bSizer6 );
 	m_panek4->Layout();
 	bSizer6->Fit( m_panek4 );
-	m_notebook1->AddPage( m_panek4, _("Oil Rig (Quadrant Single)"), false );
+	m_notebook1->AddPage( m_panek4, _("Oil Rig (Quadrant Single)"), true );
 
 	bSframe->Add( m_notebook1, 0, wxALL|wxEXPAND, 5 );
 
