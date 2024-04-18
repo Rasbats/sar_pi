@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-14 07:08+0100\n"
-"PO-Revision-Date: 2024-04-14 06:07\n"
+"PO-Revision-Date: 2024-04-18 15:07\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
 "Language: nb_NO\n"
@@ -16,304 +16,404 @@ msgstr ""
 "X-Crowdin-Language: nb\n"
 "X-Crowdin-File: /plugins/SAR_pi/po/SAR_pi.pot\n"
 "X-Crowdin-File-ID: 145\n"
-#
-msgid "\""
-msgstr "\""
-#
-msgid "'"
-msgstr "'"
-#
-msgid "0.1"
-msgstr "0.1"
-#
-msgid "0.2"
-msgstr "0.2"
-#
-msgid "0.5"
-msgstr "0.5"
-#
-msgid "1"
-msgstr "1"
-#
-msgid "1 unit only"
-msgstr "Kun 1 enhet"
-#
-msgid "2"
-msgstr "2"
-#
-msgid "2 units A&B"
-msgstr "2 enheter A&B"
-#
-msgid "3"
-msgstr "3"
-#
-msgid "4"
-msgstr "4"
-#
-msgid "5"
-msgstr "5"
-#
-msgid "Add to route manager"
-msgstr ""
-#
-msgid "CPU saving settings"
-msgstr "Innstillinger for CPU strømsparing"
-#
-msgid "Calculate"
-msgstr "Beregn"
-#
-msgid "Capture Cursor Position"
-msgstr "Lagre kursorposisjon"
-#
-msgid "Capture Ship Position"
-msgstr "Lagre skipsposisjon"
-#
-msgid "Convert to Degree"
-msgstr "Konverter til grader"
-#
-msgid "Copy ship position (GPS fix required)"
-msgstr "Kopier skipsposisjon (GPS-lås er påkrevd)"
-#
-msgid "Creates GPX files with Search and Rescue patterns"
-msgstr "Oppretter GPX filer med Søk og Rednings mønstre"
-#
-msgid "Cursor"
-msgstr "Kursor"
-#
-msgid "D MM SS"
-msgstr "D MM SS"
-#
-msgid "D MM.mmm"
-msgstr "D MM.mmm"
-#
-msgid "D.ddd"
-msgstr "D.ddd"
-#
-msgid "DATUM / CSP (Start of Search)"
-msgstr "DATUM / CSP (Søkets start)"
-#
-msgid "Datum (Start of Search)"
-msgstr ""
-#
-msgid "Degrees"
-msgstr "Grader"
-#
-msgid "E"
-msgstr "Ø"
-#
-msgid "Error"
-msgstr "Feil"
-#
-msgid "Error in calculation. Please check input!"
-msgstr "Feil i kalkulering, sjekk inn-data!"
-#
-msgid "Error occurred, aborting SAR calc!"
-msgstr "En feil oppstod, avbryter SAR kalk!"
-#
-msgid "Expanding Square"
-msgstr "Utvidende firkant"
-#
-msgid "Export SAR track GPX file as"
-msgstr "Eksporter SAR slepestrek GPX-fil som"
-#
-msgid "First turn                    "
-msgstr "Første sving                    "
-#
-msgid "For this search pattern the Start Point entered is the CSP"
-msgstr "For dette søkemønsteret er startpunktet angitt CSP"
-#
-msgid "General settings"
-msgstr "Generelle innstillinger"
-#
-msgid "Generate &GPX"
-msgstr "Generer &GPX"
-#
-msgid "Generate &RTZ"
-msgstr ""
-#
-msgid "IAMSAR"
-msgstr "IAMSAR"
-#
-msgid "Icons "
-msgstr "Ikoner "
-#
-msgid "Initial course"
-msgstr "Startkurs"
-#
-msgid "Initial course    "
-msgstr "Startkurs    "
-#
-msgid "Initial course        "
-msgstr "Startkurs        "
-#
-msgid "Initial leg course        "
-msgstr "Kurs til startlegg        "
-#
-msgid "Lat "
-msgstr "Bgrad "
-#
-msgid "Latitude    "
-msgstr ""
-#
-msgid "Leave ticked, so that you can use cursor position."
-msgstr "La være merket, slik at du kan benytte kursorposisjon."
-#
-msgid "Leave ticked, so you can use ship's position"
-msgstr "La være merket, slik at du kan bruke skipets posisjon"
-#
-msgid "Leg Space             "
-msgstr "Leggavstand             "
-#
-msgid "Leg Spacing (S)       "
-msgstr "Leggavstand (S)       "
-#
-msgid "Lon"
-msgstr "Lgrad"
-#
-msgid "Longitude"
-msgstr "Lengdegrad"
-#
-msgid "N"
-msgstr "N"
-#
-msgid "NM"
-msgstr "NM"
-#
-msgid "No Datum Point has been entered"
-msgstr "Ingen datumpunkt er angitt"
-#
-msgid "Number of Legs  "
-msgstr "Antall legger   "
-#
-msgid "Number of Legs      "
-msgstr "Antall legger   "
-#
-msgid "Number of Legs        "
-msgstr "Antall legger   "
-#
-msgid "Number of passes"
-msgstr "Antall passeringer"
-#
-msgid "Oil Rig (Quadrant Single)"
-msgstr "Oljerigg (Quadrant Single)"
-#
-msgid "Opacity"
-msgstr "Gjennomsiktighet"
-#
-msgid "PORT"
-msgstr "BABORD"
-#
-msgid "Parallel Track"
-msgstr "Parallspor"
-#
-msgid "RTZ for this pattern is not available"
-msgstr ""
-#
-msgid "Route Preferences"
-msgstr "Egenskaper for rute"
-#
-msgid "Route for Ship           "
-msgstr "Skipets rute           "
-#
-msgid "S"
-msgstr "S"
-#
-msgid "SAR"
-msgstr "SAR"
-#
-msgid "SAR Plugin by SaltyPaws/Rasbats"
-msgstr "SAR utvidelse av SaltyPaws/Rasbats"
-#
+
+#: src/SAR_pi.cpp:90
 msgid "SAR panel icon has NOT been loaded"
 msgstr ""
-#
-msgid "SAR preferences"
-msgstr "SAR-egenskaper"
-#
-msgid "STARBOARD"
-msgstr "STYRBORD"
-#
-msgid "Save in RTZ format"
-msgstr ""
-#
-msgid "Search Distance / Time"
-msgstr "Søk distanse / tid"
-#
-msgid "Search Leg length     "
-msgstr "Søk legglengde     "
-#
-msgid "Search Method  "
-msgstr "Søkemetode  "
-#
-msgid "Search Radius      "
-msgstr "Søkeradius      "
-#
-msgid "Search Speed       "
-msgstr "Søkefart         "
-#
-msgid "Search Speed           "
-msgstr "Søkefart         "
-#
-msgid "Search Speed             "
-msgstr "Søkefart             "
-#
-msgid "Search and Rescue Patterns"
-msgstr "Søk og rednings mønstre"
-#
-msgid "Sector Search"
-msgstr "Sektorsøk"
-#
+
+#: src/SAR_pi.cpp:116 src/SAR_pi.cpp:119 src/SARgui.h:232
+msgid "SAR"
+msgstr "SAR"
+
+#: src/SAR_pi.cpp:128
 msgid "Select SAR Datum Point"
 msgstr "Velg SAR datumpunkt"
-#
-msgid "Ship"
-msgstr "Skip"
-#
-msgid "Start Position"
-msgstr "Start posisjon"
-#
-msgid ""
-"To copy the cursor location place the cursor on the chart \n"
-"     ...and press <CTRL>+S"
-msgstr ""
-"For å kopiere markørplassering, plasserer du markøren i kartet \n"
-"     og trykk <CTRL>+S"
-#
+
+#: src/SAR_pi.cpp:199
+msgid "Search and Rescue Patterns"
+msgstr "Søk og rednings mønstre"
+
+#: src/SAR_pi.cpp:204
+msgid "Creates GPX files with Search and Rescue patterns"
+msgstr "Oppretter GPX filer med Søk og Rednings mønstre"
+
+#: src/SAR_pi.cpp:296
+msgid "Route Preferences"
+msgstr "Egenskaper for rute"
+
+#: src/SARgui.h:256 src/SARgui_impl.h:77
+msgid "SAR preferences"
+msgstr "SAR-egenskaper"
+
+#: src/SARgui.cpp:33
+msgid "Initial leg course        "
+msgstr "Kurs til startlegg        "
+
+#: src/SARgui.cpp:42 src/SARgui.cpp:264 src/SARgui.cpp:424 src/SARgui.cpp:603
+msgid "Degrees"
+msgstr "Grader"
+
+#: src/SARgui.cpp:52
+msgid "Search Leg length     "
+msgstr "Søk legglengde     "
+
+#: src/SARgui.cpp:61 src/SARgui.cpp:80 src/SARgui.cpp:284 src/SARgui.cpp:444
+#: src/SARgui.cpp:623 src/SARgui.cpp:1047
+msgid "NM"
+msgstr "NM"
+
+#: src/SARgui.cpp:71
 msgid "Track space (S)          "
 msgstr "Spor område (S)          "
-#
-msgid "USCG"
-msgstr "USCG"
-#
-msgid "W"
-msgstr "V"
-#
-msgid "Waypoint names "
-msgstr "Veipunktnavn "
-#
-msgid "Waypoint names     "
-msgstr "Veipunktnavn     "
-#
-msgid "deg"
-msgstr ""
-#
-msgid "error in input range validation"
-msgstr "feil i validering av inndata-område"
-#
-msgid "hr"
-msgstr "tim"
-#
-msgid "kts"
-msgstr "kn"
-#
+
+#: src/SARgui.cpp:90
+msgid "Number of Legs        "
+msgstr "Antall legger   "
+
+#: src/SARgui.cpp:99 src/SARgui.cpp:303 src/SARgui.cpp:642
 msgid "n"
 msgstr "n"
-#
+
+#: src/SARgui.cpp:109
+msgid "Search Speed             "
+msgstr "Søkefart             "
+
+#: src/SARgui.cpp:118 src/SARgui.cpp:322 src/SARgui.cpp:463 src/SARgui.cpp:661
+msgid "kts"
+msgstr "kn"
+
+#: src/SARgui.cpp:134 src/SARgui.cpp:352 src/SARgui.cpp:509 src/SARgui.cpp:691
+msgid "Generate &GPX"
+msgstr "Generer &GPX"
+
+#: src/SARgui.cpp:139 src/SARgui.cpp:357 src/SARgui.cpp:514 src/SARgui.cpp:697
+msgid "Add to route manager"
+msgstr ""
+
+#: src/SARgui.cpp:148 src/SARgui.cpp:366 src/SARgui.cpp:523 src/SARgui.cpp:706
+msgid "Generate &RTZ"
+msgstr ""
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
 msgid "v1.0"
 msgstr ""
-#
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
 msgid "v1.1"
 msgstr ""
-#
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
 msgid "v1.2"
 msgstr ""
+
+#: src/SARgui.cpp:190
+msgid "Route for Ship           "
+msgstr "Skipets rute           "
+
+#: src/SARgui.cpp:194
+msgid "1 unit only"
+msgstr "Kun 1 enhet"
+
+#: src/SARgui.cpp:194
+msgid "2 units A&B"
+msgstr "2 enheter A&B"
+
+#: src/SARgui.cpp:206
+msgid "First turn                    "
+msgstr "Første sving                    "
+
+#: src/SARgui.cpp:210
+msgid "STARBOARD"
+msgstr "STYRBORD"
+
+#: src/SARgui.cpp:210
+msgid "PORT"
+msgstr "BABORD"
+
+#: src/SARgui.cpp:222 src/SARgui.cpp:338 src/SARgui.cpp:495
+msgid "Waypoint names     "
+msgstr "Veipunktnavn     "
+
+#: src/SARgui.cpp:226 src/SARgui.cpp:342 src/SARgui.cpp:499 src/SARgui.cpp:681
+msgid "Icons "
+msgstr "Ikoner "
+
+#: src/SARgui.cpp:240
+msgid "Parallel Track"
+msgstr "Parallspor"
+
+#: src/SARgui.cpp:255
+msgid "Initial course    "
+msgstr "Startkurs    "
+
+#: src/SARgui.cpp:274
+msgid "Leg Spacing (S)       "
+msgstr "Leggavstand (S)       "
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:617
+msgid "3"
+msgstr "3"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:477 src/SARgui.cpp:617
+msgid "2"
+msgstr "2"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:477 src/SARgui.cpp:617
+msgid "1"
+msgstr "1"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:617
+msgid "0.5"
+msgstr "0.5"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:617
+msgid "0.2"
+msgstr "0.2"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:617
+msgid "0.1"
+msgstr "0.1"
+
+#: src/SARgui.cpp:294
+msgid "Number of Legs      "
+msgstr "Antall legger   "
+
+#: src/SARgui.cpp:313
+msgid "Search Speed           "
+msgstr "Søkefart         "
+
+#: src/SARgui.cpp:400
+msgid "Expanding Square"
+msgstr "Utvidende firkant"
+
+#: src/SARgui.cpp:415
+msgid "Initial course        "
+msgstr "Startkurs        "
+
+#: src/SARgui.cpp:434
+msgid "Search Radius      "
+msgstr "Søkeradius      "
+
+#: src/SARgui.cpp:438
+msgid "5"
+msgstr "5"
+
+#: src/SARgui.cpp:438
+msgid "4"
+msgstr "4"
+
+#: src/SARgui.cpp:454 src/SARgui.cpp:652
+msgid "Search Speed       "
+msgstr "Søkefart         "
+
+#: src/SARgui.cpp:473
+msgid "Number of passes"
+msgstr "Antall passeringer"
+
+#: src/SARgui.cpp:559
+msgid "Search Method  "
+msgstr "Søkemetode  "
+
+#: src/SARgui.cpp:563
+msgid "IAMSAR"
+msgstr "IAMSAR"
+
+#: src/SARgui.cpp:563
+msgid "USCG"
+msgstr "USCG"
+
+#: src/SARgui.cpp:579
+msgid "Sector Search"
+msgstr "Sektorsøk"
+
+#: src/SARgui.cpp:594
+msgid "Initial course"
+msgstr "Startkurs"
+
+#: src/SARgui.cpp:613
+msgid "Leg Space             "
+msgstr "Leggavstand             "
+
+#: src/SARgui.cpp:633
+msgid "Number of Legs  "
+msgstr "Antall legger   "
+
+#: src/SARgui.cpp:677
+msgid "Waypoint names "
+msgstr "Veipunktnavn "
+
+#: src/SARgui.cpp:740
+msgid "Oil Rig (Quadrant Single)"
+msgstr "Oljerigg (Quadrant Single)"
+
+#: src/SARgui.cpp:753
+msgid "DATUM / CSP (Start of Search)"
+msgstr "DATUM / CSP (Søkets start)"
+
+#: src/SARgui.cpp:764
+msgid "Latitude    "
+msgstr ""
+
+#: src/SARgui.cpp:771 src/SARgui.cpp:788 src/SARgui.cpp:847 src/SARgui.cpp:877
+#: src/SARgui.cpp:937 src/SARgui.cpp:974
+msgid "deg"
+msgstr ""
+
+#: src/SARgui.cpp:781
+msgid "Longitude"
+msgstr "Lengdegrad"
+
+#: src/SARgui.cpp:802
+msgid "Ship"
+msgstr "Skip"
+
+#: src/SARgui.cpp:803
+msgid "Copy ship position (GPS fix required)"
+msgstr "Kopier skipsposisjon (GPS-lås er påkrevd)"
+
+#: src/SARgui.cpp:807
+msgid "Cursor"
+msgstr "Kursor"
+
+#: src/SARgui.cpp:826
+msgid "D.ddd"
+msgstr "D.ddd"
+
+#: src/SARgui.cpp:832 src/SARgui.cpp:922
+msgid "Datum (Start of Search)"
+msgstr ""
+
+#: src/SARgui.cpp:840 src/SARgui.cpp:930
+msgid "Lat "
+msgstr "Bgrad "
+
+#: src/SARgui.cpp:854 src/SARgui.cpp:884 src/SARgui.cpp:944 src/SARgui.cpp:981
+msgid "'"
+msgstr "'"
+
+#: src/SARgui.cpp:858 src/SARgui.cpp:955
+msgid "N"
+msgstr "N"
+
+#: src/SARgui.cpp:858 src/SARgui.cpp:955
+msgid "S"
+msgstr "S"
+
+#: src/SARgui.cpp:870 src/SARgui.cpp:967
+msgid "Lon"
+msgstr "Lgrad"
+
+#: src/SARgui.cpp:888 src/SARgui.cpp:992
+msgid "E"
+msgstr "Ø"
+
+#: src/SARgui.cpp:888 src/SARgui.cpp:992
+msgid "W"
+msgstr "V"
+
+#: src/SARgui.cpp:906 src/SARgui.cpp:1010
+msgid "Convert to Degree"
+msgstr "Konverter til grader"
+
+#: src/SARgui.cpp:916
+msgid "D MM.mmm"
+msgstr "D MM.mmm"
+
+#: src/SARgui.cpp:951 src/SARgui.cpp:988
+msgid "\""
+msgstr "\""
+
+#: src/SARgui.cpp:1020
+msgid "D MM SS"
+msgstr "D MM SS"
+
+#: src/SARgui.cpp:1034
+msgid "Calculate"
+msgstr "Beregn"
+
+#: src/SARgui.cpp:1037
+msgid "Search Distance / Time"
+msgstr "Søk distanse / tid"
+
+#: src/SARgui.cpp:1060
+msgid "hr"
+msgstr "tim"
+
+#: src/SARgui.cpp:1153
+msgid "General settings"
+msgstr "Generelle innstillinger"
+
+#: src/SARgui.cpp:1160
+msgid "Opacity"
+msgstr "Gjennomsiktighet"
+
+#: src/SARgui.cpp:1174
+msgid "CPU saving settings"
+msgstr "Innstillinger for CPU strømsparing"
+
+#: src/SARgui.cpp:1184
+msgid "Capture Ship Position"
+msgstr "Lagre skipsposisjon"
+
+#: src/SARgui.cpp:1186
+msgid "Leave ticked, so you can use ship's position"
+msgstr "La være merket, slik at du kan bruke skipets posisjon"
+
+#: src/SARgui.cpp:1190
+msgid "Capture Cursor Position"
+msgstr "Lagre kursorposisjon"
+
+#: src/SARgui.cpp:1192
+msgid "Leave ticked, so that you can use cursor position."
+msgstr "La være merket, slik at du kan benytte kursorposisjon."
+
+#: src/SARgui_impl.cpp:398 src/SARgui_impl.cpp:437
+msgid "RTZ for this pattern is not available"
+msgstr ""
+
+#: src/SARgui_impl.cpp:544
+msgid "No Datum Point has been entered"
+msgstr "Ingen datumpunkt er angitt"
+
+#: src/SARgui_impl.cpp:544
+msgid "Error"
+msgstr "Feil"
+
+#: src/SARgui_impl.cpp:552
+msgid "For this search pattern the Start Point entered is the CSP"
+msgstr "For dette søkemønsteret er startpunktet angitt CSP"
+
+#: src/SARgui_impl.cpp:553
+msgid "Start Position"
+msgstr "Start posisjon"
+
+#: src/SARgui_impl.cpp:558
+msgid "Export SAR track GPX file as"
+msgstr "Eksporter SAR slepestrek GPX-fil som"
+
+#: src/SARgui_impl.cpp:593
+msgid "error in input range validation"
+msgstr "feil i validering av inndata-område"
+
+#: src/SARgui_impl.cpp:725
+msgid "Error occurred, aborting SAR calc!"
+msgstr "En feil oppstod, avbryter SAR kalk!"
+
+#: src/SARgui_impl.cpp:1827 src/SARgui_impl.cpp:1828
+msgid "Error in calculation. Please check input!"
+msgstr "Feil i kalkulering, sjekk inn-data!"
+
+#: src/SARgui_impl.cpp:1960
+msgid "To copy the cursor location place the cursor on the chart \n"
+"     ...and press <CTRL>+S"
+msgstr "For å kopiere markørplassering, plasserer du markøren i kartet \n"
+"     og trykk <CTRL>+S"
+
+#: src/SARgui_impl.cpp:2200
+msgid "Save in RTZ format"
+msgstr ""
+
+#: src/SARgui_impl.h:86
+msgid "SAR Plugin by SaltyPaws/Rasbats"
+msgstr "SAR utvidelse av SaltyPaws/Rasbats"
+

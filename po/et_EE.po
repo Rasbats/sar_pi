@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-14 07:08+0100\n"
-"PO-Revision-Date: 2024-04-14 06:07\n"
+"PO-Revision-Date: 2024-04-18 15:07\n"
 "Last-Translator: \n"
 "Language-Team: Estonian\n"
 "Language: et_EE\n"
@@ -16,304 +16,404 @@ msgstr ""
 "X-Crowdin-Language: et\n"
 "X-Crowdin-File: /plugins/SAR_pi/po/SAR_pi.pot\n"
 "X-Crowdin-File-ID: 145\n"
-#
-msgid "\""
-msgstr "\""
-#
-msgid "'"
-msgstr "'"
-#
-msgid "0.1"
-msgstr "0.1"
-#
-msgid "0.2"
-msgstr "0.2"
-#
-msgid "0.5"
-msgstr "0,5"
-#
-msgid "1"
-msgstr "1"
-#
-msgid "1 unit only"
-msgstr "ainult 1 osaleja"
-#
-msgid "2"
-msgstr "2"
-#
-msgid "2 units A&B"
-msgstr "2 osalejat A&B"
-#
-msgid "3"
-msgstr "3"
-#
-msgid "4"
-msgstr "4"
-#
-msgid "5"
-msgstr "5"
-#
-msgid "Add to route manager"
-msgstr ""
-#
-msgid "CPU saving settings"
-msgstr "CPU'd säästvad seaded"
-#
-msgid "Calculate"
-msgstr "Arvuta"
-#
-msgid "Capture Cursor Position"
-msgstr "Haara kursori asukoht"
-#
-msgid "Capture Ship Position"
-msgstr "Haara laeva asukoht"
-#
-msgid "Convert to Degree"
-msgstr "Muuda kraadiks"
-#
-msgid "Copy ship position (GPS fix required)"
-msgstr "Kopeeri laeva asukoht (GPS'i koht vajalik)"
-#
-msgid "Creates GPX files with Search and Rescue patterns"
-msgstr "Loob GPX-failid koos otsingu ja pääste mustritega"
-#
-msgid "Cursor"
-msgstr "Kursor"
-#
-msgid "D MM SS"
-msgstr "D MM SS"
-#
-msgid "D MM.mmm"
-msgstr "D MM.mmm"
-#
-msgid "D.ddd"
-msgstr "D.ddd"
-#
-msgid "DATUM / CSP (Start of Search)"
-msgstr "DATUM / CSP (otsingu algus)"
-#
-msgid "Datum (Start of Search)"
-msgstr ""
-#
-msgid "Degrees"
-msgstr "kraadi"
-#
-msgid "E"
-msgstr "E"
-#
-msgid "Error"
-msgstr "Viga"
-#
-msgid "Error in calculation. Please check input!"
-msgstr "Viga arvutuses. Kontrolli palun sisestatut!"
-#
-msgid "Error occurred, aborting SAR calc!"
-msgstr "Juhtus viga, katkestan SAR arvutamise!"
-#
-msgid "Expanding Square"
-msgstr "Suurenev ruut"
-#
-msgid "Export SAR track GPX file as"
-msgstr "Väljasta SAR-jälje GPX-fail kui"
-#
-msgid "First turn                    "
-msgstr "Esimene pööre"
-#
-msgid "For this search pattern the Start Point entered is the CSP"
-msgstr "Selle otsingu mustri jaoks sisestatud algpunkt on CSP"
-#
-msgid "General settings"
-msgstr "Üldised seaded"
-#
-msgid "Generate &GPX"
-msgstr "Loo &GPX"
-#
-msgid "Generate &RTZ"
-msgstr ""
-#
-msgid "IAMSAR"
-msgstr "IAMSAR"
-#
-msgid "Icons "
-msgstr "Ikoonid"
-#
-msgid "Initial course"
-msgstr "Algne kurss"
-#
-msgid "Initial course    "
-msgstr "Algne kurss    "
-#
-msgid "Initial course        "
-msgstr "Algne kurss"
-#
-msgid "Initial leg course        "
-msgstr "Algne lõigu kurss"
-#
-msgid "Lat "
-msgstr "L°"
-#
-msgid "Latitude    "
-msgstr ""
-#
-msgid "Leave ticked, so that you can use cursor position."
-msgstr "Jäta märgistatuks, et saaksite kasutada kursori asukohta."
-#
-msgid "Leave ticked, so you can use ship's position"
-msgstr "Jäta märgistatuks, et saaksite kasutada laeva asukohta."
-#
-msgid "Leg Space             "
-msgstr "Lõigu vahe    "
-#
-msgid "Leg Spacing (S)       "
-msgstr "Lõigu vahe (S)    "
-#
-msgid "Lon"
-msgstr "P°"
-#
-msgid "Longitude"
-msgstr "Pikkuskraad"
-#
-msgid "N"
-msgstr "N"
-#
-msgid "NM"
-msgstr "miili"
-#
-msgid "No Datum Point has been entered"
-msgstr "Alguspunkti pole sisetatud"
-#
-msgid "Number of Legs  "
-msgstr "Lõikude arv  "
-#
-msgid "Number of Legs      "
-msgstr "Lõikude arv      "
-#
-msgid "Number of Legs        "
-msgstr "Lõikude arv        "
-#
-msgid "Number of passes"
-msgstr "Sõitude arv"
-#
-msgid "Oil Rig (Quadrant Single)"
-msgstr "Puurtorn (lihtne ruut)"
-#
-msgid "Opacity"
-msgstr "Läbipaistmatus"
-#
-msgid "PORT"
-msgstr "PAKPOORD"
-#
-msgid "Parallel Track"
-msgstr "Rööpjälg"
-#
-msgid "RTZ for this pattern is not available"
-msgstr ""
-#
-msgid "Route Preferences"
-msgstr "Teekonna eelistused"
-#
-msgid "Route for Ship           "
-msgstr "Laeva tee"
-#
-msgid "S"
-msgstr "S"
-#
-msgid "SAR"
-msgstr "SAR"
-#
-msgid "SAR Plugin by SaltyPaws/Rasbats"
-msgstr "SaltyPaws'i/Raspats'i SAR-plugin"
-#
+
+#: src/SAR_pi.cpp:90
 msgid "SAR panel icon has NOT been loaded"
 msgstr ""
-#
-msgid "SAR preferences"
-msgstr "SAR eelistused"
-#
-msgid "STARBOARD"
-msgstr "TÜÜRPOORD"
-#
-msgid "Save in RTZ format"
-msgstr ""
-#
-msgid "Search Distance / Time"
-msgstr "Otsingu vahemaa / aeg"
-#
-msgid "Search Leg length     "
-msgstr "Otsingulõigu pikkus"
-#
-msgid "Search Method  "
-msgstr "Otsingumeetod"
-#
-msgid "Search Radius      "
-msgstr "Otsingu raadius"
-#
-msgid "Search Speed       "
-msgstr "Kiirus otsingul    "
-#
-msgid "Search Speed           "
-msgstr "Kiirus otsingul    "
-#
-msgid "Search Speed             "
-msgstr "Kiirus otsingul    "
-#
-msgid "Search and Rescue Patterns"
-msgstr "Otsingu ja pääste mustrid"
-#
-msgid "Sector Search"
-msgstr "Sektorotsing"
-#
+
+#: src/SAR_pi.cpp:116 src/SAR_pi.cpp:119 src/SARgui.h:232
+msgid "SAR"
+msgstr "SAR"
+
+#: src/SAR_pi.cpp:128
 msgid "Select SAR Datum Point"
 msgstr "Vali SAR-algupunkt"
-#
-msgid "Ship"
-msgstr "Laev"
-#
-msgid "Start Position"
-msgstr "Alguspunkt"
-#
-msgid ""
-"To copy the cursor location place the cursor on the chart \n"
-"     ...and press <CTRL>+S"
-msgstr ""
-"Kursori asukoha kopeerimiseks vii kursor kaardile \n"
-"     ...ja vajuta <CTRL>+S"
-#
+
+#: src/SAR_pi.cpp:199
+msgid "Search and Rescue Patterns"
+msgstr "Otsingu ja pääste mustrid"
+
+#: src/SAR_pi.cpp:204
+msgid "Creates GPX files with Search and Rescue patterns"
+msgstr "Loob GPX-failid koos otsingu ja pääste mustritega"
+
+#: src/SAR_pi.cpp:296
+msgid "Route Preferences"
+msgstr "Teekonna eelistused"
+
+#: src/SARgui.h:256 src/SARgui_impl.h:77
+msgid "SAR preferences"
+msgstr "SAR eelistused"
+
+#: src/SARgui.cpp:33
+msgid "Initial leg course        "
+msgstr "Algne lõigu kurss"
+
+#: src/SARgui.cpp:42 src/SARgui.cpp:264 src/SARgui.cpp:424 src/SARgui.cpp:603
+msgid "Degrees"
+msgstr "kraadi"
+
+#: src/SARgui.cpp:52
+msgid "Search Leg length     "
+msgstr "Otsingulõigu pikkus"
+
+#: src/SARgui.cpp:61 src/SARgui.cpp:80 src/SARgui.cpp:284 src/SARgui.cpp:444
+#: src/SARgui.cpp:623 src/SARgui.cpp:1047
+msgid "NM"
+msgstr "miili"
+
+#: src/SARgui.cpp:71
 msgid "Track space (S)          "
 msgstr "Jälje vahe (S)"
-#
-msgid "USCG"
-msgstr "USCG"
-#
-msgid "W"
-msgstr "W"
-#
-msgid "Waypoint names "
-msgstr "Teepunkti nimed "
-#
-msgid "Waypoint names     "
-msgstr "Teepunkti nimed     "
-#
-msgid "deg"
-msgstr ""
-#
-msgid "error in input range validation"
-msgstr "viga sisestatud ulatuse kontrollimisel"
-#
-msgid "hr"
-msgstr "t"
-#
-msgid "kts"
-msgstr "sõlme"
-#
+
+#: src/SARgui.cpp:90
+msgid "Number of Legs        "
+msgstr "Lõikude arv        "
+
+#: src/SARgui.cpp:99 src/SARgui.cpp:303 src/SARgui.cpp:642
 msgid "n"
 msgstr "tk"
-#
+
+#: src/SARgui.cpp:109
+msgid "Search Speed             "
+msgstr "Kiirus otsingul    "
+
+#: src/SARgui.cpp:118 src/SARgui.cpp:322 src/SARgui.cpp:463 src/SARgui.cpp:661
+msgid "kts"
+msgstr "sõlme"
+
+#: src/SARgui.cpp:134 src/SARgui.cpp:352 src/SARgui.cpp:509 src/SARgui.cpp:691
+msgid "Generate &GPX"
+msgstr "Loo &GPX"
+
+#: src/SARgui.cpp:139 src/SARgui.cpp:357 src/SARgui.cpp:514 src/SARgui.cpp:697
+msgid "Add to route manager"
+msgstr ""
+
+#: src/SARgui.cpp:148 src/SARgui.cpp:366 src/SARgui.cpp:523 src/SARgui.cpp:706
+msgid "Generate &RTZ"
+msgstr ""
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
 msgid "v1.0"
 msgstr ""
-#
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
 msgid "v1.1"
 msgstr ""
-#
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
 msgid "v1.2"
 msgstr ""
+
+#: src/SARgui.cpp:190
+msgid "Route for Ship           "
+msgstr "Laeva tee"
+
+#: src/SARgui.cpp:194
+msgid "1 unit only"
+msgstr "ainult 1 osaleja"
+
+#: src/SARgui.cpp:194
+msgid "2 units A&B"
+msgstr "2 osalejat A&B"
+
+#: src/SARgui.cpp:206
+msgid "First turn                    "
+msgstr "Esimene pööre"
+
+#: src/SARgui.cpp:210
+msgid "STARBOARD"
+msgstr "TÜÜRPOORD"
+
+#: src/SARgui.cpp:210
+msgid "PORT"
+msgstr "PAKPOORD"
+
+#: src/SARgui.cpp:222 src/SARgui.cpp:338 src/SARgui.cpp:495
+msgid "Waypoint names     "
+msgstr "Teepunkti nimed     "
+
+#: src/SARgui.cpp:226 src/SARgui.cpp:342 src/SARgui.cpp:499 src/SARgui.cpp:681
+msgid "Icons "
+msgstr "Ikoonid"
+
+#: src/SARgui.cpp:240
+msgid "Parallel Track"
+msgstr "Rööpjälg"
+
+#: src/SARgui.cpp:255
+msgid "Initial course    "
+msgstr "Algne kurss    "
+
+#: src/SARgui.cpp:274
+msgid "Leg Spacing (S)       "
+msgstr "Lõigu vahe (S)    "
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:617
+msgid "3"
+msgstr "3"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:477 src/SARgui.cpp:617
+msgid "2"
+msgstr "2"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:477 src/SARgui.cpp:617
+msgid "1"
+msgstr "1"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:617
+msgid "0.5"
+msgstr "0,5"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:617
+msgid "0.2"
+msgstr "0.2"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:617
+msgid "0.1"
+msgstr "0.1"
+
+#: src/SARgui.cpp:294
+msgid "Number of Legs      "
+msgstr "Lõikude arv      "
+
+#: src/SARgui.cpp:313
+msgid "Search Speed           "
+msgstr "Kiirus otsingul    "
+
+#: src/SARgui.cpp:400
+msgid "Expanding Square"
+msgstr "Suurenev ruut"
+
+#: src/SARgui.cpp:415
+msgid "Initial course        "
+msgstr "Algne kurss"
+
+#: src/SARgui.cpp:434
+msgid "Search Radius      "
+msgstr "Otsingu raadius"
+
+#: src/SARgui.cpp:438
+msgid "5"
+msgstr "5"
+
+#: src/SARgui.cpp:438
+msgid "4"
+msgstr "4"
+
+#: src/SARgui.cpp:454 src/SARgui.cpp:652
+msgid "Search Speed       "
+msgstr "Kiirus otsingul    "
+
+#: src/SARgui.cpp:473
+msgid "Number of passes"
+msgstr "Sõitude arv"
+
+#: src/SARgui.cpp:559
+msgid "Search Method  "
+msgstr "Otsingumeetod"
+
+#: src/SARgui.cpp:563
+msgid "IAMSAR"
+msgstr "IAMSAR"
+
+#: src/SARgui.cpp:563
+msgid "USCG"
+msgstr "USCG"
+
+#: src/SARgui.cpp:579
+msgid "Sector Search"
+msgstr "Sektorotsing"
+
+#: src/SARgui.cpp:594
+msgid "Initial course"
+msgstr "Algne kurss"
+
+#: src/SARgui.cpp:613
+msgid "Leg Space             "
+msgstr "Lõigu vahe    "
+
+#: src/SARgui.cpp:633
+msgid "Number of Legs  "
+msgstr "Lõikude arv  "
+
+#: src/SARgui.cpp:677
+msgid "Waypoint names "
+msgstr "Teepunkti nimed "
+
+#: src/SARgui.cpp:740
+msgid "Oil Rig (Quadrant Single)"
+msgstr "Puurtorn (lihtne ruut)"
+
+#: src/SARgui.cpp:753
+msgid "DATUM / CSP (Start of Search)"
+msgstr "DATUM / CSP (otsingu algus)"
+
+#: src/SARgui.cpp:764
+msgid "Latitude    "
+msgstr ""
+
+#: src/SARgui.cpp:771 src/SARgui.cpp:788 src/SARgui.cpp:847 src/SARgui.cpp:877
+#: src/SARgui.cpp:937 src/SARgui.cpp:974
+msgid "deg"
+msgstr ""
+
+#: src/SARgui.cpp:781
+msgid "Longitude"
+msgstr "Pikkuskraad"
+
+#: src/SARgui.cpp:802
+msgid "Ship"
+msgstr "Laev"
+
+#: src/SARgui.cpp:803
+msgid "Copy ship position (GPS fix required)"
+msgstr "Kopeeri laeva asukoht (GPS'i koht vajalik)"
+
+#: src/SARgui.cpp:807
+msgid "Cursor"
+msgstr "Kursor"
+
+#: src/SARgui.cpp:826
+msgid "D.ddd"
+msgstr "D.ddd"
+
+#: src/SARgui.cpp:832 src/SARgui.cpp:922
+msgid "Datum (Start of Search)"
+msgstr ""
+
+#: src/SARgui.cpp:840 src/SARgui.cpp:930
+msgid "Lat "
+msgstr "L°"
+
+#: src/SARgui.cpp:854 src/SARgui.cpp:884 src/SARgui.cpp:944 src/SARgui.cpp:981
+msgid "'"
+msgstr "'"
+
+#: src/SARgui.cpp:858 src/SARgui.cpp:955
+msgid "N"
+msgstr "N"
+
+#: src/SARgui.cpp:858 src/SARgui.cpp:955
+msgid "S"
+msgstr "S"
+
+#: src/SARgui.cpp:870 src/SARgui.cpp:967
+msgid "Lon"
+msgstr "P°"
+
+#: src/SARgui.cpp:888 src/SARgui.cpp:992
+msgid "E"
+msgstr "E"
+
+#: src/SARgui.cpp:888 src/SARgui.cpp:992
+msgid "W"
+msgstr "W"
+
+#: src/SARgui.cpp:906 src/SARgui.cpp:1010
+msgid "Convert to Degree"
+msgstr "Muuda kraadiks"
+
+#: src/SARgui.cpp:916
+msgid "D MM.mmm"
+msgstr "D MM.mmm"
+
+#: src/SARgui.cpp:951 src/SARgui.cpp:988
+msgid "\""
+msgstr "\""
+
+#: src/SARgui.cpp:1020
+msgid "D MM SS"
+msgstr "D MM SS"
+
+#: src/SARgui.cpp:1034
+msgid "Calculate"
+msgstr "Arvuta"
+
+#: src/SARgui.cpp:1037
+msgid "Search Distance / Time"
+msgstr "Otsingu vahemaa / aeg"
+
+#: src/SARgui.cpp:1060
+msgid "hr"
+msgstr "t"
+
+#: src/SARgui.cpp:1153
+msgid "General settings"
+msgstr "Üldised seaded"
+
+#: src/SARgui.cpp:1160
+msgid "Opacity"
+msgstr "Läbipaistmatus"
+
+#: src/SARgui.cpp:1174
+msgid "CPU saving settings"
+msgstr "CPU'd säästvad seaded"
+
+#: src/SARgui.cpp:1184
+msgid "Capture Ship Position"
+msgstr "Haara laeva asukoht"
+
+#: src/SARgui.cpp:1186
+msgid "Leave ticked, so you can use ship's position"
+msgstr "Jäta märgistatuks, et saaksite kasutada laeva asukohta."
+
+#: src/SARgui.cpp:1190
+msgid "Capture Cursor Position"
+msgstr "Haara kursori asukoht"
+
+#: src/SARgui.cpp:1192
+msgid "Leave ticked, so that you can use cursor position."
+msgstr "Jäta märgistatuks, et saaksite kasutada kursori asukohta."
+
+#: src/SARgui_impl.cpp:398 src/SARgui_impl.cpp:437
+msgid "RTZ for this pattern is not available"
+msgstr ""
+
+#: src/SARgui_impl.cpp:544
+msgid "No Datum Point has been entered"
+msgstr "Alguspunkti pole sisetatud"
+
+#: src/SARgui_impl.cpp:544
+msgid "Error"
+msgstr "Viga"
+
+#: src/SARgui_impl.cpp:552
+msgid "For this search pattern the Start Point entered is the CSP"
+msgstr "Selle otsingu mustri jaoks sisestatud algpunkt on CSP"
+
+#: src/SARgui_impl.cpp:553
+msgid "Start Position"
+msgstr "Alguspunkt"
+
+#: src/SARgui_impl.cpp:558
+msgid "Export SAR track GPX file as"
+msgstr "Väljasta SAR-jälje GPX-fail kui"
+
+#: src/SARgui_impl.cpp:593
+msgid "error in input range validation"
+msgstr "viga sisestatud ulatuse kontrollimisel"
+
+#: src/SARgui_impl.cpp:725
+msgid "Error occurred, aborting SAR calc!"
+msgstr "Juhtus viga, katkestan SAR arvutamise!"
+
+#: src/SARgui_impl.cpp:1827 src/SARgui_impl.cpp:1828
+msgid "Error in calculation. Please check input!"
+msgstr "Viga arvutuses. Kontrolli palun sisestatut!"
+
+#: src/SARgui_impl.cpp:1960
+msgid "To copy the cursor location place the cursor on the chart \n"
+"     ...and press <CTRL>+S"
+msgstr "Kursori asukoha kopeerimiseks vii kursor kaardile \n"
+"     ...ja vajuta <CTRL>+S"
+
+#: src/SARgui_impl.cpp:2200
+msgid "Save in RTZ format"
+msgstr ""
+
+#: src/SARgui_impl.h:86
+msgid "SAR Plugin by SaltyPaws/Rasbats"
+msgstr "SaltyPaws'i/Raspats'i SAR-plugin"
+

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: opencpn\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-04-14 07:08+0100\n"
-"PO-Revision-Date: 2024-04-14 06:07\n"
+"PO-Revision-Date: 2024-04-18 15:07\n"
 "Last-Translator: \n"
 "Language-Team: Greek\n"
 "Language: el_GR\n"
@@ -16,304 +16,404 @@ msgstr ""
 "X-Crowdin-Language: el\n"
 "X-Crowdin-File: /plugins/SAR_pi/po/SAR_pi.pot\n"
 "X-Crowdin-File-ID: 145\n"
-#
-msgid "\""
-msgstr "\""
-#
-msgid "'"
-msgstr "'"
-#
-msgid "0.1"
-msgstr "0.1"
-#
-msgid "0.2"
-msgstr "0.2"
-#
-msgid "0.5"
-msgstr "-.5"
-#
-msgid "1"
-msgstr "1"
-#
-msgid "1 unit only"
-msgstr "Μόνο 1 μονάδα"
-#
-msgid "2"
-msgstr "2"
-#
-msgid "2 units A&B"
-msgstr "2 μονάδες Α&Β"
-#
-msgid "3"
-msgstr "3"
-#
-msgid "4"
-msgstr "4"
-#
-msgid "5"
-msgstr "5"
-#
-msgid "Add to route manager"
-msgstr ""
-#
-msgid "CPU saving settings"
-msgstr "Ρυθμίσεις αποθήκευσης CPU"
-#
-msgid "Calculate"
-msgstr "Υπολογισμός"
-#
-msgid "Capture Cursor Position"
-msgstr "Καταγραφή θέσης δρομέα"
-#
-msgid "Capture Ship Position"
-msgstr "Καταγραφή θέσης πλοίου"
-#
-msgid "Convert to Degree"
-msgstr "Μετατροπή σε μοίρες"
-#
-msgid "Copy ship position (GPS fix required)"
-msgstr "Αντίγραφο θέσης πλοίου (απαιτείται στίγμα GPS)"
-#
-msgid "Creates GPX files with Search and Rescue patterns"
-msgstr "Δημιουργεί αρχεία GPX με μοτίβα Έρευνας και Διάσωσης"
-#
-msgid "Cursor"
-msgstr "Δρομέας"
-#
-msgid "D MM SS"
-msgstr "D MM SS"
-#
-msgid "D MM.mmm"
-msgstr "D MM.mmm"
-#
-msgid "D.ddd"
-msgstr "D.ddd"
-#
-msgid "DATUM / CSP (Start of Search)"
-msgstr "DATUM / CSP (Αρχή έρευνας)"
-#
-msgid "Datum (Start of Search)"
-msgstr ""
-#
-msgid "Degrees"
-msgstr "Μοίρες"
-#
-msgid "E"
-msgstr "Α"
-#
-msgid "Error"
-msgstr "Σφάλμα"
-#
-msgid "Error in calculation. Please check input!"
-msgstr "Σφάλμα στον υπολογισμό. Ελέγξτε τα δεδομένα!"
-#
-msgid "Error occurred, aborting SAR calc!"
-msgstr "Παρουσιάστηκε σφάλμα, ματαίωση υπολογισμού SAR!"
-#
-msgid "Expanding Square"
-msgstr "Επέκταση τετραγώνου"
-#
-msgid "Export SAR track GPX file as"
-msgstr "Εξαγωγή ίχνους SAR ως αρχείο GPX"
-#
-msgid "First turn                    "
-msgstr "Πρώτη δοκιμή"
-#
-msgid "For this search pattern the Start Point entered is the CSP"
-msgstr "Για αυτό το ερευνητικό πρόγραμμα η αρχή είναι το SCP"
-#
-msgid "General settings"
-msgstr "Γενικές ρυθμίσεις"
-#
-msgid "Generate &GPX"
-msgstr "Δημιουργία &GPX"
-#
-msgid "Generate &RTZ"
-msgstr ""
-#
-msgid "IAMSAR"
-msgstr "IAMSAR"
-#
-msgid "Icons "
-msgstr "Εικονίδια "
-#
-msgid "Initial course"
-msgstr "Αρχική πορεία"
-#
-msgid "Initial course    "
-msgstr "Αρχική πορεία"
-#
-msgid "Initial course        "
-msgstr "Αρχική πορεία"
-#
-msgid "Initial leg course        "
-msgstr "πορεία πρώτου σκέλους"
-#
-msgid "Lat "
-msgstr "Πλάτος "
-#
-msgid "Latitude    "
-msgstr ""
-#
-msgid "Leave ticked, so that you can use cursor position."
-msgstr "Σημαδέψτε το για να χρησιμοποιήσετε τη θέση του δρομέα."
-#
-msgid "Leave ticked, so you can use ship's position"
-msgstr "Σημαδέψτε το για να χρησιμοποιήσετε τη θέση του πλοίου"
-#
-msgid "Leg Space             "
-msgstr "Απόσταση σκελών             "
-#
-msgid "Leg Spacing (S)       "
-msgstr "Απόσταση σκελών (S)"
-#
-msgid "Lon"
-msgstr "Μήκος"
-#
-msgid "Longitude"
-msgstr "Γ. μήκος"
-#
-msgid "N"
-msgstr "Β"
-#
-msgid "NM"
-msgstr "ν. μ."
-#
-msgid "No Datum Point has been entered"
-msgstr "Δεν εισήχθησαν δεδομένα του σημείου"
-#
-msgid "Number of Legs  "
-msgstr "Αριθμός σκελών  "
-#
-msgid "Number of Legs      "
-msgstr "Αριθμός σκελών      "
-#
-msgid "Number of Legs        "
-msgstr "Αριθμός σκελών        "
-#
-msgid "Number of passes"
-msgstr "Αριθμός περασμάτων"
-#
-msgid "Oil Rig (Quadrant Single)"
-msgstr "Πετρελαιοπηγή (Μονη Τετράγωνη)"
-#
-msgid "Opacity"
-msgstr "Αδιαφάνεια"
-#
-msgid "PORT"
-msgstr "ΑΡΙΣΤΕΡΑ"
-#
-msgid "Parallel Track"
-msgstr "Παράλληλο ίχνος"
-#
-msgid "RTZ for this pattern is not available"
-msgstr ""
-#
-msgid "Route Preferences"
-msgstr "Προτιμήσεις διαδρομής"
-#
-msgid "Route for Ship           "
-msgstr "Διαδρομή πλοίου"
-#
-msgid "S"
-msgstr "Ν"
-#
-msgid "SAR"
-msgstr "SAR (ΕκΔ)"
-#
-msgid "SAR Plugin by SaltyPaws/Rasbats"
-msgstr "Πρόσθετο SAR από τον SaltyPaws/Rasbats"
-#
+
+#: src/SAR_pi.cpp:90
 msgid "SAR panel icon has NOT been loaded"
 msgstr ""
-#
-msgid "SAR preferences"
-msgstr "Προτιμήσεις SAR"
-#
-msgid "STARBOARD"
-msgstr "ΔΕΞΙΑ"
-#
-msgid "Save in RTZ format"
-msgstr ""
-#
-msgid "Search Distance / Time"
-msgstr "Απόσταση/χρόνος έρευνας"
-#
-msgid "Search Leg length     "
-msgstr "μήκος ερευνητικού σκέλους"
-#
-msgid "Search Method  "
-msgstr "Μέθοδος αναζήτησης"
-#
-msgid "Search Radius      "
-msgstr "Ακτίνα έρευνας"
-#
-msgid "Search Speed       "
-msgstr "Ταχύτητα έρευνας       "
-#
-msgid "Search Speed           "
-msgstr "Ταχύτητα έρευνας           "
-#
-msgid "Search Speed             "
-msgstr "Ταχύτητα έρευνας             "
-#
-msgid "Search and Rescue Patterns"
-msgstr "Μοτίβα Έρευνας και Διάσωσης"
-#
-msgid "Sector Search"
-msgstr "Αναζήτηση τομέα"
-#
+
+#: src/SAR_pi.cpp:116 src/SAR_pi.cpp:119 src/SARgui.h:232
+msgid "SAR"
+msgstr "SAR (ΕκΔ)"
+
+#: src/SAR_pi.cpp:128
 msgid "Select SAR Datum Point"
 msgstr "Επιλέξτε δεδομένα σημείου SAR"
-#
-msgid "Ship"
-msgstr "Πλοίο"
-#
-msgid "Start Position"
-msgstr "Θέση Εκκίνησης"
-#
-msgid ""
-"To copy the cursor location place the cursor on the chart \n"
-"     ...and press <CTRL>+S"
-msgstr ""
-"Για να καταγράψετε τη θέση του κέρσορα βάλτε τον στον χάρτη\n"
-"  ...και πατήστε  <CTRL>+S"
-#
+
+#: src/SAR_pi.cpp:199
+msgid "Search and Rescue Patterns"
+msgstr "Μοτίβα Έρευνας και Διάσωσης"
+
+#: src/SAR_pi.cpp:204
+msgid "Creates GPX files with Search and Rescue patterns"
+msgstr "Δημιουργεί αρχεία GPX με μοτίβα Έρευνας και Διάσωσης"
+
+#: src/SAR_pi.cpp:296
+msgid "Route Preferences"
+msgstr "Προτιμήσεις διαδρομής"
+
+#: src/SARgui.h:256 src/SARgui_impl.h:77
+msgid "SAR preferences"
+msgstr "Προτιμήσεις SAR"
+
+#: src/SARgui.cpp:33
+msgid "Initial leg course        "
+msgstr "πορεία πρώτου σκέλους"
+
+#: src/SARgui.cpp:42 src/SARgui.cpp:264 src/SARgui.cpp:424 src/SARgui.cpp:603
+msgid "Degrees"
+msgstr "Μοίρες"
+
+#: src/SARgui.cpp:52
+msgid "Search Leg length     "
+msgstr "μήκος ερευνητικού σκέλους"
+
+#: src/SARgui.cpp:61 src/SARgui.cpp:80 src/SARgui.cpp:284 src/SARgui.cpp:444
+#: src/SARgui.cpp:623 src/SARgui.cpp:1047
+msgid "NM"
+msgstr "ν. μ."
+
+#: src/SARgui.cpp:71
 msgid "Track space (S)          "
 msgstr "Απόσταση ιχνών"
-#
-msgid "USCG"
-msgstr "Ακτοφυλακή ΗΠΑ"
-#
-msgid "W"
-msgstr "Δ"
-#
-msgid "Waypoint names "
-msgstr "Ονόματα σημείων πορείας "
-#
-msgid "Waypoint names     "
-msgstr "Ονόματα σημείων πορείας     "
-#
-msgid "deg"
-msgstr ""
-#
-msgid "error in input range validation"
-msgstr "σφάλμα στην επικύρωση της περιοχής"
-#
-msgid "hr"
-msgstr "ώ."
-#
-msgid "kts"
-msgstr "κόμβοι"
-#
+
+#: src/SARgui.cpp:90
+msgid "Number of Legs        "
+msgstr "Αριθμός σκελών        "
+
+#: src/SARgui.cpp:99 src/SARgui.cpp:303 src/SARgui.cpp:642
 msgid "n"
 msgstr "n"
-#
+
+#: src/SARgui.cpp:109
+msgid "Search Speed             "
+msgstr "Ταχύτητα έρευνας             "
+
+#: src/SARgui.cpp:118 src/SARgui.cpp:322 src/SARgui.cpp:463 src/SARgui.cpp:661
+msgid "kts"
+msgstr "κόμβοι"
+
+#: src/SARgui.cpp:134 src/SARgui.cpp:352 src/SARgui.cpp:509 src/SARgui.cpp:691
+msgid "Generate &GPX"
+msgstr "Δημιουργία &GPX"
+
+#: src/SARgui.cpp:139 src/SARgui.cpp:357 src/SARgui.cpp:514 src/SARgui.cpp:697
+msgid "Add to route manager"
+msgstr ""
+
+#: src/SARgui.cpp:148 src/SARgui.cpp:366 src/SARgui.cpp:523 src/SARgui.cpp:706
+msgid "Generate &RTZ"
+msgstr ""
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
 msgid "v1.0"
 msgstr ""
-#
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
 msgid "v1.1"
 msgstr ""
-#
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
 msgid "v1.2"
 msgstr ""
+
+#: src/SARgui.cpp:190
+msgid "Route for Ship           "
+msgstr "Διαδρομή πλοίου"
+
+#: src/SARgui.cpp:194
+msgid "1 unit only"
+msgstr "Μόνο 1 μονάδα"
+
+#: src/SARgui.cpp:194
+msgid "2 units A&B"
+msgstr "2 μονάδες Α&Β"
+
+#: src/SARgui.cpp:206
+msgid "First turn                    "
+msgstr "Πρώτη δοκιμή"
+
+#: src/SARgui.cpp:210
+msgid "STARBOARD"
+msgstr "ΔΕΞΙΑ"
+
+#: src/SARgui.cpp:210
+msgid "PORT"
+msgstr "ΑΡΙΣΤΕΡΑ"
+
+#: src/SARgui.cpp:222 src/SARgui.cpp:338 src/SARgui.cpp:495
+msgid "Waypoint names     "
+msgstr "Ονόματα σημείων πορείας     "
+
+#: src/SARgui.cpp:226 src/SARgui.cpp:342 src/SARgui.cpp:499 src/SARgui.cpp:681
+msgid "Icons "
+msgstr "Εικονίδια "
+
+#: src/SARgui.cpp:240
+msgid "Parallel Track"
+msgstr "Παράλληλο ίχνος"
+
+#: src/SARgui.cpp:255
+msgid "Initial course    "
+msgstr "Αρχική πορεία"
+
+#: src/SARgui.cpp:274
+msgid "Leg Spacing (S)       "
+msgstr "Απόσταση σκελών (S)"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:617
+msgid "3"
+msgstr "3"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:477 src/SARgui.cpp:617
+msgid "2"
+msgstr "2"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:477 src/SARgui.cpp:617
+msgid "1"
+msgstr "1"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:617
+msgid "0.5"
+msgstr "-.5"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:617
+msgid "0.2"
+msgstr "0.2"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:617
+msgid "0.1"
+msgstr "0.1"
+
+#: src/SARgui.cpp:294
+msgid "Number of Legs      "
+msgstr "Αριθμός σκελών      "
+
+#: src/SARgui.cpp:313
+msgid "Search Speed           "
+msgstr "Ταχύτητα έρευνας           "
+
+#: src/SARgui.cpp:400
+msgid "Expanding Square"
+msgstr "Επέκταση τετραγώνου"
+
+#: src/SARgui.cpp:415
+msgid "Initial course        "
+msgstr "Αρχική πορεία"
+
+#: src/SARgui.cpp:434
+msgid "Search Radius      "
+msgstr "Ακτίνα έρευνας"
+
+#: src/SARgui.cpp:438
+msgid "5"
+msgstr "5"
+
+#: src/SARgui.cpp:438
+msgid "4"
+msgstr "4"
+
+#: src/SARgui.cpp:454 src/SARgui.cpp:652
+msgid "Search Speed       "
+msgstr "Ταχύτητα έρευνας       "
+
+#: src/SARgui.cpp:473
+msgid "Number of passes"
+msgstr "Αριθμός περασμάτων"
+
+#: src/SARgui.cpp:559
+msgid "Search Method  "
+msgstr "Μέθοδος αναζήτησης"
+
+#: src/SARgui.cpp:563
+msgid "IAMSAR"
+msgstr "IAMSAR"
+
+#: src/SARgui.cpp:563
+msgid "USCG"
+msgstr "Ακτοφυλακή ΗΠΑ"
+
+#: src/SARgui.cpp:579
+msgid "Sector Search"
+msgstr "Αναζήτηση τομέα"
+
+#: src/SARgui.cpp:594
+msgid "Initial course"
+msgstr "Αρχική πορεία"
+
+#: src/SARgui.cpp:613
+msgid "Leg Space             "
+msgstr "Απόσταση σκελών             "
+
+#: src/SARgui.cpp:633
+msgid "Number of Legs  "
+msgstr "Αριθμός σκελών  "
+
+#: src/SARgui.cpp:677
+msgid "Waypoint names "
+msgstr "Ονόματα σημείων πορείας "
+
+#: src/SARgui.cpp:740
+msgid "Oil Rig (Quadrant Single)"
+msgstr "Πετρελαιοπηγή (Μονη Τετράγωνη)"
+
+#: src/SARgui.cpp:753
+msgid "DATUM / CSP (Start of Search)"
+msgstr "DATUM / CSP (Αρχή έρευνας)"
+
+#: src/SARgui.cpp:764
+msgid "Latitude    "
+msgstr ""
+
+#: src/SARgui.cpp:771 src/SARgui.cpp:788 src/SARgui.cpp:847 src/SARgui.cpp:877
+#: src/SARgui.cpp:937 src/SARgui.cpp:974
+msgid "deg"
+msgstr ""
+
+#: src/SARgui.cpp:781
+msgid "Longitude"
+msgstr "Γ. μήκος"
+
+#: src/SARgui.cpp:802
+msgid "Ship"
+msgstr "Πλοίο"
+
+#: src/SARgui.cpp:803
+msgid "Copy ship position (GPS fix required)"
+msgstr "Αντίγραφο θέσης πλοίου (απαιτείται στίγμα GPS)"
+
+#: src/SARgui.cpp:807
+msgid "Cursor"
+msgstr "Δρομέας"
+
+#: src/SARgui.cpp:826
+msgid "D.ddd"
+msgstr "D.ddd"
+
+#: src/SARgui.cpp:832 src/SARgui.cpp:922
+msgid "Datum (Start of Search)"
+msgstr ""
+
+#: src/SARgui.cpp:840 src/SARgui.cpp:930
+msgid "Lat "
+msgstr "Πλάτος "
+
+#: src/SARgui.cpp:854 src/SARgui.cpp:884 src/SARgui.cpp:944 src/SARgui.cpp:981
+msgid "'"
+msgstr "'"
+
+#: src/SARgui.cpp:858 src/SARgui.cpp:955
+msgid "N"
+msgstr "Β"
+
+#: src/SARgui.cpp:858 src/SARgui.cpp:955
+msgid "S"
+msgstr "Ν"
+
+#: src/SARgui.cpp:870 src/SARgui.cpp:967
+msgid "Lon"
+msgstr "Μήκος"
+
+#: src/SARgui.cpp:888 src/SARgui.cpp:992
+msgid "E"
+msgstr "Α"
+
+#: src/SARgui.cpp:888 src/SARgui.cpp:992
+msgid "W"
+msgstr "Δ"
+
+#: src/SARgui.cpp:906 src/SARgui.cpp:1010
+msgid "Convert to Degree"
+msgstr "Μετατροπή σε μοίρες"
+
+#: src/SARgui.cpp:916
+msgid "D MM.mmm"
+msgstr "D MM.mmm"
+
+#: src/SARgui.cpp:951 src/SARgui.cpp:988
+msgid "\""
+msgstr "\""
+
+#: src/SARgui.cpp:1020
+msgid "D MM SS"
+msgstr "D MM SS"
+
+#: src/SARgui.cpp:1034
+msgid "Calculate"
+msgstr "Υπολογισμός"
+
+#: src/SARgui.cpp:1037
+msgid "Search Distance / Time"
+msgstr "Απόσταση/χρόνος έρευνας"
+
+#: src/SARgui.cpp:1060
+msgid "hr"
+msgstr "ώ."
+
+#: src/SARgui.cpp:1153
+msgid "General settings"
+msgstr "Γενικές ρυθμίσεις"
+
+#: src/SARgui.cpp:1160
+msgid "Opacity"
+msgstr "Αδιαφάνεια"
+
+#: src/SARgui.cpp:1174
+msgid "CPU saving settings"
+msgstr "Ρυθμίσεις αποθήκευσης CPU"
+
+#: src/SARgui.cpp:1184
+msgid "Capture Ship Position"
+msgstr "Καταγραφή θέσης πλοίου"
+
+#: src/SARgui.cpp:1186
+msgid "Leave ticked, so you can use ship's position"
+msgstr "Σημαδέψτε το για να χρησιμοποιήσετε τη θέση του πλοίου"
+
+#: src/SARgui.cpp:1190
+msgid "Capture Cursor Position"
+msgstr "Καταγραφή θέσης δρομέα"
+
+#: src/SARgui.cpp:1192
+msgid "Leave ticked, so that you can use cursor position."
+msgstr "Σημαδέψτε το για να χρησιμοποιήσετε τη θέση του δρομέα."
+
+#: src/SARgui_impl.cpp:398 src/SARgui_impl.cpp:437
+msgid "RTZ for this pattern is not available"
+msgstr ""
+
+#: src/SARgui_impl.cpp:544
+msgid "No Datum Point has been entered"
+msgstr "Δεν εισήχθησαν δεδομένα του σημείου"
+
+#: src/SARgui_impl.cpp:544
+msgid "Error"
+msgstr "Σφάλμα"
+
+#: src/SARgui_impl.cpp:552
+msgid "For this search pattern the Start Point entered is the CSP"
+msgstr "Για αυτό το ερευνητικό πρόγραμμα η αρχή είναι το SCP"
+
+#: src/SARgui_impl.cpp:553
+msgid "Start Position"
+msgstr "Θέση Εκκίνησης"
+
+#: src/SARgui_impl.cpp:558
+msgid "Export SAR track GPX file as"
+msgstr "Εξαγωγή ίχνους SAR ως αρχείο GPX"
+
+#: src/SARgui_impl.cpp:593
+msgid "error in input range validation"
+msgstr "σφάλμα στην επικύρωση της περιοχής"
+
+#: src/SARgui_impl.cpp:725
+msgid "Error occurred, aborting SAR calc!"
+msgstr "Παρουσιάστηκε σφάλμα, ματαίωση υπολογισμού SAR!"
+
+#: src/SARgui_impl.cpp:1827 src/SARgui_impl.cpp:1828
+msgid "Error in calculation. Please check input!"
+msgstr "Σφάλμα στον υπολογισμό. Ελέγξτε τα δεδομένα!"
+
+#: src/SARgui_impl.cpp:1960
+msgid "To copy the cursor location place the cursor on the chart \n"
+"     ...and press <CTRL>+S"
+msgstr "Για να καταγράψετε τη θέση του κέρσορα βάλτε τον στον χάρτη\n"
+"  ...και πατήστε  <CTRL>+S"
+
+#: src/SARgui_impl.cpp:2200
+msgid "Save in RTZ format"
+msgstr ""
+
+#: src/SARgui_impl.h:86
+msgid "SAR Plugin by SaltyPaws/Rasbats"
+msgstr "Πρόσθετο SAR από τον SaltyPaws/Rasbats"
+
