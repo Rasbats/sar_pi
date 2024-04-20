@@ -142,6 +142,7 @@ public:
   int rtz_schema;
   void AddChartRoute(wxString myRoute, wxString mySpeed, wxString myColor);
   int ExportRTZ(wxString routename);
+  bool m_bCreateRoute;
 
 private:
   wxPoint xy;

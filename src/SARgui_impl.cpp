@@ -476,6 +476,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
   PortStbd = this->m_NPortStbd->GetSelection();
 
   m_bChartRoute = false;
+  m_bCreateRoute = true;
 
   wxString defaultFileName = "";
   int df = PortStbd;
@@ -488,9 +489,11 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           defaultFileName = "PS-1";
         } else if (df == 1) {
           defaultFileName = "PS-2";
+          
         }
       } else if (ch == 1) {
         chText = "PS-AB";
+        m_bCreateRoute = false;
         defaultFileName = chText;
       }
       break;
@@ -512,6 +515,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         defaultFileName = VS + "VS";
       } else if (vh == 1) {
         defaultFileName = VS + "VS-12";
+        m_bCreateRoute = false;
       }
       break;
     }
@@ -1400,10 +1404,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
               ESheading -= 30;
             }
 
-            // if (x == 8 && !two_cycles) {
-
-            // }
             if (write_file) pRoot->LinkEndChild(Route);
+
             nleg++;
             if (write_file) {
               if (x == 8 && two_cycles) {
@@ -1818,8 +1820,11 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       xmlDoc.SaveFile(buffer.data());
       xmlDoc.Clear();
     }
-
-    CreateRoute(s);
+    if (m_bCreateRoute)
+      CreateRoute(s);
+    else
+      wxMessageBox("Two unit routes cannot be drawn.\nPlease import the GPX",
+                   "Import needed");
 
     //} //end of if no error occurred
 
