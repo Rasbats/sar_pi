@@ -179,7 +179,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer77 = new wxBoxSizer( wxVERTICAL );
 
 	m_bitmap_trackln1 = new wxStaticBitmap( m_panel1, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer77->Add( m_bitmap_trackln1, 0, wxALL, 5 );
+	bSizer77->Add( m_bitmap_trackln1, 0, wxALL|wxEXPAND, 5 );
 
 
 	bSizer62->Add( bSizer77, 0, wxALL|wxEXPAND, 5 );
@@ -391,7 +391,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer4->Add( m_panel7, 0, wxALL|wxEXPAND, 5 );
 
 	m_bitmap_exp_sq = new wxStaticBitmap( m_panel2, wxID_ANY, wxBitmap( wxT("../Load From File"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer4->Add( m_bitmap_exp_sq, 0, wxALL, 5 );
+	bSizer4->Add( m_bitmap_exp_sq, 0, wxALL|wxEXPAND, 5 );
 
 
 	m_panel2->SetSizer( bSizer4 );
@@ -551,7 +551,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer67 = new wxBoxSizer( wxVERTICAL );
 
 	m_bitmap_sector = new wxStaticBitmap( m_panel3, wxID_ANY, wxBitmap( wxT("../Load From File"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer67->Add( m_bitmap_sector, 0, wxALL, 5 );
+	bSizer67->Add( m_bitmap_sector, 0, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer1411111111;
 	bSizer1411111111 = new wxBoxSizer( wxHORIZONTAL );
@@ -731,7 +731,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer6->Add( m_panel10, 0, wxALL|wxEXPAND, 5 );
 
 	m_bitmap_oil_rig = new wxStaticBitmap( m_panek4, wxID_ANY, wxBitmap( wxT("bitmaps/oil_rig.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer6->Add( m_bitmap_oil_rig, 0, wxALL, 5 );
+	bSizer6->Add( m_bitmap_oil_rig, 0, wxALL|wxEXPAND, 5 );
 
 
 	m_panek4->SetSizer( bSizer6 );

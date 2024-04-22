@@ -398,7 +398,8 @@ void Dlg::OnPSGPX(wxCommandEvent& event) {
         wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
         m_bSaveRTZ = false;
         return;
-      } else m_bSaveRTZ = true;
+      } else
+        m_bSaveRTZ = true;
       rtz_schema = this->m_choiceSchema1->GetSelection();
       [[fallthrough]];  // fallthrough is explicit
     default:
@@ -437,7 +438,8 @@ void Dlg::OnSSGPX(wxCommandEvent& event) {
         wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
         m_bSaveRTZ = false;
         return;
-      } else m_bSaveRTZ = true;
+      } else
+        m_bSaveRTZ = true;
       rtz_schema = this->m_choiceSchema3->GetSelection();
       [[fallthrough]];  // fallthrough is explicit
     default:
@@ -489,7 +491,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           defaultFileName = "PS-1";
         } else if (df == 1) {
           defaultFileName = "PS-2";
-          
         }
       } else if (ch == 1) {
         chText = "PS-AB";
@@ -1819,13 +1820,13 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       if (dbg) std::cout << buffer.data() << std::endl;
       xmlDoc.SaveFile(buffer.data());
       xmlDoc.Clear();
-    }
-    if (m_bCreateRoute)
-      CreateRoute(s);
-    else
-      wxMessageBox("Two unit routes cannot be drawn.\nPlease import the GPX",
-                   "Import needed");
 
+      if (m_bCreateRoute)
+        CreateRoute(s);
+      else
+        wxMessageBox("Two unit routes cannot be drawn.\nPlease import the GPX",
+                     "Import needed");
+    }
     //} //end of if no error occurred
 
     if (error_occurred) {
