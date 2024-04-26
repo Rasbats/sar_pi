@@ -137,6 +137,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer71->Add( m_button3111, 0, wxALL, 5 );
 
 	m_cbChartRoute1 = new wxCheckBox( sbSizer711->GetStaticBox(), wxID_ANY, _("Add to route manager"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_cbChartRoute1->SetValue(true);
 	bSizer71->Add( m_cbChartRoute1, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 
@@ -237,7 +238,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel1->SetSizer( bSizer3 );
 	m_panel1->Layout();
 	bSizer3->Fit( m_panel1 );
-	m_notebook1->AddPage( m_panel1, _("Parallel Track"), false );
+	m_notebook1->AddPage( m_panel1, _("Parallel Track"), true );
 	m_panel2 = new wxPanel( m_notebook1, wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxHORIZONTAL );
@@ -355,6 +356,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer711->Add( m_button31111, 0, wxALL, 5 );
 
 	m_cbChartRoute2 = new wxCheckBox( sbSizer71->GetStaticBox(), wxID_ANY, _("Add to route manager"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_cbChartRoute2->SetValue(true);
 	bSizer711->Add( m_cbChartRoute2, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 
@@ -512,6 +514,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer7111->Add( m_button311111, 0, wxALL, 5 );
 
 	m_cbChartRoute3 = new wxCheckBox( sbSizer713->GetStaticBox(), wxID_ANY, _("Add to route manager"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_cbChartRoute3->SetValue(true);
 	bSizer7111->Add( m_cbChartRoute3, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 
@@ -695,6 +698,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer7112->Add( m_button311112, 0, wxALL, 5 );
 
 	m_cbChartRoute4 = new wxCheckBox( sbSizer714->GetStaticBox(), wxID_ANY, _("Add to route manager"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_cbChartRoute4->SetValue(true);
 	bSizer7112->Add( m_cbChartRoute4, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 
@@ -737,7 +741,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panek4->SetSizer( bSizer6 );
 	m_panek4->Layout();
 	bSizer6->Fit( m_panek4 );
-	m_notebook1->AddPage( m_panek4, _("Oil Rig (Quadrant Single)"), true );
+	m_notebook1->AddPage( m_panek4, _("Oil Rig (Quadrant Single)"), false );
 
 	bSframe->Add( m_notebook1, 0, wxALL|wxEXPAND, 5 );
 
@@ -1031,11 +1035,10 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer13111;
 	bSizer13111 = new wxBoxSizer( wxVERTICAL );
 
-	m_button9 = new wxButton( m_panel111, wxID_ANY, _("Calculate"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer13111->Add( m_button9, 0, wxALIGN_CENTER|wxALL, 5 );
-
 	m_staticText32211 = new wxStaticText( m_panel111, wxID_ANY, _("Search Distance / Time"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText32211->Wrap( -1 );
+	m_staticText32211->SetFont( wxFont( 10, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
+
 	bSizer13111->Add( m_staticText32211, 0, wxALL, 5 );
 
 	wxBoxSizer* bSizer14211;
@@ -1046,6 +1049,8 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	m_staticText33211 = new wxStaticText( m_panel111, wxID_ANY, _("NM"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText33211->Wrap( -1 );
+	m_staticText33211->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
+
 	bSizer14211->Add( m_staticText33211, 0, wxALL, 5 );
 
 
@@ -1059,6 +1064,8 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	m_staticText331121 = new wxStaticText( m_panel111, wxID_ANY, _("hr"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText331121->Wrap( -1 );
+	m_staticText331121->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
+
 	bSizer141121->Add( m_staticText331121, 0, wxALL, 5 );
 
 
@@ -1108,7 +1115,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_Cursor->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnCursorSelect ), NULL, this );
 	m_button811->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnConvertToDegree ), NULL, this );
 	m_button81->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnConvertToDegree ), NULL, this );
-	m_button9->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 }
 
 DlgDef::~DlgDef()
@@ -1135,7 +1141,6 @@ DlgDef::~DlgDef()
 	m_Cursor->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnCursorSelect ), NULL, this );
 	m_button811->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnConvertToDegree ), NULL, this );
 	m_button81->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnConvertToDegree ), NULL, this );
-	m_button9->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnCalculate ), NULL, this );
 
 }
 

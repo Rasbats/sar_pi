@@ -478,7 +478,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
   PortStbd = this->m_NPortStbd->GetSelection();
 
   m_bChartRoute = false;
-  m_bCreateRoute = true;
 
   wxString defaultFileName = "";
   int df = PortStbd;
@@ -494,7 +493,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         }
       } else if (ch == 1) {
         chText = "PS-AB";
-        m_bCreateRoute = false;
         defaultFileName = chText;
       }
       break;
@@ -516,7 +514,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         defaultFileName = VS + "VS";
       } else if (vh == 1) {
         defaultFileName = VS + "VS-12";
-        m_bCreateRoute = false;
       }
       break;
     }
@@ -614,14 +611,15 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
   XMLElement* RouteName2 = xmlDoc.NewElement("name");
   XMLElement* Extensions = xmlDoc.NewElement("extensions");
   XMLElement* Extensions2 = xmlDoc.NewElement("extensions");
+
+  XMLElement* textSpeed = xmlDoc.NewElement("opencpn:planned_speed");
   XMLElement* gpxx = xmlDoc.NewElement("gpxx:RouteExtension");
   XMLElement* gpxxDisplayColor = xmlDoc.NewElement("gpxx:DisplayColor");
 
   // for second cycles:
+  XMLElement* textSpeed2 = xmlDoc.NewElement("opencpn:planned_speed");
   XMLElement* gpxx2 = xmlDoc.NewElement("gpxx:RouteExtension");
   XMLElement* gpxxDisplayColor2 = xmlDoc.NewElement("gpxx:DisplayColor");
-
-  XMLElement* textSpeed = xmlDoc.NewElement("opencpn:planned_speed");
 
   wxString mySpeed;
 
@@ -693,24 +691,32 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
     switch (Pattern) {
       case 1: {
         mySpeed = m_Speed_PS->GetValue();
+        if (mySpeed == "") mySpeed = "6";
         textSpeed->SetText(mySpeed.mb_str());
+        int nShips = this->m_Nship->GetSelection();
+        if (nShips == 1) textSpeed2->SetText(mySpeed.mb_str());
         if (this->m_cbChartRoute1->IsChecked()) m_bChartRoute = true;
         break;
       }
       case 2: {
         mySpeed = m_Speed_ES->GetValue();
+        if (mySpeed == "") mySpeed = "6";
         textSpeed->SetText(mySpeed.mb_str());
         if (this->m_cbChartRoute2->IsChecked()) m_bChartRoute = true;
         break;
       }
       case 3: {
         mySpeed = m_Speed_SS->GetValue();
+        if (mySpeed == "") mySpeed = "6";
         textSpeed->SetText(mySpeed.mb_str());
+        int nCycles = this->m_Ncycles->GetSelection();
+        if (nCycles == 1) textSpeed2->SetText(mySpeed.mb_str());
         if (this->m_cbChartRoute3->IsChecked()) m_bChartRoute = true;
         break;
       }
       case 4: {
         mySpeed = m_Speed_OR->GetValue();
+        if (mySpeed == "") mySpeed = "6";
         textSpeed->SetText(mySpeed.mb_str());
         if (this->m_cbChartRoute4->IsChecked()) m_bChartRoute = true;
         break;
@@ -722,9 +728,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       }
     }
   }
-
-  // Calculate GCL
-  // double step_size=dist/100;
 
   if (error_occurred) {
     wxLogMessage(_("Error occurred, aborting SAR calc!"));
@@ -1068,7 +1071,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
                   RouteName2->SetText(routeNameText.mb_str());
                   Route2->LinkEndChild(RouteName2);
 
-                  Extensions2->LinkEndChild(textSpeed);
+                  Extensions2->LinkEndChild(textSpeed2);
 
                   gpxxDisplayColor2->SetText("Red");
                   gpxx2->LinkEndChild(gpxxDisplayColor2);
@@ -1422,7 +1425,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
                     Route2->LinkEndChild(RouteName2);
                   }
 
-                  Extensions2->LinkEndChild(textSpeed);
+                  Extensions2->LinkEndChild(textSpeed2);
 
                   gpxxDisplayColor2->SetText("Blue");
                   gpxx2->LinkEndChild(gpxxDisplayColor2);
@@ -1668,7 +1671,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
                   RouteName2->SetText(routeNameText.mb_str());
                   Route2->LinkEndChild(RouteName2);
 
-                  Extensions2->LinkEndChild(textSpeed);
+                  Extensions2->LinkEndChild(textSpeed2);
 
                   gpxxDisplayColor2->SetText("Blue");
                   gpxx2->LinkEndChild(gpxxDisplayColor2);
@@ -1821,11 +1824,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       xmlDoc.SaveFile(buffer.data());
       xmlDoc.Clear();
 
-      if (m_bCreateRoute)
-        CreateRoute(s);
-      else
-        wxMessageBox("Two unit routes cannot be drawn.\nPlease import the GPX",
-                     "Import needed");
+      if (m_bChartRoute) CreateRoute(s);
+
     }
     //} //end of if no error occurred
 
@@ -2100,61 +2100,63 @@ void Dlg::setDDMM() {  // after entering dd.dddd from cursor, menu, lat
 }
 
 void Dlg::CreateRoute(wxString filename) {
-  waypoint myPoint;
-  m_waypointList.clear();
 
   tinyxml2::XMLDocument mydoc;
   mydoc.LoadFile(filename);
 
-  tinyxml2::XMLElement* pRoot = mydoc.RootElement();
+  tinyxml2::XMLNode* pRoot = mydoc.FirstChild();
 
   wxString rte_name = "";
   wxString rte_speed = "";
   wxString rte_color = "";
+  wxString wpt_name = "";
 
   int i = 0;
-  for (tinyxml2::XMLElement* e = pRoot->FirstChildElement(); e;
-       e = e->NextSiblingElement(), i++) {
-    for (tinyxml2::XMLElement* f = e->FirstChildElement(); f;
-         f = f->NextSiblingElement()) {
-      if (!strcmp(f->Value(), "extensions")) {
-        rte_speed = f->FirstChildElement("opencpn:planned_speed")->GetText();
-        rte_color = f->FirstChildElement("gpxx:RouteExtension")
-                        ->FirstChildElement("gpxx:DisplayColor")
-                        ->GetText();
+
+  tinyxml2::XMLElement* object = pRoot->NextSiblingElement("gpx");
+  for (tinyxml2::XMLElement* rte = object->FirstChildElement("rte"); rte;
+       rte = rte->NextSiblingElement(), i++) {
+    
+    waypoint myPoint; // Clear data ready for the run
+    m_waypointList.clear();
+
+    for (tinyxml2::XMLElement* e1 = rte->FirstChildElement(); e1;
+         e1 = e1->NextSiblingElement(), i++) {
+
+      if (!strcmp(e1->Value(), "name")) {
+        rte_name = e1->GetText();
       }
 
-      if (!strcmp(f->Value(), "name")) {
-        rte_name = f->GetText();
+      if (!strcmp(e1->Value(), "extensions")) {
+
+        tinyxml2::XMLElement* s =
+            e1->FirstChildElement("opencpn:planned_speed");
+        rte_speed = s->GetText();
+
+        tinyxml2::XMLElement* e = e1->FirstChildElement("gpxx:RouteExtension");
+        tinyxml2::XMLElement* c = e->FirstChildElement("gpxx:DisplayColor");
+        rte_color = c->GetText();
       }
 
-      if (!strcmp(f->Value(), "rtept")) {
-        wxString pt_lat = wxString::FromUTF8(f->Attribute("lat"));
-        wxString pt_lon = wxString::FromUTF8(f->Attribute("lon"));
+      if (!strcmp(e1->Value(), "rtept")) {
+        wxString pt_lat = wxString::FromUTF8(e1->Attribute("lat"));
+        wxString pt_lon = wxString::FromUTF8(e1->Attribute("lon"));
 
-        wxString pt_name;
-        if (f->FirstChildElement("name") == nullptr) {
-          pt_name = "";
-          // myPoint.name_visible = false;
-
-        } else {
-          pt_name = f->FirstChildElement("name")->GetText();
-          if (pt_name == "") {
-            myPoint.name_visible = false;
-          } else
-            myPoint.name_visible = true;
-        }
+        tinyxml2::XMLElement* r = e1->FirstChildElement("name");
+        wpt_name = r->GetText();
 
         myPoint.lat = pt_lat;
         myPoint.lon = pt_lon;
-        myPoint.name = pt_name;
+        myPoint.name = wpt_name;
+        myPoint.name_visible = true;
 
         m_waypointList.push_back(myPoint);
       }
     }
+    if (m_bChartRoute) AddChartRoute(rte_name, rte_speed, rte_color);
+    if (m_bSaveRTZ) ExportRTZ(rte_name);
   }
-  if (m_bSaveRTZ) ExportRTZ(rte_name);
-  if (m_bChartRoute) AddChartRoute(rte_name, rte_speed, rte_color);
+   
 }
 
 void Dlg::AddChartRoute(wxString myRoute, wxString mySpeed, wxString myColor) {

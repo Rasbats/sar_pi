@@ -189,7 +189,6 @@ class DlgDef : public wxDialog
 		wxChoice* m_Lon1_EW;
 		wxButton* m_button81;
 		wxPanel* m_panel111;
-		wxButton* m_button9;
 		wxStaticText* m_staticText32211;
 		wxTextCtrl* m_Distance;
 		wxStaticText* m_staticText33211;
@@ -210,7 +209,6 @@ class DlgDef : public wxDialog
 		virtual void OnShip( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCursorSelect( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnConvertToDegree( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnCalculate( wxCommandEvent& event ) { event.Skip(); }
 
 
 	public:
