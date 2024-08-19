@@ -34,7 +34,7 @@ option(PLUGIN_USE_SVG "Use SVG graphics" ON)
 # -------  Plugin setup --------
 #
 set(PKG_NAME sar_pi)
-set(PKG_VERSION  4.2.5)
+set(PKG_VERSION  4.1.0)
 set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME sar)    # Dialogs, installer artifacts, ...
