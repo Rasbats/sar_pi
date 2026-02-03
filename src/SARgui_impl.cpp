@@ -1962,12 +1962,9 @@ void Dlg::OnCursorSelect(wxCommandEvent& event) {
   m_Lat1->Clear();
   m_Lon1->Clear();
 
-  wxMessageBox(
-      _("To copy the cursor location place the cursor on the chart "
-        "\n     ...and press <CTRL>+S"));
-  // wxMessageBox(_("While this button is selected, or the cursor is in the
-  // lattitude or longitude box, you can copy the cursor location with
-  // <CTRL>+S") );
+wxMessageBox( _("To copy the cursor location:\n\n" 
+  "- Right-click on the chart and choose 'Select SAR Datum Point'\n" 
+  "- Or, with the plugin window selected and the cursor on the chart, press <CTRL>+S") );
   event.Skip();
 }
 
