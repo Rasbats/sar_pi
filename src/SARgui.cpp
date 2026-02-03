@@ -248,7 +248,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer142;
 	bSizer142 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText322 = new wxStaticText( m_panel7, wxID_ANY, _("Initial Course    "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText322 = new wxStaticText( m_panel7, wxID_ANY, _("Initial Course            "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText322->Wrap( -1 );
 	bSizer142->Add( m_staticText322, 0, wxALL, 5 );
 
@@ -262,7 +262,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer142->Add( m_staticText332, 0, wxALL, 5 );
 
 
-	bSizer131->Add( bSizer142, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer131->Add( bSizer142, 0, 0, 5 );
 
 	wxBoxSizer* bSizer1411;
 	bSizer1411 = new wxBoxSizer( wxHORIZONTAL );
