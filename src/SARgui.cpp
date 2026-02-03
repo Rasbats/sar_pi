@@ -55,7 +55,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	m_dx_PS = new wxTextCtrl( wx_panel_dome, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_dx_PS->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string2 ) );
-
 	bSizer14112->Add( m_dx_PS, 0, wxALL, 5 );
 
 	m_staticText33112 = new wxStaticText( wx_panel_dome, wxID_ANY, _("NM"), wxDefaultPosition, wxDefaultSize, 0 );
@@ -276,16 +275,13 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_staticText3211->Wrap( -1 );
 	bSizer1411->Add( m_staticText3211, 0, wxALL, 5 );
 
-	wxString m_dx_ESChoices[] = { _("3"), _("2"), _("1"), _("0.5"), _("0.2"), _("0.1") };
-	int m_dx_ESNChoices = sizeof( m_dx_ESChoices ) / sizeof( wxString );
-	m_dx_ES = new wxChoice( m_panel7, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_dx_ESNChoices, m_dx_ESChoices, 0 );
-	m_dx_ES->SetSelection( 0 );
+	m_dx_ES = new wxTextCtrl( m_panel7, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_dx_ES->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string14 ) );
 	bSizer1411->Add( m_dx_ES, 0, wxALL, 5 );
-
+	
 	m_staticText3311 = new wxStaticText( m_panel7, wxID_ANY, _("NM"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3311->Wrap( -1 );
 	bSizer1411->Add( m_staticText3311, 0, wxALL, 5 );
-
 
 	bSizer131->Add( bSizer1411, 0, 0, 5 );
 
@@ -437,10 +433,9 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_staticText321->Wrap( -1 );
 	bSizer141->Add( m_staticText321, 0, wxALL, 5 );
 
-	wxString m_dx_SSChoices[] = { _("5"), _("4"), _("3"), _("2"), _("1"), _("0.5") };
-	int m_dx_SSNChoices = sizeof( m_dx_SSChoices ) / sizeof( wxString );
-	m_dx_SS = new wxChoice( m_panel8, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_dx_SSNChoices, m_dx_SSChoices, 0 );
-	m_dx_SS->SetSelection( 0 );
+	m_dx_SS = new wxTextCtrl( m_panel8, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_dx_SS->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string15 ) );
+	
 	bSizer141->Add( m_dx_SS, 0, wxALL, 5 );
 
 	m_staticText331 = new wxStaticText( m_panel8, wxID_ANY, _("NM"), wxDefaultPosition, wxDefaultSize, 0 );
@@ -617,10 +612,8 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_staticText3212->Wrap( -1 );
 	bSizer1412->Add( m_staticText3212, 0, wxALL, 5 );
 
-	wxString m_dx_ORChoices[] = { _("3"), _("2"), _("1"), _("0.5"), _("0.2"), _("0.1") };
-	int m_dx_ORNChoices = sizeof( m_dx_ORChoices ) / sizeof( wxString );
-	m_dx_OR = new wxChoice( m_panel10, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_dx_ORNChoices, m_dx_ORChoices, 0 );
-	m_dx_OR->SetSelection( 0 );
+	m_dx_OR = new wxTextCtrl( m_panel10, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_dx_OR->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string16 ) );
 	bSizer1412->Add( m_dx_OR, 0, wxALL, 5 );
 
 	m_staticText3312 = new wxStaticText( m_panel10, wxID_ANY, _("NM"), wxDefaultPosition, wxDefaultSize, 0 );
