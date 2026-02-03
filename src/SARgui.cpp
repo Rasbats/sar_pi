@@ -148,7 +148,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	m_button311112121 = new wxButton( sbSizer711->GetStaticBox(), ID_RTZ1, _("Generate &RTZ"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_button311112121->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
-	m_button311112121->SetBackgroundColour( wxColour( 240, 240, 240 ) );
 
 	bSizer71221->Add( m_button311112121, 0, wxALL, 5 );
 
@@ -367,7 +366,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	m_button31111212 = new wxButton( sbSizer71->GetStaticBox(), ID_RTZ2, _("Generate &RTZ"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_button31111212->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
-	m_button31111212->SetBackgroundColour( wxColour( 240, 240, 240 ) );
 
 	bSizer7122->Add( m_button31111212, 0, wxALL, 5 );
 
@@ -525,7 +523,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	m_button31111211 = new wxButton( sbSizer713->GetStaticBox(), ID_RTZ3, _("Generate &RTZ"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_button31111211->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
-	m_button31111211->SetBackgroundColour( wxColour( 240, 240, 240 ) );
 
 	bSizer7121->Add( m_button31111211, 1, wxALL, 5 );
 
@@ -693,7 +690,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	m_button311112 = new wxButton( sbSizer714->GetStaticBox(), wxID_ANY, _("Generate &GPX"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_button311112->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
-	m_button311112->SetBackgroundColour( wxColour( 240, 240, 240 ) );
 
 	bSizer7112->Add( m_button311112, 0, wxALL, 5 );
 
@@ -709,7 +705,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	m_button3111121 = new wxButton( sbSizer714->GetStaticBox(), ID_RTZ4, _("Generate &RTZ"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_button3111121->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
-	m_button3111121->SetBackgroundColour( wxColour( 240, 240, 240 ) );
 
 	bSizer712->Add( m_button3111121, 0, wxALL, 5 );
 
