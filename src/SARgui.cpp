@@ -68,7 +68,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer141111;
 	bSizer141111 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText321111 = new wxStaticText( wx_panel_dome, wxID_ANY, _("Track Space (S)          "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText321111 = new wxStaticText( wx_panel_dome, wxID_ANY, _("Track Space          "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText321111->Wrap( -1 );
 	bSizer141111->Add( m_staticText321111, 0, wxALL, 5 );
 
@@ -203,7 +203,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_staticTextPortStbd->Wrap( -1 );
 	bSizer141111112->Add( m_staticTextPortStbd, 0, wxALL, 5 );
 
-	wxString m_NPortStbdChoices[] = { _("STARBOARD"), _("PORT") };
+	wxString m_NPortStbdChoices[] = { _("Starboard"), _("Port") };
 	int m_NPortStbdNChoices = sizeof( m_NPortStbdChoices ) / sizeof( wxString );
 	m_NPortStbd = new wxChoice( m_panel1, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_NPortStbdNChoices, m_NPortStbdChoices, 0 );
 	m_NPortStbd->SetSelection( 0 );
@@ -267,7 +267,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer1411;
 	bSizer1411 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText3211 = new wxStaticText( m_panel7, wxID_ANY, _("Leg Spacing (S)       "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3211 = new wxStaticText( m_panel7, wxID_ANY, _("Leg Spacing       "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3211->Wrap( -1 );
 	bSizer1411->Add( m_staticText3211, 0, wxALL, 5 );
 
@@ -890,7 +890,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer4811;
 	bSizer4811 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_button811 = new wxButton( m_panelDegreesMinutes, wxID_ANY, _("Convert to Degree"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button811 = new wxButton( m_panelDegreesMinutes, wxID_ANY, _("Convert to Decimal Degrees"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer4811->Add( m_button811, 0, wxALL, 5 );
 
 
@@ -994,7 +994,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer481;
 	bSizer481 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_button81 = new wxButton( m_panel15, wxID_ANY, _("Convert to Degree"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button81 = new wxButton( m_panel15, wxID_ANY, _("Convert to Decimal Degrees"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer481->Add( m_button81, 0, wxALL, 5 );
 
 
