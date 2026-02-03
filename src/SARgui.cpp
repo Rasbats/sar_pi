@@ -39,7 +39,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer1421->Add( m_Approach_PS, 0, wxALL, 5 );
 
-	m_staticText3321 = new wxStaticText( wx_panel_dome, wxID_ANY, _("Degrees"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3321 = new wxStaticText( wx_panel_dome, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3321->Wrap( -1 );
 	bSizer1421->Add( m_staticText3321, 0, wxALL, 5 );
 
@@ -95,10 +95,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_n_PS->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string4 ) );
 
 	bSizer1411111->Add( m_n_PS, 0, wxALL, 5 );
-
-	m_staticText3311111 = new wxStaticText( wx_panel_dome, wxID_ANY, _("n"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText3311111->Wrap( -1 );
-	bSizer1411111->Add( m_staticText3311111, 0, wxALL, 5 );
 
 
 	bSizer1311->Add( bSizer1411111, 0, wxEXPAND, 5 );
@@ -262,7 +258,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer142->Add( m_Approach_ES, 0, wxALL, 5 );
 
-	m_staticText332 = new wxStaticText( m_panel7, wxID_ANY, _("Degrees"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText332 = new wxStaticText( m_panel7, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText332->Wrap( -1 );
 	bSizer142->Add( m_staticText332, 0, wxALL, 5 );
 
@@ -300,10 +296,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_n_ES->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string7 ) );
 
 	bSizer14111->Add( m_n_ES, 0, wxALL, 5 );
-
-	m_staticText33111 = new wxStaticText( m_panel7, wxID_ANY, _("n"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText33111->Wrap( -1 );
-	bSizer14111->Add( m_staticText33111, 0, wxALL, 5 );
 
 
 	bSizer131->Add( bSizer14111, 0, 0, 5 );
@@ -423,7 +415,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer14->Add( m_Approach_SS, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-	m_staticText33 = new wxStaticText( m_panel8, wxID_ANY, _("Degrees"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText33 = new wxStaticText( m_panel8, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText33->Wrap( -1 );
 	bSizer14->Add( m_staticText33, 0, wxALL, 5 );
 
@@ -603,7 +595,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer143->Add( m_Approach_OR, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-	m_staticText333 = new wxStaticText( m_panel10, wxID_ANY, _("Degrees"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText333 = new wxStaticText( m_panel10, wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText333->Wrap( -1 );
 	bSizer143->Add( m_staticText333, 0, wxALL, 5 );
 
@@ -641,10 +633,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_NLegs_OR->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string12 ) );
 
 	bSizer14121->Add( m_NLegs_OR, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
-
-	m_staticText33121 = new wxStaticText( m_panel10, wxID_ANY, _("n"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText33121->Wrap( -1 );
-	bSizer14121->Add( m_staticText33121, 0, wxALL, 5 );
 
 
 	bSizer132->Add( bSizer14121, 0, wxEXPAND, 5 );
@@ -772,7 +760,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_Lat1 = new wxTextCtrl( sbSizerDDMMSS->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer1431->Add( m_Lat1, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-	m_staticText3331 = new wxStaticText( sbSizerDDMMSS->GetStaticBox(), wxID_ANY, _("deg"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3331 = new wxStaticText( sbSizerDDMMSS->GetStaticBox(), wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3331->Wrap( -1 );
 	bSizer1431->Add( m_staticText3331, 0, wxALL, 5 );
 
@@ -789,7 +777,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_Lon1 = new wxTextCtrl( sbSizerDDMMSS->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer14311->Add( m_Lon1, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
-	m_staticText33311 = new wxStaticText( sbSizerDDMMSS->GetStaticBox(), wxID_ANY, _("deg"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText33311 = new wxStaticText( sbSizerDDMMSS->GetStaticBox(), wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText33311->Wrap( -1 );
 	bSizer14311->Add( m_staticText33311, 0, wxALL, 5 );
 
@@ -848,7 +836,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_Lat1_d1 = new wxTextCtrl( sbSizer721->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
 	bSizer143131->Add( m_Lat1_d1, 0, wxALL, 5 );
 
-	m_staticText333131 = new wxStaticText( sbSizer721->GetStaticBox(), wxID_ANY, _("deg"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
+	m_staticText333131 = new wxStaticText( sbSizer721->GetStaticBox(), wxID_ANY, _("°"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	m_staticText333131->Wrap( -1 );
 	bSizer143131->Add( m_staticText333131, 0, wxALL, 5 );
 
@@ -878,7 +866,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_Lon1_d1 = new wxTextCtrl( sbSizer721->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
 	bSizer1431121->Add( m_Lon1_d1, 0, wxALL, 5 );
 
-	m_staticText3331121 = new wxStaticText( sbSizer721->GetStaticBox(), wxID_ANY, _("deg"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3331121 = new wxStaticText( sbSizer721->GetStaticBox(), wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3331121->Wrap( -1 );
 	bSizer1431121->Add( m_staticText3331121, 0, wxALL, 5 );
 
@@ -938,7 +926,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_Lat1_d = new wxTextCtrl( sbSizer72->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
 	bSizer14313->Add( m_Lat1_d, 0, wxALL, 5 );
 
-	m_staticText33313 = new wxStaticText( sbSizer72->GetStaticBox(), wxID_ANY, _("deg"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
+	m_staticText33313 = new wxStaticText( sbSizer72->GetStaticBox(), wxID_ANY, _("°"), wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	m_staticText33313->Wrap( -1 );
 	bSizer14313->Add( m_staticText33313, 0, wxALL, 5 );
 
@@ -975,7 +963,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_Lon1_d = new wxTextCtrl( sbSizer72->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxSize( 40,-1 ), 0 );
 	bSizer143112->Add( m_Lon1_d, 0, wxALL, 5 );
 
-	m_staticText333112 = new wxStaticText( sbSizer72->GetStaticBox(), wxID_ANY, _("deg"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText333112 = new wxStaticText( sbSizer72->GetStaticBox(), wxID_ANY, _("°"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText333112->Wrap( -1 );
 	bSizer143112->Add( m_staticText333112, 0, wxALL, 5 );
 
@@ -1062,7 +1050,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_Time = new wxTextCtrl( m_panel111, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer141121->Add( m_Time, 0, wxALL, 5 );
 
-	m_staticText331121 = new wxStaticText( m_panel111, wxID_ANY, _("hr"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText331121 = new wxStaticText( m_panel111, wxID_ANY, _("hour(s)"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText331121->Wrap( -1 );
 	m_staticText331121->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
 
