@@ -30,7 +30,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer1421;
 	bSizer1421 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText3221 = new wxStaticText( wx_panel_dome, wxID_ANY, _("Initial Leg Course     "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3221 = new wxStaticText( wx_panel_dome, wxID_ANY, _("Initial Course              "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3221->Wrap( -1 );
 	bSizer1421->Add( m_staticText3221, 0, wxALL, 5 );
 
@@ -267,7 +267,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer1411;
 	bSizer1411 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText3211 = new wxStaticText( m_panel7, wxID_ANY, _("Leg Spacing               "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3211 = new wxStaticText( m_panel7, wxID_ANY, _("Leg Space                   "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3211->Wrap( -1 );
 	bSizer1411->Add( m_staticText3211, 0, wxALL, 5 );
 
@@ -737,7 +737,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer40 = new wxBoxSizer( wxVERTICAL );
 
 	wxStaticBoxSizer* sbSizerDDMMSS;
-	sbSizerDDMMSS = new wxStaticBoxSizer( new wxStaticBox( m_panel11, wxID_ANY, _("DATUM / CSP (Start of Search)") ), wxVERTICAL );
+	sbSizerDDMMSS = new wxStaticBoxSizer( new wxStaticBox( m_panel11, wxID_ANY, _("Datum (Start of Search)") ), wxVERTICAL );
 
 	wxBoxSizer* bSizer60;
 	bSizer60 = new wxBoxSizer( wxHORIZONTAL );
