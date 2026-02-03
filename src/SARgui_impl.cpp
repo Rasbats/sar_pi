@@ -780,8 +780,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         }  // search velocity
         if (this->m_Nship->GetCurrentSelection()) First_Ship = true;  // S=1
 
-        if (leg_distancex < 0.1) {
-          leg_distancex = 1.0;
+        if (leg_distancex < 0.00054) {
+          leg_distancex = 0.00054;
         }  // check for negative or small values
         if (nlegs < 0.1) {
           nlegs = 1.0;
@@ -1129,8 +1129,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         if (!this->m_Speed_ES->GetValue().ToDouble(&speed)) {
           speed = 5.0;
         }  // search velocity
-        if (leg_distancex < 0.1) {
-          leg_distancex = 1.0;
+        if (leg_distancex < 0.00054) {
+          leg_distancex = 0.00054;
         }  // check for negative or small values
         if (legs < 4) {
           legs = 4;
@@ -1252,8 +1252,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
             speed = 5.0;
           }  // search velocity
-          if (leg_distancex < 0.1) {
-            leg_distancex = 1.0;
+          if (leg_distancex < 0.00054) {
+            leg_distancex = 0.00054;
           }  // check for negative or small values
           if (this->m_Ncycles->GetSelection() == 1)
             two_cycles = true;  // S=1
@@ -1487,8 +1487,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
               speed = 5.0;
             }  // search velocity
-            if (leg_distancex < 0.1) {
-              leg_distancex = 1.0;
+            if (leg_distancex < 0.00054) {
+              leg_distancex = 0.00054;
             }  // check for negative or small values
             if (this->m_Ncycles->GetCurrentSelection())
               two_cycles = true;  // S=1
@@ -1732,8 +1732,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         if (!this->m_Speed_OR->GetValue().ToDouble(&speed)) {
           speed = 5.0;
         }  // search velocity
-        if (leg_distancex < 0.1) {
-          leg_distancex = 1.0;
+        if (leg_distancex < 0.00054) {
+          leg_distancex = 0.00054;
         }  // check for negative or small values
         if (nlegs < 0.1) {
           nlegs = 1.0;
