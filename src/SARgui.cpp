@@ -442,6 +442,22 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer13->Add( bSizer141, 0, 0, 5 );
 
+	wxBoxSizer* bSizer141111111;
+	bSizer141111111 = new wxBoxSizer( wxHORIZONTAL );
+
+	m_staticText321111111 = new wxStaticText( m_panel8, wxID_ANY, _("Number of Passes"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText321111111->Wrap( -1 );
+	bSizer141111111->Add( m_staticText321111111, 0, wxALL, 5 );
+
+	wxString m_NcyclesChoices[] = { _("1"), _("2") };
+	int m_NcyclesNChoices = sizeof( m_NcyclesChoices ) / sizeof( wxString );
+	m_Ncycles = new wxChoice( m_panel8, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_NcyclesNChoices, m_NcyclesChoices, 0 );
+	m_Ncycles->SetSelection( 1 );
+	bSizer141111111->Add( m_Ncycles, 0, wxALL, 5 );
+
+
+	bSizer13->Add( bSizer141111111, 0, wxEXPAND, 5 );
+
 	wxBoxSizer* bSizer141111122;
 	bSizer141111122 = new wxBoxSizer( wxHORIZONTAL );
 
@@ -461,21 +477,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer13->Add( bSizer141111122, 0, wxEXPAND, 5 );
 
-	wxBoxSizer* bSizer141111111;
-	bSizer141111111 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText321111111 = new wxStaticText( m_panel8, wxID_ANY, _("Number of Passes"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText321111111->Wrap( -1 );
-	bSizer141111111->Add( m_staticText321111111, 0, wxALL, 5 );
-
-	wxString m_NcyclesChoices[] = { _("1"), _("2") };
-	int m_NcyclesNChoices = sizeof( m_NcyclesChoices ) / sizeof( wxString );
-	m_Ncycles = new wxChoice( m_panel8, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_NcyclesNChoices, m_NcyclesChoices, 0 );
-	m_Ncycles->SetSelection( 1 );
-	bSizer141111111->Add( m_Ncycles, 0, wxALL, 5 );
-
-
-	bSizer13->Add( bSizer141111111, 0, wxEXPAND, 5 );
 
 	m_staticline11 = new wxStaticLine( m_panel8, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLI_HORIZONTAL );
 	bSizer13->Add( m_staticline11, 0, wxEXPAND | wxALL, 5 );
