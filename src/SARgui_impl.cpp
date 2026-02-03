@@ -1266,8 +1266,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             speed = 5.0;
             this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
           }  // search velocity
-          if (leg_distancex < 0.1) {
-            leg_distancex = 0.1;
+          if (leg_distancex < 0.5) {
+            leg_distancex = 0.5;
           }  // check for negative or small values
           if (this->m_Ncycles->GetSelection() == 1)
             two_cycles = true;  // S=1
