@@ -30,7 +30,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer1421;
 	bSizer1421 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText3221 = new wxStaticText( wx_panel_dome, wxID_ANY, _("Initial Leg Course        "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3221 = new wxStaticText( wx_panel_dome, wxID_ANY, _("Initial Leg Course     "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3221->Wrap( -1 );
 	bSizer1421->Add( m_staticText3221, 0, wxALL, 5 );
 
@@ -49,7 +49,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer14112;
 	bSizer14112 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText32112 = new wxStaticText( wx_panel_dome, wxID_ANY, _("Search Leg Length     "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText32112 = new wxStaticText( wx_panel_dome, wxID_ANY, _("Search Leg Length   "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText32112->Wrap( -1 );
 	bSizer14112->Add( m_staticText32112, 0, wxALL, 5 );
 
@@ -68,7 +68,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer141111;
 	bSizer141111 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText321111 = new wxStaticText( wx_panel_dome, wxID_ANY, _("Track Space          "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText321111 = new wxStaticText( wx_panel_dome, wxID_ANY, _("Track Space                "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText321111->Wrap( -1 );
 	bSizer141111->Add( m_staticText321111, 0, wxALL, 5 );
 
@@ -267,7 +267,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer1411;
 	bSizer1411 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText3211 = new wxStaticText( m_panel7, wxID_ANY, _("Leg Spacing       "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3211 = new wxStaticText( m_panel7, wxID_ANY, _("Leg Spacing               "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3211->Wrap( -1 );
 	bSizer1411->Add( m_staticText3211, 0, wxALL, 5 );
 
@@ -404,7 +404,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer14;
 	bSizer14 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText32 = new wxStaticText( m_panel8, wxID_ANY, _("Initial Course        "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText32 = new wxStaticText( m_panel8, wxID_ANY, _("Initial Course          "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText32->Wrap( -1 );
 	bSizer14->Add( m_staticText32, 0, wxALL, 5 );
 
@@ -423,7 +423,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer141;
 	bSizer141 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText321 = new wxStaticText( m_panel8, wxID_ANY, _("Search Radius      "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText321 = new wxStaticText( m_panel8, wxID_ANY, _("Search Radius        "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText321->Wrap( -1 );
 	bSizer141->Add( m_staticText321, 0, wxALL, 5 );
 
@@ -443,7 +443,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer141111122;
 	bSizer141111122 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText321111122 = new wxStaticText( m_panel8, wxID_ANY, _("Search Speed       "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText321111122 = new wxStaticText( m_panel8, wxID_ANY, _("Search Speed         "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText321111122->Wrap( -1 );
 	bSizer141111122->Add( m_staticText321111122, 0, wxALL, 5 );
 
@@ -583,7 +583,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer143;
 	bSizer143 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText323 = new wxStaticText( m_panel10, wxID_ANY, _("Initial Course"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText323 = new wxStaticText( m_panel10, wxID_ANY, _("Initial Course        "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText323->Wrap( -1 );
 	bSizer143->Add( m_staticText323, 0, wxALL, 5 );
 
@@ -602,7 +602,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer1412;
 	bSizer1412 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText3212 = new wxStaticText( m_panel10, wxID_ANY, _("Leg Space             "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3212 = new wxStaticText( m_panel10, wxID_ANY, _("Leg Space               "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3212->Wrap( -1 );
 	bSizer1412->Add( m_staticText3212, 0, wxALL, 5 );
 
