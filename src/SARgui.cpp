@@ -1044,8 +1044,10 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer14211;
 	bSizer14211 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_Distance = new wxTextCtrl( m_panel111, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer14211->Add( m_Distance, 0, wxALL, 5 );
+        m_Distance = new wxStaticText(m_panel111, wxID_ANY, _("--"), wxDefaultPosition, wxDefaultSize, 0);
+        m_Distance->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Arial"));
+        m_Distance->SetMinSize(wxSize(40, -1));
+        bSizer14211->Add( m_Distance, 0, wxALL, 5 );
 
 	m_staticText33211 = new wxStaticText( m_panel111, wxID_ANY, _("NM"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText33211->Wrap( -1 );
@@ -1059,7 +1061,9 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer141121;
 	bSizer141121 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_Time = new wxTextCtrl( m_panel111, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+        m_Time = new wxStaticText(m_panel111, wxID_ANY, _("--"), wxDefaultPosition, wxDefaultSize, 0);
+        m_Time->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Arial"));
+        m_Time->SetMinSize(wxSize(40, -1));
 	bSizer141121->Add( m_Time, 0, wxALL, 5 );
 
 	m_staticText331121 = new wxStaticText( m_panel111, wxID_ANY, _("hr"), wxDefaultPosition, wxDefaultSize, 0 );

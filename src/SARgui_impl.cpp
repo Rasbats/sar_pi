@@ -916,9 +916,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
             if (write_file) pRoot->LinkEndChild(Route);
 
-            this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
-            this->m_Time->SetValue(
-                wxString::Format("%g", (SAR_distance / speed)));
+            this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+            this->m_Time->SetLabel(wxString::Format("%g", (SAR_distance / speed)));
             break;
           }
           // end single unit - parallel-iamsar
@@ -1083,10 +1082,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
               if (write_file) pRoot->LinkEndChild(Route2);
             }
 
-            this->m_Distance->SetValue(
-                wxString::Format("%g", SAR_distance / 2));
-            this->m_Time->SetValue(
-                wxString::Format("%g", (SAR_distance / speed) / 2));
+            this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance / 2));
+            this->m_Time->SetLabel(wxString::Format("%g", (SAR_distance / speed) / 2));
             break;
           }
 
@@ -1211,8 +1208,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           lon1 = loni;
         }
         if (write_file) pRoot->LinkEndChild(Route);
-        this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
-        this->m_Time->SetValue(wxString::Format("%g", SAR_distance / speed));
+        this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+        this->m_Time->SetLabel(wxString::Format("%g", SAR_distance / speed));
 
       }
       // Expanding Square End
@@ -1445,8 +1442,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           if (two_cycles) SAR_distance -= leg_distancex * 3;
 
           if (write_file) pRoot->LinkEndChild(Route2);
-          this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
-          this->m_Time->SetValue(wxString::Format("%g", SAR_distance / speed));
+          this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+          this->m_Time->SetLabel(wxString::Format("%g", SAR_distance / speed));
           //
           // IAMSAR Sector search end
           //
@@ -1688,9 +1685,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             }
 
             if (write_file) pRoot->LinkEndChild(Route2);
-            this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
-            this->m_Time->SetValue(
-                wxString::Format("%g", SAR_distance / speed));
+            this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+            this->m_Time->SetLabel(wxString::Format("%g", SAR_distance / speed));
             // IAMSAR Sector search end
           }
         // USCG Sector search end
@@ -1801,9 +1797,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           }
         }
         if (write_file) pRoot->LinkEndChild(Route);
-        this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
+        this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
         double sTime = SAR_distance / speed;
-        this->m_Time->SetValue(wxString::Format("%g", sTime));
+        this->m_Time->SetLabel(wxString::Format("%g", sTime));
 
         // Oil Rig end
         break;
