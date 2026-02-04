@@ -192,7 +192,9 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText32211;
                 wxStaticText* m_Distance;
 		wxStaticText* m_staticText33211;
-                wxStaticText* m_Time;
+                wxStaticText* m_Hours;
+                wxStaticText* m_Minutes;
+                wxStaticText* m_Seconds;
 		wxStaticText* m_staticText331121;
 
 		// Virtual event handlers, override them in your derived class

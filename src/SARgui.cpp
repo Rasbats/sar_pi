@@ -1058,20 +1058,41 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer13111->Add( bSizer14211, 0, 0, 5 );
 
-	wxBoxSizer* bSizer141121;
-	bSizer141121 = new wxBoxSizer( wxHORIZONTAL );
+        wxBoxSizer* bSizer141121;
+        bSizer141121 = new wxBoxSizer(wxHORIZONTAL);
 
-        m_Time = new wxStaticText(m_panel111, wxID_ANY, _("--"), wxDefaultPosition, wxDefaultSize, 0);
-        m_Time->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Arial"));
-        m_Time->SetMinSize(wxSize(40, -1));
-	bSizer141121->Add( m_Time, 0, wxALL, 5 );
+        // Hours
+        m_Hours = new wxStaticText(m_panel111, wxID_ANY, _("--"), wxDefaultPosition, wxDefaultSize, 0);
+        m_Hours->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Arial"));
+        m_Hours->SetMinSize(wxSize(15, -1));
+        bSizer141121->Add(m_Hours, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
 
-	m_staticText331121 = new wxStaticText( m_panel111, wxID_ANY, _("hr"), wxDefaultPosition, wxDefaultSize, 0 );
-	m_staticText331121->Wrap( -1 );
-	m_staticText331121->SetFont( wxFont( 9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial") ) );
+        wxStaticText* lblH = new wxStaticText(m_panel111, wxID_ANY, _("h"));
+        lblH->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "Arial"));
+        lblH->SetMinSize(wxSize(20, -1));
+        bSizer141121->Add(lblH, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 
-	bSizer141121->Add( m_staticText331121, 0, wxALL, 5 );
+        // Minutes
+        m_Minutes = new wxStaticText(m_panel111, wxID_ANY, _("--"), wxDefaultPosition, wxDefaultSize, 0);
+        m_Minutes->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Arial"));
+        m_Minutes->SetMinSize(wxSize(15, -1));
+        bSizer141121->Add(m_Minutes, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
 
+        wxStaticText* lblM = new wxStaticText(m_panel111, wxID_ANY, _("m"));
+        lblM->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "Arial"));
+        lblM->SetMinSize(wxSize(20, -1));
+        bSizer141121->Add(lblM, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
+
+        // Seconds
+        m_Seconds = new wxStaticText(m_panel111, wxID_ANY, _("--"), wxDefaultPosition, wxDefaultSize, 0);
+        m_Seconds->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Arial"));
+        m_Seconds->SetMinSize(wxSize(15, -1));
+        bSizer141121->Add(m_Seconds, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+
+        wxStaticText* lblS = new wxStaticText(m_panel111, wxID_ANY, _("s"));
+        lblS->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, "Arial"));
+        lblS->SetMinSize(wxSize(20, -1));
+        bSizer141121->Add(lblS, 0, wxALL | wxALIGN_CENTER_VERTICAL, 2);
 
 	bSizer13111->Add( bSizer141121, 0, 0, 5 );
 
