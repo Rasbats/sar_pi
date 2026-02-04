@@ -919,14 +919,25 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
 
             double sTime = SAR_distance / speed; // decimal hours
-            int hours = static_cast<int>(sTime);
-            double fractionalHours = sTime - hours;
-            int minutes = static_cast<int>(fractionalHours * 60);
-            double fractionalMinutes = (fractionalHours * 60) - minutes;
-            int seconds = static_cast<int>(fractionalMinutes * 60);
-            m_Hours->SetLabel(wxString::Format("%d", hours));
-            m_Minutes->SetLabel(wxString::Format("%d", minutes));
-            m_Seconds->SetLabel(wxString::Format("%d", seconds));
+
+            if (speed <= 0.0) {
+              m_Hours->SetLabel("--");
+              m_Minutes->SetLabel("--");
+              m_Seconds->SetLabel("--");
+            }
+            else {
+              double sTime = SAR_distance / speed; // decimal hours
+
+              int hours = static_cast<int>(sTime);
+              double fractionalHours = sTime - hours;
+              int minutes = static_cast<int>(fractionalHours * 60);
+              double fractionalMinutes = (fractionalHours * 60) - minutes;
+              int seconds = static_cast<int>(fractionalMinutes * 60);
+
+              m_Hours->SetLabel(wxString::Format("%d", hours));
+              m_Minutes->SetLabel(wxString::Format("%d", minutes));
+              m_Seconds->SetLabel(wxString::Format("%d", seconds));
+            }
 
             break;
           }
@@ -1219,16 +1230,25 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         }
         if (write_file) pRoot->LinkEndChild(Route);
         this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
-        double sTime = SAR_distance / speed; // decimal hours
-        int hours = static_cast<int>(sTime);
-        double fractionalHours = sTime - hours;
-        int minutes = static_cast<int>(fractionalHours * 60);
-        double fractionalMinutes = (fractionalHours * 60) - minutes;
-        int seconds = static_cast<int>(fractionalMinutes * 60);
-        m_Hours->SetLabel(wxString::Format("%d", hours));
-        m_Minutes->SetLabel(wxString::Format("%d", minutes));
-        m_Seconds->SetLabel(wxString::Format("%d", seconds));
 
+        if (speed <= 0.0) {
+          m_Hours->SetLabel("--");
+          m_Minutes->SetLabel("--");
+          m_Seconds->SetLabel("--");
+        }
+        else {
+          double sTime = SAR_distance / speed; // decimal hours
+
+          int hours = static_cast<int>(sTime);
+          double fractionalHours = sTime - hours;
+          int minutes = static_cast<int>(fractionalHours * 60);
+          double fractionalMinutes = (fractionalHours * 60) - minutes;
+          int seconds = static_cast<int>(fractionalMinutes * 60);
+
+          m_Hours->SetLabel(wxString::Format("%d", hours));
+          m_Minutes->SetLabel(wxString::Format("%d", minutes));
+          m_Seconds->SetLabel(wxString::Format("%d", seconds));
+        }
       }
       // Expanding Square End
       break;
@@ -1461,15 +1481,25 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
           if (write_file) pRoot->LinkEndChild(Route2);
           this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
-          double sTime = SAR_distance / speed; // decimal hours
-          int hours = static_cast<int>(sTime);
-          double fractionalHours = sTime - hours;
-          int minutes = static_cast<int>(fractionalHours * 60);
-          double fractionalMinutes = (fractionalHours * 60) - minutes;
-          int seconds = static_cast<int>(fractionalMinutes * 60);
-          m_Hours->SetLabel(wxString::Format("%d", hours));
-          m_Minutes->SetLabel(wxString::Format("%d", minutes));
-          m_Seconds->SetLabel(wxString::Format("%d", seconds));
+
+          if (speed <= 0.0) {
+            m_Hours->SetLabel("--");
+            m_Minutes->SetLabel("--");
+            m_Seconds->SetLabel("--");
+          }
+          else {
+            double sTime = SAR_distance / speed; // decimal hours
+
+            int hours = static_cast<int>(sTime);
+            double fractionalHours = sTime - hours;
+            int minutes = static_cast<int>(fractionalHours * 60);
+            double fractionalMinutes = (fractionalHours * 60) - minutes;
+            int seconds = static_cast<int>(fractionalMinutes * 60);
+
+            m_Hours->SetLabel(wxString::Format("%d", hours));
+            m_Minutes->SetLabel(wxString::Format("%d", minutes));
+            m_Seconds->SetLabel(wxString::Format("%d", seconds));
+          }
           //
           // IAMSAR Sector search end
           //
@@ -1712,15 +1742,25 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
             if (write_file) pRoot->LinkEndChild(Route2);
             this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
-            double sTime = SAR_distance / speed; // decimal hours
-            int hours = static_cast<int>(sTime);
-            double fractionalHours = sTime - hours;
-            int minutes = static_cast<int>(fractionalHours * 60);
-            double fractionalMinutes = (fractionalHours * 60) - minutes;
-            int seconds = static_cast<int>(fractionalMinutes * 60);
-            m_Hours->SetLabel(wxString::Format("%d", hours));
-            m_Minutes->SetLabel(wxString::Format("%d", minutes));
-            m_Seconds->SetLabel(wxString::Format("%d", seconds));
+
+            if (speed <= 0.0) {
+              m_Hours->SetLabel("--");
+              m_Minutes->SetLabel("--");
+              m_Seconds->SetLabel("--");
+            }
+            else {
+              double sTime = SAR_distance / speed; // decimal hours
+
+              int hours = static_cast<int>(sTime);
+              double fractionalHours = sTime - hours;
+              int minutes = static_cast<int>(fractionalHours * 60);
+              double fractionalMinutes = (fractionalHours * 60) - minutes;
+              int seconds = static_cast<int>(fractionalMinutes * 60);
+
+              m_Hours->SetLabel(wxString::Format("%d", hours));
+              m_Minutes->SetLabel(wxString::Format("%d", minutes));
+              m_Seconds->SetLabel(wxString::Format("%d", seconds));
+            }
             // IAMSAR Sector search end
           }
         // USCG Sector search end
@@ -1832,15 +1872,25 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         }
         if (write_file) pRoot->LinkEndChild(Route);
         this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
-        double sTime = SAR_distance / speed; // decimal hours
-        int hours = static_cast<int>(sTime);
-        double fractionalHours = sTime - hours;
-        int minutes = static_cast<int>(fractionalHours * 60);
-        double fractionalMinutes = (fractionalHours * 60) - minutes;
-        int seconds = static_cast<int>(fractionalMinutes * 60);
-        m_Hours->SetLabel(wxString::Format("%d", hours));
-        m_Minutes->SetLabel(wxString::Format("%d", minutes));
-        m_Seconds->SetLabel(wxString::Format("%d", seconds));
+
+        if (speed <= 0.0) {
+          m_Hours->SetLabel("--");
+          m_Minutes->SetLabel("--");
+          m_Seconds->SetLabel("--");
+        }
+        else {
+          double sTime = SAR_distance / speed; // decimal hours
+
+          int hours = static_cast<int>(sTime);
+          double fractionalHours = sTime - hours;
+          int minutes = static_cast<int>(fractionalHours * 60);
+          double fractionalMinutes = (fractionalHours * 60) - minutes;
+          int seconds = static_cast<int>(fractionalMinutes * 60);
+
+          m_Hours->SetLabel(wxString::Format("%d", hours));
+          m_Minutes->SetLabel(wxString::Format("%d", minutes));
+          m_Seconds->SetLabel(wxString::Format("%d", seconds));
+        }
 
         // Oil Rig end
         break;
