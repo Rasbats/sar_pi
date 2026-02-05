@@ -745,7 +745,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
   double approach = 0;
   double leg_distancex = 0;
   double leg_distancey = 0;
-  double nlegs = 0;
+  int nlegs = 0;
   double speed = 0;
   double SAR_distance = 0;
   bool First_Ship = false;
@@ -765,27 +765,37 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
         if (!this->m_Approach_PS->GetValue().ToDouble(&approach)) {
           approach = 0.0;
+          this->m_Approach_PS->SetValue(wxString::Format("%f", approach));
         }  // approach course
         if (!this->m_dx_PS->GetValue().ToDouble(&leg_distancex)) {
           leg_distancex = 1.0;
+          this->m_dx_PS->SetValue(wxString::Format("%f", leg_distancex));
         }  // leg distance
         if (!this->m_dy_PS->GetValue().ToDouble(&leg_distancey)) {
           leg_distancey = 1.0;
+          this->m_dy_PS->SetValue(wxString::Format("%f", leg_distancey));
         }  // leg distance
-        if (!this->m_n_PS->GetValue().ToDouble(&nlegs)) {
-          nlegs = 1.0;
+        if (!this->m_n_PS->GetValue().ToInt(&nlegs)) {
+          nlegs = 3;
+          this->m_n_PS->SetValue(wxString::Format("%d", nlegs));
         }  // number of legs
         if (!this->m_Speed_PS->GetValue().ToDouble(&speed)) {
           speed = 5.0;
+          this->m_Speed_PS->SetValue(wxString::Format("%f", speed));
         }  // search velocity
-        if (this->m_Nship->GetCurrentSelection()) First_Ship = true;  // S=1
+        if (this->m_Nship->GetCurrentSelection()) {
+          First_Ship = true;  // S=1
+        } 
 
         if (leg_distancex < 0.1) {
-          leg_distancex = 1.0;
+          leg_distancex = 0.1;
+          this->m_dx_PS->SetValue(wxString::Format("%f", leg_distancex));
         }  // check for negative or small values
-        if (nlegs < 0.1) {
-          nlegs = 1.0;
+        if (nlegs < 1) {
+          nlegs = 1;
+          this->m_n_PS->SetValue(wxString::Format("%d", nlegs));
         }  // check for negative or small values
+
         /*pattern
         *datum
         *Start of search
@@ -823,7 +833,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         switch (shipsAvailable) {
           case 0:  // IAMSAR single unit
           {
-            if (nlegs < 3) nlegs = 3;
             if (write_file) {
               int ps = this->m_NPortStbd->GetSelection();
               wxString colour = "Blue";
@@ -1113,28 +1122,31 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         if (dbg) cout << "Expanding Square\n";
         double approach = 0.0;
         double leg_distancex = 0.0;
-        double legs = 0.0;
+        int nlegs = 0.0;
         double speed = 0.0;
         double SAR_distance = 0;
         if (!this->m_Approach_ES->GetValue().ToDouble(&approach)) {
           approach = 0.0;
+          this->m_Approach_ES->SetValue(wxString::Format("%f", approach));
         }  // approach course
 
-        if (!this->m_dx_ES->GetValue().ToDouble(&leg_distancex)) {
-          leg_distancex = 1.0;
-          this->m_dx_ES->SetValue(wxString::Format("%f", leg_distancex));
-        }  // leg distance
-        if (!this->m_n_ES->GetValue().ToDouble(&legs)) {
-          legs = 1.0;
+        int ss = this->m_dx_ES->GetCurrentSelection();
+        this->m_dx_ES->GetString(ss).ToDouble(&leg_distancex);  // leg distance
+
+        if (!this->m_n_ES->GetValue().ToInt(&nlegs)) {
+          nlegs = 5;
+          this->m_n_ES->SetValue(wxString::Format("%d", nlegs));
         }  // number of legs
         if (!this->m_Speed_ES->GetValue().ToDouble(&speed)) {
           speed = 5.0;
+          this->m_Speed_ES->SetValue(wxString::Format("%f", speed));
         }  // search velocity
-        if (leg_distancex < 0.1) {
-          leg_distancex = 1.0;
+        if (leg_distancex < 0.1) { 
+          leg_distancex = 0.1;
         }  // check for negative or small values
-        if (legs < 4) {
-          legs = 4;
+        if (nlegs < 1) {
+          nlegs = 1;
+          this->m_n_ES->SetValue(wxString::Format("%d", nlegs));
         }
 
         /* Pattern
@@ -1159,7 +1171,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         double lati, loni;
         int x = 1;
         int count = 0;
-        for (x = 1; x <= legs; x++) {  // Loop over the number of search squares
+        for (x = 1; x <= nlegs; x++) {  // Loop over the number of search squares
           count++;
           double ESdistance = leg_distancex;
           double ESheading = 0;
@@ -1244,16 +1256,18 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           bool two_cycles = false;
           if (!this->m_Approach_SS->GetValue().ToDouble(&approach)) {
             approach = 0.0;
+            this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
           }  // approach course
-          if (!this->m_dx_SS->GetValue().ToDouble(&leg_distancex)) {
-            leg_distancex = 1.0;
-            this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
-          }  // leg distance
+
+          int ss = this->m_dx_SS->GetCurrentSelection();
+          this->m_dx_SS->GetString(ss).ToDouble(&leg_distancex);  // leg distance
+
           if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
             speed = 5.0;
+            this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
           }  // search velocity
-          if (leg_distancex < 0.1) {
-            leg_distancex = 0.1;
+          if (leg_distancex < 0.5) {
+            leg_distancex = 0.5;
           }  // check for negative or small values
           if (this->m_Ncycles->GetSelection() == 1)
             two_cycles = true;  // S=1
@@ -1478,13 +1492,15 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             bool two_cycles = false;
             if (!this->m_Approach_SS->GetValue().ToDouble(&approach)) {
               approach = 0.0;
+              this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
             }  // approach course
-            if (!this->m_dx_SS->GetValue().ToDouble(&leg_distancex)) {
-              leg_distancex = 1.0;
-              this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
-            }  // leg distance
+
+            int ss = this->m_dx_SS->GetCurrentSelection();
+            this->m_dx_SS->GetString(ss).ToDouble(&leg_distancex);  // leg distance
+
             if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
               speed = 5.0;
+              this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
             }  // search velocity
             if (leg_distancex < 0.1) {
               leg_distancex = 0.1;
@@ -1714,28 +1730,32 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         if (dbg) cout << "Oil Rig\n";
         double approach = 0;
         double leg_distancex = 0;
-        double nlegs = 0;
+        int nlegs = 0;
         double speed = 0;
         double SAR_distance = 0;
 
         if (!this->m_Approach_OR->GetValue().ToDouble(&approach)) {
           approach = 0.0;
+          this->m_Approach_OR->SetValue(wxString::Format("%f", approach));
         }  // approach course
-        if (!this->m_dx_OR->GetValue().ToDouble(&leg_distancex)) {
-          leg_distancex = 1.0;
-          this->m_dx_OR->SetValue(wxString::Format("%f", leg_distancex));
-        }  // leg distance
-        if (!this->m_NLegs_OR->GetValue().ToDouble(&nlegs)) {
-          nlegs = 1.0;
+
+        int ss = this->m_dx_OR->GetCurrentSelection();
+        this->m_dx_OR->GetString(ss).ToDouble(&leg_distancex);  // leg distance
+
+        if (!this->m_NLegs_OR->GetValue().ToInt(&nlegs)) {
+          nlegs = 3;
+          this->m_NLegs_OR->SetValue(wxString::Format("%d", nlegs));
         }  // number of legs
         if (!this->m_Speed_OR->GetValue().ToDouble(&speed)) {
           speed = 5.0;
+          this->m_Speed_OR->SetValue(wxString::Format("%f", speed));
         }  // search velocity
         if (leg_distancex < 0.1) {
-          leg_distancex = 1.0;
-        }  // check for negative or small values
-        if (nlegs < 0.1) {
-          nlegs = 1.0;
+          leg_distancex = 0.1;
+        }  // check for negative or small values)
+        if (nlegs < 1) {
+          nlegs = 1;
+          this->m_NLegs_OR->SetValue(wxString::Format("%d", nlegs));
         }  // check for negative or small values
         /*pattern
         datum
@@ -1961,12 +1981,9 @@ void Dlg::OnCursorSelect(wxCommandEvent& event) {
   m_Lat1->Clear();
   m_Lon1->Clear();
 
-  wxMessageBox(
-      _("To copy the cursor location place the cursor on the chart "
-        "\n     ...and press <CTRL>+S"));
-  // wxMessageBox(_("While this button is selected, or the cursor is in the
-  // lattitude or longitude box, you can copy the cursor location with
-  // <CTRL>+S") );
+wxMessageBox( _("To copy the cursor location:\n\n" 
+  "- Right-click on the chart and choose 'Select SAR Datum Point'\n" 
+  "- Or, with the plugin window selected and the cursor on the chart, press <CTRL>+S") );
   event.Skip();
 }
 
