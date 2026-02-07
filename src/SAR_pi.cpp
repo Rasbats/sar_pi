@@ -33,6 +33,7 @@
 
 #include "SAR_pi.h"
 #include "plug_utils.h"
+#include <cstdint>
 
 // the class factories, used to create and destroy instances of the PlugIn
 
