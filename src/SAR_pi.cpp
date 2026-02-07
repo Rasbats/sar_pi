@@ -33,7 +33,6 @@
 
 #include "SAR_pi.h"
 #include "plug_utils.h"
-#include <cstdint>
 
 // the class factories, used to create and destroy instances of the PlugIn
 
@@ -58,7 +57,7 @@ extern "C" DECL_EXP void destroy_pi(opencpn_plugin *p) { delete p; }
 //---------------------------------------------------------------------------------------------------------
 
 SAR_pi::SAR_pi(void *ppimgr)
-    : opencpn_plugin_118(ppimgr),
+    : opencpn_plugin_120(ppimgr),
 // Create the PlugIn icons
 m_show_sar_icon(false)
 

@@ -36,7 +36,6 @@
 #endif //precompiled headers
 
 #include <wx/fileconf.h>
-#include <cstdint>
 #include "ocpn_plugin.h" //Required for OCPN plugin functions
 #include "SARgui_impl.h"
 #include "bitmaps.h"
@@ -50,7 +49,7 @@ class Dlg;
 
 #define CALCULATOR_TOOL_POSITION    -1          // Request default positioning of toolbar tool
 
-class SAR_pi : public opencpn_plugin_118
+class SAR_pi : public opencpn_plugin_120
 {
 public:
    explicit SAR_pi(void *ppimgr);
