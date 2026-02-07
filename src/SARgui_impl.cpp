@@ -745,7 +745,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
   double approach = 0;
   double leg_distancex = 0;
   double leg_distancey = 0;
-  int nlegs = 0;
+  long nlegs = 0;
   double speed = 0;
   double SAR_distance = 0;
   bool First_Ship = false;
@@ -775,7 +775,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           leg_distancey = 1.0;
           this->m_dy_PS->SetValue(wxString::Format("%f", leg_distancey));
         }  // leg distance
-        if (!this->m_n_PS->GetValue().ToInt(&nlegs)) {
+        if (!this->m_n_PS->GetValue().ToLong(&nlegs)) {
           nlegs = 3;
           this->m_n_PS->SetValue(wxString::Format("%d", nlegs));
         }  // number of legs
@@ -1122,7 +1122,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         if (dbg) cout << "Expanding Square\n";
         double approach = 0.0;
         double leg_distancex = 0.0;
-        int nlegs = 0.0;
+        long nlegs = 0.0;
         double speed = 0.0;
         double SAR_distance = 0;
         if (!this->m_Approach_ES->GetValue().ToDouble(&approach)) {
@@ -1133,7 +1133,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         int ss = this->m_dx_ES->GetCurrentSelection();
         this->m_dx_ES->GetString(ss).ToDouble(&leg_distancex);  // leg distance
 
-        if (!this->m_n_ES->GetValue().ToInt(&nlegs)) {
+        if (!this->m_n_ES->GetValue().ToLong(&nlegs)) {
           nlegs = 5;
           this->m_n_ES->SetValue(wxString::Format("%d", nlegs));
         }  // number of legs
@@ -1730,7 +1730,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         if (dbg) cout << "Oil Rig\n";
         double approach = 0;
         double leg_distancex = 0;
-        int nlegs = 0;
+        long nlegs = 0;
         double speed = 0;
         double SAR_distance = 0;
 
@@ -1742,7 +1742,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         int ss = this->m_dx_OR->GetCurrentSelection();
         this->m_dx_OR->GetString(ss).ToDouble(&leg_distancex);  // leg distance
 
-        if (!this->m_NLegs_OR->GetValue().ToInt(&nlegs)) {
+        if (!this->m_NLegs_OR->GetValue().ToLong(&nlegs)) {
           nlegs = 3;
           this->m_NLegs_OR->SetValue(wxString::Format("%d", nlegs));
         }  // number of legs
