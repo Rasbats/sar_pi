@@ -10,7 +10,6 @@
 wxBitmap _img_rescue;
 
 #ifdef PLUGIN_USE_SVG
-#include "ocpn_plugin.h"
 wxString _svg_sar;
 wxString _svg_sar_toggled;
 #endif
