@@ -13,5 +13,4 @@ plugins
 *.bak
 buildwin/*.7z
 *.user
-.vscode
 
