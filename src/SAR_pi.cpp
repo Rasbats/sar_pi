@@ -31,7 +31,6 @@
 #include "wx/wx.h"
 #endif  // precompiled headers
 
-#include "ocpn_plugin.h"
 #include "SAR_pi.h"
 #include "plug_utils.h"
 
