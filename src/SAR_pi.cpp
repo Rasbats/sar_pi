@@ -31,7 +31,9 @@
 #include "wx/wx.h"
 #endif  // precompiled headers
 
+#include "ocpn_plugin.h"
 #include "SAR_pi.h"
+#include "plug_utils.h"
 
 // the class factories, used to create and destroy instances of the PlugIn
 
@@ -55,34 +57,44 @@ extern "C" DECL_EXP void destroy_pi(opencpn_plugin *p) { delete p; }
 //
 //---------------------------------------------------------------------------------------------------------
 
-SAR_pi::SAR_pi(void *ppimgr) : opencpn_plugin_118(ppimgr) {
-  // Create the PlugIn icons
+SAR_pi::SAR_pi(void *ppimgr)
+    : opencpn_plugin_118(ppimgr),
+// Create the PlugIn icons
+m_show_sar_icon(false)
+
+{
+  
   initialize_images();
   initialize_bitmaps();
 
-  wxFileName fn;
-
-  auto path = GetPluginDataDir("sar_pi");
-  fn.SetPath(path);
-  fn.AppendDir(_T("data"));
-  fn.SetFullName("sar_panel_icon.png");
-
-  path = fn.GetFullPath();
-
-  wxInitAllImageHandlers();
-
-  wxLogDebug(wxString("Using icon path: ") + path);
-  if (!wxImage::CanRead(path)) {
-    wxLogDebug("Initiating image handlers.");
-    wxInitAllImageHandlers();
-  }
-  wxImage panelIcon(path);
-  if (panelIcon.IsOk())
-    m_panelBitmap = wxBitmap(panelIcon);
+  auto icon_path = GetPluginIcon("sar_panel_icon", PKG_NAME);
+  if (icon_path.type == IconPath::Type::Svg)
+    m_panel_bitmap = LoadSvgIcon(icon_path.path.c_str());
+  else if (icon_path.type == IconPath::Type::Png)
+    m_panel_bitmap = LoadPngIcon(icon_path.path.c_str());
+  else  // icon_path.type == NotFound
+    wxLogWarning("Cannot find icon for basename: %s", "sar_panel_icon");
+  if (m_panel_bitmap.IsOk())
+    wxLogDebug("sarPi::, bitmap OK");
   else
-    wxLogWarning(_("SAR panel icon has NOT been loaded"));
+    wxLogDebug("sarPi::, bitmap fail");
+}
 
-  m_bShowSAR = false;
+SAR_pi::~SAR_pi() {
+  delete _img_rescue;
+
+  if (m_pDialog) {
+    wxFileConfig *pConf = GetOCPNConfigObject();
+
+    if (pConf) {
+      pConf->SetPath(_T ( "/Settings/SAR_pi" ));
+      pConf->Write(_T ( "Opacity" ), m_iOpacity);
+      pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
+      pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
+      pConf->Write(_T ( "CaptureCursor" ), m_bCaptureCursor);
+      pConf->Write(_T ( "CaptureShip" ), m_bCaptureShip);
+    }
+  }
 }
 
 int SAR_pi::Init(void) {
@@ -102,17 +114,21 @@ int SAR_pi::Init(void) {
 
   //    And load the configuration items
   LoadConfig();
-
+  auto icon = GetPluginIcon("sar_pi", PKG_NAME);
+  auto toggled_icon = GetPluginIcon("sar_pi_toggled", PKG_NAME);
   //    This PlugIn needs a toolbar icon, so request its insertion
-#ifdef PLUGIN_USE_SVG
-  m_leftclick_tool_id = InsertPlugInToolSVG(
-      "SAR", _svg_sar, _svg_sar, _svg_sar_toggled, wxITEM_CHECK, _("SAR"), "",
-      NULL, CALCULATOR_TOOL_POSITION, 0, this);
-#else
-  m_leftclick_tool_id = InsertPlugInTool(_T(""), _img_rescue, _img_rescue,
-                                         wxITEM_NORMAL, _("SAR"), _T(""), NULL,
-                                         CALCULATOR_TOOL_POSITION, 0, this);
-#endif
+  if (m_show_sar_icon) {
+    if (icon.type == IconPath::Type::Svg)
+      m_leftclick_tool_id = InsertPlugInToolSVG(
+          "SAR", icon.path, icon.path, toggled_icon.path, wxITEM_CHECK, "SAR",
+          "", nullptr, CALCULATOR_TOOL_POSITION, 0, this);
+    else if (icon.type == IconPath::Type::Png) {
+      auto bitmap = LoadPngIcon(icon.path.c_str());
+      m_leftclick_tool_id =
+          InsertPlugInTool("", &bitmap, &bitmap, wxITEM_CHECK, "SAR", "",
+                           nullptr, CALCULATOR_TOOL_POSITION, 0, this);
+    }
+  }
 
   wxMenu dummy_menu;
   m_position_menu_id = AddCanvasContextMenuItem
@@ -137,8 +153,8 @@ bool SAR_pi::DeInit(void) {
     delete m_pDialog;
     m_pDialog = NULL;
 
-    m_bShowSAR = false;
-    SetToolbarItemState(m_leftclick_tool_id, m_bShowSAR);
+    m_show_sar = false;
+    SetToolbarItemState(m_leftclick_tool_id, m_show_sar);
   }
   SaveConfig();
 
@@ -159,7 +175,6 @@ const char *GetPlugInVersionPre() { return PKG_PRERELEASE; }
 const char *GetPlugInVersionBuild() { return PKG_BUILD_INFO; }
 
 int SAR_pi::GetPlugInVersionMajor() { return PLUGIN_VERSION_MAJOR; }
-
 int SAR_pi::GetPlugInVersionMinor() { return PLUGIN_VERSION_MINOR; }
 
 wxString SAR_pi::GetCommonName() { return "sar"; }
@@ -191,10 +206,10 @@ void SAR_pi::OnToolbarToolCallback(int id) {
   m_pDialog->Fit();
 
   // Toggle
-  m_bShowSAR = !m_bShowSAR;
+  m_show_sar = !m_show_sar;
 
   //    Toggle dialog?
-  if (m_bShowSAR) {
+  if (m_show_sar) {
     m_pDialog->Show();
     SetCanvasContextMenuItemViz(m_position_menu_id, true);
   } else {
@@ -204,7 +219,7 @@ void SAR_pi::OnToolbarToolCallback(int id) {
 
   // Toggle is handled by the toolbar but we must keep plugin manager b_toggle
   // updated to actual status to ensure correct status upon toolbar rebuild
-  SetToolbarItemState(m_leftclick_tool_id, m_bShowSAR);
+  SetToolbarItemState(m_leftclick_tool_id, m_show_sar);
 
   RequestRefresh(m_parent_window);  // refresh main window
 }
@@ -215,11 +230,13 @@ bool SAR_pi::LoadConfig(void) {
   if (pConf) {
     pConf->SetPath(_T( "/Settings/SAR_pi" ));
     pConf->Read(_T ( "Opacity" ), &m_iOpacity, 255);
+    pConf->Read("ShowSARIcon", &m_show_sar_icon, true);
     // pConf->Read dialog->m_cpConnectorColor->SetColour(m_sConnectorColor);
     m_route_dialog_x = pConf->Read(_T ( "DialogPosX" ), 20L);
     m_route_dialog_y = pConf->Read(_T ( "DialogPosY" ), 20L);
     m_bCaptureCursor = pConf->Read(_T ( "CaptureCursor" ), true);
     m_bCaptureShip = pConf->Read(_T ( "CaptureShip" ), true);
+    
 
     if ((m_route_dialog_x < 0) || (m_route_dialog_x > m_display_width))
       m_route_dialog_x = 5;
@@ -236,6 +253,7 @@ bool SAR_pi::SaveConfig(void) {
   if (pConf) {
     pConf->SetPath(_T ( "/Settings/SAR_pi" ));
     pConf->Write(_T ( "Opacity" ), m_iOpacity);
+    pConf->Write("ShowSARIcon", m_show_sar_icon);
     pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
     pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
     pConf->Write(_T ( "CaptureCursor" ), m_bCaptureCursor);
@@ -294,8 +312,8 @@ void SAR_pi::OnContextMenuItemCallback(int id) {
 }
 
 void SAR_pi::OnSARDialogClose() {
-  m_bShowSAR = false;
-  SetToolbarItemState(m_leftclick_tool_id, m_bShowSAR);
+  m_show_sar = false;
+  SetToolbarItemState(m_leftclick_tool_id, m_show_sar);
   m_pDialog->Hide();
   SaveConfig();
 

@@ -53,7 +53,8 @@ class Dlg;
 class SAR_pi : public opencpn_plugin_118
 {
 public:
-      SAR_pi(void *ppimgr);
+   explicit SAR_pi(void *ppimgr);
+   ~SAR_pi() override;
 
 //    The required PlugIn Methods
       int Init(void);
@@ -96,7 +97,7 @@ public:
       double GetCursorLat(void) {return m_cursor_lat;}
 
 	  int m_position_menu_id;
-	  
+      wxBitmap m_panel_bitmap;
 
 private:
       wxFileConfig      *m_pconfig;
@@ -110,8 +111,8 @@ private:
       int               m_leftclick_tool_id;
       bool              m_ShowHelp,m_bCaptureCursor,m_bCaptureShip;
       double m_ship_lon,m_ship_lat,m_cursor_lon,m_cursor_lat;
-	  bool				m_bSARShowIcon;
-	  bool				m_bShowSAR;
+      bool              m_show_sar_icon;
+	  bool				m_show_sar;
 	  wxBitmap			m_panelBitmap;
 	 
 };

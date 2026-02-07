@@ -65,6 +65,8 @@ SET(SRC
         src/bitmaps.cpp
         src/tinyxml2.cpp
         src/tinyxml2.h
+        src/plug_utils.cpp
+        src/plug_utils.h
     )
 
 set(PKG_API_LIB api-18)  #  A directory in libs/ e. g., api-17 or api-16
@@ -78,6 +80,9 @@ macro(late_init)
 endmacro ()
 
 macro(add_plugin_libraries)
+# Add libraries required by this plugin
+  add_subdirectory("${CMAKE_SOURCE_DIR}/libs/std_filesystem")
+  target_link_libraries(${PACKAGE_NAME} ocpn::filesystem)
   # The wxsvg library enables SVG overall in the plugin
   add_subdirectory("${CMAKE_SOURCE_DIR}/opencpn-libs/wxsvg")
   target_link_libraries(${PACKAGE_NAME} ocpn::wxsvg)
