@@ -83,7 +83,7 @@ flatpak remote-add --user --if-not-exists flathub-beta \
 flatpak remote-add --user --if-not-exists \
     flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install --user -y --noninteractive \
-    flathub org.freedesktop.Sdk//${SDK:-22.08}
+    flathub org.freedesktop.Sdk//${SDK:-24.08}
 
 set -x
 cd $builddir
