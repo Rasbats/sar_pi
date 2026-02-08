@@ -93,7 +93,7 @@ public:
   void OnConvertToDegree(wxCommandEvent& event);
   void ConvertToDegree();
 
-  void OnNoteBookFit(wxCommandEvent& event);
+  void OnNoteBookFit(wxNotebookEvent& event);
   void OnFit(wxCommandEvent& event);
 
   void OnCalculate(wxCommandEvent& event);
