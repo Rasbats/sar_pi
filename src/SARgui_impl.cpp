@@ -785,7 +785,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         }  // search velocity
         if (this->m_Nship->GetCurrentSelection()) {
           First_Ship = true;  // S=1
-        } 
+        }
 
         if (leg_distancex < 0.00054) {
           leg_distancex = 0.00054;
@@ -925,8 +925,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
             if (write_file) pRoot->LinkEndChild(Route);
 
-            this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
-            this->m_Time->SetValue(
+            this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+            this->m_Time->SetLabel(
                 wxString::Format("%g", (SAR_distance / speed)));
             break;
           }
@@ -1092,9 +1092,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
               if (write_file) pRoot->LinkEndChild(Route2);
             }
 
-            this->m_Distance->SetValue(
+            this->m_Distance->SetLabel(
                 wxString::Format("%g", SAR_distance / 2));
-            this->m_Time->SetValue(
+            this->m_Time->SetLabel(
                 wxString::Format("%g", (SAR_distance / speed) / 2));
             break;
           }
@@ -1171,7 +1171,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         double lati, loni;
         int x = 1;
         int count = 0;
-        for (x = 1; x <= nlegs; x++) {  // Loop over the number of search squares
+        for (x = 1; x <= nlegs;
+             x++) {  // Loop over the number of search squares
           count++;
           double ESdistance = leg_distancex;
           double ESheading = 0;
@@ -1224,9 +1225,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           lon1 = loni;
         }
         if (write_file) pRoot->LinkEndChild(Route);
-        this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
-        this->m_Time->SetValue(wxString::Format("%g", SAR_distance / speed));
-
+        this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+        this->m_Time->SetLabel(wxString::Format("%g", SAR_distance / speed));
       }
       // Expanding Square End
       break;
@@ -1260,7 +1260,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           }  // approach course
 
           int ss = this->m_dx_SS->GetCurrentSelection();
-          this->m_dx_SS->GetString(ss).ToDouble(&leg_distancex);  // leg distance
+          this->m_dx_SS->GetString(ss).ToDouble(
+              &leg_distancex);  // leg distance
 
           if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
             speed = 5.0;
@@ -1459,8 +1460,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           if (two_cycles) SAR_distance -= leg_distancex * 3;
 
           if (write_file) pRoot->LinkEndChild(Route2);
-          this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
-          this->m_Time->SetValue(wxString::Format("%g", SAR_distance / speed));
+          this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+          this->m_Time->SetLabel(wxString::Format("%g", SAR_distance / speed));
           //
           // IAMSAR Sector search end
           //
@@ -1496,7 +1497,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             }  // approach course
 
             int ss = this->m_dx_SS->GetCurrentSelection();
-            this->m_dx_SS->GetString(ss).ToDouble(&leg_distancex);  // leg distance
+            this->m_dx_SS->GetString(ss).ToDouble(
+                &leg_distancex);  // leg distance
 
             if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
               speed = 5.0;
@@ -1703,8 +1705,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             }
 
             if (write_file) pRoot->LinkEndChild(Route2);
-            this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
-            this->m_Time->SetValue(
+            this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+            this->m_Time->SetLabel(
                 wxString::Format("%g", SAR_distance / speed));
             // IAMSAR Sector search end
           }
@@ -1820,9 +1822,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           }
         }
         if (write_file) pRoot->LinkEndChild(Route);
-        this->m_Distance->SetValue(wxString::Format("%g", SAR_distance));
+        this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
         double sTime = SAR_distance / speed;
-        this->m_Time->SetValue(wxString::Format("%g", sTime));
+        this->m_Time->SetLabel(wxString::Format("%g", sTime));
 
         // Oil Rig end
         break;
@@ -1844,7 +1846,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       xmlDoc.Clear();
 
       if (m_bChartRoute) CreateRoute(s);
-
     }
     //} //end of if no error occurred
 
@@ -1981,9 +1982,11 @@ void Dlg::OnCursorSelect(wxCommandEvent& event) {
   m_Lat1->Clear();
   m_Lon1->Clear();
 
-wxMessageBox( _("To copy the cursor location:\n\n" 
-  "- Right-click on the chart and choose 'Select SAR Datum Point'\n" 
-  "- Or, with the plugin window selected and the cursor on the chart, press <CTRL>+S") );
+  wxMessageBox(
+      _("To copy the cursor location:\n\n"
+        "- Right-click on the chart and choose 'Select SAR Datum Point'\n"
+        "- Or, with the plugin window selected and the cursor on the chart, "
+        "press <CTRL>+S"));
   event.Skip();
 }
 
@@ -2116,7 +2119,6 @@ void Dlg::setDDMM() {  // after entering dd.dddd from cursor, menu, lat
 }
 
 void Dlg::CreateRoute(wxString filename) {
-
   tinyxml2::XMLDocument mydoc;
   mydoc.LoadFile(filename);
 
@@ -2132,19 +2134,16 @@ void Dlg::CreateRoute(wxString filename) {
   tinyxml2::XMLElement* object = pRoot->NextSiblingElement("gpx");
   for (tinyxml2::XMLElement* rte = object->FirstChildElement("rte"); rte;
        rte = rte->NextSiblingElement(), i++) {
-    
-    waypoint myPoint; // Clear data ready for the run
+    waypoint myPoint;  // Clear data ready for the run
     m_waypointList.clear();
 
     for (tinyxml2::XMLElement* e1 = rte->FirstChildElement(); e1;
          e1 = e1->NextSiblingElement(), i++) {
-
       if (!strcmp(e1->Value(), "name")) {
         rte_name = e1->GetText();
       }
 
       if (!strcmp(e1->Value(), "extensions")) {
-
         tinyxml2::XMLElement* s =
             e1->FirstChildElement("opencpn:planned_speed");
         rte_speed = s->GetText();
@@ -2172,7 +2171,6 @@ void Dlg::CreateRoute(wxString filename) {
     if (m_bChartRoute) AddChartRoute(rte_name, rte_speed, rte_color);
     if (m_bSaveRTZ) ExportRTZ(rte_name);
   }
-   
 }
 
 void Dlg::AddChartRoute(wxString myRoute, wxString mySpeed, wxString myColor) {
