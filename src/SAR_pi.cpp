@@ -77,6 +77,7 @@ m_show_sar_icon(false)
     wxLogDebug("sarPi::, bitmap OK");
   else
     wxLogDebug("sarPi::, bitmap fail");
+  m_show_sar = false;
 }
 
 SAR_pi::~SAR_pi() {
