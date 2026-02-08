@@ -787,8 +787,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           First_Ship = true;  // S=1
         } 
 
-        if (leg_distancex < 0.1) {
-          leg_distancex = 0.1;
+        if (leg_distancex < 0.00054) {
+          leg_distancex = 0.00054;
           this->m_dx_PS->SetValue(wxString::Format("%f", leg_distancex));
         }  // check for negative or small values
         if (nlegs < 1) {
@@ -1141,8 +1141,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           speed = 5.0;
           this->m_Speed_ES->SetValue(wxString::Format("%f", speed));
         }  // search velocity
-        if (leg_distancex < 0.1) { 
-          leg_distancex = 0.1;
+        if (leg_distancex < 0.00054) {
+          leg_distancex = 0.00054;
         }  // check for negative or small values
         if (nlegs < 1) {
           nlegs = 1;
@@ -1266,8 +1266,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             speed = 5.0;
             this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
           }  // search velocity
-          if (leg_distancex < 0.5) {
-            leg_distancex = 0.5;
+          if (leg_distancex < 0.00054) {
+            leg_distancex = 0.00054;
           }  // check for negative or small values
           if (this->m_Ncycles->GetSelection() == 1)
             two_cycles = true;  // S=1
@@ -1502,8 +1502,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
               speed = 5.0;
               this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
             }  // search velocity
-            if (leg_distancex < 0.1) {
-              leg_distancex = 0.1;
+            if (leg_distancex < 0.00054) {
+              leg_distancex = 0.00054;
             }  // check for negative or small values
             if (this->m_Ncycles->GetCurrentSelection())
               two_cycles = true;  // S=1
@@ -1750,8 +1750,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           speed = 5.0;
           this->m_Speed_OR->SetValue(wxString::Format("%f", speed));
         }  // search velocity
-        if (leg_distancex < 0.1) {
-          leg_distancex = 0.1;
+        if (leg_distancex < 0.00054) {
+          leg_distancex = 0.00054;
         }  // check for negative or small values)
         if (nlegs < 1) {
           nlegs = 1;
