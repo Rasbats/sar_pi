@@ -325,12 +325,13 @@ void Dlg::ConvertToDegree() {
   }
 }
 
-void Dlg::OnNoteBookFit(wxCommandEvent& event) {
+void Dlg::OnNoteBookFit(wxNotebookEvent& event) {
   this->m_panel11->Layout();
   this->m_wxNotebook234->InvalidateBestSize();
   this->Fit();
   if (dbg) printf("Resizing window \n");
 }
+
 void Dlg::OnFit(wxCommandEvent& event) {
   this->m_wxNotebook234->InvalidateBestSize();
   this->m_panel11->Fit();
@@ -748,7 +749,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
   long nlegs = 0;
   double speed = 0;
   double SAR_distance = 0;
-  bool First_Ship = false;
   double startSARdist;
   double startCse;
   int i = 0;
@@ -783,9 +783,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           speed = 5.0;
           this->m_Speed_PS->SetValue(wxString::Format("%f", speed));
         }  // search velocity
-        if (this->m_Nship->GetCurrentSelection()) {
-          First_Ship = true;  // S=1
-        }
 
         if (leg_distancex < 0.00054) {
           leg_distancex = 0.00054;
@@ -817,14 +814,12 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
         double lati, loni, ESheading, ESdistance;
         double initDistance, initHdg;
-        double latTemp, lonTemp, distTemp, hdgTemp;
+        double latTemp, lonTemp;
 
         if (shipsAvailable != 0) {
           initHdg = approach + 180;
 
           initDistance = leg_distancex / 2;
-          hdgTemp = initHdg + 90.0;
-          distTemp = leg_distancey * 2.5;
 
           destRhumb(latDatum, lonDatum, -initHdg, initDistance, &latTemp,
                     &lonTemp);
