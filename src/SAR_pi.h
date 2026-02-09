@@ -116,7 +116,6 @@ private:
       double m_ship_lon,m_ship_lat,m_cursor_lon,m_cursor_lat;
       bool              m_show_sar_icon;
 	  bool				m_show_sar;
-	  wxBitmap			m_panelBitmap;
 	 
 };
 
