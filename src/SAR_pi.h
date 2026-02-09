@@ -43,6 +43,7 @@
 #include "SARgui_impl.h"
 #include "bitmaps.h"
 #include "config.h"
+#include "icons.h"
 
 class Dlg;
 

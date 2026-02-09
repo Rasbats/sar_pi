@@ -32,7 +32,10 @@
 #endif  // precompiled headers
 
 #include "SAR_pi.h"
+#include "config.h"
 #include "plug_utils.h"
+#include "ocpn_plugin.h"
+#include "icons.h"
 
 // the class factories, used to create and destroy instances of the PlugIn
 
@@ -169,23 +172,18 @@ int SAR_pi::GetAPIVersionMinor() {
   size_t dotpos = v.find('.');
   return atoi(v.substr(dotpos + 1).c_str());
 }
+int SAR_pi::GetPlugInVersionMajor() { return PLUGIN_VERSION_MAJOR; }
+int SAR_pi::GetPlugInVersionMinor() { return PLUGIN_VERSION_MINOR; }
 
 int GetPlugInVersionPatch() { return PLUGIN_VERSION_PATCH; }
 int GetPlugInVersionPost() { return PLUGIN_VERSION_TWEAK; }
 const char *GetPlugInVersionPre() { return PKG_PRERELEASE; }
 const char *GetPlugInVersionBuild() { return PKG_BUILD_INFO; }
-
-int SAR_pi::GetPlugInVersionMajor() { return PLUGIN_VERSION_MAJOR; }
-int SAR_pi::GetPlugInVersionMinor() { return PLUGIN_VERSION_MINOR; }
-
-wxString SAR_pi::GetCommonName() { return "sar"; }
-
 wxBitmap *SAR_pi::GetPlugInBitmap() { return &m_panelBitmap; }
-
+wxString SAR_pi::GetCommonName() { return "sar"; }
 wxString SAR_pi::GetShortDescription() {
   return _("Search and Rescue Patterns");
 }
-
 wxString SAR_pi::GetLongDescription() {
   return _("Creates GPX files with Search and Rescue patterns");
 }
@@ -193,7 +191,7 @@ wxString SAR_pi::GetLongDescription() {
 int SAR_pi::GetToolbarToolCount(void) { return 1; }
 
 void SAR_pi::SetColorScheme(PI_ColorScheme cs) {
-  if (NULL == m_pDialog) return;
+  if (!m_pDialog) return;
 
   DimeWindow(m_pDialog);
 }

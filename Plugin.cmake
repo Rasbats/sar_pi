@@ -27,8 +27,6 @@ set(OCPN_RELEASE_REPO
     "Default repository for tagged builds not matching 'beta'"
 )
 
-option(PLUGIN_USE_SVG "Use SVG graphics" ON)
-
 #
 #
 # -------  Plugin setup --------
@@ -74,9 +72,6 @@ set(PKG_API_LIB api-18)  #  A directory in libs/ e. g., api-17 or api-16
 macro(late_init)
   # Perform initialization after the PACKAGE_NAME library, compilers
   # and ocpn::api is available.
-  if (PLUGIN_USE_SVG)
-    target_compile_definitions(${PACKAGE_NAME} PUBLIC PLUGIN_USE_SVG)
-  endif ()
 endmacro ()
 
 macro(add_plugin_libraries)
