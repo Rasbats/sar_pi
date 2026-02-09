@@ -39,19 +39,14 @@
 
 // the class factories, used to create and destroy instances of the PlugIn
 
+using namespace std;
+
 extern "C" DECL_EXP opencpn_plugin *create_pi(void *ppimgr) {
   return new SAR_pi(ppimgr);
 }
 
 extern "C" DECL_EXP void destroy_pi(opencpn_plugin *p) { delete p; }
 
-//---------------------------------------------------------------------------------------------------------
-//
-//    Calculator PlugIn Implementation
-//
-//---------------------------------------------------------------------------------------------------------
-
-#include "icons.h"
 
 //---------------------------------------------------------------------------------------------------------
 //
@@ -179,7 +174,7 @@ int GetPlugInVersionPatch() { return PLUGIN_VERSION_PATCH; }
 int GetPlugInVersionPost() { return PLUGIN_VERSION_TWEAK; }
 const char *GetPlugInVersionPre() { return PKG_PRERELEASE; }
 const char *GetPlugInVersionBuild() { return PKG_BUILD_INFO; }
-wxBitmap *SAR_pi::GetPlugInBitmap() { return &m_panelBitmap; }
+wxBitmap *SAR_pi::GetPlugInBitmap() { return &m_panel_bitmap; }
 wxString SAR_pi::GetCommonName() { return "sar"; }
 wxString SAR_pi::GetShortDescription() {
   return _("Search and Rescue Patterns");
