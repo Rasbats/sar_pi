@@ -85,8 +85,7 @@ SAR_pi::~SAR_pi() {
     wxFileConfig *pConf = GetOCPNConfigObject();
 
     if (pConf) {
-      pConf->SetPath(_T ( "/PlugIns/SAR_pi" ));
-      pConf->Write("ShowSARIcon", m_show_sar_icon);
+      pConf->SetPath(_T ( "/Settings/SAR_pi" ));
       pConf->Write(_T ( "Opacity" ), m_iOpacity);
       pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
       pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
@@ -222,7 +221,7 @@ bool SAR_pi::LoadConfig(void) {
   wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
 
   if (pConf) {
-    pConf->SetPath(_T( "/PlugIns/SAR_pi" ));
+    pConf->SetPath(_T( "/Settings/SAR_pi" ));
     pConf->Read(_T ( "Opacity" ), &m_iOpacity, 255);
     pConf->Read("ShowSARIcon", &m_show_sar_icon, true);
     // pConf->Read dialog->m_cpConnectorColor->SetColour(m_sConnectorColor);
@@ -245,7 +244,7 @@ bool SAR_pi::SaveConfig(void) {
   wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
 
   if (pConf) {
-    pConf->SetPath(_T ( "/PlugIns/SAR_pi" ));
+    pConf->SetPath(_T ( "/Settings/SAR_pi" ));
     pConf->Write(_T ( "Opacity" ), m_iOpacity);
     pConf->Write("ShowSARIcon", m_show_sar_icon);
     pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
