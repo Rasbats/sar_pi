@@ -93,6 +93,12 @@ public:
   void OnConvertToDegree(wxCommandEvent& event);
   void ConvertToDegree();
 
+  void OnConvertMeterToNM(wxCommandEvent& event);
+  void ConvertMeterToNM();
+
+  void OnConvertNmToMeter(wxCommandEvent& event);
+  void ConvertNmToMeter();
+
   void OnNoteBookFit(wxNotebookEvent& event);
   void OnFit(wxCommandEvent& event);
 

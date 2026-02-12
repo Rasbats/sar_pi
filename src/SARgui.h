@@ -195,6 +195,8 @@ protected:
   wxStaticText* m_Hours;
   wxStaticText* m_Minutes;
   wxStaticText* m_Seconds;
+  wxTextCtrl* m_meterDistance;
+  wxTextCtrl* m_NmDistance;
 
   // Virtual event handlers, override them in your derived class
   virtual void OnClose(wxCloseEvent& event) { event.Skip(); }
@@ -210,6 +212,8 @@ protected:
   virtual void OnShip(wxCommandEvent& event) { event.Skip(); }
   virtual void OnCursorSelect(wxCommandEvent& event) { event.Skip(); }
   virtual void OnConvertToDegree(wxCommandEvent& event) { event.Skip(); }
+  virtual void OnConvertMeterToNM (wxCommandEvent& event) { event.Skip(); }
+  virtual void OnConvertNmToMeter (wxCommandEvent& event ) { event.Skip(); }
 
 public:
   wxBoxSizer* bSframe;

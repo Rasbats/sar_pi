@@ -325,6 +325,36 @@ void Dlg::ConvertToDegree() {
   }
 }
 
+void Dlg::OnConvertMeterToNM(wxCommandEvent& event) { ConvertMeterToNM(); }
+
+void Dlg::ConvertMeterToNM() {
+  double meters;
+  if (!m_meterDistance->GetValue().ToDouble(&meters)) {
+    wxMessageBox(_("Invalid input for conversion"), _("Error"), wxOK | wxICON_ERROR);
+    m_meterDistance->SetValue(wxString::Format("%d", 0));
+    m_NmDistance->SetValue(wxString::Format("%d", 0));
+    return;
+  }
+
+  const double nm = mtoNM(meters);
+  m_NmDistance->SetValue(wxString::Format("%.5f", nm));
+}
+
+void Dlg::OnConvertNmToMeter(wxCommandEvent& event) { ConvertNmToMeter(); }
+
+void Dlg::ConvertNmToMeter() {
+  double nm;
+  if (!m_NmDistance->GetValue().ToDouble(&nm)) {
+    wxMessageBox(_("Invalid input for conversion"), _("Error"), wxOK | wxICON_ERROR);
+    m_meterDistance->SetValue(wxString::Format("%d", 0));
+    m_NmDistance->SetValue(wxString::Format("%d", 0));
+    return;
+  }
+
+  const double meters = NMtom(nm);
+  m_meterDistance->SetValue(wxString::Format("%.0f", meters));
+}
+
 void Dlg::OnNoteBookFit(wxNotebookEvent& event) {
   this->m_panel11->Layout();
   this->m_wxNotebook234->InvalidateBestSize();
