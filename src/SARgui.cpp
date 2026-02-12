@@ -1289,6 +1289,60 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
 
   bSizer91111->Add(bSizer13111, 0, wxEXPAND, 5);
 
+  bSizer13111->AddSpacer(20);
+
+  wxStaticText* m_titleDistanceConverter = new wxStaticText(m_panel111, wxID_ANY, _("Distance Converter"), wxDefaultPosition, wxDefaultSize, 0);
+  m_titleDistanceConverter->Wrap(-1);
+  m_titleDistanceConverter->SetFont(wxFont(10, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD, false, wxT("Arial")));
+
+  bSizer13111->Add(m_titleDistanceConverter, 0, wxALL, 5);
+
+  wxBoxSizer* bSizerNMConv = new wxBoxSizer(wxHORIZONTAL);
+
+  m_meterDistance = new wxTextCtrl(
+      m_panel111, wxID_ANY, wxEmptyString,
+      wxDefaultPosition, wxSize(70, -1)
+      );
+  bSizerNMConv->Add(m_meterDistance, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+
+  wxStaticText* m_unitMeter = new wxStaticText(
+      m_panel111, wxID_ANY, _("m"),
+      wxDefaultPosition, wxDefaultSize, 0
+      );
+  bSizerNMConv->Add(m_unitMeter, 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, 8);
+
+  wxBoxSizer* bSizerArrows = new wxBoxSizer(wxVERTICAL);
+
+  wxButton* m_buttonMeterToNM = new wxButton(
+      m_panel111, wxID_ANY, "-->",
+      wxDefaultPosition, wxSize(40, 25)
+      );
+  bSizerArrows->Add(m_buttonMeterToNM, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
+
+  wxButton* m_buttonNmToMeter = new wxButton(
+      m_panel111, wxID_ANY, "<--",
+      wxDefaultPosition, wxSize(40, 25)
+      );
+  bSizerArrows->Add(m_buttonNmToMeter, 0, wxALL | wxALIGN_CENTER_HORIZONTAL, 2);
+
+  bSizerNMConv->Add(bSizerArrows, 0, wxALIGN_CENTER_VERTICAL, 5);
+
+  bSizerNMConv->AddSpacer(5);
+
+  m_NmDistance = new wxTextCtrl(
+      m_panel111, wxID_ANY, wxEmptyString,
+      wxDefaultPosition, wxSize(70, -1)
+      );
+  bSizerNMConv->Add(m_NmDistance, 0, wxALL | wxALIGN_CENTER_VERTICAL, 5);
+
+  wxStaticText* m_unitNM = new wxStaticText(
+      m_panel111, wxID_ANY, _("NM"),
+      wxDefaultPosition, wxDefaultSize, 0
+      );
+  bSizerNMConv->Add(m_unitNM, 0, wxALIGN_CENTER_VERTICAL | wxRIGHT, 8);
+
+  bSizer13111->Add(bSizerNMConv, 0, 0, 5);
+
   bSizer31->Add(bSizer91111, 1, wxEXPAND, 5);
 
   m_panel111->SetSizer(bSizer31);
@@ -1353,6 +1407,12 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   m_button81->Connect(wxEVT_COMMAND_BUTTON_CLICKED,
                       wxCommandEventHandler(DlgDef::OnConvertToDegree), NULL,
                       this);
+  m_buttonMeterToNM->Connect(wxEVT_COMMAND_BUTTON_CLICKED,
+                             wxCommandEventHandler(DlgDef::OnConvertMeterToNM), NULL,
+                             this);
+  m_buttonNmToMeter->Connect(wxEVT_COMMAND_BUTTON_CLICKED,
+                             wxCommandEventHandler(DlgDef::OnConvertNmToMeter), NULL,
+                             this);
 }
 
 DlgDef::~DlgDef() {
