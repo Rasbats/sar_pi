@@ -176,7 +176,6 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
                    wxDefaultPosition, wxDefaultSize, 0);
   m_button311112121->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL,
                                     wxFONTWEIGHT_BOLD, false, wxT("Arial")));
-  m_button311112121->SetBackgroundColour(wxColour(240, 240, 240));
 
   bSizer71221->Add(m_button311112121, 0, wxALL, 5);
 
@@ -424,7 +423,6 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
                    wxDefaultPosition, wxDefaultSize, 0);
   m_button31111212->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL,
                                    wxFONTWEIGHT_BOLD, false, wxT("Arial")));
-  m_button31111212->SetBackgroundColour(wxColour(240, 240, 240));
 
   bSizer7122->Add(m_button31111212, 0, wxALL, 5);
 
@@ -611,7 +609,6 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
                    wxDefaultPosition, wxDefaultSize, 0);
   m_button31111211->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL,
                                    wxFONTWEIGHT_BOLD, false, wxT("Arial")));
-  m_button31111211->SetBackgroundColour(wxColour(240, 240, 240));
 
   bSizer7121->Add(m_button31111211, 1, wxALL, 5);
 
@@ -802,7 +799,6 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
                    wxDefaultPosition, wxDefaultSize, 0);
   m_button311112->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL,
                                  wxFONTWEIGHT_BOLD, false, wxT("Arial")));
-  m_button311112->SetBackgroundColour(wxColour(240, 240, 240));
 
   bSizer7112->Add(m_button311112, 0, wxALL, 5);
 
@@ -822,7 +818,6 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
                    wxDefaultPosition, wxDefaultSize, 0);
   m_button3111121->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL,
                                   wxFONTWEIGHT_BOLD, false, wxT("Arial")));
-  m_button3111121->SetBackgroundColour(wxColour(240, 240, 240));
 
   bSizer712->Add(m_button3111121, 0, wxALL, 5);
 
