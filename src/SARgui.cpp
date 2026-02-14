@@ -148,6 +148,23 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   sbSizer711 = new wxStaticBoxSizer(
       new wxStaticBox(wx_panel_dome, wxID_ANY, wxEmptyString), wxVERTICAL);
 
+  wxBoxSizer* bSizer78;
+  bSizer78 = new wxBoxSizer(wxHORIZONTAL);
+
+  m_checkBox1 = new wxCheckBox(sbSizer711->GetStaticBox(), wxID_ANY,
+                               _("Waypoint names     "), wxDefaultPosition,
+                               wxDefaultSize, wxALIGN_RIGHT);
+  m_checkBox1->SetValue(true);
+  bSizer78->Add(m_checkBox1, 0, wxALL, 5);
+
+  m_checkBoxIcons1 =
+      new wxCheckBox(sbSizer711->GetStaticBox(), wxID_ANY, _("Icons "),
+                     wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
+  m_checkBoxIcons1->SetValue(true);
+  bSizer78->Add(m_checkBoxIcons1, 0, wxALL, 5);
+
+  sbSizer711->Add(bSizer78, 1, wxEXPAND, 5);
+
   wxBoxSizer* bSizer71;
   bSizer71 = new wxBoxSizer(wxHORIZONTAL);
 
@@ -247,22 +264,6 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   bSizer141111112->Add(m_NPortStbd, 0, wxALL, 5);
 
   bSizer62->Add(bSizer141111112, 1, wxEXPAND, 5);
-
-  wxBoxSizer* bSizer78;
-  bSizer78 = new wxBoxSizer(wxHORIZONTAL);
-
-  m_checkBox1 = new wxCheckBox(m_panel1, wxID_ANY, _("Waypoint names     "),
-                               wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
-  m_checkBox1->SetValue(true);
-  bSizer78->Add(m_checkBox1, 0, wxALL, 5);
-
-  m_checkBoxIcons1 =
-      new wxCheckBox(m_panel1, wxID_ANY, _("Icons "), wxDefaultPosition,
-                     wxDefaultSize, wxALIGN_RIGHT);
-  m_checkBoxIcons1->SetValue(true);
-  bSizer78->Add(m_checkBoxIcons1, 0, wxALL, 5);
-
-  bSizer62->Add(bSizer78, 1, wxEXPAND, 5);
 
   bSizer3->Add(bSizer62, 0, wxALL | wxEXPAND, 5);
 
@@ -778,7 +779,7 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   bSizer69 = new wxBoxSizer(wxHORIZONTAL);
 
   m_checkBox4 =
-      new wxCheckBox(sbSizer714->GetStaticBox(), wxID_ANY, _("Waypoint names "),
+      new wxCheckBox(sbSizer714->GetStaticBox(), wxID_ANY, _("Waypoint names     "),
                      wxDefaultPosition, wxDefaultSize, wxALIGN_RIGHT);
   m_checkBox4->SetValue(true);
   bSizer69->Add(m_checkBox4, 0, wxALL, 5);
@@ -797,8 +798,9 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   m_button311112 =
       new wxButton(sbSizer714->GetStaticBox(), wxID_ANY, _("Generate &GPX"),
                    wxDefaultPosition, wxDefaultSize, 0);
-  m_button311112->SetFont(wxFont(9, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL,
-                                 wxFONTWEIGHT_BOLD, false, wxT("Arial")));
+  m_button311112->SetFont(wxFont(wxNORMAL_FONT->GetPointSize(),
+                                 wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL,
+                                 wxFONTWEIGHT_BOLD, false, wxEmptyString));
 
   bSizer7112->Add(m_button311112, 0, wxALL, 5);
 
