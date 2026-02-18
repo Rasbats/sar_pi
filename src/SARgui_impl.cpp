@@ -830,6 +830,10 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           leg_distancey= 0.00054;
           this->m_dy_PS->SetValue(wxString::Format("%f", leg_distancey));
         }
+        if(speed < 0){
+          speed = 0;
+          this->m_Speed_PS->SetValue(wxString::Format("%f", speed));
+        }
         if (nlegs < 1) {
           nlegs = 1;
           this->m_n_PS->SetValue(wxString::Format("%d", nlegs));
@@ -1203,7 +1207,11 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         if (leg_distancex < 0.00054) {
           leg_distancex = 0.00054;
           this->m_dx_ES->SetValue(wxString::Format("%f", leg_distancex));
-        }  // check for negative or small values
+        }
+        if(speed < 0){
+          speed = 0;
+          this->m_Speed_ES->SetValue(wxString::Format("%f", speed));
+        }
         if (nlegs < 1) {
           nlegs = 1;
           this->m_n_ES->SetValue(wxString::Format("%d", nlegs));
@@ -1352,6 +1360,10 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           if (leg_distancex < 0.00054) {
             leg_distancex = 0.00054;
             this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
+          }
+          if(speed < 0){
+            speed = 0;
+            this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
           }
 
           /* Pattern
@@ -1608,6 +1620,10 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             if (leg_distancex < 0.00054) {
               leg_distancex = 0.00054;
               this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
+            }
+            if(speed < 0){
+              speed = 0;
+              this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
             }
 
             /* Pattern
@@ -1873,6 +1889,10 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         if (leg_distancex < 0.00054) {
           leg_distancex = 0.00054;
           this->m_dx_OR->SetValue(wxString::Format("%f", leg_distancex));
+        }
+        if(speed < 0){
+          speed = 0;
+          this->m_Speed_OR->SetValue(wxString::Format("%f", speed));
         }
         if (nlegs < 1) {
           nlegs = 1;
