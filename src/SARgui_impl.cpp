@@ -824,6 +824,10 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           leg_distancey= 0.00054;
           this->m_dy_PS->SetValue(wxString::Format("%f", leg_distancey));
         }
+        if(speed < 0){
+          speed = 0;
+          this->m_Speed_PS->SetValue(wxString::Format("%f", speed));
+        }
         if (nlegs < 1) {
           nlegs = 1;
           this->m_n_PS->SetValue(wxString::Format("%d", nlegs));
@@ -1180,8 +1184,10 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           approach = 0.0;
           this->m_Approach_ES->SetValue(wxString::Format("%f", approach));
         }  // approach course
-        int ss = this->m_dx_ES->GetCurrentSelection();
-        this->m_dx_ES->GetString(ss).ToDouble(&leg_distancex);  // leg distance
+        if (!this->m_dx_ES->GetValue().ToDouble(&leg_distancex)) {
+          leg_distancex = 1.0;
+          this->m_dx_ES->SetValue(wxString::Format("%f", leg_distancex));
+        }  // leg distance
         if (!this->m_n_ES->GetValue().ToLong(&nlegs)) {
           nlegs = 5;
           this->m_n_ES->SetValue(wxString::Format("%d", nlegs));
@@ -1194,7 +1200,12 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         //Check for minimum values
         if (leg_distancex < 0.00054) {
           leg_distancex = 0.00054;
-        }  // check for negative or small values
+          this->m_dx_ES->SetValue(wxString::Format("%f", leg_distancex));
+        }
+        if(speed < 0){
+          speed = 0;
+          this->m_Speed_ES->SetValue(wxString::Format("%f", speed));
+        }
         if (nlegs < 1) {
           nlegs = 1;
           this->m_n_ES->SetValue(wxString::Format("%d", nlegs));
@@ -1328,8 +1339,10 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             approach = 0.0;
             this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
           }  // approach course
-          int ss = this->m_dx_SS->GetCurrentSelection();
-          this->m_dx_SS->GetString(ss).ToDouble(&leg_distancex);  // leg distance
+          if (!this->m_dx_SS->GetValue().ToDouble(&leg_distancex)) {
+            leg_distancex = 1.0;
+            this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
+          }  // leg distance
           if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
             speed = 5.0;
             this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
@@ -1340,6 +1353,11 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           //Check for minimum values
           if (leg_distancex < 0.00054) {
             leg_distancex = 0.00054;
+            this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
+          }
+          if(speed < 0){
+            speed = 0;
+            this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
           }
 
           /* Pattern
@@ -1581,9 +1599,10 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
               approach = 0.0;
               this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
             }  // approach course
-            int ss = this->m_dx_SS->GetCurrentSelection();
-            this->m_dx_SS->GetString(ss).ToDouble(
-                &leg_distancex);  // leg distance
+            if (!this->m_dx_SS->GetValue().ToDouble(&leg_distancex)) {
+              leg_distancex = 1.0;
+              this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
+            }  // leg distance
             if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
               speed = 5.0;
               this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
@@ -1594,6 +1613,11 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             //Check for minimum values
             if (leg_distancex < 0.00054) {
               leg_distancex = 0.00054;
+              this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
+            }
+            if(speed < 0){
+              speed = 0;
+              this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
             }
 
             /* Pattern
@@ -1843,8 +1867,10 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           approach = 0.0;
           this->m_Approach_OR->SetValue(wxString::Format("%f", approach));
         }  // approach course
-        int ss = this->m_dx_OR->GetCurrentSelection();
-        this->m_dx_OR->GetString(ss).ToDouble(&leg_distancex);  // leg distance
+        if (!this->m_dx_OR->GetValue().ToDouble(&leg_distancex)) {
+          leg_distancex = 1.0;
+          this->m_dx_OR->SetValue(wxString::Format("%f", leg_distancex));
+        }  // leg distance
         if (!this->m_NLegs_OR->GetValue().ToLong(&nlegs)) {
           nlegs = 3;
           this->m_NLegs_OR->SetValue(wxString::Format("%d", nlegs));
@@ -1856,6 +1882,11 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
         if (leg_distancex < 0.00054) {
           leg_distancex = 0.00054;
+          this->m_dx_OR->SetValue(wxString::Format("%f", leg_distancex));
+        }
+        if(speed < 0){
+          speed = 0;
+          this->m_Speed_OR->SetValue(wxString::Format("%f", speed));
         }
         if (nlegs < 1) {
           nlegs = 1;

@@ -82,7 +82,7 @@ protected:
   wxTextCtrl* m_Approach_ES;
   wxStaticText* m_staticText332;
   wxStaticText* m_staticText3211;
-  wxChoice* m_dx_ES;
+  wxTextCtrl* m_dx_ES;
   wxStaticText* m_staticText3311;
   wxStaticText* m_staticText32111;
   wxTextCtrl* m_n_ES;
@@ -104,7 +104,7 @@ protected:
   wxTextCtrl* m_Approach_SS;
   wxStaticText* m_staticText33;
   wxStaticText* m_staticText321;
-  wxChoice* m_dx_SS;
+  wxTextCtrl* m_dx_SS;
   wxStaticText* m_staticText331;
   wxStaticText* m_staticText321111122;
   wxTextCtrl* m_Speed_SS;
@@ -127,7 +127,7 @@ protected:
   wxTextCtrl* m_Approach_OR;
   wxStaticText* m_staticText333;
   wxStaticText* m_staticText3212;
-  wxChoice* m_dx_OR;
+  wxTextCtrl* m_dx_OR;
   wxStaticText* m_staticText3312;
   wxStaticText* m_staticText32121;
   wxTextCtrl* m_NLegs_OR;
@@ -230,6 +230,9 @@ public:
   wxString m_validator_string11;
   wxString m_validator_string12;
   wxString m_validator_string13;
+  wxString m_validator_string14;
+  wxString m_validator_string15;
+  wxString m_validator_string16;
 
   DlgDef(wxWindow* parent, wxWindowID id = wxID_ANY,
          const wxString& title = _("SAR"),
