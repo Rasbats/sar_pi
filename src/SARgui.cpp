@@ -650,7 +650,7 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   m_staticText3211111111->Wrap(-1);
   bSizer1411111111->Add(m_staticText3211111111, 0, wxALL, 5);
 
-  wxString m_VSMethodChoices[] = {_("IAMSAR"), _("USCG")};
+  wxString m_VSMethodChoices[] = {_("USCG"), _("IAMSAR")};
   int m_VSMethodNChoices = sizeof(m_VSMethodChoices) / sizeof(wxString);
   m_VSMethod =
       new wxChoice(m_panel3, wxID_ANY, wxDefaultPosition, wxDefaultSize,
