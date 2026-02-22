@@ -390,6 +390,12 @@ void Dlg::Addpoint2(XMLElement* Route, wxString ptlat, wxString ptlon,
   m_waypoint->InsertFirstChild(type);
   type->SetText(pttype.mb_str());
 
+  tinyxml2::XMLElement* extensions = xmlDoc.NewElement("extensions");
+  m_waypoint->InsertFirstChild(extensions);
+  tinyxml2::XMLElement* viz = xmlDoc.NewElement("opencpn:viz_name");
+  extensions->InsertFirstChild(viz);
+  viz->SetText("1");
+
   // done adding point
 }
 
