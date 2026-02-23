@@ -222,9 +222,9 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   wxBoxSizer* bSizer77;
   bSizer77 = new wxBoxSizer(wxVERTICAL);
 
-  m_bitmap_trackln1 = new wxStaticBitmap(m_panel1, wxID_ANY, wxNullBitmap,
+  m_bitmap_trackln = new wxStaticBitmap(m_panel1, wxID_ANY, wxNullBitmap,
                                          wxDefaultPosition, wxDefaultSize, 0);
-  bSizer77->Add(m_bitmap_trackln1, 0, wxALL | wxEXPAND, 5);
+  bSizer77->Add(m_bitmap_trackln, 0, wxALL | wxEXPAND, 5);
 
   bSizer62->Add(bSizer77, 0, wxALL | wxEXPAND, 5);
 

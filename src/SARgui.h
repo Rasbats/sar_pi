@@ -69,7 +69,7 @@ protected:
   wxCheckBox* m_cbChartRoute1;
   wxButton* m_button311112121;
   wxChoice* m_choiceSchema1;
-  wxStaticBitmap* m_bitmap_trackln1;
+  wxStaticBitmap* m_bitmap_trackln;
   wxStaticText* m_staticText32111111;
   wxChoice* m_Nship;
   wxStaticText* m_staticTextPortStbd;

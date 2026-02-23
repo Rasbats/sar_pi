@@ -9,7 +9,7 @@
 //
 wxBitmap _img_exp_sq;
 wxBitmap _img_oil_rig;
-wxBitmap _img_sector;
+wxBitmap _img_sector_iamsar;
 wxBitmap _img_sector_uscg;
 wxBitmap _img_trackln_both;
 wxBitmap _img_trackln1;
@@ -36,7 +36,7 @@ void initialize_bitmaps(void)
     fn.SetFullName("sector.png");
     path = fn.GetFullPath();
     wxImage panelIcon2(path);
-    _img_sector = wxBitmap(panelIcon2);
+    _img_sector_iamsar = wxBitmap(panelIcon2);
 
     fn.SetFullName("sector_uscg.png");
     path = fn.GetFullPath();
