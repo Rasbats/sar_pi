@@ -641,7 +641,7 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
                        wxDefaultPosition, wxDefaultSize, 0);
   m_staticText3211111111->Wrap(-1);
   bSizer1411111111->Add(m_staticText3211111111, 0, wxALL, 5);
-  // Give priority to the USCG method.
+
   wxString m_VSMethodChoices[] = {_("USCG"), _("IAMSAR")};
   int m_VSMethodNChoices = sizeof(m_VSMethodChoices) / sizeof(wxString);
   m_VSMethod =
