@@ -15,7 +15,7 @@ extern void initialize_bitmaps(void);
 //
 extern wxBitmap _img_exp_sq;
 extern wxBitmap _img_oil_rig;
-extern wxBitmap _img_sector;
+extern wxBitmap _img_sector_iamsar;
 extern wxBitmap _img_sector_uscg;
 extern wxBitmap _img_trackln_both;
 extern wxBitmap _img_trackln1;
