@@ -840,7 +840,7 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   m_panek4->SetSizer(bSizer6);
   m_panek4->Layout();
   bSizer6->Fit(m_panek4);
-  m_notebook1->AddPage(m_panek4, _("Oil Rig (Quadrant Single)"), false);
+  m_notebook1->AddPage(m_panek4, _("Quadrant Search (Oil Rig)"), false);
 
   bSframe->Add(m_notebook1, 0, wxALL | wxEXPAND, 5);
 
