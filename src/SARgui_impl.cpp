@@ -543,9 +543,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       break;
     }
 
-    //Expanding Square Search (ES)
+    //Expanding Square Search (SS)
     case 2: {
-      defaultFileName = "ES";
+      defaultFileName = "SS";
       break;
     }
 

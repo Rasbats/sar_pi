@@ -1,54 +1,32 @@
-= SAR (Search and Rescue)
-
 :imagesdir: ../images/
 
-image::sar_panel_icon.png[]
+= SAR_pi Manual - OpenCPN
 
-This document is about the 'sar_pi' plugin, which we will refer to as
-SAR_pi in this manual. The plugin was developed by SaltyPaws, based on
-the (external) software “SAR Search patterns” by Andres Ruiz González.
-Rasbats has updated the plugin, following advice from an Australian SAR
-Operations Centre Coordinator, Stephen Hancock. RGLeason has contributed
-ideas for the GUI.
+This document is about the 'sar_pi' plugin, which we will refer to as SAR_pi  in this manual.
 
 This document is not meant to replace official SAR manuals.
 
 The sole purpose of this document is to explain SAR_pi so that you can
-use that plugin in OpenCPN.
+use that plugin in OpenCPN.  
 
-SAR_pi generates GPX files for search and rescue search patterns.
+== Goal
+SAR_pi generates search patterns for SAR missions and saves them as GPX files for importing into OpenCPN.
 
-*References*
+image::sar_liferaft.jpeg[]
 
-*Please consult the latest editions of these:*
+== How to install
+- From the plugin catalogue in OpenCPN  (more information below)
+- By manually compiling the source code from Github and importing the plugin in OpenCPN (more information in the README.md)
 
-{empty}1. *IAMSAR Manual* (International Aeronautical and Maritime
-Search and Rescue Manual)
-
-{empty}2. *UNITED STATES NATIONAL SEARCH AND RESCUE SUPPLEMENT (NSS)* to
-the International Aeronautical and Maritime Search and Rescue Manual
-
-{empty}3. *U.S. COAST GUARD ADDENDUM TO THE UNITED STATES NATIONAL
-SEARCH AND RESCUE SUPPLEMENT (NSS)*
-
-{empty}4. *Marine Knowledge
-http://www.marine-knowledge.com/marine-navigation/search-and-rescue-patterns/*
-
-This last is the only reference that we have found for the 'Oil Rig'
-search.
-
-*Links*
+== *Links*
 
 * Source: https://github.com/Rasbats/sar_pi[Github Repository]
+
 * Releases:
-https://github.com/Rasbats/sar_pi/releases/tag/v2.6.9.1[GithubReleases]
+https://github.com/Rasbats/sar_pi/releases/tag/v2.6.9.1[Github Releases]
+
 * Forum:
-https://www.cruisersforum.com/forums/f134/sar-plugin-233875-8.html[SAR Plugin Thread]
-
-== Aim
-
-To generate search patterns for SAR, saving them as GPX files for
-importing into OpenCPN.
+https://www.cruisersforum.com/forums/f134/sar-plugin-233875-13.html[SAR Plugin Thread]
 
 == Requirements
 
@@ -56,13 +34,35 @@ importing into OpenCPN.
 OpenCPN 5.0.0 and above.
 ----
 
-== General Guidance
+== Contributions
+The plugin was developed by https://github.com/SaltyPaws[SaltyPaws], based on the external software https://sites.google.com/site/navigationalalgorithms/sar-search-patterns[SAR Search patterns] by Andres Ruiz González.
 
-image::sar_liferaft.jpeg[]
+https://github.com/Rasbats[Rasbats] has updated the plugin, following advice from an Australian SAR Operations Centre Coordinator, Stephen Hancock.
 
-*SAR_pi (SAR = Search And Rescue)*
+https://github.com/rgleason[RGleason] has contributed ideas for the GUI. 
 
-== What and Why
+https://github.com/Kupofty[Kupofty] has contributed to GUI updates and bug fixes.
+
+== *References*
+
+*Please consult the latest editions of these:*
+
+{empty}1. *IAMSAR Manual* (International Aeronautical and Maritime
+Search and Rescue Manual)  
+https://maritimesafetyinnovationlab.org/wp-content/uploads/2021/02/Doc.9731-EN-IAMSAR-Manual-International-Aeronautical-and-Maritime-Search-and-Rescue-Manual-Volume-III-Mobile-Facilities.pdf
+
+{empty}2. *UNITED STATES NATIONAL SEARCH AND RESCUE SUPPLEMENT (NSS)* to
+the International Aeronautical and Maritime Search and Rescue Manual
+
+{empty}3. *U.S. COAST GUARD ADDENDUM TO THE UNITED STATES NATIONAL
+SEARCH AND RESCUE SUPPLEMENT (NSS)*
+
+{empty}4. *Marine Knowledge*
+https://web.archive.org/web/20210916104627/http://www.marine-knowledge.com/marine-navigation/search-and-rescue-patterns/
+
+This last is the only reference that we have found for the 'Quadrant Search (Oil Rig)'
+search (may take some time to load the page as it is a Wayback Machine archive).
+
 
 == What does SAR_pi do?
 
@@ -71,19 +71,19 @@ Rescue search patterns directly from within OpenCPN.
 You can save these patterns as GPX files.
 
 These GPX files can then be loaded in OpenCPN and used as routes to
-follow in order to perform an efficiënt search and rescue operation.
+follow in order to perform an efficient search and rescue operation.
 
 *Note*: In this document “Search And Rescue will be shortened to
 “*SAR*”.
 
-== Why should I want it?
+== When to use it ?
 
 When a SAR operation is necessary, there is absolutely no time to lose.
 
 It can be a fellow sailor who is in distress, or a loved-one who fell
 overboard during a dark and rough night.
 
-It is very important that your search operation is as efficiënt as
+It is very important that your search operation is as efficient as
 possible. Meaning that with the required speed you cover a maximum of
 the search-area in a minimum of time. In order to achieve that, it is
 best to follow certain patterns. These search-patterns have proven to
@@ -97,7 +97,7 @@ challenged by a lot of other worries on your mind.
 
 *Let SAR_pi do the work for you!*
 
-Note: in most circumstances SAR operations are coördinated by the Coast
+Note: in most circumstances SAR operations are coordinated by the Coast
 Guard or other professional search and rescue-organisations. These
 operations are coordinated and executed by highly trained specialists
 and follow specific rules and procedures.
@@ -105,20 +105,13 @@ and follow specific rules and procedures.
 *This manual is meant primarily for situations where you are on your own
 and you are the first (or only) ship in the vicinity.*
 
-== First things first, choose the right search-pattern.
+== Choosing the right search-pattern.
 
-There is no time to lose, so choose a search pattern that is best suited
-for the situation.
-
-*In short*:
-
-== Choose Parallel track search:
-
+==== Parallel Track Search
 * *to search a large area when the location of the search object is
 uncertain.*
 
-== Choose Expanding Square Search:
-
+==== Expanding Square Search:
 * *when the location of the search object is known within relatively
 close limits;*
 * when searching for *persons in the water or other search objects with
@@ -127,16 +120,14 @@ little or no leeway*.
 (but keep in mind: this procedure is *less suited to be used
 simultaneously by multiple vessels)*
 
-== Choose Sector search:
-
+==== Sector Search:
 * *when the position of the search object is accurately known and the
 search area is small.*
 
 (but keep in mind: this procedure is *less suited to be used
 simultaneously by multiple vessels)*
 
-== Choose Oil Rig:
-
+==== Quadrant Search (Oil Rig):
 * when you want to search just *one quadrant relative to a fixed
 position*.
 
@@ -153,6 +144,7 @@ have to understand that one of the keys to a successful operation is
 coordination and the avoidance of miscommunication. That involves
 understanding some specific terms and abbreviations.
 
+* *SAR*: Search And Rescue 
 * *SRU*: Search and Rescue Unit (for instance: your ship).
 * *Search speed*: This is the speed of the searching ship. *Note:* the
 higher the speed, the greater the distance you can cover in a given
@@ -295,10 +287,10 @@ patterns will be explained below.
 
 SAR_pi can generate 4 different types of search patterns. They are:
 
-* *Parallel Track*
-* *Expanding Square*
+* *Parallel Track Search*
+* *Expanding Square Search*
 * *Sector Search*
-* *Oil Rig (Quadrant Single)*
+* *Quadrant Search (Oil Rig)*
 
 In the section “*Operation*” we will explain the patterns in some more
 detail.
@@ -389,12 +381,12 @@ in the folder “SAR”.
 
 Abbreviations are used professionally for the different search patterns.
 The plugin tries to reflect these, not only in the default GPX file
-names but also in the routes that appear when imported into OpenCPN.
+names but also in the routes that appear when imported into OpenCPN: 
 
-* *PS* Parallel Track search with a single unit.
-* *SS* Expanding Square (Square Search)
-* *VS* Sector Search (Vector Search)
-* *QS* Oil Rig (Quadrant Search)
+* *PS* : Parallel Search
+* *SS* : Expanding Square Search (Square Search)
+* *VS* : Sector Search (Vector Search)
+* *QS* : Quadrant Search (Oil Rig)
 
 image::3.16.jpeg[]
 
@@ -418,7 +410,7 @@ image::3.19.jpeg[]
 The standard actions can be summed up as:
 
 . Choose the desired search pattern “Parallel Track”, “Expanding
-Square”, “Sector Search” or “Oil Rig (Quadrant Single)”.
+Square”, “Sector Search” or “Quadrant Search (Oil Rig)”.
 . Enter the parameters.
 . Click “Calculate” to find out how long the search track will be in
 nautical miles and how long it will take you to complete that search.
@@ -597,7 +589,7 @@ image::3.19.jpeg[]
 The standard actions can be summed up as:
 
 . Choose the desired search pattern “Parallel Track”, “Expanding
-Square”, “Sector Search” or “Oil Rig (Quadrant Single)”.
+Square”, “Sector Search” or “Quadrant Search (Oil Rig)”.
 . Enter the parameters.
 . Click “Calculate” to find out how long the search track will be in
 nautical miles and how long it will take you to complete that search.
@@ -610,7 +602,7 @@ route.
 
 image::3.191.jpeg[]
 
-== "Expanding Square"
+== "Expanding Square Search"
 
 Keywords:
 
@@ -672,14 +664,12 @@ area, say with each leg a length of no more than 2 to 5 NM. It is
 normally carried out in the area where the casualty or the object has
 been sighted.
 
-== IAMSAR
-
+=== IAMSAR
 The search pattern starts from the Commence Search Point (CSP). The
 initial course then passes through the datum and should be in the
 direction of the wind/tide or overall drift.
 
-== USCG
-
+=== USCG
 The search pattern starts from the datum point and continues on the
 initial course.
 
@@ -756,7 +746,7 @@ If you use the option for 2 passes the result will look like this:
 
 image::5.2.jpeg[]
 
-== "Oil Rig (Quadrant Single)"
+== "Quadrant Search (Oil Rig)"
 
 *Note:* This search pattern is not shown in the IAMSAR manual or USCG
 publications.
@@ -766,19 +756,18 @@ Keywords:
 * FROM STATIONARY OBJECT
 * QUADRANT
 
-In the so-called “oil rig pattern”, the search sectors are placed into a
+In the so-called “Oil Rig pattern”, the search sectors are placed into a
 quadrant.
 
 This pattern is meant to be used when someone has fallen from a
 stationary object (like an oil rig is, or at least is supposed to be)
 and the search area is confined to one quadrant.
 
-== Setting up the "Oil Rig" search pattern.
+== Setting up the "Quadrant Search (Oil Rig)" pattern.
 
 Click the *SAR icon* in the Toolbar
 
-Choose the desired search pattern. In this case: *Oil Rig (Quadrant
-Single)*
+Choose the desired search pattern. In this case: *Quadrant Search (Oil Rig)*
 
 The parameter window shows these fields:
 
