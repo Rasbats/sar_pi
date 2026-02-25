@@ -62,7 +62,6 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText331111;
 		wxStaticText* m_staticText3211111;
 		wxTextCtrl* m_n_PS;
-		wxStaticText* m_staticText3311111;
 		wxStaticText* m_staticText32111112;
 		wxTextCtrl* m_Speed_PS;
 		wxStaticText* m_staticText33111111;
@@ -88,7 +87,6 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText3311;
 		wxStaticText* m_staticText32111;
 		wxTextCtrl* m_n_ES;
-		wxStaticText* m_staticText33111;
 		wxStaticText* m_staticText321111121;
 		wxTextCtrl* m_Speed_ES;
 		wxStaticText* m_staticText331111111;
@@ -108,11 +106,11 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText321;
 		wxTextCtrl* m_dx_SS;
 		wxStaticText* m_staticText331;
+		wxStaticText* m_staticText321111111;
+		wxChoice* m_Ncycles;
 		wxStaticText* m_staticText321111122;
 		wxTextCtrl* m_Speed_SS;
 		wxStaticText* m_staticText331111112;
-		wxStaticText* m_staticText321111111;
-		wxChoice* m_Ncycles;
 		wxStaticLine* m_staticline11;
 		wxCheckBox* m_checkBox3;
 		wxCheckBox* m_checkBoxIcons3;
@@ -133,7 +131,6 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText3312;
 		wxStaticText* m_staticText32121;
 		wxTextCtrl* m_NLegs_OR;
-		wxStaticText* m_staticText33121;
 		wxStaticText* m_staticText321111123;
 		wxTextCtrl* m_Speed_OR;
 		wxStaticText* m_staticText331111113;
@@ -191,13 +188,14 @@ class DlgDef : public wxDialog
 		wxPanel* m_panel111;
 		wxStaticText* m_staticText32211;
 		wxStaticText* m_Distance;
-		wxStaticText* m_staticText33211;
+		wxStaticText* m_staticText73;
 		wxStaticText* m_Hours;
-		wxStaticText* m_staticText331121;
+		wxStaticText* m_staticText72;
 		wxStaticText* m_Minutes;
 		wxStaticText* m_staticText62;
 		wxStaticText* m_Seconds;
 		wxStaticText* m_staticText64;
+		wxStaticLine* m_staticline5;
 		wxStaticText* m_staticText65;
 		wxTextCtrl* m_meterDistance;
 		wxStaticText* m_staticText66;
