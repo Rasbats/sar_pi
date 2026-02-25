@@ -48,8 +48,8 @@ class DlgDef : public wxDialog
 	private:
 
 	protected:
-		wxNotebook* m_notebook1;
-		wxPanel* m_panel1;
+		wxNotebook* m_notebook_PatternSelection;
+		wxPanel* m_panel_PS;
 		wxPanel* wx_panel_dome;
 		wxStaticText* m_staticText3221;
 		wxTextCtrl* m_Approach_PS;
@@ -77,7 +77,7 @@ class DlgDef : public wxDialog
 		wxChoice* m_Nship;
 		wxStaticText* m_staticTextPortStbd;
 		wxChoice* m_NPortStbd;
-		wxPanel* m_panel2;
+		wxPanel* m_panel_SS;
 		wxPanel* m_panel7;
 		wxStaticText* m_staticText322;
 		wxTextCtrl* m_Approach_ES;
@@ -98,7 +98,7 @@ class DlgDef : public wxDialog
 		wxButton* m_button31111212;
 		wxChoice* m_choiceSchema2;
 		wxStaticBitmap* m_bitmap_exp_sq;
-		wxPanel* m_panel3;
+		wxPanel* m_panel_VS;
 		wxPanel* m_panel8;
 		wxStaticText* m_staticText32;
 		wxTextCtrl* m_Approach_SS;
@@ -121,7 +121,7 @@ class DlgDef : public wxDialog
 		wxStaticBitmap* m_bitmap_sector;
 		wxStaticText* m_staticText3211111111;
 		wxChoice* m_VSMethod;
-		wxPanel* m_panek4;
+		wxPanel* m_panel_QS;
 		wxPanel* m_panel10;
 		wxStaticText* m_staticText323;
 		wxTextCtrl* m_Approach_OR;
@@ -142,8 +142,8 @@ class DlgDef : public wxDialog
 		wxButton* m_button3111121;
 		wxChoice* m_choiceSchema4;
 		wxStaticBitmap* m_bitmap_oil_rig;
-		wxNotebook* m_wxNotebook234;
-		wxPanel* m_panel11;
+		wxNotebook* m_notebook_CSP;
+		wxPanel* m_panel_Degrees;
 		wxStaticText* m_staticText3231;
 		wxTextCtrl* m_Lat1;
 		wxStaticText* m_staticText3331;
@@ -153,7 +153,7 @@ class DlgDef : public wxDialog
 		wxPanel* m_panel14;
 		wxButton* m_button11;
 		wxButton* m_Cursor;
-		wxPanel* m_panelDegreesMinutes;
+		wxPanel* m_panel_DegreesMinutes;
 		wxStaticText* m_staticText323131;
 		wxTextCtrl* m_Lat1_d1;
 		wxStaticText* m_staticText333131;
@@ -167,7 +167,7 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText114121;
 		wxChoice* m_Lon1_EW1;
 		wxButton* m_button811;
-		wxPanel* m_panel15;
+		wxPanel* m_panel_DegreesMinutesSeconds;
 		wxStaticText* m_staticText32313;
 		wxTextCtrl* m_Lat1_d;
 		wxStaticText* m_staticText33313;
@@ -185,7 +185,7 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText11512;
 		wxChoice* m_Lon1_EW;
 		wxButton* m_button81;
-		wxPanel* m_panel111;
+		wxPanel* m_panel_BottomRight;
 		wxStaticText* m_staticText32211;
 		wxStaticText* m_Distance;
 		wxStaticText* m_staticText73;
@@ -223,7 +223,7 @@ class DlgDef : public wxDialog
 
 
 	public:
-		wxBoxSizer* bSframe;
+		wxBoxSizer* bSizer_Main;
 		wxString m_validator_string1;
 		wxString m_validator_string2;
 		wxString m_validator_string3;
@@ -253,9 +253,9 @@ class CfgDlgDef : public wxDialog
 
 	protected:
 		wxStaticText* m_staticText17;
-		wxStdDialogButtonSizer* m_sdbSizer1;
-		wxButton* m_sdbSizer1OK;
-		wxButton* m_sdbSizer1Cancel;
+		wxStdDialogButtonSizer* m_sdbSizer_OkCancel;
+		wxButton* m_sdbSizer_OkCancelOK;
+		wxButton* m_sdbSizer_OkCancelCancel;
 
 	public:
 		wxSlider* m_sOpacity;
