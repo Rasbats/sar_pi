@@ -328,7 +328,8 @@ void Dlg::OnConvertMeterToNM(wxCommandEvent& event) { ConvertMeterToNM(); }
 void Dlg::ConvertMeterToNM() {
   double meters;
   if (!m_meterDistance->GetValue().ToDouble(&meters)) {
-    wxMessageBox(_("Invalid input for conversion"), _("Error"), wxOK | wxICON_ERROR);
+    wxMessageBox(_("Invalid input for conversion"), _("Error"),
+                 wxOK | wxICON_ERROR);
     m_meterDistance->SetValue(wxString::Format("%d", 0));
     m_NmDistance->SetValue(wxString::Format("%d", 0));
     return;
@@ -343,7 +344,8 @@ void Dlg::OnConvertNmToMeter(wxCommandEvent& event) { ConvertNmToMeter(); }
 void Dlg::ConvertNmToMeter() {
   double nm;
   if (!m_NmDistance->GetValue().ToDouble(&nm)) {
-    wxMessageBox(_("Invalid input for conversion"), _("Error"), wxOK | wxICON_ERROR);
+    wxMessageBox(_("Invalid input for conversion"), _("Error"),
+                 wxOK | wxICON_ERROR);
     m_meterDistance->SetValue(wxString::Format("%d", 0));
     m_NmDistance->SetValue(wxString::Format("%d", 0));
     return;
@@ -501,8 +503,7 @@ void Dlg::OnORGPX(wxCommandEvent& event) {
   Calculate(event, true, 4);
 }
 
-void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
-{
+void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
   /*
   1 Parallel TRack Search
   2 Expanding Square Search
@@ -519,23 +520,21 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
   int df = PortStbd;
 
   switch (Pattern) {
-
-    //Parallel Track Search (PS)
+    // Parallel Track Search (PS)
     case 1: {
       int ch = shipsAvailable;
       wxString chText;
 
-      //Single unit
+      // Single unit
       if (ch == 0) {
         if (df == 0) {
-          defaultFileName = "PS-1"; //starboard
-        }
-        else if (df == 1) {
-          defaultFileName = "PS-2"; //port
+          defaultFileName = "PS-1";  // starboard
+        } else if (df == 1) {
+          defaultFileName = "PS-2";  // port
         }
       }
 
-      //2 units AB
+      // 2 units AB
       else if (ch == 1) {
         chText = "PS-AB";
         defaultFileName = chText;
@@ -543,38 +542,36 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       break;
     }
 
-    //Expanding Square Search (SS)
+    // Expanding Square Search (SS)
     case 2: {
       defaultFileName = "SS";
       break;
     }
 
-    //Sector Search (VS)
+    // Sector Search (VS)
     case 3: {
       int vh = this->m_Ncycles->GetSelection();
       int VSMethod = this->m_VSMethod->GetSelection();
       wxString VS;
 
-      //Method
+      // Method
       if (VSMethod == 0) {
         VS = "USCG";
-      }
-      else if (VSMethod == 1) {
+      } else if (VSMethod == 1) {
         VS = "IAMSAR";
       }
 
-      //Number of passes
+      // Number of passes
       if (vh == 0) {
         defaultFileName = VS + "-VS";
-      }
-      else if (vh == 1) {
+      } else if (vh == 1) {
         defaultFileName = VS + "-VS-12";
       }
 
       break;
     }
 
-    //Quadrant Search - Oil Rig (QS)
+    // Quadrant Search - Oil Rig (QS)
     case 4: {
       defaultFileName = "QS";
       break;
@@ -815,12 +812,11 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
   if (!user_canceled && !error_occurred) {
     switch (Pattern) {
-
-      //Parallel Track Search
+      // Parallel Track Search
       case 1: {
         if (dbg) cout << "Parallel Track Search\n";
 
-        //Get value or set default is input is empty
+        // Get value or set default is input is empty
         if (!this->m_Approach_PS->GetValue().ToDouble(&approach)) {
           approach = 0.0;
           this->m_Approach_PS->SetValue(wxString::Format("%f", approach));
@@ -842,16 +838,16 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           this->m_Speed_PS->SetValue(wxString::Format("%f", speed));
         }  // search velocity (kts)
 
-        //Check for minimum values
+        // Check for minimum values
         if (leg_distancex < 0.00054) {
           leg_distancex = 0.00054;
           this->m_dx_PS->SetValue(wxString::Format("%f", leg_distancex));
         }
         if (leg_distancey < 0.00054) {
-          leg_distancey= 0.00054;
+          leg_distancey = 0.00054;
           this->m_dy_PS->SetValue(wxString::Format("%f", leg_distancey));
         }
-        if(speed < 0){
+        if (speed < 0) {
           speed = 0;
           this->m_Speed_PS->SetValue(wxString::Format("%f", speed));
         }
@@ -987,15 +983,13 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
             if (write_file) pRoot->LinkEndChild(Route);
 
-
             this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
             if (speed <= 0.0) {
               m_Hours->SetLabel("--");
               m_Minutes->SetLabel("--");
               m_Seconds->SetLabel("--");
-            }
-            else {
-              double sTime = SAR_distance / speed; // decimal hours
+            } else {
+              double sTime = SAR_distance / speed;  // decimal hours
 
               int hours = static_cast<int>(sTime);
               double fractionalHours = sTime - hours;
@@ -1184,9 +1178,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         break;
       }
 
-      //Expanding Square Search
-      case 2:
-      {
+      // Expanding Square Search
+      case 2: {
         if (dbg) cout << "Expanding Square Search\n";
 
         if (write_file) {
@@ -1208,7 +1201,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         double speed = 0.0;
         double SAR_distance = 0;
 
-        //Get value or set default is input is empty
+        // Get value or set default is input is empty
         if (!this->m_Approach_ES->GetValue().ToDouble(&approach)) {
           approach = 0.0;
           this->m_Approach_ES->SetValue(wxString::Format("%f", approach));
@@ -1226,12 +1219,12 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           this->m_Speed_ES->SetValue(wxString::Format("%f", speed));
         }  // search velocity
 
-        //Check for minimum values
+        // Check for minimum values
         if (leg_distancex < 0.00054) {
           leg_distancex = 0.00054;
           this->m_dx_ES->SetValue(wxString::Format("%f", leg_distancex));
         }
-        if(speed < 0){
+        if (speed < 0) {
           speed = 0;
           this->m_Speed_ES->SetValue(wxString::Format("%f", speed));
         }
@@ -1321,9 +1314,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           m_Hours->SetLabel("--");
           m_Minutes->SetLabel("--");
           m_Seconds->SetLabel("--");
-        }
-        else {
-          double sTime = SAR_distance / speed; // decimal hours
+        } else {
+          double sTime = SAR_distance / speed;  // decimal hours
 
           int hours = static_cast<int>(sTime);
           double fractionalHours = sTime - hours;
@@ -1339,9 +1331,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
       }
 
       // Sector Search
-      case 3:
-      {
-        //USCG
+      case 3: {
+        // USCG
         if (this->m_VSMethod->GetCurrentSelection() == 0) {
           cout << "Sector Search USCG\n";
 
@@ -1364,7 +1355,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           double SAR_distance = 0;
           bool two_cycles = false;
 
-          //Get value or set default is input is empty
+          // Get value or set default is input is empty
           if (!this->m_Approach_SS->GetValue().ToDouble(&approach)) {
             approach = 0.0;
             this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
@@ -1377,15 +1368,14 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             speed = 5.0;
             this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
           }  // search velocity
-          if (this->m_Ncycles->GetCurrentSelection())
-            two_cycles = true;  // S=1
+          if (this->m_Ncycles->GetCurrentSelection()) two_cycles = true;  // S=1
 
-                  //Check for minimum values
+          // Check for minimum values
           if (leg_distancex < 0.00054) {
             leg_distancex = 0.00054;
             this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
           }
-          if(speed < 0){
+          if (speed < 0) {
             speed = 0;
             this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
           }
@@ -1453,7 +1443,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
               legStretch = leg_distancex;
             }
 
-                    // now the names of the waypoints
+            // now the names of the waypoints
 
             if (x < 7) {
               wpt_title = "";
@@ -1485,9 +1475,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
 
             n++;
 
-                    // The key to not putting in a waypoint when second
-                    // route is included in the gpx.
-                    //*********************************************************
+            // The key to not putting in a waypoint when second
+            // route is included in the gpx.
+            //*********************************************************
             if (x != 9) {
               destRhumb(lat1, lon1, ESheading, legStretch, &lati, &loni);
               SAR_distance += legStretch;
@@ -1551,8 +1541,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
               ESheading -= 30;
             }
 
-                    // if (x == 8 && !two_cycles) {
-                    // }
+            // if (x == 8 && !two_cycles) {
+            // }
             if (write_file) pRoot->LinkEndChild(Route);
 
             nleg++;
@@ -1590,9 +1580,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             m_Hours->SetLabel("--");
             m_Minutes->SetLabel("--");
             m_Seconds->SetLabel("--");
-          }
-          else {
-            double sTime = SAR_distance / speed; // decimal hours
+          } else {
+            double sTime = SAR_distance / speed;  // decimal hours
 
             int hours = static_cast<int>(sTime);
             double fractionalHours = sTime - hours;
@@ -1606,7 +1595,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           }
         }
 
-        //IAMSAR
+        // IAMSAR
         else if (this->m_VSMethod->GetCurrentSelection() == 1) {
           if (dbg) cout << "Sector Search IAMSAR\n";
 
@@ -1629,7 +1618,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           double SAR_distance = 0;
           bool two_cycles = false;
 
-          //Get value or set default is input is empty
+          // Get value or set default is input is empty
           if (!this->m_Approach_SS->GetValue().ToDouble(&approach)) {
             approach = 0.0;
             this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
@@ -1642,15 +1631,14 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             speed = 5.0;
             this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
           }  // search velocity
-          if (this->m_Ncycles->GetSelection() == 1)
-            two_cycles = true;  // S=1
+          if (this->m_Ncycles->GetSelection() == 1) two_cycles = true;  // S=1
 
-          //Check for minimum values
+          // Check for minimum values
           if (leg_distancex < 0.00054) {
             leg_distancex = 0.00054;
             this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
           }
-          if(speed < 0){
+          if (speed < 0) {
             speed = 0;
             this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
           }
@@ -1845,9 +1833,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
             m_Hours->SetLabel("--");
             m_Minutes->SetLabel("--");
             m_Seconds->SetLabel("--");
-          }
-          else {
-            double sTime = SAR_distance / speed; // decimal hours
+          } else {
+            double sTime = SAR_distance / speed;  // decimal hours
 
             int hours = static_cast<int>(sTime);
             double fractionalHours = sTime - hours;
@@ -1867,9 +1854,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         break;
       }
 
-      //Quadrant Search (Oil Rig)
-      case 4:
-      {
+      // Quadrant Search (Oil Rig)
+      case 4: {
         if (dbg) cout << "Quadrant Search (Oil Rig)\n";
 
         if (write_file) {
@@ -1891,7 +1877,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
         double speed = 0;
         double SAR_distance = 0;
 
-        //Get value or set default is input is empty
+        // Get value or set default is input is empty
         if (!this->m_Approach_OR->GetValue().ToDouble(&approach)) {
           approach = 0.0;
           this->m_Approach_OR->SetValue(wxString::Format("%f", approach));
@@ -1913,7 +1899,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           leg_distancex = 0.00054;
           this->m_dx_OR->SetValue(wxString::Format("%f", leg_distancex));
         }
-        if(speed < 0){
+        if (speed < 0) {
           speed = 0;
           this->m_Speed_OR->SetValue(wxString::Format("%f", speed));
         }
@@ -1990,9 +1976,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
           m_Hours->SetLabel("--");
           m_Minutes->SetLabel("--");
           m_Seconds->SetLabel("--");
-        }
-        else {
-          double sTime = SAR_distance / speed; // decimal hours
+        } else {
+          double sTime = SAR_distance / speed;  // decimal hours
 
           int hours = static_cast<int>(sTime);
           double fractionalHours = sTime - hours;
@@ -2050,11 +2035,10 @@ void Dlg::OnSelectNumberShips(wxCommandEvent& event) {
       m_NPortStbd->Hide();
       break;
     }
-
-    default: {
-      break;
-    }
   }
+
+  m_notebook1->Refresh();
+  event.Skip();
 }
 
 void Dlg::OnSelectVectorMethod(wxCommandEvent& event) {
@@ -2074,6 +2058,7 @@ void Dlg::OnSelectVectorMethod(wxCommandEvent& event) {
       break;
     }
   }
+  event.Skip();
 }
 
 void Dlg::OnSelectPortStarboard(wxCommandEvent& event) {
@@ -2088,11 +2073,8 @@ void Dlg::OnSelectPortStarboard(wxCommandEvent& event) {
       m_bitmap_trackln1->SetBitmap(_img_trackln1_port);
       break;
     }
-
-    default: {
-      break;
-    }
   }
+  event.Skip();
 }
 
 void Dlg::OnClose(wxCloseEvent& event) { plugin->OnSARDialogClose(); }
