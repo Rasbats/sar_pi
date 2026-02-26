@@ -2037,7 +2037,7 @@ void Dlg::OnSelectNumberShips(wxCommandEvent& event) {
     }
   }
 
-  m_notebook1->Refresh();
+  m_notebook_PatternSelection->Refresh();
   event.Skip();
 }
 
