@@ -11,7 +11,7 @@
 
 DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
-	this->SetSizeHints( wxSize( -1,-1 ), wxSize( 725,-1 ) );
+	this->SetSizeHints( wxSize( -1,-1 ), wxSize( -1,-1 ) );
 
 	bSizer_Main = new wxBoxSizer( wxVERTICAL );
 
@@ -1084,7 +1084,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer_BottomRight->Add( sbSizer_DistanceConverter, 1, wxALL|wxEXPAND, 5 );
 
 
-	bSizer_BottomHalf->Add( bSizer_BottomRight, 1, wxEXPAND, 5 );
+	bSizer_BottomHalf->Add( bSizer_BottomRight, 0, wxEXPAND, 5 );
 
 
 	bSizer_Main->Add( bSizer_BottomHalf, 0, 0, 5 );
@@ -1092,6 +1092,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	this->SetSizer( bSizer_Main );
 	this->Layout();
+	bSizer_Main->Fit( this );
 
 	this->Centre( wxBOTH );
 
