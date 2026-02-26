@@ -98,6 +98,8 @@ SAR_pi::~SAR_pi() {
 int SAR_pi::Init(void) {
   AddLocaleCatalog(_T("opencpn-sar_pi"));
 
+  ::wxInitAllImageHandlers();
+
   // Set some default private member parameters
   m_route_dialog_x = 0;
   m_route_dialog_y = 0;

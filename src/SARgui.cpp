@@ -226,7 +226,7 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
                                          wxDefaultPosition, wxDefaultSize, 0);
   bSizer77->Add(m_bitmap_trackln1, 0, wxALL | wxEXPAND, 5);
 
-  bSizer62->Add(bSizer77, 0, wxALL | wxEXPAND, 5);
+  bSizer62->Add(bSizer77, 1, wxALL | wxEXPAND, 5);
 
   wxBoxSizer* bSizer14111111;
   bSizer14111111 = new wxBoxSizer(wxHORIZONTAL);
@@ -244,7 +244,7 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   m_Nship->SetSelection(0);
   bSizer14111111->Add(m_Nship, 0, wxALL, 5);
 
-  bSizer62->Add(bSizer14111111, 0, wxEXPAND, 5);
+  bSizer62->Add(bSizer14111111, 0 , wxEXPAND, 5);
 
   wxBoxSizer* bSizer141111112;
   bSizer141111112 = new wxBoxSizer(wxHORIZONTAL);
@@ -263,7 +263,7 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   m_NPortStbd->SetSelection(0);
   bSizer141111112->Add(m_NPortStbd, 0, wxALL, 5);
 
-  bSizer62->Add(bSizer141111112, 1, wxEXPAND, 5);
+  bSizer62->Add(bSizer141111112, 0, wxEXPAND, 5);
 
   bSizer3->Add(bSizer62, 0, wxALL | wxEXPAND, 5);
 
@@ -631,7 +631,7 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   m_bitmap_sector = new wxStaticBitmap(
       m_panel3, wxID_ANY, wxBitmap(wxT("../Load From File"), wxBITMAP_TYPE_ANY),
       wxDefaultPosition, wxDefaultSize, 0);
-  bSizer67->Add(m_bitmap_sector, 0, wxALL | wxEXPAND, 5);
+  bSizer67->Add(m_bitmap_sector, 1, wxALL | wxEXPAND, 5);
 
   wxBoxSizer* bSizer1411111111;
   bSizer1411111111 = new wxBoxSizer(wxHORIZONTAL);
@@ -650,9 +650,9 @@ DlgDef::DlgDef(wxWindow* parent, wxWindowID id, const wxString& title,
   m_VSMethod->SetSelection(0);
   bSizer1411111111->Add(m_VSMethod, 0, wxALL, 5);
 
-  bSizer67->Add(bSizer1411111111, 1, wxEXPAND, 5);
+  bSizer67->Add(bSizer1411111111, 0, wxEXPAND, 5);
 
-  bSizer5->Add(bSizer67, 1, wxEXPAND, 5);
+  bSizer5->Add(bSizer67, 0, wxEXPAND, 5);
 
   m_panel3->SetSizer(bSizer5);
   m_panel3->Layout();
