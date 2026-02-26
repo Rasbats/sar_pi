@@ -725,7 +725,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern)
     // Add pRoot to xmlDoc after prolog
     xmlDoc.InsertEndChild(pRoot);
     pRoot->SetAttribute("version", "1.1");
-    pRoot->SetAttribute("creator", "Route_pi by SaltyPaws/Rasbats");
+    pRoot->SetAttribute("creator", "SAR_pi by SaltyPaws/Rasbats");
     pRoot->SetAttribute("xmlns:xsi",
                         "http://www.w3.org/2001/XMLSchema-instance");
     pRoot->SetAttribute("xmlns:gpxx",

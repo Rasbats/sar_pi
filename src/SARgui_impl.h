@@ -84,7 +84,7 @@ public:
 class Dlg : public DlgDef {
 public:
   Dlg(wxWindow* parent, wxWindowID id = wxID_ANY,
-      const wxString& title = _("SAR Plugin by SaltyPaws/Rasbats"),
+      const wxString& title = _("Search And Rescue"),
       const wxPoint& pos = wxDefaultPosition,
       const wxSize& size = wxSize(-1, -1),
       long style = wxCAPTION | wxDEFAULT_DIALOG_STYLE | wxMINIMIZE_BOX |
