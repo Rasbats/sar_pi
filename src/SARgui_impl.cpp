@@ -46,8 +46,8 @@ Dlg::Dlg(wxWindow* parent, wxWindowID id, const wxString& title,
   m_bitmap_sector->SetBitmap(_img_sector_uscg);
   m_bitmap_exp_sq->SetBitmap(_img_exp_sq);
   m_bitmap_oil_rig->SetBitmap(_img_oil_rig);
-  m_notebook1->SetSelection(0);
-  m_wxNotebook234->SetSelection(0);
+  m_notebook_PatternSelection->SetSelection(0);
+  m_notebook_CSP->SetSelection(0);
   m_Nship->SetSelection(0);
   m_NPortStbd->SetSelection(0);
   shipsAvailable = 0;
@@ -130,7 +130,7 @@ void Dlg::ConvertToDegree() {
     m_Lon1_m1->SetValue(wxString::Format("%i", 0));
   }
 
-  switch (m_wxNotebook234->GetSelection()) {
+  switch (m_notebook_CSP->GetSelection()) {
     case 0:
       s = m_Lat1->GetValue();
       s.ToDouble(&value);
@@ -251,7 +251,7 @@ void Dlg::ConvertToDegree() {
       m_Lat1_s->SetValue(wxString::Format("%.6f", MMlat2));
       m_Lon1_s->SetValue(wxString::Format("%.6f", MMlon2));
 
-      m_wxNotebook234->SetSelection(0);
+      m_notebook_CSP->SetSelection(0);
       m_Lat1->SetFocus();
 
       break;
@@ -316,7 +316,7 @@ void Dlg::ConvertToDegree() {
       m_Lat1_m1->SetValue(wxString::Format("%.6f", DDLat1));
       m_Lon1_m1->SetValue(wxString::Format("%.6f", DDLon1));
 
-      m_wxNotebook234->SetSelection(0);
+      m_notebook_CSP->SetSelection(0);
       m_Lat1->SetFocus();
 
       break;
@@ -356,16 +356,16 @@ void Dlg::ConvertNmToMeter() {
 }
 
 void Dlg::OnNoteBookFit(wxNotebookEvent& event) {
-  this->m_panel11->Layout();
-  this->m_wxNotebook234->InvalidateBestSize();
+  this->m_panel_Degrees->Layout();
+  this->m_notebook_CSP->InvalidateBestSize();
   this->Fit();
   if (dbg) printf("Resizing window \n");
 }
 
 void Dlg::OnFit(wxCommandEvent& event) {
-  this->m_wxNotebook234->InvalidateBestSize();
-  this->m_panel11->Fit();
-  this->m_panel11->Layout();
+  this->m_notebook_CSP->InvalidateBestSize();
+  this->m_panel_Degrees->Fit();
+  this->m_panel_Degrees->Layout();
   this->Fit();
   this->Layout();
   if (dbg) printf("Resizing window \n");
@@ -401,7 +401,7 @@ void Dlg::Addpoint2(XMLElement* Route, wxString ptlat, wxString ptlon,
 
 void Dlg::OnCalculate(wxCommandEvent& event) {
   int nb = 0;
-  nb = m_notebook1->GetSelection();
+  nb = m_notebook_PatternSelection->GetSelection();
   // wxMessageBox(wxString::Format("%i", nb));
   switch (nb) {
     case 0: {
@@ -722,7 +722,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
     // Add pRoot to xmlDoc after prolog
     xmlDoc.InsertEndChild(pRoot);
     pRoot->SetAttribute("version", "1.1");
-    pRoot->SetAttribute("creator", "Route_pi by SaltyPaws/Rasbats");
+    pRoot->SetAttribute("creator", "SAR_pi by SaltyPaws/Rasbats");
     pRoot->SetAttribute("xmlns:xsi",
                         "http://www.w3.org/2001/XMLSchema-instance");
     pRoot->SetAttribute("xmlns:gpxx",
@@ -2037,7 +2037,7 @@ void Dlg::OnSelectNumberShips(wxCommandEvent& event) {
     }
   }
 
-  m_notebook1->Refresh();
+  m_notebook_PatternSelection->Refresh();
   event.Skip();
 }
 
@@ -2086,7 +2086,7 @@ void Dlg::OnCursor(void) {
 
   setDDMM();  // Copies the lat.lon to the DDMM page
 
-  m_wxNotebook234->SetSelection(0);
+  m_notebook_CSP->SetSelection(0);
   m_Lat1->SetFocus();
 }
 
@@ -2097,7 +2097,7 @@ void Dlg::OnShip(void) {
 
   setDDMM();  // Copies the lat.lon to the DDMM page
 
-  m_wxNotebook234->SetSelection(0);
+  m_notebook_CSP->SetSelection(0);
   m_Lat1->SetFocus();
 }
 
@@ -2137,7 +2137,7 @@ void Dlg::mouse_shortcut(wxMouseEvent& event) {
 }*/
 
 void Dlg::OnCursorSelect(wxCommandEvent& event) {
-  m_wxNotebook234->SetSelection(0);
+  m_notebook_CSP->SetSelection(0);
   m_Lat1->SetFocus();
   m_Lat1->Clear();
   m_Lon1->Clear();
@@ -2159,7 +2159,7 @@ void Dlg::getDatum(double m_lat, double m_lon) {
 
   setDDMM();
 
-  m_wxNotebook234->SetSelection(0);
+  m_notebook_CSP->SetSelection(0);
   m_Lat1->SetFocus();
 }
 
