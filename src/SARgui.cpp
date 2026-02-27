@@ -118,7 +118,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	sbSizer_PS_RouteSettings->Add( bSizer_PS_SearchSpeed, 0, wxEXPAND, 5 );
 
 
-	bSizer_PS_left->Add( sbSizer_PS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
+	bSizer_PS_left->Add( sbSizer_PS_RouteSettings, 1, wxALL|wxEXPAND, 5 );
 
 	wxStaticBoxSizer* sbSizer_PS_GenerateRoute;
 	sbSizer_PS_GenerateRoute = new wxStaticBoxSizer( new wxStaticBox( m_panel_PS, wxID_ANY, _("Route Generation") ), wxVERTICAL );
@@ -176,16 +176,19 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer3->Add( bSizer_PS_left, 0, wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer_PS_right;
-	bSizer_PS_right = new wxBoxSizer( wxHORIZONTAL );
+	bSizer_PS_right = new wxBoxSizer( wxVERTICAL );
 
-	wxBoxSizer* bSizer_PS_right_vertical;
-	bSizer_PS_right_vertical = new wxBoxSizer( wxVERTICAL );
+
+	bSizer_PS_right->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	m_bitmap_trackln1 = new wxStaticBitmap( m_panel_PS, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer_PS_right_vertical->Add( m_bitmap_trackln1, 1, wxALL|wxEXPAND, 5 );
+	bSizer_PS_right->Add( m_bitmap_trackln1, 0, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer14111111;
 	bSizer14111111 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer14111111->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	m_staticText32111111 = new wxStaticText( m_panel_PS, wxID_ANY, _("Route for Ship           "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText32111111->Wrap( -1 );
@@ -198,10 +201,16 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer14111111->Add( m_Nship, 0, wxALL, 5 );
 
 
-	bSizer_PS_right_vertical->Add( bSizer14111111, 0, wxALL|wxEXPAND, 5 );
+	bSizer14111111->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer_PS_right->Add( bSizer14111111, 0, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer141111112;
 	bSizer141111112 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer141111112->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	m_staticTextPortStbd = new wxStaticText( m_panel_PS, wxID_ANY, _("First turn                    "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticTextPortStbd->Wrap( -1 );
@@ -214,13 +223,16 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer141111112->Add( m_NPortStbd, 0, wxALL, 5 );
 
 
-	bSizer_PS_right_vertical->Add( bSizer141111112, 0, wxALL|wxEXPAND, 5 );
+	bSizer141111112->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer_PS_right->Add( bSizer_PS_right_vertical, 0, wxALL|wxEXPAND, 5 );
+	bSizer_PS_right->Add( bSizer141111112, 0, wxALL|wxEXPAND, 5 );
 
 
-	bSizer3->Add( bSizer_PS_right, 0, wxEXPAND, 5 );
+	bSizer_PS_right->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer3->Add( bSizer_PS_right, 0, wxALL|wxEXPAND, 5 );
 
 
 	m_panel_PS->SetSizer( bSizer3 );
@@ -308,7 +320,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	sbSizer_SS_RouteSettings->Add( bSizer_SS_SearchSpeed, 0, wxEXPAND, 5 );
 
 
-	bSizer_SS_Left->Add( sbSizer_SS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
+	bSizer_SS_Left->Add( sbSizer_SS_RouteSettings, 1, wxALL|wxEXPAND, 5 );
 
 	wxStaticBoxSizer* sbSizer_SS_RouteGeneration;
 	sbSizer_SS_RouteGeneration = new wxStaticBoxSizer( new wxStaticBox( m_panel_SS, wxID_ANY, _("Route Generation") ), wxVERTICAL );
@@ -368,11 +380,17 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer_SS_Right;
 	bSizer_SS_Right = new wxBoxSizer( wxHORIZONTAL );
 
+
+	bSizer_SS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
+
 	m_bitmap_exp_sq = new wxStaticBitmap( m_panel_SS, wxID_ANY, wxBitmap( wxT("../Load From File"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer_SS_Right->Add( m_bitmap_exp_sq, 0, wxALL|wxEXPAND, 5 );
 
 
-	bSizer4->Add( bSizer_SS_Right, 0, wxEXPAND, 5 );
+	bSizer_SS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer4->Add( bSizer_SS_Right, 1, wxEXPAND, 5 );
 
 
 	m_panel_SS->SetSizer( bSizer4 );
@@ -461,7 +479,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	sbSizer_VS_RouteSettings->Add( bSizer_VS_SearchSpeed, 0, wxEXPAND, 5 );
 
 
-	bSizer_VS_Left->Add( sbSizer_VS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
+	bSizer_VS_Left->Add( sbSizer_VS_RouteSettings, 1, wxALL|wxEXPAND, 5 );
 
 	wxStaticBoxSizer* sbSizer_VS_RouteGeneration;
 	sbSizer_VS_RouteGeneration = new wxStaticBoxSizer( new wxStaticBox( m_panel_VS, wxID_ANY, _("Route Generation") ), wxVERTICAL );
@@ -518,14 +536,26 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer5->Add( bSizer_VS_Left, 0, wxEXPAND, 5 );
 
+	wxBoxSizer* bSizer66;
+	bSizer66 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer66->Add( 0, 0, 1, wxEXPAND, 5 );
+
 	wxBoxSizer* bSizer_VS_Right;
 	bSizer_VS_Right = new wxBoxSizer( wxVERTICAL );
 
+
+	bSizer_VS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
+
 	m_bitmap_sector = new wxStaticBitmap( m_panel_VS, wxID_ANY, wxBitmap( wxT("../Load From File"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer_VS_Right->Add( m_bitmap_sector, 1, wxALL|wxEXPAND, 5 );
+	bSizer_VS_Right->Add( m_bitmap_sector, 0, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer1411111111;
 	bSizer1411111111 = new wxBoxSizer( wxHORIZONTAL );
+
+
+	bSizer1411111111->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	m_staticText3211111111 = new wxStaticText( m_panel_VS, wxID_ANY, _("Search Method  "), wxPoint( -1,-1 ), wxDefaultSize, 0 );
 	m_staticText3211111111->Wrap( -1 );
@@ -538,10 +568,22 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer1411111111->Add( m_VSMethod, 0, wxALL, 5 );
 
 
-	bSizer_VS_Right->Add( bSizer1411111111, 1, wxEXPAND, 5 );
+	bSizer1411111111->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer5->Add( bSizer_VS_Right, 0, wxEXPAND, 5 );
+	bSizer_VS_Right->Add( bSizer1411111111, 0, wxEXPAND, 5 );
+
+
+	bSizer_VS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer66->Add( bSizer_VS_Right, 0, wxEXPAND, 5 );
+
+
+	bSizer66->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer5->Add( bSizer66, 1, wxEXPAND, 5 );
 
 
 	m_panel_VS->SetSizer( bSizer5 );
@@ -689,11 +731,17 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer_QS_Right;
 	bSizer_QS_Right = new wxBoxSizer( wxHORIZONTAL );
 
+
+	bSizer_QS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
+
 	m_bitmap_oil_rig = new wxStaticBitmap( m_panel_QS, wxID_ANY, wxBitmap( wxT("../src\\bitmaps\\oil_rig.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer_QS_Right->Add( m_bitmap_oil_rig, 0, wxALL|wxEXPAND, 5 );
 
 
-	bSizer6->Add( bSizer_QS_Right, 0, wxEXPAND, 5 );
+	bSizer_QS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
+
+
+	bSizer6->Add( bSizer_QS_Right, 1, wxEXPAND, 5 );
 
 
 	m_panel_QS->SetSizer( bSizer6 );
