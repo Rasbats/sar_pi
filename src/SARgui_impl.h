@@ -102,12 +102,8 @@ public:
   void OnNoteBookFit(wxNotebookEvent& event);
   void OnFit(wxCommandEvent& event);
 
-  void OnCalculate(wxCommandEvent& event);
-
-  void OnPSGPX(wxCommandEvent& event);
-  void OnESGPX(wxCommandEvent& event);
-  void OnSSGPX(wxCommandEvent& event);
-  void OnORGPX(wxCommandEvent& event);
+  void OnGenerateRoute(wxCommandEvent& event);
+  void Calculate(wxCommandEvent& event, bool Export, int Pattern);
 
   void OnSelectNumberShips(wxCommandEvent& event);
   void OnSelectVectorMethod(wxCommandEvent& event);
@@ -123,7 +119,6 @@ public:
   // For right click datum selection
   void getDatum(double m_lat, double m_lon);
 
-  void Calculate(wxCommandEvent& event, bool Export, int Pattern);
 
   void Addpoint2(XMLElement* Route, wxString ptlat, wxString ptlon,
                  wxString ptname, wxString ptsym, wxString pttype);

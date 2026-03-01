@@ -29,6 +29,9 @@
 
 using namespace tinyxml2;
 
+////////////////////////////
+/// Class Initialization ///
+////////////////////////////
 CfgDlg::CfgDlg(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos, const wxSize& size, long style)
     : CfgDlgDef(parent, id, title, pos, size, style) {}
@@ -54,6 +57,10 @@ Dlg::Dlg(wxWindow* parent, wxWindowID id, const wxString& title,
   PortStbd = 0;
 }
 
+
+////////////////////////
+/// Others Functions ///
+////////////////////////
 void Dlg::OnConvertToDegree(wxCommandEvent& event) { ConvertToDegree(); }
 
 void Dlg::ConvertToDegree() {
@@ -399,118 +406,51 @@ void Dlg::Addpoint2(XMLElement* Route, wxString ptlat, wxString ptlon,
   // done adding point
 }
 
-void Dlg::OnCalculate(wxCommandEvent& event) {
-  int nb = 0;
-  nb = m_notebook_PatternSelection->GetSelection();
-  // wxMessageBox(wxString::Format("%i", nb));
-  switch (nb) {
-    case 0: {
-      Calculate(event, false, 1);
-      break;
-    }
-    case 1: {
-      Calculate(event, false, 2);
-      break;
-    }
-    case 2: {
-      Calculate(event, false, 3);
-      break;
-    }
-    case 3: {
-      Calculate(event, false, 4);
-      break;
-    }
-  }
-}
+void Dlg::OnGenerateRoute(wxCommandEvent& event) {
+  int patternSelect = 1;
+  patternSelect = m_notebook_PatternSelection->GetSelection() + 1; //to match switch case in Calculate()
 
-void Dlg::OnPSGPX(wxCommandEvent& event) {
-  // wxMessageBox(_("Function not yet implemented :p")) ;
+  //Save RTZ if checked
   m_bSaveRTZ = false;
   rtz_schema = 0;
-  int sel = 0;
-  switch (event.GetId()) {
-    case ID_RTZ1:
-      sel = this->m_Nship->GetSelection();
-      if (sel == 1) {
-        wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
-        m_bSaveRTZ = false;
-        return;
-      } else
-        m_bSaveRTZ = true;
-      rtz_schema = this->m_choiceSchema1->GetSelection();
-      [[fallthrough]];  // fallthrough is explicit
-    default:
-      event.Skip();
-      break;
+  bool saveRtzCheckbox = m_checkBox_GenerateRtz->IsChecked();
+  if(saveRtzCheckbox) {
+    //Check if RTZ is available for selected pattern
+    switch (patternSelect)
+    {
+      //PS
+      case 1: {
+        int sel = this->m_Nship->GetSelection();
+        if (sel == 1) {
+          wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
+          m_bSaveRTZ = false;
+          return;
+        }
+        break;
+      }
+
+      //VS
+      case 3: {
+        int sel = this->m_Ncycles->GetSelection();
+        if (sel == 1) {
+          wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
+          m_bSaveRTZ = false;
+          return;
+        }
+        break;
+      }
+    }
+
+    m_bSaveRTZ = true;
+    rtz_schema = this->m_choiceSchema_RtzVersion->GetSelection();
   }
-  Calculate(event, true, 1);
-}
 
-void Dlg::OnESGPX(wxCommandEvent& event) {
-  // wxMessageBox(_("Function not yet implemented :p")) ;
-  m_bSaveRTZ = false;
-  rtz_schema = 0;
+  //Calculate GPX
+  Calculate(event, true, patternSelect);
 
-  switch (event.GetId()) {
-    case ID_RTZ2:
-      m_bSaveRTZ = true;
-      rtz_schema = this->m_choiceSchema2->GetSelection();
-      [[fallthrough]];  // fallthrough is explicit
-    default:
-      event.Skip();
-      break;
-  }
-  Calculate(event, true, 2);
-}
-
-void Dlg::OnSSGPX(wxCommandEvent& event) {
-  // wxMessageBox(_("Function not yet implemented :p")) ;
-  m_bSaveRTZ = false;
-  rtz_schema = 0;
-  int sel = 0;
-  switch (event.GetId()) {
-    case ID_RTZ3:
-      sel = this->m_Ncycles->GetSelection();
-      if (sel == 1) {
-        wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
-        m_bSaveRTZ = false;
-        return;
-      } else
-        m_bSaveRTZ = true;
-      rtz_schema = this->m_choiceSchema3->GetSelection();
-      [[fallthrough]];  // fallthrough is explicit
-    default:
-      event.Skip();
-      break;
-  }
-  Calculate(event, true, 3);
-}
-
-void Dlg::OnORGPX(wxCommandEvent& event) {
-  // wxMessageBox(_("Function not yet implemented :p")) ;
-  m_bSaveRTZ = false;
-  rtz_schema = 0;
-
-  switch (event.GetId()) {
-    case ID_RTZ4:
-      m_bSaveRTZ = true;
-      rtz_schema = this->m_choiceSchema4->GetSelection();
-      [[fallthrough]];  // fallthrough is explicit
-    default:
-      event.Skip();
-      break;
-  }
-  Calculate(event, true, 4);
 }
 
 void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
-  /*
-  1 Parallel TRack Search
-  2 Expanding Square Search
-  3 Sector Search
-  4 Quadrant Search (Oil Rig)
-  */
-
   shipsAvailable = this->m_Nship->GetSelection();
   PortStbd = this->m_NPortStbd->GetSelection();
 
@@ -600,15 +540,12 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
     wxMessageBox(_("No Datum Point has been entered"), _("Error"));
     return;
   }
-  // if (error_occurred) wxMessageBox(_T("error in conversion of input
-  // coordinates"));
 
   if (shipsAvailable == 0 && Pattern == 1)
     wxMessageBox(
         _("For this search pattern the Start Point entered is the CSP"),
         _("Start Position"), wxCENTRE);
 
-  // error_occurred=false;
   wxString s;
   if (write_file) {
     wxFileDialog dlg(this, _("Export SAR track GPX file as"), wxEmptyString,
@@ -629,9 +566,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         m_bitmap_trackln1->SetBitmap(_img_trackln1_port);
       }
     }
-    // dlg.ShowModal();
+
     s = dlg.GetPath();
-    //  std::cout<<s<< std::endl;
     if (!user_canceled && s.IsEmpty()) {
       error_occurred = true;
       if (dbg) printf("Empty Path\n");
@@ -650,7 +586,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
   }
 
   // Start GPX
-
   XMLDeclaration* decl2 = xmlDoc.NewDeclaration();
   decl2->SetValue(
       "xml version="
@@ -682,37 +617,35 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
 
   XMLElement* text4 = xmlDoc.NewElement("");
 
+
+  writeWaypointNames = this->m_checkBox_ShowWaypoints->GetValue();
+  showMarkIcons = this->m_checkBox_ShowIcons->GetValue();
   switch (Pattern) {
-    case 1: {
-      writeWaypointNames = this->m_checkBox1->GetValue();
-      showMarkIcons = this->m_checkBoxIcons1->GetValue();
-      break;
-    }
+    //SS
     case 2: {
       text4->SetText(defaultFileName.mb_str());
-      writeWaypointNames = this->m_checkBox2->GetValue();
-      showMarkIcons = this->m_checkBoxIcons2->GetValue();
       break;
     }
+
+    //VS
     case 3: {
       int nc = this->m_Ncycles->GetCurrentSelection();
       if (nc == 0) {
         text4->SetText(defaultFileName.mb_str());
-      } else if (nc == 1) {
+      }
+      else if (nc == 1) {
         wxString newName = defaultFileName + "-1";
         text4->SetText(newName.mb_str());
       }
-
-      writeWaypointNames = this->m_checkBox3->GetValue();
-      showMarkIcons = this->m_checkBoxIcons3->GetValue();
       break;
     }
+
+    //QS
     case 4: {
       text4->SetText(defaultFileName.mb_str());
-      writeWaypointNames = this->m_checkBox4->GetValue();
-      showMarkIcons = this->m_checkBoxIcons4->GetValue();
       break;
     }
+
     default: {
       break;
     }
@@ -749,14 +682,14 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         textSpeed->SetText(mySpeed.mb_str());
         int nShips = this->m_Nship->GetSelection();
         if (nShips == 1) textSpeed2->SetText(mySpeed.mb_str());
-        if (this->m_cbChartRoute1->IsChecked()) m_bChartRoute = true;
+        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
         break;
       }
       case 2: {
         mySpeed = m_Speed_ES->GetValue();
         if (mySpeed == "") mySpeed = "6";
         textSpeed->SetText(mySpeed.mb_str());
-        if (this->m_cbChartRoute2->IsChecked()) m_bChartRoute = true;
+        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
         break;
       }
       case 3: {
@@ -765,14 +698,14 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         textSpeed->SetText(mySpeed.mb_str());
         int nCycles = this->m_Ncycles->GetSelection();
         if (nCycles == 1) textSpeed2->SetText(mySpeed.mb_str());
-        if (this->m_cbChartRoute3->IsChecked()) m_bChartRoute = true;
+        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
         break;
       }
       case 4: {
         mySpeed = m_Speed_OR->GetValue();
         if (mySpeed == "") mySpeed = "6";
         textSpeed->SetText(mySpeed.mb_str());
-        if (this->m_cbChartRoute4->IsChecked()) m_bChartRoute = true;
+        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
         break;
       }
       default: {
@@ -788,14 +721,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
     // wxMessageBox(_("Route interval > Distance, 0 or negative") );
   }
 
-  // Call SAR routine here
-  /*
-  1 Parallel Search
-  2 Expanding Square
-  3 Sector search
-  4 Oil Rig
-  */
-
   double approach = 0;
   double leg_distancex = 0;
   double leg_distancey = 0;
@@ -805,8 +730,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
   double startSARdist;
   double startCse;
   int i = 0;
-  int n = 0;
-  int nleg = 0;
   wxString wpt_title = "";
   wxString wpt_mark = "";
 
@@ -958,8 +881,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
                   } else
                     ESheading = approach + 90.0;
                 }
-
-                n++;
 
                 destRhumb(lat1, lon1, -ESheading, ESdistance, &lati, &loni);
                 SAR_distance += ESdistance;
@@ -1116,8 +1037,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
                     if (i == 1) ESheading = approach - 90.0;
                     if (i == 2) ESheading = approach + 90.0;
                   }
-
-                  n++;
 
                   destRhumb(lat1, lon1, -ESheading, ESdistance, &lati, &loni);
                   SAR_distance += ESdistance;
@@ -1285,7 +1204,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           }
           ESdistance = leg_distancex * multiplier;
 
-          n++;
           wpt_title = "";
 
           if (writeWaypointNames) {
@@ -1473,8 +1391,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
               }
             }
 
-            n++;
-
             // The key to not putting in a waypoint when second
             // route is included in the gpx.
             //*********************************************************
@@ -1495,8 +1411,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
             //
             //
             ESheading -= 120.0;
-
-            nleg++;
 
             if (showMarkIcons) {
               if (x > 8) {
@@ -1544,8 +1458,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
             // if (x == 8 && !two_cycles) {
             // }
             if (write_file) pRoot->LinkEndChild(Route);
-
-            nleg++;
 
             if (x == 8 && two_cycles) {
               if (write_file) {
@@ -1741,8 +1653,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
               }
             }
 
-            n++;
-
             // The key to not putting in a waypoint when second route is
             // included in the gpx.
             //*********************************************************
@@ -1755,7 +1665,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
             //
             ESheading -= 120.0;
 
-            nleg++;
             if (showMarkIcons) {
               if (x > 8) {
                 wpt_mark = "Sea-Height-Blue";
@@ -1793,7 +1702,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
 
             if (write_file) pRoot->LinkEndChild(Route);
 
-            nleg++;
             if (write_file) {
               if (x == 8 && two_cycles) {
                 if (write_file) {
@@ -2080,6 +1988,7 @@ void Dlg::OnSelectPortStarboard(wxCommandEvent& event) {
 void Dlg::OnClose(wxCloseEvent& event) { plugin->OnSARDialogClose(); }
 
 void Dlg::OnCursor(wxCommandEvent& event) { OnCursor(); }
+
 void Dlg::OnCursor(void) {
   this->m_Lat1->SetValue(wxString::Format("%.6f", plugin->GetCursorLat()));
   this->m_Lon1->SetValue(wxString::Format("%.6f", plugin->GetCursorLon()));
@@ -2091,6 +2000,7 @@ void Dlg::OnCursor(void) {
 }
 
 void Dlg::OnShip(wxCommandEvent& event) { OnShip(); }
+
 void Dlg::OnShip(void) {
   this->m_Lat1->SetValue(wxString::Format("%.6f", plugin->GetShipLat()));
   this->m_Lon1->SetValue(wxString::Format("%.6f", plugin->GetShipLon()));
@@ -2122,19 +2032,6 @@ void Dlg::key_shortcut(wxKeyEvent& event) {
   }
   event.Skip();
 }
-/*
-void Dlg::mouse_shortcut(wxMouseEvent& event) {
-    // of course, it doesn't have to be the control key. You can use others:
-    // http://docs.wxwidgets.org/stable/wx_wxkeyevent.html
-    if(event.LeftDown() == true) {
-        wxMessageBox(_("CTRL+G") );
-        OnCursor();
-    }
-    //else{
-        event.Skip();
-    //}
-
-}*/
 
 void Dlg::OnCursorSelect(wxCommandEvent& event) {
   m_notebook_CSP->SetSelection(0);
