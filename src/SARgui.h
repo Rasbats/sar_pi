@@ -20,24 +20,19 @@
 #include <wx/valtext.h>
 #include <wx/sizer.h>
 #include <wx/statbox.h>
-#include <wx/checkbox.h>
-#include <wx/button.h>
 #include <wx/bitmap.h>
 #include <wx/image.h>
 #include <wx/icon.h>
-#include <wx/choice.h>
 #include <wx/statbmp.h>
+#include <wx/choice.h>
 #include <wx/panel.h>
 #include <wx/notebook.h>
+#include <wx/button.h>
+#include <wx/checkbox.h>
 #include <wx/dialog.h>
 #include <wx/slider.h>
 
 ///////////////////////////////////////////////////////////////////////////
-
-#define ID_RTZ1 6000
-#define ID_RTZ2 6001
-#define ID_RTZ3 6002
-#define ID_RTZ4 6003
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Class DlgDef
@@ -63,12 +58,6 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText32111112;
 		wxTextCtrl* m_Speed_PS;
 		wxStaticText* m_staticText33111111;
-		wxCheckBox* m_checkBox1;
-		wxCheckBox* m_checkBoxIcons1;
-		wxButton* m_button3111;
-		wxCheckBox* m_cbChartRoute1;
-		wxButton* m_button311112121;
-		wxChoice* m_choiceSchema1;
 		wxStaticBitmap* m_bitmap_trackln1;
 		wxStaticText* m_staticText32111111;
 		wxChoice* m_Nship;
@@ -86,12 +75,6 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText321111121;
 		wxTextCtrl* m_Speed_ES;
 		wxStaticText* m_staticText331111111;
-		wxCheckBox* m_checkBox2;
-		wxCheckBox* m_checkBoxIcons2;
-		wxButton* m_button31111;
-		wxCheckBox* m_cbChartRoute2;
-		wxButton* m_button31111212;
-		wxChoice* m_choiceSchema2;
 		wxStaticBitmap* m_bitmap_exp_sq;
 		wxPanel* m_panel_VS;
 		wxStaticText* m_staticText32;
@@ -105,12 +88,6 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText321111122;
 		wxTextCtrl* m_Speed_SS;
 		wxStaticText* m_staticText331111112;
-		wxCheckBox* m_checkBox3;
-		wxCheckBox* m_checkBoxIcons3;
-		wxButton* m_button311111;
-		wxCheckBox* m_cbChartRoute3;
-		wxButton* m_button31111211;
-		wxChoice* m_choiceSchema3;
 		wxStaticBitmap* m_bitmap_sector;
 		wxStaticText* m_staticText3211111111;
 		wxChoice* m_VSMethod;
@@ -126,12 +103,6 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText321111123;
 		wxTextCtrl* m_Speed_OR;
 		wxStaticText* m_staticText331111113;
-		wxCheckBox* m_checkBox4;
-		wxCheckBox* m_checkBoxIcons4;
-		wxButton* m_button311112;
-		wxCheckBox* m_cbChartRoute4;
-		wxButton* m_button3111121;
-		wxChoice* m_choiceSchema4;
 		wxStaticBitmap* m_bitmap_oil_rig;
 		wxNotebook* m_notebook_CSP;
 		wxPanel* m_panel_Degrees;
@@ -175,6 +146,18 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText11512;
 		wxChoice* m_Lon1_EW;
 		wxButton* m_button_DMMSS_ConvertDegree;
+		wxCheckBox* m_checkBox_ShowWaypoints;
+		wxCheckBox* m_checkBox_ShowIcons;
+		wxCheckBox* m_checkBox_AddToRouteManager;
+		wxCheckBox* m_checkBox_GenerateRtz;
+		wxChoice* m_choiceSchema_RtzVersion;
+		wxButton* m_button_GenerateGPX;
+		wxTextCtrl* m_meterDistance;
+		wxStaticText* m_staticText66;
+		wxButton* m_buttonMeterToNM;
+		wxButton* m_buttonNmToMeter;
+		wxTextCtrl* m_NmDistance;
+		wxStaticText* m_staticText67;
 		wxStaticText* m_Distance;
 		wxStaticText* m_staticText73;
 		wxStaticText* m_Hours;
@@ -183,27 +166,18 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText62;
 		wxStaticText* m_Seconds;
 		wxStaticText* m_staticText64;
-		wxTextCtrl* m_meterDistance;
-		wxStaticText* m_staticText66;
-		wxButton* m_buttonMeterToNM;
-		wxButton* m_buttonNmToMeter;
-		wxTextCtrl* m_NmDistance;
-		wxStaticText* m_staticText67;
 
 		// Virtual event handlers, override them in your derived class
 		virtual void OnClose( wxCloseEvent& event ) { event.Skip(); }
-		virtual void OnPSGPX( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSelectNumberShips( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSelectPortStarboard( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnESGPX( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnSSGPX( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSelectVectorMethod( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnORGPX( wxCommandEvent& event ) { event.Skip(); }
 		virtual void key_shortcut( wxKeyEvent& event ) { event.Skip(); }
 		virtual void OnNoteBookFit( wxNotebookEvent& event ) { event.Skip(); }
 		virtual void OnShip( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCursorSelect( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnConvertToDegree( wxCommandEvent& event ) { event.Skip(); }
+		virtual void OnGenerateRoute( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnConvertMeterToNM( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnConvertNmToMeter( wxCommandEvent& event ) { event.Skip(); }
 
