@@ -48,10 +48,11 @@ using namespace tinyxml2;
 namespace tinyxml2 {
   class XMLDocument;
   class XMLElement;
-  class XMLNode; 
-}  // namespace tinyxml2 
+  class XMLNode;
+}
 
 class SAR_pi;
+
 class sarRoute;
 
 class waypoint {
@@ -70,8 +71,7 @@ public:
   wxArrayString m_arrayPoints;
 };
 
-
-
+//GUI classes
 class CfgDlg : public CfgDlgDef {
 public:
   CfgDlg(wxWindow* parent, wxWindowID id = wxID_ANY,
@@ -94,13 +94,9 @@ public:
   void ConvertToDegree();
 
   void OnConvertMeterToNM(wxCommandEvent& event);
-  void ConvertMeterToNM();
-
   void OnConvertNmToMeter(wxCommandEvent& event);
-  void ConvertNmToMeter();
 
   void OnNoteBookFit(wxNotebookEvent& event);
-  void OnFit(wxCommandEvent& event);
 
   void OnGenerateRoute(wxCommandEvent& event);
   void Calculate(wxCommandEvent& event, bool Export, int Pattern);
@@ -110,40 +106,35 @@ public:
   void OnSelectPortStarboard(wxCommandEvent& event);
 
   void OnShip(wxCommandEvent& event);
-  void OnCursor(wxCommandEvent& event);
-  void OnShip(void);
-  void OnCursor(void);
-  void key_shortcut(wxKeyEvent& event);
+  void OnCursor();
+  void OnKeyShortcut(wxKeyEvent& event);
   void OnCursorSelect(wxCommandEvent& event);
 
-  // For right click datum selection
   void getDatum(double m_lat, double m_lon);
 
-
-  void Addpoint2(XMLElement* Route, wxString ptlat, wxString ptlon,
+  void AddPoint2(XMLElement* Route, wxString ptlat, wxString ptlon,
                  wxString ptname, wxString ptsym, wxString pttype);
 
-  // friend class function;
+  void setDDMM();
+  void OnClose(wxCloseEvent& event);
+
+  void CreateRoute(wxString filename);
+  void AddChartRoute(wxString myRoute, wxString mySpeed, wxString myColor);
+  int ExportRTZ(wxString routename);
+
   SAR_pi* plugin;
   double m_ship_lon, m_ship_lat, m_cursor_lon, m_cursor_lat;
   int shipsAvailable;
   int PortStbd;
-  void setDDMM();
-  void OnClose(wxCloseEvent& event);
 
   tinyxml2::XMLDocument xmlDoc;
-  void CreateRoute(wxString filename);
   wxArrayString waypointsList;
-
   tinyxml2::XMLNode* waypoints;
-
   vector<waypoint> m_waypointList;
 
   bool m_bChartRoute;
   bool m_bSaveRTZ;
   int rtz_schema;
-  void AddChartRoute(wxString myRoute, wxString mySpeed, wxString myColor);
-  int ExportRTZ(wxString routename);
 
 private:
   wxPoint xy;

@@ -37,8 +37,6 @@
 #include "ocpn_plugin.h"
 #include "icons.h"
 
-// the class factories, used to create and destroy instances of the PlugIn
-
 using namespace std;
 
 extern "C" DECL_EXP opencpn_plugin *create_pi(void *ppimgr) {
@@ -48,33 +46,28 @@ extern "C" DECL_EXP opencpn_plugin *create_pi(void *ppimgr) {
 extern "C" DECL_EXP void destroy_pi(opencpn_plugin *p) { delete p; }
 
 
-//---------------------------------------------------------------------------------------------------------
-//
-//          PlugIn initialization and de-init
-//
-//---------------------------------------------------------------------------------------------------------
-
-SAR_pi::SAR_pi(void *ppimgr)
-    : opencpn_plugin_118(ppimgr),
-// Create the PlugIn icons
-m_show_sar_icon(false)
-
+/*****************************/
+/** Classes Initialization  **/
+/*****************************/
+SAR_pi::SAR_pi(void *ppimgr) : opencpn_plugin_118(ppimgr), m_show_sar_icon(false)
 {
-  
   initialize_images();
   initialize_bitmaps();
 
   auto icon_path = GetPluginIcon("sar_panel_icon", PKG_NAME);
+
   if (icon_path.type == IconPath::Type::Svg)
     m_panel_bitmap = LoadSvgIcon(icon_path.path.c_str());
   else if (icon_path.type == IconPath::Type::Png)
     m_panel_bitmap = LoadPngIcon(icon_path.path.c_str());
   else  // icon_path.type == NotFound
     wxLogWarning("Cannot find icon for basename: %s", "sar_panel_icon");
+
   if (m_panel_bitmap.IsOk())
     wxLogDebug("sarPi::, bitmap OK");
   else
     wxLogDebug("sarPi::, bitmap fail");
+
   m_show_sar = false;
 }
 
@@ -161,8 +154,11 @@ bool SAR_pi::DeInit(void) {
   return true;
 }
 
-int SAR_pi::GetAPIVersionMajor() { return atoi(API_VERSION); }
 
+/**************************/
+/** Plugin Get Functions **/
+/**************************/
+int SAR_pi::GetAPIVersionMajor() { return atoi(API_VERSION); }
 int SAR_pi::GetAPIVersionMinor() {
   std::string v(API_VERSION);
   size_t dotpos = v.find('.');
@@ -175,6 +171,7 @@ int GetPlugInVersionPatch() { return PLUGIN_VERSION_PATCH; }
 int GetPlugInVersionPost() { return PLUGIN_VERSION_TWEAK; }
 const char *GetPlugInVersionPre() { return PKG_PRERELEASE; }
 const char *GetPlugInVersionBuild() { return PKG_BUILD_INFO; }
+
 wxBitmap *SAR_pi::GetPlugInBitmap() { return &m_panel_bitmap; }
 wxString SAR_pi::GetCommonName() { return "sar"; }
 wxString SAR_pi::GetShortDescription() {
@@ -184,12 +181,75 @@ wxString SAR_pi::GetLongDescription() {
   return _("Creates GPX files with Search and Rescue patterns");
 }
 
-int SAR_pi::GetToolbarToolCount(void) { return 1; }
 
+/**************/
+/** Settings **/
+/**************/
+bool SAR_pi::LoadConfig(void) {
+  wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
+
+  if (pConf) {
+    pConf->SetPath(_T( "/Settings/SAR_pi" ));
+    pConf->Read(_T ( "Opacity" ), &m_iOpacity, 255);
+    pConf->Read("ShowSARIcon", &m_show_sar_icon, true);
+    // pConf->Read dialog->m_cpConnectorColor->SetColour(m_sConnectorColor);
+    m_route_dialog_x = pConf->Read(_T ( "DialogPosX" ), 20L);
+    m_route_dialog_y = pConf->Read(_T ( "DialogPosY" ), 20L);
+    m_bCaptureCursor = pConf->Read(_T ( "CaptureCursor" ), true);
+    m_bCaptureShip = pConf->Read(_T ( "CaptureShip" ), true);
+
+
+    if ((m_route_dialog_x < 0) || (m_route_dialog_x > m_display_width))
+      m_route_dialog_x = 5;
+    if ((m_route_dialog_y < 0) || (m_route_dialog_y > m_display_height))
+      m_route_dialog_y = 5;
+    return true;
+  } else
+    return false;
+}
+
+bool SAR_pi::SaveConfig(void) {
+  wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
+
+  if (pConf) {
+    pConf->SetPath(_T ( "/Settings/SAR_pi" ));
+    pConf->Write(_T ( "Opacity" ), m_iOpacity);
+    pConf->Write("ShowSARIcon", m_show_sar_icon);
+    pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
+    pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
+    pConf->Write(_T ( "CaptureCursor" ), m_bCaptureCursor);
+    pConf->Write(_T ( "CaptureShip" ), m_bCaptureShip);
+    return true;
+  } else
+    return false;
+}
+
+
+/*************/
+/** Setters **/
+/*************/
 void SAR_pi::SetColorScheme(PI_ColorScheme cs) {
   if (!m_pDialog) return;
 
   DimeWindow(m_pDialog);
+}
+
+void SAR_pi::SetCursorLatLon(double lat, double lon) {
+  m_cursor_lat = lat;
+  m_cursor_lon = lon;
+}
+
+void SAR_pi::SetPositionFix(PlugIn_Position_Fix &pfix) {
+  m_ship_lon = pfix.Lon;
+  m_ship_lat = pfix.Lat;
+}
+
+
+/************/
+/** Others **/
+/************/
+int SAR_pi::GetToolbarToolCount(void) {
+  return 1;
 }
 
 void SAR_pi::OnToolbarToolCallback(int id) {
@@ -219,45 +279,6 @@ void SAR_pi::OnToolbarToolCallback(int id) {
   RequestRefresh(m_parent_window);  // refresh main window
 }
 
-bool SAR_pi::LoadConfig(void) {
-  wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
-
-  if (pConf) {
-    pConf->SetPath(_T( "/Settings/SAR_pi" ));
-    pConf->Read(_T ( "Opacity" ), &m_iOpacity, 255);
-    pConf->Read("ShowSARIcon", &m_show_sar_icon, true);
-    // pConf->Read dialog->m_cpConnectorColor->SetColour(m_sConnectorColor);
-    m_route_dialog_x = pConf->Read(_T ( "DialogPosX" ), 20L);
-    m_route_dialog_y = pConf->Read(_T ( "DialogPosY" ), 20L);
-    m_bCaptureCursor = pConf->Read(_T ( "CaptureCursor" ), true);
-    m_bCaptureShip = pConf->Read(_T ( "CaptureShip" ), true);
-    
-
-    if ((m_route_dialog_x < 0) || (m_route_dialog_x > m_display_width))
-      m_route_dialog_x = 5;
-    if ((m_route_dialog_y < 0) || (m_route_dialog_y > m_display_height))
-      m_route_dialog_y = 5;
-    return true;
-  } else
-    return false;
-}
-
-bool SAR_pi::SaveConfig(void) {
-  wxFileConfig *pConf = (wxFileConfig *)m_pconfig;
-
-  if (pConf) {
-    pConf->SetPath(_T ( "/Settings/SAR_pi" ));
-    pConf->Write(_T ( "Opacity" ), m_iOpacity);
-    pConf->Write("ShowSARIcon", m_show_sar_icon);
-    pConf->Write(_T ( "DialogPosX" ), m_route_dialog_x);
-    pConf->Write(_T ( "DialogPosY" ), m_route_dialog_y);
-    pConf->Write(_T ( "CaptureCursor" ), m_bCaptureCursor);
-    pConf->Write(_T ( "CaptureShip" ), m_bCaptureShip);
-    return true;
-  } else
-    return false;
-}
-
 void SAR_pi::ShowPreferencesDialog(wxWindow *parent) {
   CfgDlg *dialog = new CfgDlg(parent, wxID_ANY, _("Route Preferences"),
                               wxPoint(m_route_dialog_x, m_route_dialog_y),
@@ -277,23 +298,6 @@ void SAR_pi::ShowPreferencesDialog(wxWindow *parent) {
   }
   delete dialog;
   dialog = NULL;
-}
-
-void SAR_pi::SetCursorLatLon(double lat, double lon) {
-  // if (m_bCaptureShip){ //Option to save CPU
-  m_cursor_lat = lat;
-  m_cursor_lon = lon;
-  //}
-  // std::cout<<"Cursor--> Lat: "<<m_cursor_lat<<" Lon:
-  // "<<m_cursor_lon<<std::endl;
-}
-
-void SAR_pi::SetPositionFix(PlugIn_Position_Fix &pfix) {
-  // if (m_bCaptureCursor){ //Option to save CPU
-  m_ship_lon = pfix.Lon;
-  m_ship_lat = pfix.Lat;
-  // std::cout<<"Ship--> Lat: "<<m_ship_lat<<" Lon: "<<m_ship_lon<<std::endl;
-  //}
 }
 
 void SAR_pi::OnContextMenuItemCallback(int id) {

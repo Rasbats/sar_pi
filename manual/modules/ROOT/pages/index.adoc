@@ -41,7 +41,7 @@ https://github.com/Rasbats[Rasbats] has updated the plugin, following advice fro
 
 https://github.com/rgleason[RGleason] has contributed ideas for the GUI. 
 
-https://github.com/Kupofty[Kupofty] has contributed to GUI updates and bug fixes.
+https://github.com/Kupofty[Kupofty] has contributed to GUI updates, bug fixes and code refactoring.
 
 == *References*
 
