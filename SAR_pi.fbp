@@ -4468,20 +4468,20 @@
             </object>
           </object>
         </object>
-        <object class="sizeritem" expanded="true">
+        <object class="sizeritem" expanded="false">
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
-          <property name="proportion">1</property>
-          <object class="wxBoxSizer" expanded="true">
+          <property name="proportion">0</property>
+          <object class="wxBoxSizer" expanded="false">
             <property name="minimum_size"></property>
             <property name="name">bSizer_Middle</property>
             <property name="orient">wxHORIZONTAL</property>
             <property name="permission">none</property>
-            <object class="sizeritem" expanded="true">
+            <object class="sizeritem" expanded="false">
               <property name="border">5</property>
               <property name="flag">wxALL|wxEXPAND</property>
               <property name="proportion">1</property>
-              <object class="wxStaticBoxSizer" expanded="true">
+              <object class="wxStaticBoxSizer" expanded="false">
                 <property name="id">wxID_ANY</property>
                 <property name="label">Datum / CSP (Start of Search)</property>
                 <property name="minimum_size"></property>
@@ -4489,11 +4489,11 @@
                 <property name="orient">wxVERTICAL</property>
                 <property name="parent">1</property>
                 <property name="permission">none</property>
-                <object class="sizeritem" expanded="true">
+                <object class="sizeritem" expanded="false">
                   <property name="border">5</property>
                   <property name="flag">wxEXPAND</property>
                   <property name="proportion">1</property>
-                  <object class="wxNotebook" expanded="true">
+                  <object class="wxNotebook" expanded="false">
                     <property name="BottomDockable">1</property>
                     <property name="LeftDockable">1</property>
                     <property name="RightDockable">1</property>
@@ -4549,11 +4549,11 @@
                     <property name="window_style"></property>
                     <event name="OnKeyDown">OnKeyShortcut</event>
                     <event name="OnNotebookPageChanged">OnNoteBookFit</event>
-                    <object class="notebookpage" expanded="true">
+                    <object class="notebookpage" expanded="false">
                       <property name="bitmap"></property>
                       <property name="label">D.ddd</property>
-                      <property name="select">1</property>
-                      <object class="wxPanel" expanded="true">
+                      <property name="select">0</property>
+                      <object class="wxPanel" expanded="false">
                         <property name="BottomDockable">1</property>
                         <property name="LeftDockable">1</property>
                         <property name="RightDockable">1</property>
@@ -4606,25 +4606,25 @@
                         <property name="window_name"></property>
                         <property name="window_style">wxTAB_TRAVERSAL</property>
                         <event name="OnKeyDown">OnKeyShortcut</event>
-                        <object class="wxBoxSizer" expanded="true">
+                        <object class="wxBoxSizer" expanded="false">
                           <property name="minimum_size"></property>
                           <property name="name">bSizer_Dddd</property>
                           <property name="orient">wxVERTICAL</property>
                           <property name="permission">none</property>
-                          <object class="sizeritem" expanded="true">
+                          <object class="sizeritem" expanded="false">
                             <property name="border">5</property>
                             <property name="flag">wxALIGN_CENTER</property>
                             <property name="proportion">0</property>
-                            <object class="wxBoxSizer" expanded="true">
+                            <object class="wxBoxSizer" expanded="false">
                               <property name="minimum_size"></property>
                               <property name="name">bSizer_Dddd_Inputs</property>
                               <property name="orient">wxVERTICAL</property>
                               <property name="permission">none</property>
-                              <object class="sizeritem" expanded="true">
+                              <object class="sizeritem" expanded="false">
                                 <property name="border">5</property>
                                 <property name="flag"></property>
                                 <property name="proportion">0</property>
-                                <object class="wxBoxSizer" expanded="true">
+                                <object class="wxBoxSizer" expanded="false">
                                   <property name="minimum_size"></property>
                                   <property name="name">bSizer1431</property>
                                   <property name="orient">wxHORIZONTAL</property>
@@ -4821,11 +4821,11 @@
                                   </object>
                                 </object>
                               </object>
-                              <object class="sizeritem" expanded="true">
+                              <object class="sizeritem" expanded="false">
                                 <property name="border">5</property>
                                 <property name="flag"></property>
                                 <property name="proportion">0</property>
-                                <object class="wxBoxSizer" expanded="true">
+                                <object class="wxBoxSizer" expanded="false">
                                   <property name="minimum_size"></property>
                                   <property name="name">bSizer14311</property>
                                   <property name="orient">wxHORIZONTAL</property>
@@ -6145,7 +6145,7 @@
                     <object class="notebookpage" expanded="false">
                       <property name="bitmap"></property>
                       <property name="label">D MM SS</property>
-                      <property name="select">0</property>
+                      <property name="select">1</property>
                       <object class="wxPanel" expanded="false">
                         <property name="BottomDockable">1</property>
                         <property name="LeftDockable">1</property>
@@ -6205,7 +6205,7 @@
                           <property name="permission">none</property>
                           <object class="sizeritem" expanded="false">
                             <property name="border">5</property>
-                            <property name="flag">wxALIGN_CENTER|wxEXPAND</property>
+                            <property name="flag">wxALIGN_CENTER</property>
                             <property name="proportion">0</property>
                             <object class="wxBoxSizer" expanded="false">
                               <property name="minimum_size"></property>
@@ -6733,7 +6733,7 @@
                               </object>
                               <object class="sizeritem" expanded="false">
                                 <property name="border">5</property>
-                                <property name="flag">wxALIGN_CENTER_HORIZONTAL</property>
+                                <property name="flag"></property>
                                 <property name="proportion">0</property>
                                 <object class="wxBoxSizer" expanded="false">
                                   <property name="minimum_size"></property>
@@ -7772,7 +7772,7 @@
             </object>
           </object>
         </object>
-        <object class="sizeritem" expanded="true">
+        <object class="sizeritem" expanded="false">
           <property name="border">5</property>
           <property name="flag">wxEXPAND</property>
           <property name="proportion">0</property>

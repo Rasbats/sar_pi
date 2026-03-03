@@ -600,7 +600,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_Degrees->SetSizer( bSizer_Dddd );
 	m_panel_Degrees->Layout();
 	bSizer_Dddd->Fit( m_panel_Degrees );
-	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), true );
+	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), false );
 	m_panel_DegreesMinutes = new wxPanel( m_notebook_CSP, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4011;
 	bSizer4011 = new wxBoxSizer( wxVERTICAL );
@@ -762,10 +762,10 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer143112->Add( m_Lon1_EW, 0, wxALL, 5 );
 
 
-	bSizer_DMMSS_Inputs->Add( bSizer143112, 0, wxALIGN_CENTER_HORIZONTAL, 5 );
+	bSizer_DMMSS_Inputs->Add( bSizer143112, 0, 0, 5 );
 
 
-	bSizer401->Add( bSizer_DMMSS_Inputs, 0, wxALIGN_CENTER|wxEXPAND, 5 );
+	bSizer401->Add( bSizer_DMMSS_Inputs, 0, wxALIGN_CENTER, 5 );
 
 	m_button_DMMSS_ConvertDegree = new wxButton( m_panel_DegreesMinutesSeconds, wxID_ANY, _("Convert to decimal degrees"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer401->Add( m_button_DMMSS_ConvertDegree, 0, wxALIGN_CENTER|wxALL, 5 );
@@ -774,7 +774,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_DegreesMinutesSeconds->SetSizer( bSizer401 );
 	m_panel_DegreesMinutesSeconds->Layout();
 	bSizer401->Fit( m_panel_DegreesMinutesSeconds );
-	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), false );
+	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), true );
 
 	sbSizer_DatumCSP->Add( m_notebook_CSP, 1, wxEXPAND, 5 );
 
@@ -826,7 +826,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer_Middle->Add( sbSizer_RouteGeneration, 0, wxALL|wxEXPAND, 5 );
 
 
-	bSizer_Main->Add( bSizer_Middle, 1, wxEXPAND, 5 );
+	bSizer_Main->Add( bSizer_Middle, 0, wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer_Bottom;
 	bSizer_Bottom = new wxBoxSizer( wxHORIZONTAL );
