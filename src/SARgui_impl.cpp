@@ -1,37 +1,11 @@
-/******************************************************************************
- *
- * Project:  OpenCPN
- * Purpose:  ROUTE Plugin
- * Author:   SaltyPaws
- *
- ***************************************************************************
- *   Copyright (C) 2012 by Brazil BrokeTail                                *
- *   $EMAIL$                                                               *
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- *   This program is distributed in the hope that it will be useful,       *
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of        *
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         *
- *   GNU General Public License for more details.                          *
- *                                                                         *
- *   You should have received a copy of the GNU General Public License     *
- *   along with this program; if not, write to the                         *
- *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
- ***************************************************************************
- */
-
 #include "SARgui_impl.h"
 
 using namespace tinyxml2;
 
-////////////////////////////
-/// Class Initialization ///
-////////////////////////////
+
+/*****************************/
+/** Classes Initialization  **/
+/*****************************/
 CfgDlg::CfgDlg(wxWindow* parent, wxWindowID id, const wxString& title,
                const wxPoint& pos, const wxSize& size, long style)
     : CfgDlgDef(parent, id, title, pos, size, style) {}
@@ -39,28 +13,32 @@ CfgDlg::CfgDlg(wxWindow* parent, wxWindowID id, const wxString& title,
 Dlg::Dlg(wxWindow* parent, wxWindowID id, const wxString& title,
          const wxPoint& pos, const wxSize& size, long style)
     : DlgDef(parent, id, title, pos, size, style) {
+
   this->Fit();
 
-  initialize_bitmaps();
-  dbg = true;  // for debug output set to true
-
   // initialise images
+  initialize_bitmaps();
   m_bitmap_trackln1->SetBitmap(_img_trackln1);
   m_bitmap_sector->SetBitmap(_img_sector_uscg);
   m_bitmap_exp_sq->SetBitmap(_img_exp_sq);
   m_bitmap_oil_rig->SetBitmap(_img_oil_rig);
+
+  // initialize comboBoxes & variables
   m_notebook_PatternSelection->SetSelection(0);
   m_notebook_CSP->SetSelection(0);
   m_Nship->SetSelection(0);
   m_NPortStbd->SetSelection(0);
   shipsAvailable = 0;
   PortStbd = 0;
+
+  // for debug output : set to true
+  dbg = true;
 }
 
 
-////////////////////////
-/// Others Functions ///
-////////////////////////
+/*********************/
+/** Others wxEvents **/
+/*********************/
 void Dlg::OnConvertToDegree(wxCommandEvent& event) { ConvertToDegree(); }
 
 void Dlg::ConvertToDegree() {
@@ -138,7 +116,8 @@ void Dlg::ConvertToDegree() {
   }
 
   switch (m_notebook_CSP->GetSelection()) {
-    case 0:
+    //D.ddd
+    case 0: {
       s = m_Lat1->GetValue();
       s.ToDouble(&value);
       DDLat = value;
@@ -150,7 +129,6 @@ void Dlg::ConvertToDegree() {
       DDlon1 = abs(int(DDLon));
 
       // set the ddmm page
-
       m_Lat1_d1->SetValue(wxString::Format(_T("%i"), (int)DDlat1));
       m_Lon1_d1->SetValue(wxString::Format(_T("%i"), (int)DDlon1));
 
@@ -177,7 +155,6 @@ void Dlg::ConvertToDegree() {
       }
 
       // set the ddmmss page
-
       m_Lat1_d->SetValue(wxString::Format(_T("%i"), abs((int)DDlat1)));
       m_Lon1_d->SetValue(wxString::Format(_T("%i"), abs((int)DDlon1)));
 
@@ -194,9 +171,10 @@ void Dlg::ConvertToDegree() {
       m_Lon1_s->SetValue(wxString::Format("%.6f", SSlon1));
 
       break;
+    }
 
-    case 1:
-
+    //D MM.mmm
+    case 1: {
       d1 = m_Lat1_d1->GetValue();
       d1.ToDouble(&value);
       DDLat = value;
@@ -214,9 +192,6 @@ void Dlg::ConvertToDegree() {
       DDLat1 = DDLat + (MMLat / 60);
       DDLon1 = DDLon + (MMLon / 60);
 
-      // wxMessageBox(wxString::Format(_T("%f"), DDLat1));
-      // wxMessageBox(wxString::Format(_T("%f"), DDLon1));
-
       NS = m_Lat1_NS1->GetSelection();
       if (NS == 1) {
         DDLat1 *= -1;
@@ -227,7 +202,6 @@ void Dlg::ConvertToDegree() {
       }
 
       // set the dd.dddd page
-
       m_Lat1->SetValue(wxString::Format("%.6f", DDLat1));
       m_Lon1->SetValue(wxString::Format("%.6f", DDLon1));
 
@@ -262,7 +236,10 @@ void Dlg::ConvertToDegree() {
       m_Lat1->SetFocus();
 
       break;
-    case 2:
+    }
+
+    //D MM SS
+    case 2: {
       d1 = m_Lat1_d->GetValue();
       d1.ToDouble(&value);
       DDLat = value;
@@ -308,12 +285,10 @@ void Dlg::ConvertToDegree() {
       }
 
       // set dd.ddd page
-
       m_Lat1->SetValue(wxString::Format("%.6f", DDLat1));
       m_Lon1->SetValue(wxString::Format("%.6f", DDLon1));
 
       // set ddmm page
-
       m_Lat1_d1->SetValue(wxString::Format(_T("%i"), abs((int)DDLat1)));
       m_Lon1_d1->SetValue(wxString::Format(_T("%i"), abs((int)DDLon1)));
 
@@ -324,15 +299,13 @@ void Dlg::ConvertToDegree() {
       m_Lon1_m1->SetValue(wxString::Format("%.6f", DDLon1));
 
       m_notebook_CSP->SetSelection(0);
-      m_Lat1->SetFocus();
 
       break;
+    }
   }
 }
 
-void Dlg::OnConvertMeterToNM(wxCommandEvent& event) { ConvertMeterToNM(); }
-
-void Dlg::ConvertMeterToNM() {
+void Dlg::OnConvertMeterToNM(wxCommandEvent& event) {
   double meters;
   if (!m_meterDistance->GetValue().ToDouble(&meters)) {
     wxMessageBox(_("Invalid input for conversion"), _("Error"),
@@ -346,9 +319,7 @@ void Dlg::ConvertMeterToNM() {
   m_NmDistance->SetValue(wxString::Format("%.5f", nm));
 }
 
-void Dlg::OnConvertNmToMeter(wxCommandEvent& event) { ConvertNmToMeter(); }
-
-void Dlg::ConvertNmToMeter() {
+void Dlg::OnConvertNmToMeter(wxCommandEvent& event) {
   double nm;
   if (!m_NmDistance->GetValue().ToDouble(&nm)) {
     wxMessageBox(_("Invalid input for conversion"), _("Error"),
@@ -369,16 +340,477 @@ void Dlg::OnNoteBookFit(wxNotebookEvent& event) {
   if (dbg) printf("Resizing window \n");
 }
 
-void Dlg::OnFit(wxCommandEvent& event) {
-  this->m_notebook_CSP->InvalidateBestSize();
-  this->m_panel_Degrees->Fit();
-  this->m_panel_Degrees->Layout();
-  this->Fit();
-  this->Layout();
-  if (dbg) printf("Resizing window \n");
+void Dlg::OnClose(wxCloseEvent& event) {
+  plugin->OnSARDialogClose();
 }
 
-void Dlg::Addpoint2(XMLElement* Route, wxString ptlat, wxString ptlon,
+void Dlg::OnSelectNumberShips(wxCommandEvent& event) {
+  shipsAvailable = this->m_Nship->GetSelection();
+
+  switch (shipsAvailable) {
+    //PS 1 unit
+    case 0: {
+      m_bitmap_trackln1->SetBitmap(_img_trackln1);
+      m_staticTextPortStbd->Show();
+      m_NPortStbd->Show();
+      break;
+    }
+    //PS 2 units
+    case 1: {
+      m_bitmap_trackln1->SetBitmap(_img_trackln_both);
+      m_staticTextPortStbd->Hide();
+      m_NPortStbd->Hide();
+      break;
+    }
+  }
+
+  m_notebook_PatternSelection->Refresh();
+  event.Skip();
+}
+
+void Dlg::OnSelectVectorMethod(wxCommandEvent& event) {
+  int s = this->m_VSMethod->GetCurrentSelection();
+
+  switch (s) {
+    //USCG
+    case 0: {
+      m_bitmap_sector->SetBitmap(_img_sector_uscg);
+      break;
+    }
+
+    //IAMSAR
+    case 1: {
+      m_bitmap_sector->SetBitmap(_img_sector_iamsar);
+      break;
+    }
+  }
+  event.Skip();
+}
+
+void Dlg::OnSelectPortStarboard(wxCommandEvent& event) {
+  PortStbd = this->m_NPortStbd->GetSelection();
+
+  switch (PortStbd) {
+    //PS 1 unit - first turn starboard
+    case 0: {
+      m_bitmap_trackln1->SetBitmap(_img_trackln1);
+      break;
+    }
+
+    //PS 1 unit - first turn port
+    case 1: {
+      m_bitmap_trackln1->SetBitmap(_img_trackln1_port);
+      break;
+    }
+  }
+  event.Skip();
+}
+
+void Dlg::OnShip(wxCommandEvent& event) {
+  this->m_Lat1->SetValue(wxString::Format("%.6f", plugin->GetShipLat()));
+  this->m_Lon1->SetValue(wxString::Format("%.6f", plugin->GetShipLon()));
+
+  setDDMM();  // Copies the lat.lon to the DDMM page
+}
+
+void Dlg::OnCursorSelect(wxCommandEvent& event) {
+  wxMessageBox(
+      _("To copy the cursor location:\n\n"
+        "- Right-click on the chart and choose 'Select SAR Datum Point'\n"
+        "- Or, with the plugin window selected and the cursor on the chart, "
+        "press <CTRL>+S"));
+}
+
+void Dlg::OnCursor() {
+  this->m_Lat1->SetValue(wxString::Format("%.6f", plugin->GetCursorLat()));
+  this->m_Lon1->SetValue(wxString::Format("%.6f", plugin->GetCursorLon()));
+
+  setDDMM();  // Copies the lat.lon to the DDMM page
+
+  m_notebook_CSP->SetSelection(0);
+}
+
+void Dlg::OnKeyShortcut(wxKeyEvent& event) {
+  // http://docs.wxwidgets.org/stable/wx_wxkeyevent.html
+
+  if (event.GetModifiers() == wxMOD_CONTROL) {
+    switch (event.GetKeyCode()) {
+      case 'S':
+        OnCursor();
+        break;
+
+      default:
+        break;
+    }
+  }
+  event.Skip();
+}
+
+void Dlg::getDatum(double m_lat, double m_lon) {
+  wxString myLat = wxString::Format("%f", m_lat);
+  wxString myLon = wxString::Format("%f", m_lon);
+
+  m_Lat1->SetValue(myLat);
+  m_Lon1->SetValue(myLon);
+
+  setDDMM();
+
+  m_notebook_CSP->SetSelection(0);
+  m_Lat1->SetFocus();
+}
+
+void Dlg::setDDMM() {
+  double DDLat;
+  double DDLon;
+
+  int DDlat1;
+  int DDlon1;
+
+  double MMlat0;
+  double MMlon0;
+
+  double MMlat2;
+  double MMlon2;
+
+  double SSlat1;
+  double SSlon1;
+
+  double value;
+
+  wxString s;
+  wxString s1;
+  wxString m1;
+  wxString d1;
+
+  // set cell values to 0 if they are empty. This ensures conversion goes ok.
+  double test_value;
+  if (!this->m_Lat1_d->GetValue().ToDouble(&test_value)) {
+    m_Lat1_d->SetValue(wxString::Format("%i", 0));
+  }
+  if (!this->m_Lat1_m->GetValue().ToDouble(&test_value)) {
+    m_Lat1_m->SetValue(wxString::Format("%i", 0));
+  }
+  if (!this->m_Lat1_s->GetValue().ToDouble(&test_value)) {
+    m_Lat1_s->SetValue(wxString::Format("%i", 0));
+  }
+
+  if (!this->m_Lon1_d->GetValue().ToDouble(&test_value)) {
+    m_Lon1_d->SetValue(wxString::Format("%i", 0));
+  }
+  if (!this->m_Lon1_m->GetValue().ToDouble(&test_value)) {
+    m_Lon1_m->SetValue(wxString::Format("%i", 0));
+  }
+  if (!this->m_Lon1_s->GetValue().ToDouble(&test_value)) {
+    m_Lon1_s->SetValue(wxString::Format("%i", 0));
+  }
+
+  if (!this->m_Lat1_d1->GetValue().ToDouble(&test_value)) {
+    m_Lat1_d1->SetValue(wxString::Format("%i", 0));
+  }
+  if (!this->m_Lat1_m1->GetValue().ToDouble(&test_value)) {
+    m_Lat1_m1->SetValue(wxString::Format("%i", 0));
+  }
+
+  if (!this->m_Lon1_d1->GetValue().ToDouble(&test_value)) {
+    m_Lon1_d1->SetValue(wxString::Format("%i", 0));
+  }
+  if (!this->m_Lon1_m1->GetValue().ToDouble(&test_value)) {
+    m_Lon1_m1->SetValue(wxString::Format("%i", 0));
+  }
+
+  s = m_Lat1->GetValue();
+  s.ToDouble(&value);
+  DDLat = value;
+  s = m_Lon1->GetValue();
+  s.ToDouble(&value);
+  DDLon = value;
+
+  DDlat1 = abs(int(DDLat));
+  DDlon1 = abs(int(DDLon));
+
+  // set the ddmm page
+  m_Lat1_d1->SetValue(wxString::Format(_T("%i"), (int)DDlat1));
+  m_Lon1_d1->SetValue(wxString::Format(_T("%i"), (int)DDlon1));
+
+  MMlat0 = (fabs(DDLat) - double(DDlat1)) * 60;
+  MMlon0 = (fabs(DDLon) - double(DDlon1)) * 60;
+
+  m_Lat1_m1->SetValue(wxString::Format("%.6f", MMlat0));
+  m_Lon1_m1->SetValue(wxString::Format("%.6f", MMlon0));
+
+  if (DDLat > 0) {
+    m_Lat1_NS1->SetSelection(0);
+    m_Lat1_NS->SetSelection(0);
+  } else {
+    m_Lat1_NS1->SetSelection(1);
+    m_Lat1_NS->SetSelection(1);
+  }
+
+  if (DDLon > 0) {
+    m_Lon1_EW1->SetSelection(0);
+    m_Lon1_EW->SetSelection(0);
+  } else {
+    m_Lon1_EW1->SetSelection(1);
+    m_Lon1_EW->SetSelection(1);
+  }
+
+  // set the ddmmss page
+  m_Lat1_d->SetValue(wxString::Format(_T("%i"), abs((int)DDlat1)));
+  m_Lon1_d->SetValue(wxString::Format(_T("%i"), abs((int)DDlon1)));
+
+  m_Lat1_m->SetValue(wxString::Format(_T("%i"), abs((int)MMlat0)));
+  m_Lon1_m->SetValue(wxString::Format(_T("%i"), abs((int)MMlon0)));
+
+  MMlat2 = int(MMlat0);
+  MMlon2 = int(MMlon0);
+
+  SSlat1 = (MMlat0 - MMlat2) * 60;
+  SSlon1 = (MMlon0 - MMlon2) * 60;
+
+  m_Lat1_s->SetValue(wxString::Format("%.6f", SSlat1));
+  m_Lon1_s->SetValue(wxString::Format("%.6f", SSlon1));
+}
+
+
+/**********************/
+/** Route Generation **/
+/**********************/
+void Dlg::CreateRoute(wxString filename) {
+  tinyxml2::XMLDocument mydoc;
+  mydoc.LoadFile(filename);
+
+  tinyxml2::XMLNode* pRoot = mydoc.FirstChild();
+
+  wxString rte_name = "";
+  wxString rte_speed = "";
+  wxString rte_color = "";
+  wxString wpt_name = "";
+
+  int i = 0;
+
+  tinyxml2::XMLElement* object = pRoot->NextSiblingElement("gpx");
+  for (tinyxml2::XMLElement* rte = object->FirstChildElement("rte"); rte;
+       rte = rte->NextSiblingElement(), i++) {
+    waypoint myPoint;  // Clear data ready for the run
+    m_waypointList.clear();
+
+    for (tinyxml2::XMLElement* e1 = rte->FirstChildElement(); e1;
+         e1 = e1->NextSiblingElement(), i++) {
+      if (!strcmp(e1->Value(), "name")) {
+        rte_name = e1->GetText();
+      }
+
+      if (!strcmp(e1->Value(), "extensions")) {
+        tinyxml2::XMLElement* s =
+            e1->FirstChildElement("opencpn:planned_speed");
+        rte_speed = s->GetText();
+
+        tinyxml2::XMLElement* e = e1->FirstChildElement("gpxx:RouteExtension");
+        tinyxml2::XMLElement* c = e->FirstChildElement("gpxx:DisplayColor");
+        rte_color = c->GetText();
+      }
+
+      if (!strcmp(e1->Value(), "rtept")) {
+        wxString pt_lat = wxString::FromUTF8(e1->Attribute("lat"));
+        wxString pt_lon = wxString::FromUTF8(e1->Attribute("lon"));
+
+        tinyxml2::XMLElement* r = e1->FirstChildElement("name");
+        wpt_name = r->GetText();
+
+        myPoint.lat = pt_lat;
+        myPoint.lon = pt_lon;
+        myPoint.name = wpt_name;
+        myPoint.name_visible = true;
+
+        m_waypointList.push_back(myPoint);
+      }
+    }
+    if (m_bChartRoute) AddChartRoute(rte_name, rte_speed, rte_color);
+    if (m_bSaveRTZ) ExportRTZ(rte_name);
+  }
+}
+
+void Dlg::AddChartRoute(wxString myRoute, wxString mySpeed, wxString myColor) {
+  PlugIn_Route_Ex* newRoute =  new PlugIn_Route_Ex;  // for adding a route on OpenCPN chart display
+
+  newRoute->m_NameString = myRoute;
+  newRoute->m_isVisible = true;
+
+  double lati, loni, value, value1;
+  bool m_bNameVisible = true;
+
+  for (std::vector<waypoint>::iterator itp = m_waypointList.begin();
+       itp != m_waypointList.end(); itp++) {
+    PlugIn_Waypoint_Ex* wayPoint = new PlugIn_Waypoint_Ex;
+
+    wayPoint->m_MarkName = (*itp).name;
+
+    if (!(*itp).lat.ToDouble(&value)) {
+      /* error! */
+      //TODO : add error manager
+    }
+    lati = value;
+
+    if (!(*itp).lon.ToDouble(&value1)) {
+      /* error! */
+      //TODO : add error manager
+    }
+    loni = value1;
+
+    m_bNameVisible = (*itp).name_visible;
+
+    wayPoint->m_lat = lati;
+    wayPoint->m_lon = loni;
+    wayPoint->IsVisible = true;
+    wayPoint->IsNameVisible = m_bNameVisible;
+
+    if (showMarkIcons) {
+      wayPoint->IconName = "diamond";
+    } else
+      wayPoint->IconName = "Marks-Blank";
+
+    newRoute->pWaypointList->Append(wayPoint);
+  }
+
+  AddPlugInRouteEx(newRoute, true);
+
+  GetParent()->Refresh();
+}
+
+int Dlg::ExportRTZ(wxString routename) {
+  wxString rtzFileName;
+  wxString fileName;
+  wxFileDialog dlg(this, _("Save in RTZ format"), wxEmptyString, routename,
+                   _T("RTZ files (*.rtz)|*.rtz|All files (*.*)|*.*"),
+                   wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+
+  if (dlg.ShowModal() == wxID_CANCEL) {
+    return 999;
+  }
+  else {
+    fileName = dlg.GetPath();
+    rtzFileName = dlg.GetFilename();
+
+    if (dlg.GetPath() == wxEmptyString) {
+      wxMessageBox("Error");
+      return 999;
+    }
+  }
+
+  // put the correct version in the RTZ file
+  int selection = rtz_schema;
+  wxString rtzVersion;
+
+  if (selection == 0) {
+    rtzVersion = "1.0";
+  } else if (selection == 1) {
+    rtzVersion = "1.1";
+  } else if (selection == 2) {
+    rtzVersion = "1.2";
+  }
+
+  // Create Main level XML container
+  tinyxml2::XMLDocument xmlDoc;
+  tinyxml2::XMLDeclaration* decl = xmlDoc.NewDeclaration();
+
+  if (selection == 0) {
+    decl->SetValue(
+        "xml version="
+        "\"1.0\" "
+        "encoding="
+        "\"UTF-8\" "
+        "standalone="
+        "\"no\"");
+  } else if (selection == 1) {
+    decl->SetValue(
+        "xml version="
+        "\"1.0\" "
+        "encoding="
+        "\"UTF-8\"");
+  }
+
+  xmlDoc.LinkEndChild(decl);
+
+  // Create XML root node called animals
+  tinyxml2::XMLElement* pRoot = xmlDoc.NewElement("route");
+
+  const char* value = nullptr;
+  if (selection == 0) {
+    value = "http://www.cirm.org/RTZ/1/0";
+  } else if (selection == 1) {
+    value = "http://www.cirm.org/RTZ/1/1";
+  } else if (selection == 2) {
+    value = "http://www.cirm.org/RTZ/1/2";
+  }
+
+  char* sv = (const_cast<char*>((const char*)rtzVersion.mb_str()));
+
+  pRoot->SetAttribute("xmlns", value);
+  pRoot->SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+
+  if (selection == 0) {
+    pRoot->SetAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
+  }
+
+  pRoot->SetAttribute("version", sv);
+
+  if (selection == 1) {
+    pRoot->SetAttribute("xmlns:stm", "http://stmvalidation.eu/STM/1/0/0");
+  }
+
+  // Add pRoot to xmlDoc after prolog
+  xmlDoc.InsertEndChild(pRoot);
+
+  // ************* Add routeInfo to root node *******
+  tinyxml2::XMLElement* routeInfo = xmlDoc.NewElement("routeInfo");
+  pRoot->InsertFirstChild(routeInfo);
+
+  // Route name must be the same as the file name, without file extension
+  int fl = rtzFileName.length();
+  wxString rtzFileBit = rtzFileName.SubString(0, (fl - 5));
+
+  char* rtzFN = (const_cast<char*>((const char*)rtzFileBit.mb_str()));
+  routeInfo->SetAttribute("routeName", rtzFN);
+
+  // ************* Add waypoints *******
+  waypoints = xmlDoc.NewElement("waypoints");
+  pRoot->InsertEndChild(waypoints);
+
+  int nm = m_waypointList.size();
+  if (nm == 0) {
+    wxMessageBox("No waypoints available", "Warning");
+    return 999;
+  }
+
+  int idn = 0;
+
+  for (std::vector<waypoint>::iterator itOut = m_waypointList.begin();
+       itOut != m_waypointList.end(); itOut++) {
+    tinyxml2::XMLElement* m_waypoint = xmlDoc.NewElement("waypoint");
+    waypoints->InsertEndChild(m_waypoint);
+    wxString myIdn = wxString::Format(wxT("%i"), idn);
+    m_waypoint->SetAttribute("id", myIdn.mb_str());
+
+    if (selection == 2) m_waypoint->SetAttribute("revision", "0");
+
+    m_waypoint->SetAttribute("name", (*itOut).name.mb_str());
+
+    tinyxml2::XMLElement* position = xmlDoc.NewElement("position");
+
+    position->SetAttribute("lat", (*itOut).lat.mb_str());
+    position->SetAttribute("lon", (*itOut).lon.mb_str());
+    m_waypoint->InsertEndChild(position);
+
+    idn++;
+  }
+
+  // Write xmlDoc into a file
+  xmlDoc.SaveFile(fileName);
+
+  return 0;
+}
+
+void Dlg::AddPoint2(XMLElement* Route, wxString ptlat, wxString ptlon,
                     wxString ptname, wxString ptsym, wxString pttype) {
   tinyxml2::XMLElement* m_waypoint = xmlDoc.NewElement("rtept");
   Route->InsertEndChild(m_waypoint);
@@ -402,8 +834,6 @@ void Dlg::Addpoint2(XMLElement* Route, wxString ptlat, wxString ptlon,
   tinyxml2::XMLElement* viz = xmlDoc.NewElement("opencpn:viz_name");
   extensions->InsertFirstChild(viz);
   viz->SetText("1");
-
-  // done adding point
 }
 
 void Dlg::OnGenerateRoute(wxCommandEvent& event) {
@@ -429,7 +859,7 @@ void Dlg::OnGenerateRoute(wxCommandEvent& event) {
         break;
       }
 
-      //VS
+                //VS
       case 3: {
         int sel = this->m_Ncycles->GetSelection();
         if (sel == 1) {
@@ -437,6 +867,10 @@ void Dlg::OnGenerateRoute(wxCommandEvent& event) {
           m_bSaveRTZ = false;
           return;
         }
+        break;
+      }
+
+      default : {
         break;
       }
     }
@@ -447,7 +881,6 @@ void Dlg::OnGenerateRoute(wxCommandEvent& event) {
 
   //Calculate GPX
   Calculate(event, true, patternSelect);
-
 }
 
 void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
@@ -465,7 +898,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
       int ch = shipsAvailable;
       wxString chText;
 
-      // Single unit
+              // Single unit
       if (ch == 0) {
         if (df == 0) {
           defaultFileName = "PS-1";  // starboard
@@ -474,7 +907,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         }
       }
 
-      // 2 units AB
+              // 2 units AB
       else if (ch == 1) {
         chText = "PS-AB";
         defaultFileName = chText;
@@ -482,26 +915,26 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
       break;
     }
 
-    // Expanding Square Search (SS)
+              // Expanding Square Search (SS)
     case 2: {
       defaultFileName = "SS";
       break;
     }
 
-    // Sector Search (VS)
+              // Sector Search (VS)
     case 3: {
       int vh = this->m_Ncycles->GetSelection();
       int VSMethod = this->m_VSMethod->GetSelection();
       wxString VS;
 
-      // Method
+              // Method
       if (VSMethod == 0) {
         VS = "USCG";
       } else if (VSMethod == 1) {
         VS = "IAMSAR";
       }
 
-      // Number of passes
+              // Number of passes
       if (vh == 0) {
         defaultFileName = VS + "-VS";
       } else if (vh == 1) {
@@ -511,7 +944,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
       break;
     }
 
-    // Quadrant Search - Oil Rig (QS)
+              // Quadrant Search - Oil Rig (QS)
     case 4: {
       defaultFileName = "QS";
       break;
@@ -537,14 +970,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
   }
 
   if (lat1 == 0 && lon1 == 0) {
-    wxMessageBox(_("No Datum Point has been entered"), _("Error"));
+    wxMessageBox(_("No Datum has been entered"), _("Error"));
     return;
   }
-
-  if (shipsAvailable == 0 && Pattern == 1)
-    wxMessageBox(
-        _("For this search pattern the Start Point entered is the CSP"),
-        _("Start Position"), wxCENTRE);
 
   wxString s;
   if (write_file) {
@@ -570,19 +998,16 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
     s = dlg.GetPath();
     if (!user_canceled && s.IsEmpty()) {
       error_occurred = true;
-      if (dbg) printf("Empty Path\n");
+      if (dbg) printf("Error : Empty Path\n");
     }
   }
 
   // Validate input ranges
   if (!error_occurred && !user_canceled) {
-    if (std::abs(lat1) > 90) {
+    if (std::abs(lat1) > 90 || std::abs(lon1) > 180) {
       error_occurred = true;
+      wxMessageBox(_("Error : invalid input range validation"));
     }
-    if (std::abs(lon1) > 180) {
-      error_occurred = true;
-    }
-    if (error_occurred) wxMessageBox(_("error in input range validation"));
   }
 
   // Start GPX
@@ -616,7 +1041,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
   showMarkIcons = true;
 
   XMLElement* text4 = xmlDoc.NewElement("");
-
 
   writeWaypointNames = this->m_checkBox_ShowWaypoints->GetValue();
   showMarkIcons = this->m_checkBox_ShowIcons->GetValue();
@@ -665,15 +1089,15 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
                         "http://www.topografix.com/GPX/1/1/gpx.xsd");
     pRoot->SetAttribute("xmlns:opencpn", "http://www.opencpn.org");
 
-    // XMLElement* StartN = xmlDoc.NewElement("opencpn:start");
-    // XMLElement* text5 = xmlDoc.NewElement("Datum");
-    // Extensions->LinkEndChild(StartN);
-    // StartN->LinkEndChild(text5);
+            // XMLElement* StartN = xmlDoc.NewElement("opencpn:start");
+            // XMLElement* text5 = xmlDoc.NewElement("Datum");
+            // Extensions->LinkEndChild(StartN);
+            // StartN->LinkEndChild(text5);
 
-    //  XMLElement* EndN = xmlDoc.NewElement("opencpn:end");
-    //  XMLElement* text6 = xmlDoc.NewElement("End of grid");
-    //  Extensions->LinkEndChild(EndN);
-    //  EndN->LinkEndChild(text6);
+            //  XMLElement* EndN = xmlDoc.NewElement("opencpn:end");
+            //  XMLElement* text6 = xmlDoc.NewElement("End of grid");
+            //  Extensions->LinkEndChild(EndN);
+            //  EndN->LinkEndChild(text6);
 
     switch (Pattern) {
       case 1: {
@@ -718,7 +1142,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
 
   if (error_occurred) {
     wxLogMessage(_("Error occurred, aborting SAR calc!"));
-    // wxMessageBox(_("Route interval > Distance, 0 or negative") );
   }
 
   double approach = 0;
@@ -739,7 +1162,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
       case 1: {
         if (dbg) cout << "Parallel Track Search\n";
 
-        // Get value or set default is input is empty
+                // Get value or set default is input is empty
         if (!this->m_Approach_PS->GetValue().ToDouble(&approach)) {
           approach = 0.0;
           this->m_Approach_PS->SetValue(wxString::Format("%f", approach));
@@ -761,7 +1184,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           this->m_Speed_PS->SetValue(wxString::Format("%f", speed));
         }  // search velocity (kts)
 
-        // Check for minimum values
+                // Check for minimum values
         if (leg_distancex < 0.00054) {
           leg_distancex = 0.00054;
           this->m_dx_PS->SetValue(wxString::Format("%f", leg_distancex));
@@ -834,23 +1257,23 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
               Route->LinkEndChild(Extensions);
             }
 
-            // wxMessageBox(wxString::Format("%f", ESdistance));
+                    // wxMessageBox(wxString::Format("%f", ESdistance));
 
-            // destRhumb(latTemp, lonTemp, -hdgTemp, distTemp, &lati,
-            // &loni);
+                    // destRhumb(latTemp, lonTemp, -hdgTemp, distTemp, &lati,
+                    // &loni);
 
-            // distRhumb(latDatum, lonDatum, lati, loni, &startSARdist,
-            // &startCse);
+                    // distRhumb(latDatum, lonDatum, lati, loni, &startSARdist,
+                    // &startCse);
 
             if (write_file) {
-              Addpoint2(Route, wxString::Format("%f", lat1),
+              AddPoint2(Route, wxString::Format("%f", lat1),
                         wxString::Format("%f", lon1), "CSP", "diamond", "WPT");
             }
 
             int ps = PortStbd;
 
-            // lat1 = lati;
-            // lon1 = loni;
+                    // lat1 = lati;
+                    // lon1 = loni;
 
             for (int x = 1; x <= nlegs; x++) {  // Loop over the number of legs
               for (int y = 0; y <= 1; y++) {    // Loop over the tracks
@@ -892,7 +1315,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
                 }
 
                 if (write_file) {
-                  Addpoint2(Route, wxString::Format("%f", lati),
+                  AddPoint2(Route, wxString::Format("%f", lati),
                             wxString::Format("%f", loni), wpt_title, wpt_mark,
                             "WPT");
                 }
@@ -943,7 +1366,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
             for (i = 1; i <= 2; i++) {
               if (i == 1) {
                 if (write_file) {
-                  Addpoint2(Route, wxString::Format("%f", latDatum),
+                  AddPoint2(Route, wxString::Format("%f", latDatum),
                             wxString::Format("%f", lonDatum), "Datum",
                             "diamond", "WPT");
                 }
@@ -964,7 +1387,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
                   wpt_mark = "Marks-Blank";
                 }
                 if (write_file) {
-                  Addpoint2(Route, wxString::Format("%f", lati),
+                  AddPoint2(Route, wxString::Format("%f", lati),
                             wxString::Format("%f", loni), wpt_title, wpt_mark,
                             "WPT");
                 }
@@ -972,11 +1395,11 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
                 lon1 = loni;
               }
 
-              // calculate start position
+                      // calculate start position
 
               if (i == 2) {
                 if (write_file) {
-                  Addpoint2(Route2, wxString::Format("%f", latDatum),
+                  AddPoint2(Route2, wxString::Format("%f", latDatum),
                             wxString::Format("%f", lonDatum), _T(""), "",
                             "WPT");
                 }
@@ -998,7 +1421,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
                   wpt_mark = "Marks-Blank";
                 }
                 if (write_file) {
-                  Addpoint2(Route2, wxString::Format("%f", lati),
+                  AddPoint2(Route2, wxString::Format("%f", lati),
                             wxString::Format("%f", loni), wpt_title, wpt_mark,
                             "WPT");
                 }
@@ -1049,13 +1472,13 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
 
                   if (i == 1) {
                     if (write_file) {
-                      Addpoint2(Route, wxString::Format("%f", lati),
+                      AddPoint2(Route, wxString::Format("%f", lati),
                                 wxString::Format("%f", loni), wpt_title,
                                 wpt_mark, "WPT");
                     }
                   } else {
                     if (write_file) {
-                      Addpoint2(Route2, wxString::Format("%f", lati),
+                      AddPoint2(Route2, wxString::Format("%f", lati),
                                 wxString::Format("%f", loni), wpt_title,
                                 wpt_mark, "WPT");
                     }
@@ -1091,7 +1514,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
             break;
           }
 
-            // end two units both on same GPX
+                    // end two units both on same GPX
         }
 
         break;
@@ -1120,7 +1543,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         double speed = 0.0;
         double SAR_distance = 0;
 
-        // Get value or set default is input is empty
+                // Get value or set default is input is empty
         if (!this->m_Approach_ES->GetValue().ToDouble(&approach)) {
           approach = 0.0;
           this->m_Approach_ES->SetValue(wxString::Format("%f", approach));
@@ -1138,7 +1561,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           this->m_Speed_ES->SetValue(wxString::Format("%f", speed));
         }  // search velocity
 
-        // Check for minimum values
+                // Check for minimum values
         if (leg_distancex < 0.00054) {
           leg_distancex = 0.00054;
           this->m_dx_ES->SetValue(wxString::Format("%f", leg_distancex));
@@ -1164,9 +1587,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         7 pt6+distancex4-->approach+180
         */
 
-        // add  datum
+                // add  datum
         if (write_file) {
-          Addpoint2(Route, wxString::Format("%f", lat1),
+          AddPoint2(Route, wxString::Format("%f", lat1),
                     wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
         }
 
@@ -1177,7 +1600,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         for (x = 1; x <= nlegs;
              x++) {  // Loop over the number of search squares
           count++;
-          double ESdistance = leg_distancex;
+
           double ESheading = 0;
           wxString wpt_title;
 
@@ -1202,7 +1625,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
               break;
             }
           }
-          ESdistance = leg_distancex * multiplier;
+          double ESdistance = leg_distancex * multiplier;
 
           wpt_title = "";
 
@@ -1220,7 +1643,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           }
 
           if (write_file) {
-            Addpoint2(Route, wxString::Format("%f", lati),
+            AddPoint2(Route, wxString::Format("%f", lati),
                       wxString::Format("%f", loni), wpt_title, wpt_mark, "WPT");
           }
           lat1 = lati;
@@ -1273,7 +1696,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           double SAR_distance = 0;
           bool two_cycles = false;
 
-          // Get value or set default is input is empty
+                  // Get value or set default is input is empty
           if (!this->m_Approach_SS->GetValue().ToDouble(&approach)) {
             approach = 0.0;
             this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
@@ -1288,7 +1711,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           }  // search velocity
           if (this->m_Ncycles->GetCurrentSelection()) two_cycles = true;  // S=1
 
-          // Check for minimum values
+                  // Check for minimum values
           if (leg_distancex < 0.00054) {
             leg_distancex = 0.00054;
             this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
@@ -1308,14 +1731,14 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           degrees for 1 mile then Alter to starboard 120 degrees for 2
           miles going through datum
 
-             then
-             Alter to starboard 120 degrees for 1 mile
-             then
-             Alter 120 degrees to starboard for 1 mile back to datum
-             then go down the Blue track as follows
-             Alter 30 degrees to starboard for 1 mile
-             then go to the *** above and do the same again
-             */
+              then
+              Alter to starboard 120 degrees for 1 mile
+              then
+              Alter 120 degrees to starboard for 1 mile back to datum
+              then go down the Blue track as follows
+              Alter 30 degrees to starboard for 1 mile
+              then go to the *** above and do the same again
+              */
           // add  datum
 
           double lati, loni;
@@ -1326,9 +1749,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           latDatum = lat1;
           lonDatum = lon1;
 
-          // Add the CSP to the pattern
+                  // Add the CSP to the pattern
           if (write_file) {
-            Addpoint2(Route, wxString::Format("%f", lat1),
+            AddPoint2(Route, wxString::Format("%f", lat1),
                       wxString::Format("%f", lon1), "Datum", _T("diamond"),
                       "WPT");
           }
@@ -1361,7 +1784,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
               legStretch = leg_distancex;
             }
 
-            // now the names of the waypoints
+                    // now the names of the waypoints
 
             if (x < 7) {
               wpt_title = "";
@@ -1391,9 +1814,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
               }
             }
 
-            // The key to not putting in a waypoint when second
-            // route is included in the gpx.
-            //*********************************************************
+                    // The key to not putting in a waypoint when second
+                    // route is included in the gpx.
+                    //*********************************************************
             if (x != 9) {
               destRhumb(lat1, lon1, ESheading, legStretch, &lati, &loni);
               SAR_distance += legStretch;
@@ -1425,20 +1848,20 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
             if (x > 9) {
               if (x == 16) {
                 if (write_file) {
-                  Addpoint2(Route2, wxString::Format("%f", latDatum),
+                  AddPoint2(Route2, wxString::Format("%f", latDatum),
                             wxString::Format("%f", lonDatum), wpt_title,
                             "Marks-Blank", "WPT");
                 }
               } else {
                 if (write_file) {
-                  Addpoint2(Route2, wxString::Format("%f", lati),
+                  AddPoint2(Route2, wxString::Format("%f", lati),
                             wxString::Format("%f", loni), wpt_title, wpt_mark,
                             "WPT");
                 }
               }
             } else {
               if (write_file && (x < 8)) {
-                Addpoint2(Route, wxString::Format("%f", lati),
+                AddPoint2(Route, wxString::Format("%f", lati),
                           wxString::Format("%f", loni), wpt_title, wpt_mark,
                           "WPT");
               }
@@ -1446,7 +1869,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
 
             if (x == 9) {
               if (write_file) {
-                Addpoint2(Route2, wxString::Format("%f", latDatum),
+                AddPoint2(Route2, wxString::Format("%f", latDatum),
                           wxString::Format("%f", lonDatum), wpt_title,
                           "Marks-Blank", "WPT");
               }
@@ -1455,8 +1878,8 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
               ESheading -= 30;
             }
 
-            // if (x == 8 && !two_cycles) {
-            // }
+                    // if (x == 8 && !two_cycles) {
+                    // }
             if (write_file) pRoot->LinkEndChild(Route);
 
             if (x == 8 && two_cycles) {
@@ -1507,7 +1930,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           }
         }
 
-        // IAMSAR
+                // IAMSAR
         else if (this->m_VSMethod->GetCurrentSelection() == 1) {
           if (dbg) cout << "Sector Search IAMSAR\n";
 
@@ -1530,7 +1953,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           double SAR_distance = 0;
           bool two_cycles = false;
 
-          // Get value or set default is input is empty
+                  // Get value or set default is input is empty
           if (!this->m_Approach_SS->GetValue().ToDouble(&approach)) {
             approach = 0.0;
             this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
@@ -1545,7 +1968,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           }  // search velocity
           if (this->m_Ncycles->GetSelection() == 1) two_cycles = true;  // S=1
 
-          // Check for minimum values
+                  // Check for minimum values
           if (leg_distancex < 0.00054) {
             leg_distancex = 0.00054;
             this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
@@ -1565,14 +1988,14 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           mile then Alter to starboard 120 degrees for 2 miles going
           through datum
 
-          then
-          Alter to starboard 120 degrees for 1 mile
-          then
-          Alter 120 degrees to starboard for 1 mile back to datum
-          then go down the Blue track as follows
-          Alter 30 degrees to starboard for 1 mile
-          then go to the *** above and do the same again
-          */
+           then
+           Alter to starboard 120 degrees for 1 mile
+           then
+           Alter 120 degrees to starboard for 1 mile back to datum
+           then go down the Blue track as follows
+           Alter 30 degrees to starboard for 1 mile
+           then go to the *** above and do the same again
+           */
           // add  datum
 
           double lati, loni;
@@ -1584,13 +2007,13 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
           latDatum = lat1;
           lonDatum = lon1;
 
-          // Add the CSP to the pattern
+                  // Add the CSP to the pattern
           if (write_file) {
-            Addpoint2(Route, wxString::Format("%f", lati),
+            AddPoint2(Route, wxString::Format("%f", lati),
                       wxString::Format("%f", loni), "CSP", _T("circle"), "WPT");
           }
           if (write_file) {
-            Addpoint2(Route, wxString::Format("%f", lat1),
+            AddPoint2(Route, wxString::Format("%f", lat1),
                       wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
           }
 
@@ -1653,9 +2076,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
               }
             }
 
-            // The key to not putting in a waypoint when second route is
-            // included in the gpx.
-            //*********************************************************
+                    // The key to not putting in a waypoint when second route is
+                    // included in the gpx.
+                    //*********************************************************
             if (x != 9)
               destRhumb(lat1, lon1, ESheading, legStretch, &lati, &loni);
             //*********************************************************
@@ -1677,13 +2100,13 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
 
             if (x > 9) {
               if (write_file) {
-                Addpoint2(Route2, wxString::Format("%f", lati),
+                AddPoint2(Route2, wxString::Format("%f", lati),
                           wxString::Format("%f", loni), wpt_title, wpt_mark,
                           "WPT");
               }
             } else {
               if (write_file && (x < 8)) {
-                Addpoint2(Route, wxString::Format("%f", lati),
+                AddPoint2(Route, wxString::Format("%f", lati),
                           wxString::Format("%f", loni), wpt_title, wpt_mark,
                           "WPT");
               }
@@ -1691,7 +2114,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
 
             if (x == 9) {
               if (write_file) {
-                Addpoint2(Route2, wxString::Format("%f", latDatum),
+                AddPoint2(Route2, wxString::Format("%f", latDatum),
                           wxString::Format("%f", lonDatum), wpt_title, "",
                           "WPT");
               }
@@ -1785,7 +2208,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         double speed = 0;
         double SAR_distance = 0;
 
-        // Get value or set default is input is empty
+                // Get value or set default is input is empty
         if (!this->m_Approach_OR->GetValue().ToDouble(&approach)) {
           approach = 0.0;
           this->m_Approach_OR->SetValue(wxString::Format("%f", approach));
@@ -1829,9 +2252,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         pt5+approach+90-->dx*7
         */
 
-        // add  datum
+                // add  datum
         if (write_file) {
-          Addpoint2(Route, wxString::Format("%f", lat1),
+          AddPoint2(Route, wxString::Format("%f", lat1),
                     wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
         }
         int n = 0;
@@ -1870,7 +2293,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
             }
 
             if (write_file) {
-              Addpoint2(Route, wxString::Format("%f", lati),
+              AddPoint2(Route, wxString::Format("%f", lati),
                         wxString::Format("%f", loni), wpt_title, wpt_mark,
                         "WPT");
             }
@@ -1919,494 +2342,5 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
 
       if (m_bChartRoute) CreateRoute(s);
     }
-
-    if (error_occurred) {
-      wxLogMessage(_("Error in calculation. Please check input!"));
-      wxMessageBox(_("Error in calculation. Please check input!"));
-    }
   }
-}
-
-void Dlg::OnSelectNumberShips(wxCommandEvent& event) {
-  shipsAvailable = this->m_Nship->GetSelection();
-
-  switch (shipsAvailable) {
-    case 0: {
-      m_bitmap_trackln1->SetBitmap(_img_trackln1);
-      m_staticTextPortStbd->Show();
-      m_NPortStbd->Show();
-      break;
-    }
-    case 1: {
-      m_bitmap_trackln1->SetBitmap(_img_trackln_both);
-      m_staticTextPortStbd->Hide();
-      m_NPortStbd->Hide();
-      break;
-    }
-  }
-
-  m_notebook_PatternSelection->Refresh();
-  event.Skip();
-}
-
-void Dlg::OnSelectVectorMethod(wxCommandEvent& event) {
-  int s = this->m_VSMethod->GetCurrentSelection();
-
-  switch (s) {
-    case 0: {
-      m_bitmap_sector->SetBitmap(_img_sector_uscg);
-      break;
-    }
-    case 1: {
-      m_bitmap_sector->SetBitmap(_img_sector_iamsar);
-      break;
-    }
-
-    default: {
-      break;
-    }
-  }
-  event.Skip();
-}
-
-void Dlg::OnSelectPortStarboard(wxCommandEvent& event) {
-  PortStbd = this->m_NPortStbd->GetSelection();
-
-  switch (PortStbd) {
-    case 0: {
-      m_bitmap_trackln1->SetBitmap(_img_trackln1);
-      break;
-    }
-    case 1: {
-      m_bitmap_trackln1->SetBitmap(_img_trackln1_port);
-      break;
-    }
-  }
-  event.Skip();
-}
-
-void Dlg::OnClose(wxCloseEvent& event) { plugin->OnSARDialogClose(); }
-
-void Dlg::OnCursor(wxCommandEvent& event) { OnCursor(); }
-
-void Dlg::OnCursor(void) {
-  this->m_Lat1->SetValue(wxString::Format("%.6f", plugin->GetCursorLat()));
-  this->m_Lon1->SetValue(wxString::Format("%.6f", plugin->GetCursorLon()));
-
-  setDDMM();  // Copies the lat.lon to the DDMM page
-
-  m_notebook_CSP->SetSelection(0);
-  m_Lat1->SetFocus();
-}
-
-void Dlg::OnShip(wxCommandEvent& event) { OnShip(); }
-
-void Dlg::OnShip(void) {
-  this->m_Lat1->SetValue(wxString::Format("%.6f", plugin->GetShipLat()));
-  this->m_Lon1->SetValue(wxString::Format("%.6f", plugin->GetShipLon()));
-
-  setDDMM();  // Copies the lat.lon to the DDMM page
-
-  m_notebook_CSP->SetSelection(0);
-  m_Lat1->SetFocus();
-}
-
-void Dlg::key_shortcut(wxKeyEvent& event) {
-  // of course, it doesn't have to be the control key. You can use others:
-  // http://docs.wxwidgets.org/stable/wx_wxkeyevent.html
-  if (event.GetModifiers() == wxMOD_CONTROL) {
-    switch (event.GetKeyCode()) {
-      case 'S':  // can return the upper ASCII value of a key
-        // do whatever you like for a Ctrl+G event here!
-        // wxMessageBox(_("CTRL+G") );
-        OnCursor();
-        break;  /*
-      case WXK_LEFT: // we also have special keycodes for non-ascii values.
-          // get a full list of special keycodes here:
-          // http://docs.wxwidgets.org/stable/wx_keycodes.html
-          wxMessageBox(_("CTRL+Left") );
-          break;*/
-      default:  // do nothing
-        break;
-    }
-  }
-  event.Skip();
-}
-
-void Dlg::OnCursorSelect(wxCommandEvent& event) {
-  m_notebook_CSP->SetSelection(0);
-  m_Lat1->SetFocus();
-  m_Lat1->Clear();
-  m_Lon1->Clear();
-
-  wxMessageBox(
-      _("To copy the cursor location:\n\n"
-        "- Right-click on the chart and choose 'Select SAR Datum Point'\n"
-        "- Or, with the plugin window selected and the cursor on the chart, "
-        "press <CTRL>+S"));
-  event.Skip();
-}
-
-void Dlg::getDatum(double m_lat, double m_lon) {
-  wxString myLat = wxString::Format("%f", m_lat);
-  wxString myLon = wxString::Format("%f", m_lon);
-
-  m_Lat1->SetValue(myLat);
-  m_Lon1->SetValue(myLon);
-
-  setDDMM();
-
-  m_notebook_CSP->SetSelection(0);
-  m_Lat1->SetFocus();
-}
-
-void Dlg::setDDMM() {  // after entering dd.dddd from cursor, menu, lat
-
-  double DDLat;
-  double DDLon;
-
-  int DDlat1;
-  int DDlon1;
-
-  double MMlat0;
-  double MMlon0;
-
-  double MMlat2;
-  double MMlon2;
-
-  double SSlat1;
-  double SSlon1;
-
-  double value;
-
-  wxString s;
-  wxString s1;
-  wxString m1;
-  wxString d1;
-
-  // set cell values to 0 if they are empty. This ensures conversion goes ok.
-  double test_value;
-  if (!this->m_Lat1_d->GetValue().ToDouble(&test_value)) {
-    m_Lat1_d->SetValue(wxString::Format("%i", 0));
-  }
-  if (!this->m_Lat1_m->GetValue().ToDouble(&test_value)) {
-    m_Lat1_m->SetValue(wxString::Format("%i", 0));
-  }
-  if (!this->m_Lat1_s->GetValue().ToDouble(&test_value)) {
-    m_Lat1_s->SetValue(wxString::Format("%i", 0));
-  }
-
-  if (!this->m_Lon1_d->GetValue().ToDouble(&test_value)) {
-    m_Lon1_d->SetValue(wxString::Format("%i", 0));
-  }
-  if (!this->m_Lon1_m->GetValue().ToDouble(&test_value)) {
-    m_Lon1_m->SetValue(wxString::Format("%i", 0));
-  }
-  if (!this->m_Lon1_s->GetValue().ToDouble(&test_value)) {
-    m_Lon1_s->SetValue(wxString::Format("%i", 0));
-  }
-
-  if (!this->m_Lat1_d1->GetValue().ToDouble(&test_value)) {
-    m_Lat1_d1->SetValue(wxString::Format("%i", 0));
-  }
-  if (!this->m_Lat1_m1->GetValue().ToDouble(&test_value)) {
-    m_Lat1_m1->SetValue(wxString::Format("%i", 0));
-  }
-
-  if (!this->m_Lon1_d1->GetValue().ToDouble(&test_value)) {
-    m_Lon1_d1->SetValue(wxString::Format("%i", 0));
-  }
-  if (!this->m_Lon1_m1->GetValue().ToDouble(&test_value)) {
-    m_Lon1_m1->SetValue(wxString::Format("%i", 0));
-  }
-
-  s = m_Lat1->GetValue();
-  s.ToDouble(&value);
-  DDLat = value;
-  s = m_Lon1->GetValue();
-  s.ToDouble(&value);
-  DDLon = value;
-
-  DDlat1 = abs(int(DDLat));
-  DDlon1 = abs(int(DDLon));
-
-  // set the ddmm page
-
-  m_Lat1_d1->SetValue(wxString::Format(_T("%i"), (int)DDlat1));
-  m_Lon1_d1->SetValue(wxString::Format(_T("%i"), (int)DDlon1));
-
-  MMlat0 = (fabs(DDLat) - double(DDlat1)) * 60;
-  MMlon0 = (fabs(DDLon) - double(DDlon1)) * 60;
-
-  m_Lat1_m1->SetValue(wxString::Format("%.6f", MMlat0));
-  m_Lon1_m1->SetValue(wxString::Format("%.6f", MMlon0));
-
-  if (DDLat > 0) {
-    m_Lat1_NS1->SetSelection(0);
-    m_Lat1_NS->SetSelection(0);
-  } else {
-    m_Lat1_NS1->SetSelection(1);
-    m_Lat1_NS->SetSelection(1);
-  }
-
-  if (DDLon > 0) {
-    m_Lon1_EW1->SetSelection(0);
-    m_Lon1_EW->SetSelection(0);
-  } else {
-    m_Lon1_EW1->SetSelection(1);
-    m_Lon1_EW->SetSelection(1);
-  }
-
-  // set the ddmmss page
-
-  m_Lat1_d->SetValue(wxString::Format(_T("%i"), abs((int)DDlat1)));
-  m_Lon1_d->SetValue(wxString::Format(_T("%i"), abs((int)DDlon1)));
-
-  m_Lat1_m->SetValue(wxString::Format(_T("%i"), abs((int)MMlat0)));
-  m_Lon1_m->SetValue(wxString::Format(_T("%i"), abs((int)MMlon0)));
-
-  MMlat2 = int(MMlat0);
-  MMlon2 = int(MMlon0);
-
-  SSlat1 = (MMlat0 - MMlat2) * 60;
-  SSlon1 = (MMlon0 - MMlon2) * 60;
-
-  m_Lat1_s->SetValue(wxString::Format("%.6f", SSlat1));
-  m_Lon1_s->SetValue(wxString::Format("%.6f", SSlon1));
-}
-
-void Dlg::CreateRoute(wxString filename) {
-  tinyxml2::XMLDocument mydoc;
-  mydoc.LoadFile(filename);
-
-  tinyxml2::XMLNode* pRoot = mydoc.FirstChild();
-
-  wxString rte_name = "";
-  wxString rte_speed = "";
-  wxString rte_color = "";
-  wxString wpt_name = "";
-
-  int i = 0;
-
-  tinyxml2::XMLElement* object = pRoot->NextSiblingElement("gpx");
-  for (tinyxml2::XMLElement* rte = object->FirstChildElement("rte"); rte;
-       rte = rte->NextSiblingElement(), i++) {
-    waypoint myPoint;  // Clear data ready for the run
-    m_waypointList.clear();
-
-    for (tinyxml2::XMLElement* e1 = rte->FirstChildElement(); e1;
-         e1 = e1->NextSiblingElement(), i++) {
-      if (!strcmp(e1->Value(), "name")) {
-        rte_name = e1->GetText();
-      }
-
-      if (!strcmp(e1->Value(), "extensions")) {
-        tinyxml2::XMLElement* s =
-            e1->FirstChildElement("opencpn:planned_speed");
-        rte_speed = s->GetText();
-
-        tinyxml2::XMLElement* e = e1->FirstChildElement("gpxx:RouteExtension");
-        tinyxml2::XMLElement* c = e->FirstChildElement("gpxx:DisplayColor");
-        rte_color = c->GetText();
-      }
-
-      if (!strcmp(e1->Value(), "rtept")) {
-        wxString pt_lat = wxString::FromUTF8(e1->Attribute("lat"));
-        wxString pt_lon = wxString::FromUTF8(e1->Attribute("lon"));
-
-        tinyxml2::XMLElement* r = e1->FirstChildElement("name");
-        wpt_name = r->GetText();
-
-        myPoint.lat = pt_lat;
-        myPoint.lon = pt_lon;
-        myPoint.name = wpt_name;
-        myPoint.name_visible = true;
-
-        m_waypointList.push_back(myPoint);
-      }
-    }
-    if (m_bChartRoute) AddChartRoute(rte_name, rte_speed, rte_color);
-    if (m_bSaveRTZ) ExportRTZ(rte_name);
-  }
-}
-
-void Dlg::AddChartRoute(wxString myRoute, wxString mySpeed, wxString myColor) {
-  PlugIn_Route_Ex* newRoute =
-      new PlugIn_Route_Ex;  // for adding a route on OpenCPN chart display
-
-  newRoute->m_NameString = myRoute;
-  newRoute->m_isVisible = true;
-
-  double lati, loni, value, value1;
-  bool m_bNameVisible = true;
-
-  for (std::vector<waypoint>::iterator itp = m_waypointList.begin();
-       itp != m_waypointList.end(); itp++) {
-    PlugIn_Waypoint_Ex* wayPoint = new PlugIn_Waypoint_Ex;
-
-    wayPoint->m_MarkName = (*itp).name;
-
-    if (!(*itp).lat.ToDouble(&value)) { /* error! */
-    }
-    lati = value;
-    if (!(*itp).lon.ToDouble(&value1)) { /* error! */
-    }
-    loni = value1;
-
-    m_bNameVisible = (*itp).name_visible;
-
-    wayPoint->m_lat = lati;
-    wayPoint->m_lon = loni;
-    wayPoint->IsVisible = true;
-    wayPoint->IsNameVisible = m_bNameVisible;
-
-    if (showMarkIcons) {
-      wayPoint->IconName = "diamond";
-    } else
-      wayPoint->IconName = "Marks-Blank";
-
-    newRoute->pWaypointList->Append(wayPoint);
-  }
-
-  AddPlugInRouteEx(newRoute, true);
-
-  GetParent()->Refresh();
-}
-
-int Dlg::ExportRTZ(wxString routename) {
-  wxString rtzFileName;
-  wxString fileName;
-  wxFileDialog dlg(this, _("Save in RTZ format"), wxEmptyString, routename,
-                   _T("RTZ files (*.rtz)|*.rtz|All files (*.*)|*.*"),
-                   wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
-  if (dlg.ShowModal() == wxID_CANCEL) {
-    // error_occured = true;     // the user changed idea...
-    return 999;
-  } else {
-    // dlg.ShowModal();
-    fileName = dlg.GetPath();
-    rtzFileName = dlg.GetFilename();
-    //  std::cout<<s<< std::endl;
-    if (dlg.GetPath() == wxEmptyString) {
-      wxMessageBox("Error");
-      return 999;
-    }
-  }
-
-  // put the correct version in the RTZ file
-  wxString versn;
-  int selection = rtz_schema;
-
-  if (selection == 0) {
-    versn = "1.0";
-  } else if (selection == 1) {
-    versn = "1.1";
-  } else if (selection == 2) {
-    versn = "1.2";
-  }
-
-  // Create Main level XML container
-  tinyxml2::XMLDocument xmlDoc;
-  tinyxml2::XMLDeclaration* decl = xmlDoc.NewDeclaration();
-
-  if (selection == 0) {
-    decl->SetValue(
-        "xml version="
-        "\"1.0\" "
-        "encoding="
-        "\"UTF-8\" "
-        "standalone="
-        "\"no\"");
-  } else if (selection == 1) {
-    decl->SetValue(
-        "xml version="
-        "\"1.0\" "
-        "encoding="
-        "\"UTF-8\"");
-  }
-
-  xmlDoc.LinkEndChild(decl);
-
-  // Create XML root node called animals
-  tinyxml2::XMLElement* pRoot = xmlDoc.NewElement("route");
-
-  const char* value;
-  if (selection == 0) {
-    value = "http://www.cirm.org/RTZ/1/0";
-  } else if (selection == 1) {
-    value = "http://www.cirm.org/RTZ/1/1";
-  } else if (selection == 2) {
-    value = "http://www.cirm.org/RTZ/1/2";
-  }
-
-  char* sv = (const_cast<char*>((const char*)versn.mb_str()));
-
-  pRoot->SetAttribute("xmlns", value);
-  pRoot->SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
-
-  if (selection == 0) {
-    pRoot->SetAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
-  }
-
-  pRoot->SetAttribute("version", sv);
-
-  if (selection == 1) {
-    pRoot->SetAttribute("xmlns:stm", "http://stmvalidation.eu/STM/1/0/0");
-  }
-
-  // Add pRoot to xmlDoc after prolog
-  xmlDoc.InsertEndChild(pRoot);
-
-  // ************* Add routeInfo to root node *******
-
-  tinyxml2::XMLElement* routeInfo = xmlDoc.NewElement("routeInfo");
-  pRoot->InsertFirstChild(routeInfo);
-
-  // Route name must be the same as the file name, without file extension
-
-  int fl = rtzFileName.length();
-  wxString rtzFileBit = rtzFileName.SubString(0, (fl - 5));
-
-  char* rtzFN = (const_cast<char*>((const char*)rtzFileBit.mb_str()));
-  routeInfo->SetAttribute("routeName", rtzFN);
-
-  // Insert cat's name as first child of animal
-
-  // ************* Add waypoints *******
-  waypoints = xmlDoc.NewElement("waypoints");
-  pRoot->InsertEndChild(waypoints);
-
-  int nm = m_waypointList.size();
-  if (nm == 0) {
-    wxMessageBox("No waypoints available", "Warning");
-    return 999;
-  }
-
-  int idn = 0;
-
-  for (std::vector<waypoint>::iterator itOut = m_waypointList.begin();
-       itOut != m_waypointList.end(); itOut++) {
-    tinyxml2::XMLElement* m_waypoint = xmlDoc.NewElement("waypoint");
-    waypoints->InsertEndChild(m_waypoint);
-    wxString myIdn = wxString::Format(wxT("%i"), idn);
-    m_waypoint->SetAttribute("id", myIdn.mb_str());
-
-    if (selection == 2) m_waypoint->SetAttribute("revision", "0");
-
-    m_waypoint->SetAttribute("name", (*itOut).name.mb_str());
-
-    tinyxml2::XMLElement* position = xmlDoc.NewElement("position");
-
-    position->SetAttribute("lat", (*itOut).lat.mb_str());
-    position->SetAttribute("lon", (*itOut).lon.mb_str());
-    m_waypoint->InsertEndChild(position);
-
-    idn++;
-  }
-  // done adding waypoints
-  // Write xmlDoc into a file
-
-  xmlDoc.SaveFile(fileName);
-
-  return 0;
 }

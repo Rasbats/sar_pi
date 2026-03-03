@@ -27,7 +27,10 @@
 #include "NavFunc.h"
 #include "wx/math.h"
 
-//#include <string>
+
+/*****************/
+/** Mathematics **/
+/*****************/
 double toRad (double degree) {
   return degree * M_PI / 180;
 }
@@ -67,15 +70,19 @@ double mod(double y, double x){
     return mod;
 }
 
+
+/****************/
+/** Converters **/
+/****************/
 //convert radians to NM
 double radtoNM(double distance_radians){
 return((180*60)/M_PI)*distance_radians;
 }
+
 //convert NM to radians
 double NMtorad(double distance_NM){
 return (M_PI/(180*60))*distance_NM;
 }
-
 
 // convert metres to NM
 double mtoNM(double metres){
@@ -87,11 +94,7 @@ double NMtom(double NM){
 return NM*1852;
 }
 
-
-/****************************************************************************/
-/* Convert dd mm'ss.s" (DMS-Format) to degrees.                             */
-/****************************************************************************/
-
+// Convert dd mm'ss.s" (DMS-Format) to degrees.
 double fromDMStodouble(char *dms)
 {
     int d = 0, m = 0;
@@ -110,9 +113,7 @@ double fromDMStodouble(char *dms)
       return -s;
 }
 
-/****************************************************************************/
-/* Convert degrees to dd mm'ss.s" (DMS-Format)                              */
-/****************************************************************************/
+// Convert degrees to dd mm'ss.s" (DMS-Format)
 void doubletoDMS(double a, char *bufp, int bufplen)
 {
     short neg = 0;
@@ -136,7 +137,11 @@ void doubletoDMS(double a, char *bufp, int bufplen)
     return;
 }
 
-////////////////////////////
+
+/************/
+/** Others **/
+/************/
+
 /**
  * Calculates rhumb line distance between two points specified by latitude/longitude
  * http://williams.best.vwh.net/avform.htm#Rhumb
@@ -172,8 +177,6 @@ void distRhumb(double lat1,double lon1, double lat2, double lon2, double *distan
       }
 }
 
-
-
 /**
  * To find the lat/lon of a point on true course brng, distance dist from (lat1,lon1)
  * along a rhumbline (initial point cannot be a pole!):
@@ -182,9 +185,7 @@ void distRhumb(double lat1,double lon1, double lat2, double lon2, double *distan
  * ->   double brng: bearing in decimal degrees
  * ->   double dist: distance along bearing in nautical miles
  * <-   double lat2, lat2 final point in decimal degrees
-
  */
-
 bool destRhumb(double lat1, double lon1, double brng, double dist, double* lat2, double* lon2) {
   lat1=toRad(lat1);
   lon1=toRad(lon1);
@@ -205,9 +206,10 @@ bool destRhumb(double lat1, double lon1, double brng, double dist, double* lat2,
   return true;
 }
 
+/**
 //Loxodrome (Mercator) Destination the WGS ellipsoid
 //http://koti.mbnet.fi/jukaukor/loxodrom.html
-/**
+
  * To find the lat/lon of a point on true course brng, distance dist from (lat1,lon1)
  * along a rhumbline (initial point cannot be a pole!):
  *
@@ -215,11 +217,16 @@ bool destRhumb(double lat1, double lon1, double brng, double dist, double* lat2,
  * ->   double brng: bearing in decimal degrees
  * ->   double dist: distance along bearing in nautical miles
  * <-   double lat2, lat2 final point in decimal degrees
-
  */
 bool destLoxodrome(double lat1, double lon1, double brng, double dist, double* lat2, double* lon2) {
     bool dbg=false;
-    if (dbg) std::cout<<"dL lat1 "<<lat1<<" lon1: " <<lon1<<"brng "<<brng<<" dist " <<dist<< std::endl;
+    if (dbg) {
+      std::cout << "lat1: " << lat1
+                << " | lon1: " << lon1
+                << " | brng: " << brng
+                << " | dist: " << dist
+                << std::endl;
+    }
     //double ecc = 0.08181919084255; //The eccentricity ecc of the WGS84 ellipsoid is
     double ecc2 = 0.00669437999012962; //(ecc²)/1
     double ecc4 = 4.48147234522478E-05;//(ecc⁴)/3
@@ -234,17 +241,17 @@ bool destLoxodrome(double lat1, double lon1, double brng, double dist, double* l
     double tolatdegree = tolatmin/60;
     // Check Poles
     if (tolatdegree > 90) {
-        tolatdegree = 90;
-        if (dbg) std::cout<<"You are on the North Pole"<<std::endl;
-        }
+      tolatdegree = 90;
+      if (dbg) std::cout<<"You are on the North Pole."<<std::endl;
+    }
     if (tolatdegree < -90) {
-        if (dbg) std::cout<<"You are on the South Pole. tolatdegree"<<tolatdegree<<std::endl;
-        tolatdegree = -90;
-        }
+      if (dbg) std::cout<<"You are on the South Pole."<<std::endl;
+      tolatdegree = -90;
+    }
 
     double tolat = toRad(tolatdegree);
+    double tolongdegree = 0;
 
-    double tolongdegree;
     if ((tolatdegree != 90) && (tolatdegree != -90)) {
         double meridional1 = log(tan(M_PI/4 + fromlat/2)) - ecc2*sin(fromlat) - (ecc4/3)*pow(sin(fromlat),3) - (ecc6/5)*pow(sin(fromlat),5)-(ecc8/7)*pow(sin(fromlat),7);
         double meridionalmin1 = 10800*meridional1/M_PI;
@@ -269,7 +276,9 @@ bool destLoxodrome(double lat1, double lon1, double brng, double dist, double* l
     }
     else
         return false;
-    *lat2=tolatdegree;
-    *lon2=tolongdegree;
+
+    *lat2 = tolatdegree;
+    *lon2 = tolongdegree;
+
     return true;
 }
