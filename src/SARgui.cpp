@@ -105,7 +105,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer_PS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_bitmap_trackln1 = new wxStaticBitmap( m_panel_PS, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
+	m_bitmap_trackln1 = new wxStaticBitmap( m_panel_PS, wxID_ANY, wxBitmap( wxT("bitmaps/trackln1.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer_PS_Right->Add( m_bitmap_trackln1, 0, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer14111111;
@@ -237,7 +237,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer_SS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_bitmap_exp_sq = new wxStaticBitmap( m_panel_SS, wxID_ANY, wxBitmap( wxT("../Load From File"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
+	m_bitmap_exp_sq = new wxStaticBitmap( m_panel_SS, wxID_ANY, wxBitmap( wxT("bitmaps/exp_sq.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer_SS_Right->Add( m_bitmap_exp_sq, 0, wxALL|wxEXPAND, 5 );
 
 
@@ -332,7 +332,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer_VS_img->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_bitmap_sector = new wxStaticBitmap( m_panel_VS, wxID_ANY, wxBitmap( wxT("../Load From File"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
+	m_bitmap_sector = new wxStaticBitmap( m_panel_VS, wxID_ANY, wxBitmap( wxT("bitmaps/sector_uscg.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer_VS_img->Add( m_bitmap_sector, 0, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer1411111111;
