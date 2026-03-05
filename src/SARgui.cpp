@@ -114,14 +114,14 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer14111111->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText32111111 = new wxStaticText( m_panel_PS, wxID_ANY, _("Route for Ship           "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText32111111 = new wxStaticText( m_panel_PS, wxID_ANY, _("Route for Ship"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText32111111->Wrap( -1 );
 	bSizer14111111->Add( m_staticText32111111, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5 );
 
 	wxString m_NshipChoices[] = { _("1 unit only"), _("2 units A&B") };
 	int m_NshipNChoices = sizeof( m_NshipChoices ) / sizeof( wxString );
 	m_Nship = new wxChoice( m_panel_PS, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_NshipNChoices, m_NshipChoices, 0 );
-	m_Nship->SetSelection( 0 );
+	m_Nship->SetSelection( 1 );
 	bSizer14111111->Add( m_Nship, 0, wxALL, 5 );
 
 
@@ -136,7 +136,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer141111112->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticTextPortStbd = new wxStaticText( m_panel_PS, wxID_ANY, _("First turn                    "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticTextPortStbd = new wxStaticText( m_panel_PS, wxID_ANY, _("First turn"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticTextPortStbd->Wrap( -1 );
 	bSizer141111112->Add( m_staticTextPortStbd, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -151,9 +151,6 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 
 	bSizer_PS_Right->Add( bSizer141111112, 0, wxALL|wxEXPAND, 5 );
-
-
-	bSizer_PS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
 	bSizer_PS->Add( bSizer_PS_Right, 1, wxALL|wxEXPAND, 5 );
@@ -341,7 +338,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer1411111111->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_staticText3211111111 = new wxStaticText( m_panel_VS, wxID_ANY, _("Search Method  "), wxPoint( -1,-1 ), wxDefaultSize, 0 );
+	m_staticText3211111111 = new wxStaticText( m_panel_VS, wxID_ANY, _("Search Method"), wxPoint( -1,-1 ), wxDefaultSize, 0 );
 	m_staticText3211111111->Wrap( -1 );
 	bSizer1411111111->Add( m_staticText3211111111, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -482,7 +479,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer1431;
 	bSizer1431 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText3231 = new wxStaticText( m_panel_Degrees, wxID_ANY, _("Latitude    "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3231 = new wxStaticText( m_panel_Degrees, wxID_ANY, _("Latitude   "), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3231->Wrap( -1 );
 	bSizer1431->Add( m_staticText3231, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -499,7 +496,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxBoxSizer* bSizer14311;
 	bSizer14311 = new wxBoxSizer( wxHORIZONTAL );
 
-	m_staticText32311 = new wxStaticText( m_panel_Degrees, wxID_ANY, _("Longitude "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText32311 = new wxStaticText( m_panel_Degrees, wxID_ANY, _("Longitude"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText32311->Wrap( -1 );
 	bSizer14311->Add( m_staticText32311, 0, wxALIGN_CENTER|wxALL, 5 );
 
@@ -522,12 +519,12 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer_Dddd_GetPositionButtons->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_button_Ship = new wxButton( m_panel_Degrees, wxID_ANY, _("Get ship position"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_button_Ship = new wxButton( m_panel_Degrees, wxID_ANY, _("Copy ship position"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_button_Ship->SetToolTip( _("Copy ship position (GPS fix required)") );
 
 	bSizer_Dddd_GetPositionButtons->Add( m_button_Ship, 0, wxALL, 5 );
 
-	m_Cursor = new wxButton( m_panel_Degrees, wxID_ANY, _("Get cursor position"), wxDefaultPosition, wxDefaultSize, 0 );
+	m_Cursor = new wxButton( m_panel_Degrees, wxID_ANY, _("Copy cursor position"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer_Dddd_GetPositionButtons->Add( m_Cursor, 0, wxALL, 5 );
 
 
@@ -540,7 +537,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_Degrees->SetSizer( bSizer_Dddd );
 	m_panel_Degrees->Layout();
 	bSizer_Dddd->Fit( m_panel_Degrees );
-	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), false );
+	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), true );
 	m_panel_DegreesMinutes = new wxPanel( m_notebook_CSP, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4011;
 	bSizer4011 = new wxBoxSizer( wxVERTICAL );
@@ -714,7 +711,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_DegreesMinutesSeconds->SetSizer( bSizer401 );
 	m_panel_DegreesMinutesSeconds->Layout();
 	bSizer401->Fit( m_panel_DegreesMinutesSeconds );
-	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), true );
+	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), false );
 
 	sbSizer_DatumCSP->Add( m_notebook_CSP, 1, wxEXPAND, 5 );
 
