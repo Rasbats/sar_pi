@@ -121,7 +121,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxString m_NshipChoices[] = { _("1 unit only"), _("2 units A&B") };
 	int m_NshipNChoices = sizeof( m_NshipChoices ) / sizeof( wxString );
 	m_Nship = new wxChoice( m_panel_PS, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_NshipNChoices, m_NshipChoices, 0 );
-	m_Nship->SetSelection( 1 );
+	m_Nship->SetSelection( 0 );
 	bSizer14111111->Add( m_Nship, 0, wxALL, 5 );
 
 
@@ -151,6 +151,9 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 
 	bSizer_PS_Right->Add( bSizer141111112, 0, wxALL|wxEXPAND, 5 );
+
+
+	bSizer_PS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
 	bSizer_PS->Add( bSizer_PS_Right, 1, wxALL|wxEXPAND, 5 );
