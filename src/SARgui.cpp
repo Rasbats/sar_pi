@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
+// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6-dirty)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -97,7 +97,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	sbSizer_PS_RouteSettings->Add( fgSizer_PS_RouteSettings, 1, wxEXPAND, 5 );
 
 
-	bSizer_PS->Add( sbSizer_PS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
+	bSizer_PS->Add( sbSizer_PS_RouteSettings, 1, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer_PS_Right;
 	bSizer_PS_Right = new wxBoxSizer( wxVERTICAL );
@@ -162,7 +162,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_PS->SetSizer( bSizer_PS );
 	m_panel_PS->Layout();
 	bSizer_PS->Fit( m_panel_PS );
-	m_notebook_PatternSelection->AddPage( m_panel_PS, _("Parallel Track"), false );
+	m_notebook_PatternSelection->AddPage( m_panel_PS, _("Parallel Track"), true );
 	m_panel_SS = new wxPanel( m_notebook_PatternSelection, wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer_SS;
 	bSizer_SS = new wxBoxSizer( wxHORIZONTAL );
@@ -229,7 +229,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	sbSizer_SS_RouteSettings->Add( fgSizer_SS_RouteSettings, 1, wxEXPAND, 5 );
 
 
-	bSizer_SS->Add( sbSizer_SS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
+	bSizer_SS->Add( sbSizer_SS_RouteSettings, 1, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer_SS_Right;
 	bSizer_SS_Right = new wxBoxSizer( wxHORIZONTAL );
@@ -318,7 +318,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	sbSizer_VS_RouteSettings->Add( fgSizer_VS_RouteSettings, 1, wxEXPAND, 5 );
 
 
-	bSizer_VS->Add( sbSizer_VS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
+	bSizer_VS->Add( sbSizer_VS_RouteSettings, 1, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer_VS_Right;
 	bSizer_VS_Right = new wxBoxSizer( wxHORIZONTAL );
@@ -448,7 +448,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer_QS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_bitmap_oil_rig = new wxStaticBitmap( m_panel_QS, wxID_ANY, wxBitmap( wxT("bitmaps/oil_rig.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
+	m_bitmap_oil_rig = new wxStaticBitmap( m_panel_QS, wxID_ANY, wxBitmap( wxT("../src\\bitmaps\\oil_rig.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer_QS_Right->Add( m_bitmap_oil_rig, 0, wxALL|wxEXPAND, 5 );
 
 
@@ -461,7 +461,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_QS->SetSizer( bSizer_QS );
 	m_panel_QS->Layout();
 	bSizer_QS->Fit( m_panel_QS );
-	m_notebook_PatternSelection->AddPage( m_panel_QS, _("Quadrant (Oil Rig)"), true );
+	m_notebook_PatternSelection->AddPage( m_panel_QS, _("Quadrant (Oil Rig)"), false );
 
 	bSizer_Main->Add( m_notebook_PatternSelection, 0, wxALL|wxEXPAND, 5 );
 
@@ -540,7 +540,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_Degrees->SetSizer( bSizer_Dddd );
 	m_panel_Degrees->Layout();
 	bSizer_Dddd->Fit( m_panel_Degrees );
-	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), true );
+	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), false );
 	m_panel_DegreesMinutes = new wxPanel( m_notebook_CSP, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4011;
 	bSizer4011 = new wxBoxSizer( wxVERTICAL );
@@ -714,7 +714,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_DegreesMinutesSeconds->SetSizer( bSizer401 );
 	m_panel_DegreesMinutesSeconds->Layout();
 	bSizer401->Fit( m_panel_DegreesMinutesSeconds );
-	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), false );
+	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), true );
 
 	sbSizer_DatumCSP->Add( m_notebook_CSP, 1, wxEXPAND, 5 );
 
