@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6-dirty)
+// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -55,6 +55,7 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText331111;
 		wxStaticText* m_staticText3211111;
 		wxTextCtrl* m_n_PS;
+		wxStaticText* m_staticText671;
 		wxStaticText* m_staticText32111112;
 		wxTextCtrl* m_Speed_PS;
 		wxStaticText* m_staticText33111111;
@@ -72,6 +73,7 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText3311;
 		wxStaticText* m_staticText32111;
 		wxTextCtrl* m_n_ES;
+		wxStaticText* m_staticText78;
 		wxStaticText* m_staticText321111121;
 		wxTextCtrl* m_Speed_ES;
 		wxStaticText* m_staticText331111111;
@@ -85,6 +87,7 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText331;
 		wxStaticText* m_staticText321111111;
 		wxChoice* m_Ncycles;
+		wxStaticText* m_staticText79;
 		wxStaticText* m_staticText321111122;
 		wxTextCtrl* m_Speed_SS;
 		wxStaticText* m_staticText331111112;
@@ -100,6 +103,7 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText3312;
 		wxStaticText* m_staticText32121;
 		wxTextCtrl* m_NLegs_OR;
+		wxStaticText* m_staticText80;
 		wxStaticText* m_staticText321111123;
 		wxTextCtrl* m_Speed_OR;
 		wxStaticText* m_staticText331111113;

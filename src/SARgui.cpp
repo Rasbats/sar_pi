@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6-dirty)
+// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -17,114 +17,96 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	m_notebook_PatternSelection = new wxNotebook( this, wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), 0 );
 	m_panel_PS = new wxPanel( m_notebook_PatternSelection, wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), wxTAB_TRAVERSAL );
-	wxBoxSizer* bSizer3;
-	bSizer3 = new wxBoxSizer( wxHORIZONTAL );
+	wxBoxSizer* bSizer_PS;
+	bSizer_PS = new wxBoxSizer( wxHORIZONTAL );
 
 	wxStaticBoxSizer* sbSizer_PS_RouteSettings;
 	sbSizer_PS_RouteSettings = new wxStaticBoxSizer( new wxStaticBox( m_panel_PS, wxID_ANY, _("Route Settings") ), wxVERTICAL );
 
-	wxBoxSizer* bSizer_PS_InitialCourse;
-	bSizer_PS_InitialCourse = new wxBoxSizer( wxHORIZONTAL );
+	wxFlexGridSizer* fgSizer_PS_RouteSettings;
+	fgSizer_PS_RouteSettings = new wxFlexGridSizer( 0, 3, 0, 0 );
+	fgSizer_PS_RouteSettings->SetFlexibleDirection( wxBOTH );
+	fgSizer_PS_RouteSettings->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText3221 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("Initial Course    "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3221 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("Initial Course"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3221->Wrap( -1 );
-	bSizer_PS_InitialCourse->Add( m_staticText3221, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_staticText3221, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_Approach_PS = new wxTextCtrl( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_Approach_PS->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string1 ) );
 
-	bSizer_PS_InitialCourse->Add( m_Approach_PS, 0, wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_Approach_PS, 0, wxALL, 5 );
 
 	m_staticText3321 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("deg"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3321->Wrap( -1 );
-	bSizer_PS_InitialCourse->Add( m_staticText3321, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_staticText3321, 0, wxALIGN_CENTER|wxALIGN_LEFT|wxALL, 5 );
 
-
-	sbSizer_PS_RouteSettings->Add( bSizer_PS_InitialCourse, 0, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer_PS_LegLength;
-	bSizer_PS_LegLength = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText32112 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("Leg Length        "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText32112 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("Leg Length"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText32112->Wrap( -1 );
-	bSizer_PS_LegLength->Add( m_staticText32112, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_staticText32112, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_dx_PS = new wxTextCtrl( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_dx_PS->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string2 ) );
 
-	bSizer_PS_LegLength->Add( m_dx_PS, 0, wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_dx_PS, 0, wxALL, 5 );
 
 	m_staticText33112 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("NM"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText33112->Wrap( -1 );
-	bSizer_PS_LegLength->Add( m_staticText33112, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_staticText33112, 0, wxALIGN_CENTER|wxALL, 5 );
 
-
-	sbSizer_PS_RouteSettings->Add( bSizer_PS_LegLength, 0, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer_PS_LegSpace;
-	bSizer_PS_LegSpace = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText321111 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("Leg Space         "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText321111 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("Leg Space"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText321111->Wrap( -1 );
-	bSizer_PS_LegSpace->Add( m_staticText321111, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_staticText321111, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_dy_PS = new wxTextCtrl( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_dy_PS->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string3 ) );
 
-	bSizer_PS_LegSpace->Add( m_dy_PS, 0, wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_dy_PS, 0, wxALL, 5 );
 
 	m_staticText331111 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("NM"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText331111->Wrap( -1 );
-	bSizer_PS_LegSpace->Add( m_staticText331111, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	sbSizer_PS_RouteSettings->Add( bSizer_PS_LegSpace, 0, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer_PS_NumberLegs;
-	bSizer_PS_NumberLegs = new wxBoxSizer( wxHORIZONTAL );
+	fgSizer_PS_RouteSettings->Add( m_staticText331111, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText3211111 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("Number of Legs"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3211111->Wrap( -1 );
-	bSizer_PS_NumberLegs->Add( m_staticText3211111, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_staticText3211111, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_n_PS = new wxTextCtrl( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_n_PS->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string4 ) );
 
-	bSizer_PS_NumberLegs->Add( m_n_PS, 0, wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_n_PS, 0, wxALL, 5 );
 
+	m_staticText671 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText671->Wrap( -1 );
+	fgSizer_PS_RouteSettings->Add( m_staticText671, 0, wxALIGN_CENTER|wxALL, 5 );
 
-	sbSizer_PS_RouteSettings->Add( bSizer_PS_NumberLegs, 0, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer_PS_SearchSpeed;
-	bSizer_PS_SearchSpeed = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText32111112 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("Search Speed    "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText32111112 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("Search Speed"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText32111112->Wrap( -1 );
-	bSizer_PS_SearchSpeed->Add( m_staticText32111112, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_staticText32111112, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_Speed_PS = new wxTextCtrl( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_Speed_PS->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string5 ) );
 
-	bSizer_PS_SearchSpeed->Add( m_Speed_PS, 0, wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_Speed_PS, 0, wxALL, 5 );
 
 	m_staticText33111111 = new wxStaticText( sbSizer_PS_RouteSettings->GetStaticBox(), wxID_ANY, _("kts"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText33111111->Wrap( -1 );
-	bSizer_PS_SearchSpeed->Add( m_staticText33111111, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_PS_RouteSettings->Add( m_staticText33111111, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_PS_RouteSettings->Add( bSizer_PS_SearchSpeed, 0, wxEXPAND, 5 );
+	sbSizer_PS_RouteSettings->Add( fgSizer_PS_RouteSettings, 1, wxEXPAND, 5 );
 
 
-	bSizer3->Add( sbSizer_PS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
+	bSizer_PS->Add( sbSizer_PS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
 
-	wxBoxSizer* bSizer_PS_right;
-	bSizer_PS_right = new wxBoxSizer( wxVERTICAL );
+	wxBoxSizer* bSizer_PS_Right;
+	bSizer_PS_Right = new wxBoxSizer( wxVERTICAL );
 
 
-	bSizer_PS_right->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer_PS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	m_bitmap_trackln1 = new wxStaticBitmap( m_panel_PS, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer_PS_right->Add( m_bitmap_trackln1, 0, wxALL|wxEXPAND, 5 );
+	bSizer_PS_Right->Add( m_bitmap_trackln1, 0, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer14111111;
 	bSizer14111111 = new wxBoxSizer( wxHORIZONTAL );
@@ -146,7 +128,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer14111111->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer_PS_right->Add( bSizer14111111, 0, wxALL|wxEXPAND, 5 );
+	bSizer_PS_Right->Add( bSizer14111111, 0, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer141111112;
 	bSizer141111112 = new wxBoxSizer( wxHORIZONTAL );
@@ -161,105 +143,93 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	wxString m_NPortStbdChoices[] = { _("Starboard"), _("Port") };
 	int m_NPortStbdNChoices = sizeof( m_NPortStbdChoices ) / sizeof( wxString );
 	m_NPortStbd = new wxChoice( m_panel_PS, wxID_ANY, wxDefaultPosition, wxDefaultSize, m_NPortStbdNChoices, m_NPortStbdChoices, 0 );
-	m_NPortStbd->SetSelection( 1 );
+	m_NPortStbd->SetSelection( 0 );
 	bSizer141111112->Add( m_NPortStbd, 0, wxALL, 5 );
 
 
 	bSizer141111112->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer_PS_right->Add( bSizer141111112, 0, wxALL|wxEXPAND, 5 );
+	bSizer_PS_Right->Add( bSizer141111112, 0, wxALL|wxEXPAND, 5 );
 
 
-	bSizer_PS_right->Add( 0, 0, 1, wxEXPAND, 5 );
+	bSizer_PS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer3->Add( bSizer_PS_right, 1, wxALL|wxEXPAND, 5 );
+	bSizer_PS->Add( bSizer_PS_Right, 1, wxALL|wxEXPAND, 5 );
 
 
-	m_panel_PS->SetSizer( bSizer3 );
+	m_panel_PS->SetSizer( bSizer_PS );
 	m_panel_PS->Layout();
-	bSizer3->Fit( m_panel_PS );
+	bSizer_PS->Fit( m_panel_PS );
 	m_notebook_PatternSelection->AddPage( m_panel_PS, _("Parallel Track"), false );
 	m_panel_SS = new wxPanel( m_notebook_PatternSelection, wxID_ANY, wxDefaultPosition, wxSize( -1,-1 ), wxTAB_TRAVERSAL );
-	wxBoxSizer* bSizer4;
-	bSizer4 = new wxBoxSizer( wxHORIZONTAL );
+	wxBoxSizer* bSizer_SS;
+	bSizer_SS = new wxBoxSizer( wxHORIZONTAL );
 
 	wxStaticBoxSizer* sbSizer_SS_RouteSettings;
 	sbSizer_SS_RouteSettings = new wxStaticBoxSizer( new wxStaticBox( m_panel_SS, wxID_ANY, _("Route Settings") ), wxVERTICAL );
 
-	wxBoxSizer* bSizer_SS_Course;
-	bSizer_SS_Course = new wxBoxSizer( wxHORIZONTAL );
+	wxFlexGridSizer* fgSizer_SS_RouteSettings;
+	fgSizer_SS_RouteSettings = new wxFlexGridSizer( 0, 3, 0, 0 );
+	fgSizer_SS_RouteSettings->SetFlexibleDirection( wxBOTH );
+	fgSizer_SS_RouteSettings->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText322 = new wxStaticText( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, _("Initial Course    "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText322 = new wxStaticText( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, _("Initial Course"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText322->Wrap( -1 );
-	bSizer_SS_Course->Add( m_staticText322, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_SS_RouteSettings->Add( m_staticText322, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_Approach_ES = new wxTextCtrl( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_Approach_ES->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string6 ) );
 
-	bSizer_SS_Course->Add( m_Approach_ES, 0, wxALL, 5 );
+	fgSizer_SS_RouteSettings->Add( m_Approach_ES, 0, wxALL, 5 );
 
 	m_staticText332 = new wxStaticText( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, _("deg"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText332->Wrap( -1 );
-	bSizer_SS_Course->Add( m_staticText332, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_SS_RouteSettings->Add( m_staticText332, 0, wxALIGN_CENTER|wxALL, 5 );
 
-
-	sbSizer_SS_RouteSettings->Add( bSizer_SS_Course, 0, 0, 5 );
-
-	wxBoxSizer* bSizer_SS_LegSpace;
-	bSizer_SS_LegSpace = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText3211 = new wxStaticText( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, _("Leg Space         "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3211 = new wxStaticText( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, _("Leg Space"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3211->Wrap( -1 );
-	bSizer_SS_LegSpace->Add( m_staticText3211, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_SS_RouteSettings->Add( m_staticText3211, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_dx_ES = new wxTextCtrl( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer_SS_LegSpace->Add( m_dx_ES, 0, wxALL, 5 );
+	fgSizer_SS_RouteSettings->Add( m_dx_ES, 0, wxALL, 5 );
 
 	m_staticText3311 = new wxStaticText( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, _("NM"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3311->Wrap( -1 );
-	bSizer_SS_LegSpace->Add( m_staticText3311, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	sbSizer_SS_RouteSettings->Add( bSizer_SS_LegSpace, 0, 0, 5 );
-
-	wxBoxSizer* bSizer_SS_NumberLegs;
-	bSizer_SS_NumberLegs = new wxBoxSizer( wxHORIZONTAL );
+	fgSizer_SS_RouteSettings->Add( m_staticText3311, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText32111 = new wxStaticText( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, _("Number of Legs"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText32111->Wrap( -1 );
-	bSizer_SS_NumberLegs->Add( m_staticText32111, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_SS_RouteSettings->Add( m_staticText32111, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_n_ES = new wxTextCtrl( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_n_ES->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string7 ) );
 
-	bSizer_SS_NumberLegs->Add( m_n_ES, 0, wxALL, 5 );
+	fgSizer_SS_RouteSettings->Add( m_n_ES, 0, wxALL, 5 );
 
+	m_staticText78 = new wxStaticText( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText78->Wrap( -1 );
+	fgSizer_SS_RouteSettings->Add( m_staticText78, 0, wxALL, 5 );
 
-	sbSizer_SS_RouteSettings->Add( bSizer_SS_NumberLegs, 0, 0, 5 );
-
-	wxBoxSizer* bSizer_SS_SearchSpeed;
-	bSizer_SS_SearchSpeed = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText321111121 = new wxStaticText( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, _("Search Speed    "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText321111121 = new wxStaticText( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, _("Search Speed"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText321111121->Wrap( -1 );
-	bSizer_SS_SearchSpeed->Add( m_staticText321111121, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_SS_RouteSettings->Add( m_staticText321111121, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_Speed_ES = new wxTextCtrl( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_Speed_ES->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string8 ) );
 
-	bSizer_SS_SearchSpeed->Add( m_Speed_ES, 0, wxALL, 5 );
+	fgSizer_SS_RouteSettings->Add( m_Speed_ES, 0, wxALL, 5 );
 
 	m_staticText331111111 = new wxStaticText( sbSizer_SS_RouteSettings->GetStaticBox(), wxID_ANY, _("kts"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText331111111->Wrap( -1 );
-	bSizer_SS_SearchSpeed->Add( m_staticText331111111, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_SS_RouteSettings->Add( m_staticText331111111, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_SS_RouteSettings->Add( bSizer_SS_SearchSpeed, 0, wxEXPAND, 5 );
+	sbSizer_SS_RouteSettings->Add( fgSizer_SS_RouteSettings, 1, wxEXPAND, 5 );
 
 
-	bSizer4->Add( sbSizer_SS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
+	bSizer_SS->Add( sbSizer_SS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer_SS_Right;
 	bSizer_SS_Right = new wxBoxSizer( wxHORIZONTAL );
@@ -274,93 +244,81 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer_SS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer4->Add( bSizer_SS_Right, 1, wxEXPAND, 5 );
+	bSizer_SS->Add( bSizer_SS_Right, 1, wxEXPAND, 5 );
 
 
-	m_panel_SS->SetSizer( bSizer4 );
+	m_panel_SS->SetSizer( bSizer_SS );
 	m_panel_SS->Layout();
-	bSizer4->Fit( m_panel_SS );
+	bSizer_SS->Fit( m_panel_SS );
 	m_notebook_PatternSelection->AddPage( m_panel_SS, _("Expanding Square"), false );
 	m_panel_VS = new wxPanel( m_notebook_PatternSelection, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	wxBoxSizer* bSizer5;
-	bSizer5 = new wxBoxSizer( wxHORIZONTAL );
+	wxBoxSizer* bSizer_VS;
+	bSizer_VS = new wxBoxSizer( wxHORIZONTAL );
 
 	wxStaticBoxSizer* sbSizer_VS_RouteSettings;
 	sbSizer_VS_RouteSettings = new wxStaticBoxSizer( new wxStaticBox( m_panel_VS, wxID_ANY, _("Route Settings") ), wxVERTICAL );
 
-	wxBoxSizer* bSizer_VS_InitialCourse;
-	bSizer_VS_InitialCourse = new wxBoxSizer( wxHORIZONTAL );
+	wxFlexGridSizer* fgSizer_VS_RouteSettings;
+	fgSizer_VS_RouteSettings = new wxFlexGridSizer( 0, 3, 0, 0 );
+	fgSizer_VS_RouteSettings->SetFlexibleDirection( wxBOTH );
+	fgSizer_VS_RouteSettings->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText32 = new wxStaticText( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, _("Initial Course        "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText32 = new wxStaticText( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, _("Initial Course"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText32->Wrap( -1 );
-	bSizer_VS_InitialCourse->Add( m_staticText32, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_VS_RouteSettings->Add( m_staticText32, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_Approach_SS = new wxTextCtrl( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_Approach_SS->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string9 ) );
 
-	bSizer_VS_InitialCourse->Add( m_Approach_SS, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	fgSizer_VS_RouteSettings->Add( m_Approach_SS, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	m_staticText33 = new wxStaticText( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, _("deg"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText33->Wrap( -1 );
-	bSizer_VS_InitialCourse->Add( m_staticText33, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_VS_RouteSettings->Add( m_staticText33, 0, wxALIGN_CENTER|wxALL, 5 );
 
-
-	sbSizer_VS_RouteSettings->Add( bSizer_VS_InitialCourse, 0, 0, 5 );
-
-	wxBoxSizer* bSizer_VS_SearchRadius;
-	bSizer_VS_SearchRadius = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText321 = new wxStaticText( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, _("Search Radius      "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText321 = new wxStaticText( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, _("Search Radius"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText321->Wrap( -1 );
-	bSizer_VS_SearchRadius->Add( m_staticText321, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_VS_RouteSettings->Add( m_staticText321, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_dx_SS = new wxTextCtrl( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer_VS_SearchRadius->Add( m_dx_SS, 0, wxALL, 5 );
+	fgSizer_VS_RouteSettings->Add( m_dx_SS, 0, wxALL, 5 );
 
 	m_staticText331 = new wxStaticText( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, _("NM"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText331->Wrap( -1 );
-	bSizer_VS_SearchRadius->Add( m_staticText331, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	sbSizer_VS_RouteSettings->Add( bSizer_VS_SearchRadius, 0, 0, 5 );
-
-	wxBoxSizer* bSizer_VS_NumberPasses;
-	bSizer_VS_NumberPasses = new wxBoxSizer( wxHORIZONTAL );
+	fgSizer_VS_RouteSettings->Add( m_staticText331, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText321111111 = new wxStaticText( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, _("Number of Passes"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText321111111->Wrap( -1 );
-	bSizer_VS_NumberPasses->Add( m_staticText321111111, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_VS_RouteSettings->Add( m_staticText321111111, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	wxString m_NcyclesChoices[] = { _("1"), _("2") };
 	int m_NcyclesNChoices = sizeof( m_NcyclesChoices ) / sizeof( wxString );
 	m_Ncycles = new wxChoice( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, m_NcyclesNChoices, m_NcyclesChoices, 0 );
 	m_Ncycles->SetSelection( 0 );
-	bSizer_VS_NumberPasses->Add( m_Ncycles, 0, wxALL, 5 );
+	fgSizer_VS_RouteSettings->Add( m_Ncycles, 0, wxALL, 5 );
 
+	m_staticText79 = new wxStaticText( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText79->Wrap( -1 );
+	fgSizer_VS_RouteSettings->Add( m_staticText79, 0, wxALL, 5 );
 
-	sbSizer_VS_RouteSettings->Add( bSizer_VS_NumberPasses, 0, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer_VS_SearchSpeed;
-	bSizer_VS_SearchSpeed = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText321111122 = new wxStaticText( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, _("Search Speed       "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText321111122 = new wxStaticText( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, _("Search Speed"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText321111122->Wrap( -1 );
-	bSizer_VS_SearchSpeed->Add( m_staticText321111122, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_VS_RouteSettings->Add( m_staticText321111122, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_Speed_SS = new wxTextCtrl( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_Speed_SS->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string10 ) );
 
-	bSizer_VS_SearchSpeed->Add( m_Speed_SS, 0, wxALL, 5 );
+	fgSizer_VS_RouteSettings->Add( m_Speed_SS, 0, wxALL, 5 );
 
 	m_staticText331111112 = new wxStaticText( sbSizer_VS_RouteSettings->GetStaticBox(), wxID_ANY, _("kts"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText331111112->Wrap( -1 );
-	bSizer_VS_SearchSpeed->Add( m_staticText331111112, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_VS_RouteSettings->Add( m_staticText331111112, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_VS_RouteSettings->Add( bSizer_VS_SearchSpeed, 0, wxEXPAND, 5 );
+	sbSizer_VS_RouteSettings->Add( fgSizer_VS_RouteSettings, 1, wxEXPAND, 5 );
 
 
-	bSizer5->Add( sbSizer_VS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
+	bSizer_VS->Add( sbSizer_VS_RouteSettings, 0, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer_VS_Right;
 	bSizer_VS_Right = new wxBoxSizer( wxHORIZONTAL );
@@ -409,98 +367,80 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	bSizer_VS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer5->Add( bSizer_VS_Right, 1, wxEXPAND, 5 );
+	bSizer_VS->Add( bSizer_VS_Right, 1, wxEXPAND, 5 );
 
 
-	m_panel_VS->SetSizer( bSizer5 );
+	m_panel_VS->SetSizer( bSizer_VS );
 	m_panel_VS->Layout();
-	bSizer5->Fit( m_panel_VS );
-	m_notebook_PatternSelection->AddPage( m_panel_VS, _("Sector"), true );
+	bSizer_VS->Fit( m_panel_VS );
+	m_notebook_PatternSelection->AddPage( m_panel_VS, _("Sector"), false );
 	m_panel_QS = new wxPanel( m_notebook_PatternSelection, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
-	wxBoxSizer* bSizer6;
-	bSizer6 = new wxBoxSizer( wxHORIZONTAL );
-
-	wxBoxSizer* bSizer_QS_Left;
-	bSizer_QS_Left = new wxBoxSizer( wxVERTICAL );
+	wxBoxSizer* bSizer_QS;
+	bSizer_QS = new wxBoxSizer( wxHORIZONTAL );
 
 	wxStaticBoxSizer* sbSizer_QS_RouteSettings;
 	sbSizer_QS_RouteSettings = new wxStaticBoxSizer( new wxStaticBox( m_panel_QS, wxID_ANY, _("Route Settings") ), wxVERTICAL );
 
-	wxBoxSizer* bSizer_QS_InitialCourse;
-	bSizer_QS_InitialCourse = new wxBoxSizer( wxHORIZONTAL );
+	wxFlexGridSizer* fgSizer_QS_RouteSettings;
+	fgSizer_QS_RouteSettings = new wxFlexGridSizer( 0, 3, 0, 0 );
+	fgSizer_QS_RouteSettings->SetFlexibleDirection( wxBOTH );
+	fgSizer_QS_RouteSettings->SetNonFlexibleGrowMode( wxFLEX_GROWMODE_SPECIFIED );
 
-	m_staticText323 = new wxStaticText( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, _("Initial Course    "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText323 = new wxStaticText( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, _("Initial Course"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText323->Wrap( -1 );
-	bSizer_QS_InitialCourse->Add( m_staticText323, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_QS_RouteSettings->Add( m_staticText323, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_Approach_OR = new wxTextCtrl( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_Approach_OR->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string11 ) );
 
-	bSizer_QS_InitialCourse->Add( m_Approach_OR, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	fgSizer_QS_RouteSettings->Add( m_Approach_OR, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
 	m_staticText333 = new wxStaticText( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, _("deg"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText333->Wrap( -1 );
-	bSizer_QS_InitialCourse->Add( m_staticText333, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_QS_RouteSettings->Add( m_staticText333, 0, wxALIGN_CENTER|wxALL, 5 );
 
-
-	sbSizer_QS_RouteSettings->Add( bSizer_QS_InitialCourse, 0, 0, 5 );
-
-	wxBoxSizer* bSizer_QS_LegSpace;
-	bSizer_QS_LegSpace = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText3212 = new wxStaticText( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, _("Leg Space         "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText3212 = new wxStaticText( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, _("Leg Space"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3212->Wrap( -1 );
-	bSizer_QS_LegSpace->Add( m_staticText3212, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_QS_RouteSettings->Add( m_staticText3212, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_dx_OR = new wxTextCtrl( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer_QS_LegSpace->Add( m_dx_OR, 0, wxALL, 5 );
+	fgSizer_QS_RouteSettings->Add( m_dx_OR, 0, wxALL, 5 );
 
 	m_staticText3312 = new wxStaticText( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, _("NM"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText3312->Wrap( -1 );
-	bSizer_QS_LegSpace->Add( m_staticText3312, 0, wxALIGN_CENTER|wxALL, 5 );
-
-
-	sbSizer_QS_RouteSettings->Add( bSizer_QS_LegSpace, 0, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer_QS_NumberLegs;
-	bSizer_QS_NumberLegs = new wxBoxSizer( wxHORIZONTAL );
+	fgSizer_QS_RouteSettings->Add( m_staticText3312, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_staticText32121 = new wxStaticText( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, _("Number of Legs"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText32121->Wrap( -1 );
-	bSizer_QS_NumberLegs->Add( m_staticText32121, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_QS_RouteSettings->Add( m_staticText32121, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_NLegs_OR = new wxTextCtrl( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_NLegs_OR->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string12 ) );
 
-	bSizer_QS_NumberLegs->Add( m_NLegs_OR, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
+	fgSizer_QS_RouteSettings->Add( m_NLegs_OR, 0, wxALL|wxALIGN_CENTER_VERTICAL, 5 );
 
+	m_staticText80 = new wxStaticText( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText80->Wrap( -1 );
+	fgSizer_QS_RouteSettings->Add( m_staticText80, 0, wxALL, 5 );
 
-	sbSizer_QS_RouteSettings->Add( bSizer_QS_NumberLegs, 0, wxEXPAND, 5 );
-
-	wxBoxSizer* bSizer_QS_SearchSpeed;
-	bSizer_QS_SearchSpeed = new wxBoxSizer( wxHORIZONTAL );
-
-	m_staticText321111123 = new wxStaticText( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, _("Search Speed    "), wxDefaultPosition, wxDefaultSize, 0 );
+	m_staticText321111123 = new wxStaticText( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, _("Search Speed"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText321111123->Wrap( -1 );
-	bSizer_QS_SearchSpeed->Add( m_staticText321111123, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_QS_RouteSettings->Add( m_staticText321111123, 0, wxALIGN_CENTER|wxALL, 5 );
 
 	m_Speed_OR = new wxTextCtrl( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
 	m_Speed_OR->SetValidator( wxTextValidator( wxFILTER_NUMERIC, &m_validator_string13 ) );
 
-	bSizer_QS_SearchSpeed->Add( m_Speed_OR, 0, wxALL, 5 );
+	fgSizer_QS_RouteSettings->Add( m_Speed_OR, 0, wxALL, 5 );
 
 	m_staticText331111113 = new wxStaticText( sbSizer_QS_RouteSettings->GetStaticBox(), wxID_ANY, _("kts"), wxDefaultPosition, wxDefaultSize, 0 );
 	m_staticText331111113->Wrap( -1 );
-	bSizer_QS_SearchSpeed->Add( m_staticText331111113, 0, wxALIGN_CENTER|wxALL, 5 );
+	fgSizer_QS_RouteSettings->Add( m_staticText331111113, 0, wxALIGN_CENTER|wxALL, 5 );
 
 
-	sbSizer_QS_RouteSettings->Add( bSizer_QS_SearchSpeed, 0, wxEXPAND, 5 );
+	sbSizer_QS_RouteSettings->Add( fgSizer_QS_RouteSettings, 1, wxEXPAND, 5 );
 
 
-	bSizer_QS_Left->Add( sbSizer_QS_RouteSettings, 1, wxALL|wxEXPAND, 5 );
-
-
-	bSizer6->Add( bSizer_QS_Left, 0, wxEXPAND, 5 );
+	bSizer_QS->Add( sbSizer_QS_RouteSettings, 1, wxALL|wxEXPAND, 5 );
 
 	wxBoxSizer* bSizer_QS_Right;
 	bSizer_QS_Right = new wxBoxSizer( wxHORIZONTAL );
@@ -508,20 +448,20 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 
 	bSizer_QS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
 
-	m_bitmap_oil_rig = new wxStaticBitmap( m_panel_QS, wxID_ANY, wxBitmap( wxT("../src\\bitmaps\\oil_rig.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
+	m_bitmap_oil_rig = new wxStaticBitmap( m_panel_QS, wxID_ANY, wxBitmap( wxT("bitmaps/oil_rig.png"), wxBITMAP_TYPE_ANY ), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer_QS_Right->Add( m_bitmap_oil_rig, 0, wxALL|wxEXPAND, 5 );
 
 
 	bSizer_QS_Right->Add( 0, 0, 1, wxEXPAND, 5 );
 
 
-	bSizer6->Add( bSizer_QS_Right, 1, wxEXPAND, 5 );
+	bSizer_QS->Add( bSizer_QS_Right, 1, wxEXPAND, 5 );
 
 
-	m_panel_QS->SetSizer( bSizer6 );
+	m_panel_QS->SetSizer( bSizer_QS );
 	m_panel_QS->Layout();
-	bSizer6->Fit( m_panel_QS );
-	m_notebook_PatternSelection->AddPage( m_panel_QS, _("Quadrant (Oil Rig)"), false );
+	bSizer_QS->Fit( m_panel_QS );
+	m_notebook_PatternSelection->AddPage( m_panel_QS, _("Quadrant (Oil Rig)"), true );
 
 	bSizer_Main->Add( m_notebook_PatternSelection, 0, wxALL|wxEXPAND, 5 );
 
@@ -600,7 +540,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_Degrees->SetSizer( bSizer_Dddd );
 	m_panel_Degrees->Layout();
 	bSizer_Dddd->Fit( m_panel_Degrees );
-	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), false );
+	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), true );
 	m_panel_DegreesMinutes = new wxPanel( m_notebook_CSP, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4011;
 	bSizer4011 = new wxBoxSizer( wxVERTICAL );
@@ -774,7 +714,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_DegreesMinutesSeconds->SetSizer( bSizer401 );
 	m_panel_DegreesMinutesSeconds->Layout();
 	bSizer401->Fit( m_panel_DegreesMinutesSeconds );
-	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), true );
+	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), false );
 
 	sbSizer_DatumCSP->Add( m_notebook_CSP, 1, wxEXPAND, 5 );
 
