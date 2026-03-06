@@ -4669,12 +4669,11 @@
                     <property name="window_extra_style"></property>
                     <property name="window_name"></property>
                     <property name="window_style"></property>
-                    <event name="OnKeyDown">OnKeyShortcut</event>
                     <event name="OnNotebookPageChanged">OnNoteBookFit</event>
                     <object class="notebookpage" expanded="false">
                       <property name="bitmap"></property>
                       <property name="label">D.ddd</property>
-                      <property name="select">1</property>
+                      <property name="select">0</property>
                       <object class="wxPanel" expanded="false">
                         <property name="BottomDockable">1</property>
                         <property name="LeftDockable">1</property>
@@ -4727,7 +4726,6 @@
                         <property name="window_extra_style"></property>
                         <property name="window_name"></property>
                         <property name="window_style">wxTAB_TRAVERSAL</property>
-                        <event name="OnKeyDown">OnKeyShortcut</event>
                         <object class="wxBoxSizer" expanded="false">
                           <property name="minimum_size"></property>
                           <property name="name">bSizer_Dddd</property>
@@ -6267,7 +6265,7 @@
                     <object class="notebookpage" expanded="false">
                       <property name="bitmap"></property>
                       <property name="label">D MM SS</property>
-                      <property name="select">0</property>
+                      <property name="select">1</property>
                       <object class="wxPanel" expanded="false">
                         <property name="BottomDockable">1</property>
                         <property name="LeftDockable">1</property>

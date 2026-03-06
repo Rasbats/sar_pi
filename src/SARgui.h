@@ -176,8 +176,8 @@ class DlgDef : public wxDialog
 		virtual void OnSelectNumberShips( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSelectPortStarboard( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnSelectVectorMethod( wxCommandEvent& event ) { event.Skip(); }
-		virtual void OnKeyShortcut( wxKeyEvent& event ) { event.Skip(); }
 		virtual void OnNoteBookFit( wxNotebookEvent& event ) { event.Skip(); }
+		virtual void OnKeyShortcut( wxKeyEvent& event ) { event.Skip(); }
 		virtual void OnShip( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnCursorSelect( wxCommandEvent& event ) { event.Skip(); }
 		virtual void OnConvertToDegree( wxCommandEvent& event ) { event.Skip(); }

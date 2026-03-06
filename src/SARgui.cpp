@@ -875,9 +875,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_Nship->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DlgDef::OnSelectNumberShips ), NULL, this );
 	m_NPortStbd->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DlgDef::OnSelectPortStarboard ), NULL, this );
 	m_VSMethod->Connect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DlgDef::OnSelectVectorMethod ), NULL, this );
-	m_notebook_CSP->Connect( wxEVT_KEY_DOWN, wxKeyEventHandler( DlgDef::OnKeyShortcut ), NULL, this );
 	m_notebook_CSP->Connect( wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED, wxNotebookEventHandler( DlgDef::OnNoteBookFit ), NULL, this );
-	m_panel_Degrees->Connect( wxEVT_KEY_DOWN, wxKeyEventHandler( DlgDef::OnKeyShortcut ), NULL, this );
 	m_Lat1->Connect( wxEVT_KEY_DOWN, wxKeyEventHandler( DlgDef::OnKeyShortcut ), NULL, this );
 	m_Lon1->Connect( wxEVT_KEY_DOWN, wxKeyEventHandler( DlgDef::OnKeyShortcut ), NULL, this );
 	m_button_Ship->Connect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnShip ), NULL, this );
@@ -896,9 +894,7 @@ DlgDef::~DlgDef()
 	m_Nship->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DlgDef::OnSelectNumberShips ), NULL, this );
 	m_NPortStbd->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DlgDef::OnSelectPortStarboard ), NULL, this );
 	m_VSMethod->Disconnect( wxEVT_COMMAND_CHOICE_SELECTED, wxCommandEventHandler( DlgDef::OnSelectVectorMethod ), NULL, this );
-	m_notebook_CSP->Disconnect( wxEVT_KEY_DOWN, wxKeyEventHandler( DlgDef::OnKeyShortcut ), NULL, this );
 	m_notebook_CSP->Disconnect( wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED, wxNotebookEventHandler( DlgDef::OnNoteBookFit ), NULL, this );
-	m_panel_Degrees->Disconnect( wxEVT_KEY_DOWN, wxKeyEventHandler( DlgDef::OnKeyShortcut ), NULL, this );
 	m_Lat1->Disconnect( wxEVT_KEY_DOWN, wxKeyEventHandler( DlgDef::OnKeyShortcut ), NULL, this );
 	m_Lon1->Disconnect( wxEVT_KEY_DOWN, wxKeyEventHandler( DlgDef::OnKeyShortcut ), NULL, this );
 	m_button_Ship->Disconnect( wxEVT_COMMAND_BUTTON_CLICKED, wxCommandEventHandler( DlgDef::OnShip ), NULL, this );
