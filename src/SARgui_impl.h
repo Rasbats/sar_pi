@@ -40,6 +40,7 @@
 #include "NavFunc.h"
 #include "tinyxml2.h"
 #include <wx/string.h>
+#include <wx/event.h>
 
 using namespace std;
 

@@ -414,6 +414,12 @@ void Dlg::OnShip(wxCommandEvent& event) {
 }
 
 void Dlg::OnCursorSelect(wxCommandEvent& event) {
+
+  m_notebook_PatternSelection->SetSelection(0);
+  m_Lat1->SetFocus();
+  m_Lat1->Clear();
+  m_Lon1->Clear();
+
   wxMessageBox(
       _("To copy the cursor location:\n\n"
         "- Right-click on the chart and choose 'Select SAR Datum Point'\n"
