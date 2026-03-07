@@ -415,7 +415,6 @@ void Dlg::OnShip(wxCommandEvent& event) {
 
 void Dlg::OnCursorSelect(wxCommandEvent& event) {
 
-  m_notebook_CSP->SetSelection(0);
   m_Lat1->SetFocus();
   m_Lat1->Clear();
   m_Lon1->Clear();
