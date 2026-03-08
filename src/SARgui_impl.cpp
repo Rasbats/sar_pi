@@ -414,16 +414,14 @@ void Dlg::OnShip(wxCommandEvent& event) {
 }
 
 void Dlg::OnCursorSelect(wxCommandEvent& event) {
-
   m_Lat1->SetFocus();
   m_Lat1->Clear();
   m_Lon1->Clear();
 
   wxMessageBox(
-      _("To copy the cursor location:\n\n"
-        "- Right-click on the chart and choose 'Select SAR Datum Point'\n"
-        "- Or, with the plugin window selected and the cursor on the chart, "
-        "press <CTRL>+S"));
+    _("To copy the cursor location:\n\n"
+      "- Right-click on the chart and select 'Select SAR Datum Point'\n"
+      "- Or click on Latitude/Longitude input field so it has focus, place the cursor on the chart at the desired position, then press <CTRL>+S"));
 }
 
 void Dlg::OnCursor() {
