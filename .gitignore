@@ -3,7 +3,6 @@ build
 build-*
 !build-conf.rc
 !build-deps
-po/*.pot
 .DS_Store
 *humbs.db
 cache
