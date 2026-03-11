@@ -578,6 +578,1513 @@ void Dlg::setDDMM() {
 /**********************/
 /** Route Generation **/
 /**********************/
+void Dlg::OnGenerateRoute(wxCommandEvent& event) {
+  int patternSelect = 1;
+  patternSelect = m_notebook_PatternSelection->GetSelection() + 1; //to match switch case in Calculate()
+
+  //Save RTZ if checked
+  m_bSaveRTZ = false;
+  rtz_schema = 0;
+  bool saveRtzCheckbox = m_checkBox_GenerateRtz->IsChecked();
+  if(saveRtzCheckbox) {
+    //Check if RTZ is available for selected pattern
+    switch (patternSelect)
+    {
+      //PS
+      case 1: {
+        int sel = this->m_Nship->GetSelection();
+        if (sel == 1) {
+          wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
+          m_bSaveRTZ = false;
+          return;
+        }
+        break;
+      }
+
+                //VS
+      case 3: {
+        int sel = this->m_Ncycles->GetSelection();
+        if (sel == 1) {
+          wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
+          m_bSaveRTZ = false;
+          return;
+        }
+        break;
+      }
+
+      default : {
+        break;
+      }
+    }
+
+    m_bSaveRTZ = true;
+    rtz_schema = this->m_choiceSchema_RtzVersion->GetSelection();
+  }
+
+  //Calculate GPX
+  Calculate(event, true, patternSelect);
+}
+
+void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
+  shipsAvailable = this->m_Nship->GetSelection();
+  PortStbd = this->m_NPortStbd->GetSelection();
+
+  m_bChartRoute = false;
+
+  wxString defaultFileName = "";
+  int df = PortStbd;
+
+  switch (Pattern) {
+    // Parallel Track Search (PS)
+    case 1: {
+      int ch = shipsAvailable;
+      wxString chText;
+
+      // Single unit
+      if (ch == 0) {
+        if (df == 0) {
+          defaultFileName = "PS-1";  // starboard
+        } else if (df == 1) {
+          defaultFileName = "PS-2";  // port
+        }
+      }
+
+      // 2 units AB
+      else if (ch == 1) {
+        chText = "PS-AB";
+        defaultFileName = chText;
+      }
+      break;
+    }
+
+    // Expanding Square Search (SS)
+    case 2: {
+      defaultFileName = "SS";
+      break;
+    }
+
+    // Sector Search (VS)
+    case 3: {
+      int vh = this->m_Ncycles->GetSelection();
+      int VSMethod = this->m_VSMethod->GetSelection();
+      wxString VS;
+
+      // Method
+      if (VSMethod == 0) {
+        VS = "USCG";
+      } else if (VSMethod == 1) {
+        VS = "IAMSAR";
+      }
+
+      // Number of passes
+      if (vh == 0) {
+        defaultFileName = VS + "-VS";
+      } else if (vh == 1) {
+        defaultFileName = VS + "-VS-12";
+      }
+
+      break;
+    }
+
+    // Quadrant Search - Oil Rig (QS)
+    case 4: {
+      defaultFileName = "QS";
+      break;
+    }
+
+    default: {
+      defaultFileName = wxEmptyString;
+      break;
+    }
+  }
+
+  bool error_occurred = false;
+  bool user_canceled = false;
+
+  ConvertToDegree();
+
+  double lat1, lon1;
+  if (!this->m_Lat1->GetValue().ToDouble(&lat1)) {
+    lat1 = 0.0;
+  }
+  if (!this->m_Lon1->GetValue().ToDouble(&lon1)) {
+    lon1 = 0.0;
+  }
+
+  if (lat1 == 0 && lon1 == 0) {
+    wxMessageBox(_("No Datum has been entered"), _("Error"));
+    return;
+  }
+
+  wxString fileName;
+  if (write_file) {
+    wxFileDialog dlg(this, _("Export SAR track GPX file as"), wxEmptyString,
+                     defaultFileName,
+                     _T("GPX files (*.gpx)|*.gpx|All files (*.*)|*.*"),
+                     wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+    if (dlg.ShowModal() == wxID_CANCEL) {
+      user_canceled = true;  // the user changed idea...
+      if (shipsAvailable == 1) {
+        this->m_bitmap_trackln1->SetBitmap(_img_trackln_both);
+      }
+      if (PortStbd == 0) {
+        this->m_NPortStbd->SetSelection(0);
+        m_bitmap_trackln1->SetBitmap(_img_trackln1);
+      }
+      if (PortStbd == 1) {
+        this->m_NPortStbd->SetSelection(1);
+        m_bitmap_trackln1->SetBitmap(_img_trackln1_port);
+      }
+    }
+
+    fileName = dlg.GetPath();
+    if (!user_canceled && fileName.IsEmpty()) {
+      error_occurred = true;
+      if (dbg) printf("Error : Empty Path\n");
+    }
+  }
+
+  // Validate input ranges
+  if (!error_occurred && !user_canceled) {
+    if (std::abs(lat1) > 90 || std::abs(lon1) > 180) {
+      error_occurred = true;
+      wxMessageBox(_("Error : invalid input range validation"));
+    }
+  }
+
+  // Start GPX
+  XMLDeclaration* decl2 = xmlDoc.NewDeclaration();
+  decl2->SetValue(
+      "xml version="
+      "\"1.0\" "
+      "encoding="
+      "\"UTF-8\"");
+  xmlDoc.LinkEndChild(decl2);
+  XMLElement* pRoot = xmlDoc.NewElement("gpx");
+  XMLElement* Route = xmlDoc.NewElement("rte");
+  XMLElement* Route2 = xmlDoc.NewElement("rte");
+  XMLElement* RouteName = xmlDoc.NewElement("name");
+  XMLElement* RouteName2 = xmlDoc.NewElement("name");
+  XMLElement* Extensions = xmlDoc.NewElement("extensions");
+  XMLElement* Extensions2 = xmlDoc.NewElement("extensions");
+
+  XMLElement* textSpeed = xmlDoc.NewElement("opencpn:planned_speed");
+  XMLElement* gpxx = xmlDoc.NewElement("gpxx:RouteExtension");
+  XMLElement* gpxxDisplayColor = xmlDoc.NewElement("gpxx:DisplayColor");
+
+  // for second cycles:
+  XMLElement* textSpeed2 = xmlDoc.NewElement("opencpn:planned_speed");
+  XMLElement* gpxx2 = xmlDoc.NewElement("gpxx:RouteExtension");
+  XMLElement* gpxxDisplayColor2 = xmlDoc.NewElement("gpxx:DisplayColor");
+
+  wxString mySpeed;
+
+  writeWaypointNames = true;
+  showMarkIcons = true;
+
+  XMLElement* text4 = xmlDoc.NewElement("");
+
+  writeWaypointNames = this->m_checkBox_ShowWaypoints->GetValue();
+  showMarkIcons = this->m_checkBox_ShowIcons->GetValue();
+  switch (Pattern) {
+    //SS
+    case 2: {
+      text4->SetText(defaultFileName.mb_str());
+      break;
+    }
+
+    //VS
+    case 3: {
+      int nc = this->m_Ncycles->GetCurrentSelection();
+      if (nc == 0) {
+        text4->SetText(defaultFileName.mb_str());
+      }
+      else if (nc == 1) {
+        wxString newName = defaultFileName + "-1";
+        text4->SetText(newName.mb_str());
+      }
+      break;
+    }
+
+    //QS
+    case 4: {
+      text4->SetText(defaultFileName.mb_str());
+      break;
+    }
+
+    default: {
+      break;
+    }
+  }
+
+  if (write_file && !user_canceled && !error_occurred) {
+    // Add pRoot to xmlDoc after prolog
+    xmlDoc.InsertEndChild(pRoot);
+    pRoot->SetAttribute("version", "1.1");
+    pRoot->SetAttribute("creator", "SAR_pi");
+    pRoot->SetAttribute("xmlns:xsi",
+                        "http://www.w3.org/2001/XMLSchema-instance");
+    pRoot->SetAttribute("xmlns:gpxx",
+                        "http://www.garmin.com/xmlschemas/GpxExtensions/v3");
+    pRoot->SetAttribute("xsi:schemaLocation",
+                        "http://www.topografix.com/GPX/1/1 "
+                        "http://www.topografix.com/GPX/1/1/gpx.xsd");
+    pRoot->SetAttribute("xmlns:opencpn", "http://www.opencpn.org");
+
+    switch (Pattern) {
+      //PS
+      case 1: {
+        mySpeed = m_Speed_PS->GetValue();
+        if (mySpeed == "") mySpeed = "6";
+        textSpeed->SetText(mySpeed.mb_str());
+        int nShips = this->m_Nship->GetSelection();
+        if (nShips == 1) textSpeed2->SetText(mySpeed.mb_str());
+        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
+        break;
+      }
+
+      //SS
+      case 2: {
+        mySpeed = m_Speed_ES->GetValue();
+        if (mySpeed == "") mySpeed = "6";
+        textSpeed->SetText(mySpeed.mb_str());
+        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
+        break;
+      }
+
+      //VS
+      case 3: {
+        mySpeed = m_Speed_SS->GetValue();
+        if (mySpeed == "") mySpeed = "6";
+        textSpeed->SetText(mySpeed.mb_str());
+        int nCycles = this->m_Ncycles->GetSelection();
+        if (nCycles == 1) textSpeed2->SetText(mySpeed.mb_str());
+        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
+        break;
+      }
+
+      //QS
+      case 4: {
+        mySpeed = m_Speed_OR->GetValue();
+        if (mySpeed == "") mySpeed = "6";
+        textSpeed->SetText(mySpeed.mb_str());
+        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
+        break;
+      }
+
+      default: {
+        mySpeed = "0";
+        textSpeed->SetText(mySpeed.mb_str());
+        break;
+      }
+    }
+  }
+
+  if (error_occurred) {
+    wxLogMessage(_("Error occurred, aborting SAR calc!"));
+  }
+
+  double approach = 0;
+  double leg_distancex = 0;
+  double leg_distancey = 0;
+  long nlegs = 0;
+  double speed = 0;
+  double SAR_distance = 0;
+  double startSARdist;
+  double startCse;
+  int i = 0;
+  wxString wpt_title = "";
+  wxString wpt_mark = "";
+
+  if (!user_canceled && !error_occurred) {
+    switch (Pattern) {
+      // Parallel Track Search
+      case 1: {
+        if (dbg) cout << "Parallel Track Search\n";
+
+        // Get value or set default is input is empty
+        if (!this->m_Approach_PS->GetValue().ToDouble(&approach)) {
+          approach = 0.0;
+          this->m_Approach_PS->SetValue(wxString::Format("%f", approach));
+        }  // approach course (°)
+        if (!this->m_dx_PS->GetValue().ToDouble(&leg_distancex)) {
+          leg_distancex = 1.0;
+          this->m_dx_PS->SetValue(wxString::Format("%f", leg_distancex));
+        }  // leg distance (NM)
+        if (!this->m_dy_PS->GetValue().ToDouble(&leg_distancey)) {
+          leg_distancey = 1.0;
+          this->m_dy_PS->SetValue(wxString::Format("%f", leg_distancey));
+        }  // track space (NM)
+        if (!this->m_n_PS->GetValue().ToLong(&nlegs)) {
+          nlegs = 3;
+          this->m_n_PS->SetValue(wxString::Format("%d", nlegs));
+        }  // number of legs
+        if (!this->m_Speed_PS->GetValue().ToDouble(&speed)) {
+          speed = 5.0;
+          this->m_Speed_PS->SetValue(wxString::Format("%f", speed));
+        }  // search velocity (kts)
+
+        // Check for minimum values
+        if (leg_distancex < 0.00054) {
+          leg_distancex = 0.00054;
+          this->m_dx_PS->SetValue(wxString::Format("%f", leg_distancex));
+        }
+        if (leg_distancey < 0.00054) {
+          leg_distancey = 0.00054;
+          this->m_dy_PS->SetValue(wxString::Format("%f", leg_distancey));
+        }
+        if (speed < 0) {
+          speed = 0;
+          this->m_Speed_PS->SetValue(wxString::Format("%f", speed));
+        }
+        if (nlegs < 1) {
+          nlegs = 1;
+          this->m_n_PS->SetValue(wxString::Format("%d", nlegs));
+        }
+
+        /*pattern
+        *datum
+        *Start of search
+                datum +approach+90-->-dx/2
+        *Leg1
+        start+approach-->distance
+        pt1+approach+90-->width
+        *leg2
+        pt2+approach+180-->distance
+        pt3+approach-90-->width
+        leg3
+        pt4+approach-->distance
+        pt5+approach+90-->width
+        */
+
+        double latDatum, lonDatum;
+        latDatum = lat1;
+        lonDatum = lon1;
+
+        double lati, loni, ESheading, ESdistance;
+        double initDistance, initHdg;
+        double latTemp, lonTemp;
+
+        if (shipsAvailable != 0) {
+          initHdg = approach + 180;
+
+          initDistance = leg_distancex / 2;
+
+          destRhumb(latDatum, lonDatum, -initHdg, initDistance, &latTemp,
+                    &lonTemp);
+        }
+
+        switch (shipsAvailable) {
+          // IAMSAR single unit
+          case 0:
+          {
+            if (write_file) {
+              int ps = this->m_NPortStbd->GetSelection();
+              wxString colour = "Blue";
+              if (ps == 0)
+                colour = "Green";
+              else if (ps == 1)
+                colour = "Red";
+
+              RouteName->SetText(defaultFileName.mb_str());
+              Route->LinkEndChild(RouteName);
+
+              Extensions->LinkEndChild(textSpeed);
+
+              gpxxDisplayColor->SetText(colour.mb_str());
+              gpxx->LinkEndChild(gpxxDisplayColor);
+
+              Extensions->LinkEndChild(gpxx);
+              Route->LinkEndChild(Extensions);
+            }
+
+                    // wxMessageBox(wxString::Format("%f", ESdistance));
+
+                    // destRhumb(latTemp, lonTemp, -hdgTemp, distTemp, &lati,
+                    // &loni);
+
+                    // distRhumb(latDatum, lonDatum, lati, loni, &startSARdist,
+                    // &startCse);
+
+            if (write_file) {
+              AddPoint2(Route, wxString::Format("%f", lat1),
+                        wxString::Format("%f", lon1), "CSP", "diamond", "WPT");
+            }
+
+            int ps = PortStbd;
+
+                    // lat1 = lati;
+                    // lon1 = loni;
+
+            for (int x = 1; x <= nlegs; x++) {  // Loop over the number of legs
+              for (int y = 0; y <= 1; y++) {    // Loop over the tracks
+                if (y == 0) {
+                  if (x % 2 != 0) {
+                    ESheading = approach;
+                    wpt_title = "";
+                    if (writeWaypointNames) {
+                      wpt_title << "" << x << "." << y + 2 << "";
+                    }
+                  } else {
+                    ESheading = approach + 180.0;
+                    wpt_title = "";
+                    if (writeWaypointNames) {
+                      wpt_title << "" << x << "." << y + 2 << "";
+                    }
+                  }
+                  ESdistance = leg_distancex;
+                } else {
+                  if (x == nlegs) break;
+                  wpt_title = "";
+                  if (writeWaypointNames) {
+                    wpt_title << "" << x + 1 << "." << y << "";
+                  }
+                  ESdistance = leg_distancey;
+                  if (ps == 1) {
+                    ESheading = approach - 90.0;
+                  } else
+                    ESheading = approach + 90.0;
+                }
+
+                destRhumb(lat1, lon1, -ESheading, ESdistance, &lati, &loni);
+                SAR_distance += ESdistance;
+
+                if (showMarkIcons) {
+                  wpt_mark = "diamond";
+                } else {
+                  wpt_mark = "Marks-Blank";
+                }
+
+                if (write_file) {
+                  AddPoint2(Route, wxString::Format("%f", lati),
+                            wxString::Format("%f", loni), wpt_title, wpt_mark,
+                            "WPT");
+                }
+
+                lat1 = lati;
+                lon1 = loni;
+              }
+            }
+
+            if (write_file) pRoot->LinkEndChild(Route);
+
+            this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+            if (speed <= 0.0) {
+              m_Hours->SetLabel("--");
+              m_Minutes->SetLabel("--");
+              m_Seconds->SetLabel("--");
+            } else {
+              double sTime = SAR_distance / speed;  // decimal hours
+
+              int hours = static_cast<int>(sTime);
+              double fractionalHours = sTime - hours;
+              int minutes = static_cast<int>(fractionalHours * 60);
+              double fractionalMinutes = (fractionalHours * 60) - minutes;
+              int seconds = static_cast<int>(fractionalMinutes * 60);
+
+              m_Hours->SetLabel(wxString::Format("%d", hours));
+              m_Minutes->SetLabel(wxString::Format("%d", minutes));
+              m_Seconds->SetLabel(wxString::Format("%d", seconds));
+            }
+            break;
+          }
+
+          // two units - iamsar
+          case 1:
+          {
+            if (write_file) {
+              RouteName->SetText("PS-AB-1");
+              Route->LinkEndChild(RouteName);
+
+              Extensions->LinkEndChild(textSpeed);
+
+              gpxxDisplayColor->SetText("Green");
+              gpxx->LinkEndChild(gpxxDisplayColor);
+
+              Extensions->LinkEndChild(gpxx);
+              Route->LinkEndChild(Extensions);
+            }
+
+            for (i = 1; i <= 2; i++) {
+              if (i == 1) {
+                if (write_file) {
+                  AddPoint2(Route, wxString::Format("%f", latDatum),
+                            wxString::Format("%f", lonDatum), "Datum",
+                            "diamond", "WPT");
+                }
+                ESheading = approach - 90.0;
+                ESdistance = leg_distancey / 2;
+                destRhumb(latTemp, lonTemp, -ESheading, ESdistance, &lati,
+                          &loni);
+                distRhumb(latDatum, lonDatum, lati, loni, &startSARdist,
+                          &startCse);
+                SAR_distance += startSARdist;
+                wpt_title = "";
+                if (writeWaypointNames) {
+                  wpt_title << "" << 1 << "." << 1 << "";
+                }
+                if (showMarkIcons) {
+                  wpt_mark = "diamond";
+                } else {
+                  wpt_mark = "Marks-Blank";
+                }
+                if (write_file) {
+                  AddPoint2(Route, wxString::Format("%f", lati),
+                            wxString::Format("%f", loni), wpt_title, wpt_mark,
+                            "WPT");
+                }
+                lat1 = lati;
+                lon1 = loni;
+              }
+
+                      // calculate start position
+
+              if (i == 2) {
+                if (write_file) {
+                  AddPoint2(Route2, wxString::Format("%f", latDatum),
+                            wxString::Format("%f", lonDatum), _T(""), "",
+                            "WPT");
+                }
+                ESheading = approach + 90.0;
+                ESdistance = leg_distancey / 2;
+                destRhumb(latTemp, lonTemp, -ESheading, ESdistance, &lati,
+                          &loni);
+                distRhumb(latDatum, lonDatum, lati, loni, &startSARdist,
+                          &startCse);
+                SAR_distance += startSARdist;
+                wpt_title = "";
+                if (writeWaypointNames) {
+                  wpt_title << "" << 1 << "." << 1 << "";
+                }
+
+                if (showMarkIcons) {
+                  wpt_mark = "diamond";
+                } else {
+                  wpt_mark = "Marks-Blank";
+                }
+                if (write_file) {
+                  AddPoint2(Route2, wxString::Format("%f", lati),
+                            wxString::Format("%f", loni), wpt_title, wpt_mark,
+                            "WPT");
+                }
+                lat1 = lati;
+                lon1 = loni;
+              }
+              wpt_title << "";
+              wpt_title << "Start " << i << "." << 1 << "";
+
+              for (int x = 1; x <= nlegs;
+                   x++) {                       // Loop over the number of legs
+                for (int y = 0; y <= 1; y++) {  // Loop over the tracks
+                  if (y == 0) {
+                    if (x % 2 != 0) {
+                      ESheading = approach;
+                      wpt_title = "";
+                      if (writeWaypointNames) {
+                        wpt_title << "" << x << "." << y + 2 << "";
+                      }
+                    } else {
+                      ESheading = approach + 180.0;
+                      wpt_title = "";
+                      if (writeWaypointNames) {
+                        wpt_title << "" << x << "." << y + 2 << "";
+                      }
+                    }
+                    ESdistance = leg_distancex;
+                  } else {
+                    if (x == nlegs) break;
+                    wpt_title = "";
+                    if (writeWaypointNames) {
+                      wpt_title << "" << x + 1 << "." << y << "";
+                    }
+                    ESdistance = leg_distancey;
+
+                    if (i == 1) ESheading = approach - 90.0;
+                    if (i == 2) ESheading = approach + 90.0;
+                  }
+
+                  destRhumb(lat1, lon1, -ESheading, ESdistance, &lati, &loni);
+                  SAR_distance += ESdistance;
+
+                  if (showMarkIcons) {
+                    wpt_mark = "diamond";
+                  } else {
+                    wpt_mark = "Marks-Blank";
+                  }
+
+                  if (i == 1) {
+                    if (write_file) {
+                      AddPoint2(Route, wxString::Format("%f", lati),
+                                wxString::Format("%f", loni), wpt_title,
+                                wpt_mark, "WPT");
+                    }
+                  } else {
+                    if (write_file) {
+                      AddPoint2(Route2, wxString::Format("%f", lati),
+                                wxString::Format("%f", loni), wpt_title,
+                                wpt_mark, "WPT");
+                    }
+                  }
+
+                  lat1 = lati;
+                  lon1 = loni;
+                }
+              }
+              if (write_file) pRoot->LinkEndChild(Route);
+              if (i == 1) {
+                if (write_file) {
+                  wxString routeNameText = "PS-AB-2";
+                  RouteName2->SetText(routeNameText.mb_str());
+                  Route2->LinkEndChild(RouteName2);
+
+                  Extensions2->LinkEndChild(textSpeed2);
+
+                  gpxxDisplayColor2->SetText("Red");
+                  gpxx2->LinkEndChild(gpxxDisplayColor2);
+
+                  Extensions2->LinkEndChild(gpxx2);
+                  Route2->LinkEndChild(Extensions2);
+                }
+              }
+              if (write_file) pRoot->LinkEndChild(Route2);
+            }
+
+            this->m_Distance->SetLabel(
+                wxString::Format("%g", SAR_distance / 2));
+            this->m_Hours->SetLabel(
+                wxString::Format("%g", (SAR_distance / speed) / 2));
+            break;
+          }
+        }
+
+        break;
+      }
+
+      // Expanding Square Search
+      case 2: {
+        if (dbg) cout << "Expanding Square Search\n";
+
+        if (write_file) {
+          RouteName->SetText(defaultFileName.mb_str());
+          Route->LinkEndChild(RouteName);
+
+          Extensions->LinkEndChild(textSpeed);
+
+          gpxxDisplayColor->SetText("Blue");
+          gpxx->LinkEndChild(gpxxDisplayColor);
+
+          Extensions->LinkEndChild(gpxx);
+          Route->LinkEndChild(Extensions);
+        }
+
+        double approach = 0.0;
+        double leg_distancex = 0.0;
+        long nlegs = 0.0;
+        double speed = 0.0;
+        double SAR_distance = 0;
+
+        // Get value or set default is input is empty
+        if (!this->m_Approach_ES->GetValue().ToDouble(&approach)) {
+          approach = 0.0;
+          this->m_Approach_ES->SetValue(wxString::Format("%f", approach));
+        }  // approach course
+        if (!this->m_dx_ES->GetValue().ToDouble(&leg_distancex)) {
+          leg_distancex = 1.0;
+          this->m_dx_ES->SetValue(wxString::Format("%f", leg_distancex));
+        }  // leg distance
+        if (!this->m_n_ES->GetValue().ToLong(&nlegs)) {
+          nlegs = 5;
+          this->m_n_ES->SetValue(wxString::Format("%d", nlegs));
+        }  // number of legs
+        if (!this->m_Speed_ES->GetValue().ToDouble(&speed)) {
+          speed = 5.0;
+          this->m_Speed_ES->SetValue(wxString::Format("%f", speed));
+        }  // search velocity
+
+        // Check for minimum values
+        if (leg_distancex < 0.00054) {
+          leg_distancex = 0.00054;
+          this->m_dx_ES->SetValue(wxString::Format("%f", leg_distancex));
+        }
+        if (speed < 0) {
+          speed = 0;
+          this->m_Speed_ES->SetValue(wxString::Format("%f", speed));
+        }
+        if (nlegs < 1) {
+          nlegs = 1;
+          this->m_n_ES->SetValue(wxString::Format("%d", nlegs));
+        }
+
+        /* Pattern
+        Datum
+        square 1
+        1 Datum+distance-->approach
+        2 pt1+distance-->approach+90
+        3 pt2+distancex2--approach+180
+        4 pt3+distancex2-->approach+270
+        5 pt4+distancex3-->approach
+        6 pt5+distancex3-->approach+90
+        7 pt6+distancex4-->approach+180
+        */
+
+        // add  datum
+        if (write_file) {
+          AddPoint2(Route, wxString::Format("%f", lat1),
+                    wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
+        }
+
+        int multiplier = 0;
+        double lati, loni;
+        int x = 1;
+        int count = 0;
+        for (x = 1; x <= nlegs;
+             x++) {  // Loop over the number of search squares
+          count++;
+
+          double ESheading = 0;
+          wxString wpt_title;
+
+          switch (count) {
+            case 1: {
+              ESheading = -approach;
+              multiplier++;
+              break;
+            }
+            case 2: {
+              ESheading = -approach - 90.0;
+              break;
+            }
+            case 3: {
+              ESheading = -approach - 180.0;
+              multiplier++;
+              break;
+            }
+            case 4: {
+              ESheading = -approach - 270.0;
+              count = 0;
+              break;
+            }
+          }
+          double ESdistance = leg_distancex * multiplier;
+
+          wpt_title = "";
+
+          if (writeWaypointNames) {
+            wpt_title << "E" << x;
+          }
+
+          destRhumb(lat1, lon1, ESheading, ESdistance, &lati, &loni);
+          SAR_distance += ESdistance;
+
+          if (showMarkIcons) {
+            wpt_mark = "diamond";
+          } else {
+            wpt_mark = "Marks-Blank";
+          }
+
+          if (write_file) {
+            AddPoint2(Route, wxString::Format("%f", lati),
+                      wxString::Format("%f", loni), wpt_title, wpt_mark, "WPT");
+          }
+          lat1 = lati;
+          lon1 = loni;
+        }
+        if (write_file) pRoot->LinkEndChild(Route);
+        this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+        if (speed <= 0.0) {
+          m_Hours->SetLabel("--");
+          m_Minutes->SetLabel("--");
+          m_Seconds->SetLabel("--");
+        } else {
+          double sTime = SAR_distance / speed;  // decimal hours
+
+          int hours = static_cast<int>(sTime);
+          double fractionalHours = sTime - hours;
+          int minutes = static_cast<int>(fractionalHours * 60);
+          double fractionalMinutes = (fractionalHours * 60) - minutes;
+          int seconds = static_cast<int>(fractionalMinutes * 60);
+
+          m_Hours->SetLabel(wxString::Format("%d", hours));
+          m_Minutes->SetLabel(wxString::Format("%d", minutes));
+          m_Seconds->SetLabel(wxString::Format("%d", seconds));
+        }
+        break;
+      }
+
+      // Sector Search
+      case 3: {
+        // USCG
+        if (this->m_VSMethod->GetCurrentSelection() == 0) {
+          cout << "Sector Search USCG\n";
+
+          if (write_file) {
+            RouteName->SetText(defaultFileName.mb_str());
+            Route->LinkEndChild(RouteName);
+
+            Extensions->LinkEndChild(textSpeed);
+
+            gpxxDisplayColor->SetText("Red");
+            gpxx->LinkEndChild(gpxxDisplayColor);
+
+            Extensions->LinkEndChild(gpxx);
+            Route->LinkEndChild(Extensions);
+          }
+
+          double approach = 0;
+          double leg_distancex = 0;
+          double speed = 0;
+          double SAR_distance = 0;
+          bool two_cycles = false;
+
+          // Get value or set default is input is empty
+          if (!this->m_Approach_SS->GetValue().ToDouble(&approach)) {
+            approach = 0.0;
+            this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
+          }  // approach course
+          if (!this->m_dx_SS->GetValue().ToDouble(&leg_distancex)) {
+            leg_distancex = 1.0;
+            this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
+          }  // leg distance
+          if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
+            speed = 5.0;
+            this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
+          }  // search velocity
+          if (this->m_Ncycles->GetCurrentSelection()) two_cycles = true;  // S=1
+
+          // Check for minimum values
+          if (leg_distancex < 0.00054) {
+            leg_distancex = 0.00054;
+            this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
+          }
+          if (speed < 0) {
+            speed = 0;
+            this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
+          }
+
+          /* Pattern
+          Datum
+          Go Downwind for 1 mile,
+          *** alter 120 degrees to starboard, this course for 1 mile
+          then
+          Alter to starboard 120 degrees and go on this course for 2
+          miles going through datum then Alter to starboard 120
+          degrees for 1 mile then Alter to starboard 120 degrees for 2
+          miles going through datum
+
+               then
+               Alter to starboard 120 degrees for 1 mile
+               then
+               Alter 120 degrees to starboard for 1 mile back to datum
+               then go down the Blue track as follows
+               Alter 30 degrees to starboard for 1 mile
+               then go to the *** above and do the same again
+               */
+          // add  datum
+
+          double lati, loni;
+          double latDatum, lonDatum;
+          double ESheading = -approach;
+          double legStretch;
+
+          latDatum = lat1;
+          lonDatum = lon1;
+
+          // Add the CSP to the pattern
+          if (write_file) {
+            AddPoint2(Route, wxString::Format("%f", lat1),
+                      wxString::Format("%f", lon1), "Datum", _T("diamond"),
+                      "WPT");
+          }
+
+          for (int x = 1; x <= ((two_cycles) ? 16 : 8);
+               x++) {  // Loop over the legs
+
+            wxString wpt_title;
+            wxString wpt_mark;
+
+            if (x % 2 == 0) {
+              legStretch = leg_distancex;  // the default
+
+            } else if (x < 12) {
+              if (x == 1 || x == 7 || x == 11) {
+                legStretch = leg_distancex;
+              } else {
+                legStretch = leg_distancex * 2;
+              }
+            }
+
+            if (x % 2 == 0 && x > 11) {
+              if (x == 16) {
+                legStretch = leg_distancex;
+              } else {
+                legStretch = leg_distancex * 2;  // the default
+              }
+
+            } else if (x > 11) {
+              legStretch = leg_distancex;
+            }
+
+                    // now the names of the waypoints
+
+            if (x < 7) {
+              wpt_title = "";
+              if (writeWaypointNames) {
+                wpt_title << "" << 1 << "." << x << "";
+              }
+            }
+
+            if (x == 7 || x == 9) {
+              wpt_title = "";
+              if (writeWaypointNames) {
+                wpt_title = "Datum";
+              }
+            }
+
+            if (x > 9) {
+              wpt_title = "";
+              if (writeWaypointNames) {
+                wpt_title << "" << 2 << "." << x - 9 << "";
+              }
+            }
+
+            if (x == 16) {
+              wpt_title = "";
+              if (writeWaypointNames) {
+                wpt_title = "Datum";
+              }
+            }
+
+                    // The key to not putting in a waypoint when second
+                    // route is included in the gpx.
+                    //*********************************************************
+            if (x != 9) {
+              destRhumb(lat1, lon1, ESheading, legStretch, &lati, &loni);
+              SAR_distance += legStretch;
+
+              if (x == 8) {
+                SAR_distance -= legStretch;
+              }
+            }
+            if (x == 9) {
+              lat1 = latDatum;
+              lon1 = lonDatum;
+            }
+            //*********************************************************
+            //
+            //
+            //
+            ESheading -= 120.0;
+
+            if (showMarkIcons) {
+              if (x > 8) {
+                wpt_mark = "Sea-Height-Blue";
+              } else {
+                wpt_mark = "Sea-Height-Red";
+              }
+            } else {
+              wpt_mark = "Marks-Blank";
+            }
+
+            if (x > 9) {
+              if (x == 16) {
+                if (write_file) {
+                  AddPoint2(Route2, wxString::Format("%f", latDatum),
+                            wxString::Format("%f", lonDatum), wpt_title,
+                            "Marks-Blank", "WPT");
+                }
+              } else {
+                if (write_file) {
+                  AddPoint2(Route2, wxString::Format("%f", lati),
+                            wxString::Format("%f", loni), wpt_title, wpt_mark,
+                            "WPT");
+                }
+              }
+            } else {
+              if (write_file && (x < 8)) {
+                AddPoint2(Route, wxString::Format("%f", lati),
+                          wxString::Format("%f", loni), wpt_title, wpt_mark,
+                          "WPT");
+              }
+            }
+
+            if (x == 9) {
+              if (write_file) {
+                AddPoint2(Route2, wxString::Format("%f", latDatum),
+                          wxString::Format("%f", lonDatum), wpt_title,
+                          "Marks-Blank", "WPT");
+              }
+              lati = latDatum;
+              loni = lonDatum;
+              ESheading -= 30;
+            }
+
+                    // if (x == 8 && !two_cycles) {
+                    // }
+            if (write_file) pRoot->LinkEndChild(Route);
+
+            if (x == 8 && two_cycles) {
+              if (write_file) {
+                wxString routeNameText = "";
+
+                if (this->m_Ncycles->GetCurrentSelection() == 1) {
+                  routeNameText = defaultFileName + "-2";
+                }
+
+                RouteName2->SetText(routeNameText.mb_str());
+                Route2->LinkEndChild(RouteName2);
+
+                Extensions2->LinkEndChild(textSpeed2);
+
+                gpxxDisplayColor2->SetText("Blue");
+                gpxx2->LinkEndChild(gpxxDisplayColor2);
+
+                Extensions2->LinkEndChild(gpxx2);
+
+                Route2->LinkEndChild(Extensions2);
+              }
+
+            } else {
+              lat1 = lati;
+              lon1 = loni;
+            }
+          }
+
+          if (write_file && two_cycles)
+            pRoot->LinkEndChild(Route2);
+
+          this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+          if (speed <= 0.0) {
+            m_Hours->SetLabel("--");
+            m_Minutes->SetLabel("--");
+            m_Seconds->SetLabel("--");
+          } else {
+            double sTime = SAR_distance / speed;  // decimal hours
+
+            int hours = static_cast<int>(sTime);
+            double fractionalHours = sTime - hours;
+            int minutes = static_cast<int>(fractionalHours * 60);
+            double fractionalMinutes = (fractionalHours * 60) - minutes;
+            int seconds = static_cast<int>(fractionalMinutes * 60);
+
+            m_Hours->SetLabel(wxString::Format("%d", hours));
+            m_Minutes->SetLabel(wxString::Format("%d", minutes));
+            m_Seconds->SetLabel(wxString::Format("%d", seconds));
+          }
+        }
+
+        // IAMSAR
+        else if (this->m_VSMethod->GetCurrentSelection() == 1) {
+          if (dbg) cout << "Sector Search IAMSAR\n";
+
+          if (write_file) {
+            RouteName->SetText(defaultFileName.mb_str());
+            Route->LinkEndChild(RouteName);
+
+            Extensions->LinkEndChild(textSpeed);
+
+            gpxxDisplayColor->SetText("Red");
+            gpxx->LinkEndChild(gpxxDisplayColor);
+
+            Extensions->LinkEndChild(gpxx);
+            Route->LinkEndChild(Extensions);
+          }
+
+          double approach = 0;
+          double leg_distancex = 0;
+          double speed = 0;
+          double SAR_distance = 0;
+          bool two_cycles = false;
+
+          // Get value or set default is input is empty
+          if (!this->m_Approach_SS->GetValue().ToDouble(&approach)) {
+            approach = 0.0;
+            this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
+          }  // approach course
+          if (!this->m_dx_SS->GetValue().ToDouble(&leg_distancex)) {
+            leg_distancex = 1.0;
+            this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
+          }  // leg distance
+          if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
+            speed = 5.0;
+            this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
+          }  // search velocity
+          if (this->m_Ncycles->GetSelection() == 1) two_cycles = true;  // S=1
+
+          // Check for minimum values
+          if (leg_distancex < 0.00054) {
+            leg_distancex = 0.00054;
+            this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
+          }
+          if (speed < 0) {
+            speed = 0;
+            this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
+          }
+
+          /* Pattern
+          Datum
+          Go Downwind for 1 mile,
+          *** alter 120 degrees to starboard, this course for 1 mile
+          then
+          Alter to starboard 120 degrees and go on this course for 2 miles
+          going through datum then Alter to starboard 120 degrees for 1
+          mile then Alter to starboard 120 degrees for 2 miles going
+          through datum
+
+            then
+            Alter to starboard 120 degrees for 1 mile
+            then
+            Alter 120 degrees to starboard for 1 mile back to datum
+            then go down the Blue track as follows
+            Alter 30 degrees to starboard for 1 mile
+            then go to the *** above and do the same again
+            */
+          // add  datum
+
+          double lati, loni;
+          double latDatum, lonDatum;
+          double ESheading = -approach;
+          double legStretch;
+
+          destRhumb(lat1, lon1, ESheading - 180, leg_distancex, &lati, &loni);
+          latDatum = lat1;
+          lonDatum = lon1;
+
+          // Add the CSP to the pattern
+          if (write_file) {
+            AddPoint2(Route, wxString::Format("%f", lati),
+                      wxString::Format("%f", loni), "CSP", _T("circle"), "WPT");
+            AddPoint2(Route, wxString::Format("%f", lat1),
+                      wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
+          }
+
+          lat1 = lati;
+          lon1 = loni;
+
+          for (int x = 1; x <= ((two_cycles) ? 16 : 6);
+               x++) {  // Loop over the legs
+
+            wxString wpt_title;
+            wxString wpt_mark;
+
+            if (x % 2 == 0) {
+              legStretch = leg_distancex;  // the default
+
+            } else if (x < 12) {
+              if (x == 7 || x == 11) {
+                legStretch = leg_distancex;
+              } else {
+                legStretch = leg_distancex * 2;
+              }
+            }
+
+            if (x % 2 == 0 && x > 11) {
+              if (x == 16) {
+                legStretch = leg_distancex;
+              } else {
+                legStretch = leg_distancex * 2;  // the default
+              }
+
+            } else if (x > 11) {
+              legStretch = leg_distancex;
+            }
+
+            if (x < 7) {
+              wpt_title = "";
+              if (writeWaypointNames) {
+                wpt_title << "" << 1 << "." << x << "";
+              }
+            }
+
+            if (x == 7 || x == 9) {
+              wpt_title = "";
+              if (writeWaypointNames) {
+                wpt_title = "Datum";
+              }
+            }
+
+            if (x > 9) {
+              wpt_title = "";
+              if (writeWaypointNames) {
+                wpt_title << "" << 2 << "." << x - 9 << "";
+              }
+            }
+
+            if (x == 16) {
+              wpt_title = "";
+              if (writeWaypointNames) {
+                wpt_title = "Datum";
+              }
+            }
+
+                    // The key to not putting in a waypoint when second route is
+                    // included in the gpx.
+                    //*********************************************************
+            if (x != 9)
+              destRhumb(lat1, lon1, ESheading, legStretch, &lati, &loni);
+            //*********************************************************
+            //
+            SAR_distance += legStretch;
+            //
+            //
+            ESheading -= 120.0;
+
+            if (showMarkIcons) {
+              if (x > 8) {
+                wpt_mark = "Sea-Height-Blue";
+              } else {
+                wpt_mark = "Sea-Height-Red";
+              }
+            } else {
+              wpt_mark = "Marks-Blank";
+            }
+
+            if (x > 9) {
+              if (write_file) {
+                AddPoint2(Route2, wxString::Format("%f", lati),
+                          wxString::Format("%f", loni), wpt_title, wpt_mark,
+                          "WPT");
+              }
+            } else {
+              if (write_file && (x < 8)) {
+                AddPoint2(Route, wxString::Format("%f", lati),
+                          wxString::Format("%f", loni), wpt_title, wpt_mark,
+                          "WPT");
+              }
+            }
+
+            if (x == 9) {
+              if (write_file) {
+                AddPoint2(Route2, wxString::Format("%f", latDatum),
+                          wxString::Format("%f", lonDatum), wpt_title, "",
+                          "WPT");
+              }
+              lati = latDatum;
+              loni = lonDatum;
+              ESheading -= 30;
+            }
+
+            if (write_file) pRoot->LinkEndChild(Route);
+
+            if (write_file) {
+              if (x == 8 && two_cycles) {
+                if (write_file) {
+                  wxString routeNameText;
+                  if (this->m_Ncycles->GetSelection() == 0) {
+                    routeNameText = "";
+
+                  } else if (this->m_Ncycles->GetSelection() == 1) {
+                    routeNameText = "-2";
+                    wxString newName = defaultFileName + routeNameText;
+                    RouteName2->SetText(newName.mb_str());
+                    Route2->LinkEndChild(RouteName2);
+                  }
+
+                  Extensions2->LinkEndChild(textSpeed2);
+
+                  gpxxDisplayColor2->SetText("Blue");
+                  gpxx2->LinkEndChild(gpxxDisplayColor2);
+
+                  Extensions2->LinkEndChild(gpxx2);
+
+                  Route2->LinkEndChild(Extensions2);
+                }
+
+              } else {
+                lat1 = lati;
+                lon1 = loni;
+              }
+            }
+          }
+
+          if (two_cycles) SAR_distance -= leg_distancex * 3;
+
+          if (write_file && two_cycles)
+            pRoot->LinkEndChild(Route2);
+
+          this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+          if (speed <= 0.0) {
+            m_Hours->SetLabel("--");
+            m_Minutes->SetLabel("--");
+            m_Seconds->SetLabel("--");
+          } else {
+            double sTime = SAR_distance / speed;  // decimal hours
+
+            int hours = static_cast<int>(sTime);
+            double fractionalHours = sTime - hours;
+            int minutes = static_cast<int>(fractionalHours * 60);
+            double fractionalMinutes = (fractionalHours * 60) - minutes;
+            int seconds = static_cast<int>(fractionalMinutes * 60);
+
+            m_Hours->SetLabel(wxString::Format("%d", hours));
+            m_Minutes->SetLabel(wxString::Format("%d", minutes));
+            m_Seconds->SetLabel(wxString::Format("%d", seconds));
+          }
+        }
+
+        break;
+      }
+
+      // Quadrant Search (Oil Rig)
+      case 4: {
+        if (dbg) cout << "Quadrant Search (Oil Rig)\n";
+
+        if (write_file) {
+          RouteName->SetText(defaultFileName.mb_str());
+          Route->LinkEndChild(RouteName);
+
+          Extensions->LinkEndChild(textSpeed);
+
+          gpxxDisplayColor->SetText("Blue");
+          gpxx->LinkEndChild(gpxxDisplayColor);
+
+          Extensions->LinkEndChild(gpxx);
+          Route->LinkEndChild(Extensions);
+        }
+
+        double approach = 0;
+        double leg_distancex = 0;
+        long nlegs = 0;
+        double speed = 0;
+        double SAR_distance = 0;
+
+        // Get value or set default is input is empty
+        if (!this->m_Approach_OR->GetValue().ToDouble(&approach)) {
+          approach = 0.0;
+          this->m_Approach_OR->SetValue(wxString::Format("%f", approach));
+        }  // approach course
+        if (!this->m_dx_OR->GetValue().ToDouble(&leg_distancex)) {
+          leg_distancex = 1.0;
+          this->m_dx_OR->SetValue(wxString::Format("%f", leg_distancex));
+        }  // leg distance
+        if (!this->m_NLegs_OR->GetValue().ToLong(&nlegs)) {
+          nlegs = 3;
+          this->m_NLegs_OR->SetValue(wxString::Format("%d", nlegs));
+        }  // number of legs
+        if (!this->m_Speed_OR->GetValue().ToDouble(&speed)) {
+          speed = 5.0;
+          this->m_Speed_OR->SetValue(wxString::Format("%f", speed));
+        }  // search velocity
+
+        if (leg_distancex < 0.00054) {
+          leg_distancex = 0.00054;
+          this->m_dx_OR->SetValue(wxString::Format("%f", leg_distancex));
+        }
+        if (speed < 0) {
+          speed = 0;
+          this->m_Speed_OR->SetValue(wxString::Format("%f", speed));
+        }
+        if (nlegs < 1) {
+          nlegs = 1;
+          this->m_NLegs_OR->SetValue(wxString::Format("%d", nlegs));
+        }
+
+        /*pattern
+        datum
+        *Leg1
+        datum+approach-->dx
+        pt1+approach+90-->dx
+        *leg2
+        pt2+approach-->dx
+        pt3+approach-90-->dx*3
+        leg3
+        pt4+approach-->dx
+        pt5+approach+90-->dx*7
+        */
+
+        // add  datum
+        if (write_file) {
+          AddPoint2(Route, wxString::Format("%f", lat1),
+                    wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
+        }
+        int n = 0;
+        int multiplier = 1;
+        double lati, loni, ESheading, ESdistance;
+        bool sign_flipper = false;
+        wxString wpt_title;
+        for (int x = 1; x <= nlegs; x++) {  // Loop over the number of legs
+          for (int y = 1; y <= 2; y++) {    // Loop over the tracks
+            if (y == 1) {
+              ESheading = approach;
+              ESdistance = leg_distancex;
+            } else {
+              ESdistance = leg_distancex * multiplier;
+              multiplier += 2;
+              if (sign_flipper) {
+                ESheading = approach - 90;
+                sign_flipper = false;
+              } else {
+                ESheading = approach + 90;
+                sign_flipper = true;
+              }
+            }
+            n++;
+            wpt_title = "";
+            if (writeWaypointNames) {
+              wpt_title << "" << x << "." << y << "";
+            }
+            destRhumb(lat1, lon1, -ESheading, ESdistance, &lati, &loni);
+            SAR_distance += ESdistance;
+
+            if (showMarkIcons) {
+              wpt_mark = "diamond";
+            } else {
+              wpt_mark = "Marks-Blank";
+            }
+
+            if (write_file) {
+              AddPoint2(Route, wxString::Format("%f", lati),
+                        wxString::Format("%f", loni), wpt_title, wpt_mark,
+                        "WPT");
+            }
+            lat1 = lati;
+            lon1 = loni;
+          }
+        }
+        if (write_file) pRoot->LinkEndChild(Route);
+        this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
+        if (speed <= 0.0) {
+          m_Hours->SetLabel("--");
+          m_Minutes->SetLabel("--");
+          m_Seconds->SetLabel("--");
+        } else {
+          double sTime = SAR_distance / speed;  // decimal hours
+
+          int hours = static_cast<int>(sTime);
+          double fractionalHours = sTime - hours;
+          int minutes = static_cast<int>(fractionalHours * 60);
+          double fractionalMinutes = (fractionalHours * 60) - minutes;
+          int seconds = static_cast<int>(fractionalMinutes * 60);
+
+          m_Hours->SetLabel(wxString::Format("%d", hours));
+          m_Minutes->SetLabel(wxString::Format("%d", minutes));
+          m_Seconds->SetLabel(wxString::Format("%d", seconds));
+        }
+
+        break;
+      }
+
+      default: {
+        if (dbg) cout << "Error, bad input, quitting\n";
+        break;
+      }
+    }
+
+    if (write_file) {
+      // check if string ends with .gpx or .GPX
+      if (!fileName.EndsWith(_T(".gpx"))) {
+        fileName = fileName + _T(".gpx");
+      }
+      wxCharBuffer buffer = fileName.ToUTF8();
+      if (dbg) std::cout << buffer.data() << std::endl;
+      xmlDoc.SaveFile(buffer.data());
+      xmlDoc.Clear();
+
+      if (m_bChartRoute)
+        CreateRoute(fileName);
+    }
+  }
+}
+
 void Dlg::CreateRoute(wxString filename) {
   tinyxml2::XMLDocument mydoc;
   mydoc.LoadFile(filename);
@@ -589,16 +2096,12 @@ void Dlg::CreateRoute(wxString filename) {
   wxString rte_color = "";
   wxString wpt_name = "";
 
-  int i = 0;
-
   tinyxml2::XMLElement* object = pRoot->NextSiblingElement("gpx");
-  for (tinyxml2::XMLElement* rte = object->FirstChildElement("rte"); rte;
-       rte = rte->NextSiblingElement(), i++) {
+  for (tinyxml2::XMLElement* rte = object->FirstChildElement("rte"); rte != nullptr; rte = rte->NextSiblingElement()) {
     waypoint myPoint;  // Clear data ready for the run
     m_waypointList.clear();
 
-    for (tinyxml2::XMLElement* e1 = rte->FirstChildElement(); e1;
-         e1 = e1->NextSiblingElement(), i++) {
+    for (tinyxml2::XMLElement* e1 = rte->FirstChildElement(); e1 != nullptr; e1 = e1->NextSiblingElement()) {
       if (!strcmp(e1->Value(), "name")) {
         rte_name = e1->GetText();
       }
@@ -628,8 +2131,12 @@ void Dlg::CreateRoute(wxString filename) {
         m_waypointList.push_back(myPoint);
       }
     }
-    if (m_bChartRoute) AddChartRoute(rte_name, rte_speed, rte_color);
-    if (m_bSaveRTZ) ExportRTZ(rte_name);
+
+    if (m_bChartRoute)
+      AddChartRoute(rte_name, rte_speed, rte_color);
+
+    if (m_bSaveRTZ)
+      ExportRTZ(rte_name);
   }
 }
 
@@ -839,1515 +2346,3 @@ void Dlg::AddPoint2(XMLElement* Route, wxString ptlat, wxString ptlon,
   viz->SetText("1");
 }
 
-void Dlg::OnGenerateRoute(wxCommandEvent& event) {
-  int patternSelect = 1;
-  patternSelect = m_notebook_PatternSelection->GetSelection() + 1; //to match switch case in Calculate()
-
-  //Save RTZ if checked
-  m_bSaveRTZ = false;
-  rtz_schema = 0;
-  bool saveRtzCheckbox = m_checkBox_GenerateRtz->IsChecked();
-  if(saveRtzCheckbox) {
-    //Check if RTZ is available for selected pattern
-    switch (patternSelect)
-    {
-      //PS
-      case 1: {
-        int sel = this->m_Nship->GetSelection();
-        if (sel == 1) {
-          wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
-          m_bSaveRTZ = false;
-          return;
-        }
-        break;
-      }
-
-                //VS
-      case 3: {
-        int sel = this->m_Ncycles->GetSelection();
-        if (sel == 1) {
-          wxMessageBox(_("RTZ for this pattern is not available"), "RTZ");
-          m_bSaveRTZ = false;
-          return;
-        }
-        break;
-      }
-
-      default : {
-        break;
-      }
-    }
-
-    m_bSaveRTZ = true;
-    rtz_schema = this->m_choiceSchema_RtzVersion->GetSelection();
-  }
-
-  //Calculate GPX
-  Calculate(event, true, patternSelect);
-}
-
-void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
-  shipsAvailable = this->m_Nship->GetSelection();
-  PortStbd = this->m_NPortStbd->GetSelection();
-
-  m_bChartRoute = false;
-
-  wxString defaultFileName = "";
-  int df = PortStbd;
-
-  switch (Pattern) {
-    // Parallel Track Search (PS)
-    case 1: {
-      int ch = shipsAvailable;
-      wxString chText;
-
-              // Single unit
-      if (ch == 0) {
-        if (df == 0) {
-          defaultFileName = "PS-1";  // starboard
-        } else if (df == 1) {
-          defaultFileName = "PS-2";  // port
-        }
-      }
-
-              // 2 units AB
-      else if (ch == 1) {
-        chText = "PS-AB";
-        defaultFileName = chText;
-      }
-      break;
-    }
-
-              // Expanding Square Search (SS)
-    case 2: {
-      defaultFileName = "SS";
-      break;
-    }
-
-              // Sector Search (VS)
-    case 3: {
-      int vh = this->m_Ncycles->GetSelection();
-      int VSMethod = this->m_VSMethod->GetSelection();
-      wxString VS;
-
-              // Method
-      if (VSMethod == 0) {
-        VS = "USCG";
-      } else if (VSMethod == 1) {
-        VS = "IAMSAR";
-      }
-
-              // Number of passes
-      if (vh == 0) {
-        defaultFileName = VS + "-VS";
-      } else if (vh == 1) {
-        defaultFileName = VS + "-VS-12";
-      }
-
-      break;
-    }
-
-              // Quadrant Search - Oil Rig (QS)
-    case 4: {
-      defaultFileName = "QS";
-      break;
-    }
-
-    default: {
-      defaultFileName = wxEmptyString;
-      break;
-    }
-  }
-
-  bool error_occurred = false;
-  bool user_canceled = false;
-
-  ConvertToDegree();
-
-  double lat1, lon1;
-  if (!this->m_Lat1->GetValue().ToDouble(&lat1)) {
-    lat1 = 0.0;
-  }
-  if (!this->m_Lon1->GetValue().ToDouble(&lon1)) {
-    lon1 = 0.0;
-  }
-
-  if (lat1 == 0 && lon1 == 0) {
-    wxMessageBox(_("No Datum has been entered"), _("Error"));
-    return;
-  }
-
-  wxString s;
-  if (write_file) {
-    wxFileDialog dlg(this, _("Export SAR track GPX file as"), wxEmptyString,
-                     defaultFileName,
-                     _T("GPX files (*.gpx)|*.gpx|All files (*.*)|*.*"),
-                     wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
-    if (dlg.ShowModal() == wxID_CANCEL) {
-      user_canceled = true;  // the user changed idea...
-      if (shipsAvailable == 1) {
-        this->m_bitmap_trackln1->SetBitmap(_img_trackln_both);
-      }
-      if (PortStbd == 0) {
-        this->m_NPortStbd->SetSelection(0);
-        m_bitmap_trackln1->SetBitmap(_img_trackln1);
-      }
-      if (PortStbd == 1) {
-        this->m_NPortStbd->SetSelection(1);
-        m_bitmap_trackln1->SetBitmap(_img_trackln1_port);
-      }
-    }
-
-    s = dlg.GetPath();
-    if (!user_canceled && s.IsEmpty()) {
-      error_occurred = true;
-      if (dbg) printf("Error : Empty Path\n");
-    }
-  }
-
-  // Validate input ranges
-  if (!error_occurred && !user_canceled) {
-    if (std::abs(lat1) > 90 || std::abs(lon1) > 180) {
-      error_occurred = true;
-      wxMessageBox(_("Error : invalid input range validation"));
-    }
-  }
-
-  // Start GPX
-  XMLDeclaration* decl2 = xmlDoc.NewDeclaration();
-  decl2->SetValue(
-      "xml version="
-      "\"1.0\" "
-      "encoding="
-      "\"UTF-8\"");
-  xmlDoc.LinkEndChild(decl2);
-  XMLElement* pRoot = xmlDoc.NewElement("gpx");
-  XMLElement* Route = xmlDoc.NewElement("rte");
-  XMLElement* Route2 = xmlDoc.NewElement("rte");
-  XMLElement* RouteName = xmlDoc.NewElement("name");
-  XMLElement* RouteName2 = xmlDoc.NewElement("name");
-  XMLElement* Extensions = xmlDoc.NewElement("extensions");
-  XMLElement* Extensions2 = xmlDoc.NewElement("extensions");
-
-  XMLElement* textSpeed = xmlDoc.NewElement("opencpn:planned_speed");
-  XMLElement* gpxx = xmlDoc.NewElement("gpxx:RouteExtension");
-  XMLElement* gpxxDisplayColor = xmlDoc.NewElement("gpxx:DisplayColor");
-
-  // for second cycles:
-  XMLElement* textSpeed2 = xmlDoc.NewElement("opencpn:planned_speed");
-  XMLElement* gpxx2 = xmlDoc.NewElement("gpxx:RouteExtension");
-  XMLElement* gpxxDisplayColor2 = xmlDoc.NewElement("gpxx:DisplayColor");
-
-  wxString mySpeed;
-
-  writeWaypointNames = true;
-  showMarkIcons = true;
-
-  XMLElement* text4 = xmlDoc.NewElement("");
-
-  writeWaypointNames = this->m_checkBox_ShowWaypoints->GetValue();
-  showMarkIcons = this->m_checkBox_ShowIcons->GetValue();
-  switch (Pattern) {
-    //SS
-    case 2: {
-      text4->SetText(defaultFileName.mb_str());
-      break;
-    }
-
-    //VS
-    case 3: {
-      int nc = this->m_Ncycles->GetCurrentSelection();
-      if (nc == 0) {
-        text4->SetText(defaultFileName.mb_str());
-      }
-      else if (nc == 1) {
-        wxString newName = defaultFileName + "-1";
-        text4->SetText(newName.mb_str());
-      }
-      break;
-    }
-
-    //QS
-    case 4: {
-      text4->SetText(defaultFileName.mb_str());
-      break;
-    }
-
-    default: {
-      break;
-    }
-  }
-
-  if (write_file && !user_canceled && !error_occurred) {
-    // Add pRoot to xmlDoc after prolog
-    xmlDoc.InsertEndChild(pRoot);
-    pRoot->SetAttribute("version", "1.1");
-    pRoot->SetAttribute("creator", "SAR_pi by SaltyPaws/Rasbats");
-    pRoot->SetAttribute("xmlns:xsi",
-                        "http://www.w3.org/2001/XMLSchema-instance");
-    pRoot->SetAttribute("xmlns:gpxx",
-                        "http://www.garmin.com/xmlschemas/GpxExtensions/v3");
-    pRoot->SetAttribute("xsi:schemaLocation",
-                        "http://www.topografix.com/GPX/1/1 "
-                        "http://www.topografix.com/GPX/1/1/gpx.xsd");
-    pRoot->SetAttribute("xmlns:opencpn", "http://www.opencpn.org");
-
-            // XMLElement* StartN = xmlDoc.NewElement("opencpn:start");
-            // XMLElement* text5 = xmlDoc.NewElement("Datum");
-            // Extensions->LinkEndChild(StartN);
-            // StartN->LinkEndChild(text5);
-
-            //  XMLElement* EndN = xmlDoc.NewElement("opencpn:end");
-            //  XMLElement* text6 = xmlDoc.NewElement("End of grid");
-            //  Extensions->LinkEndChild(EndN);
-            //  EndN->LinkEndChild(text6);
-
-    switch (Pattern) {
-      case 1: {
-        mySpeed = m_Speed_PS->GetValue();
-        if (mySpeed == "") mySpeed = "6";
-        textSpeed->SetText(mySpeed.mb_str());
-        int nShips = this->m_Nship->GetSelection();
-        if (nShips == 1) textSpeed2->SetText(mySpeed.mb_str());
-        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
-        break;
-      }
-      case 2: {
-        mySpeed = m_Speed_ES->GetValue();
-        if (mySpeed == "") mySpeed = "6";
-        textSpeed->SetText(mySpeed.mb_str());
-        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
-        break;
-      }
-      case 3: {
-        mySpeed = m_Speed_SS->GetValue();
-        if (mySpeed == "") mySpeed = "6";
-        textSpeed->SetText(mySpeed.mb_str());
-        int nCycles = this->m_Ncycles->GetSelection();
-        if (nCycles == 1) textSpeed2->SetText(mySpeed.mb_str());
-        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
-        break;
-      }
-      case 4: {
-        mySpeed = m_Speed_OR->GetValue();
-        if (mySpeed == "") mySpeed = "6";
-        textSpeed->SetText(mySpeed.mb_str());
-        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
-        break;
-      }
-      default: {
-        mySpeed = "0";
-        textSpeed->SetText(mySpeed.mb_str());
-        break;
-      }
-    }
-  }
-
-  if (error_occurred) {
-    wxLogMessage(_("Error occurred, aborting SAR calc!"));
-  }
-
-  double approach = 0;
-  double leg_distancex = 0;
-  double leg_distancey = 0;
-  long nlegs = 0;
-  double speed = 0;
-  double SAR_distance = 0;
-  double startSARdist;
-  double startCse;
-  int i = 0;
-  wxString wpt_title = "";
-  wxString wpt_mark = "";
-
-  if (!user_canceled && !error_occurred) {
-    switch (Pattern) {
-      // Parallel Track Search
-      case 1: {
-        if (dbg) cout << "Parallel Track Search\n";
-
-                // Get value or set default is input is empty
-        if (!this->m_Approach_PS->GetValue().ToDouble(&approach)) {
-          approach = 0.0;
-          this->m_Approach_PS->SetValue(wxString::Format("%f", approach));
-        }  // approach course (°)
-        if (!this->m_dx_PS->GetValue().ToDouble(&leg_distancex)) {
-          leg_distancex = 1.0;
-          this->m_dx_PS->SetValue(wxString::Format("%f", leg_distancex));
-        }  // leg distance (NM)
-        if (!this->m_dy_PS->GetValue().ToDouble(&leg_distancey)) {
-          leg_distancey = 1.0;
-          this->m_dy_PS->SetValue(wxString::Format("%f", leg_distancey));
-        }  // track space (NM)
-        if (!this->m_n_PS->GetValue().ToLong(&nlegs)) {
-          nlegs = 3;
-          this->m_n_PS->SetValue(wxString::Format("%d", nlegs));
-        }  // number of legs
-        if (!this->m_Speed_PS->GetValue().ToDouble(&speed)) {
-          speed = 5.0;
-          this->m_Speed_PS->SetValue(wxString::Format("%f", speed));
-        }  // search velocity (kts)
-
-                // Check for minimum values
-        if (leg_distancex < 0.00054) {
-          leg_distancex = 0.00054;
-          this->m_dx_PS->SetValue(wxString::Format("%f", leg_distancex));
-        }
-        if (leg_distancey < 0.00054) {
-          leg_distancey = 0.00054;
-          this->m_dy_PS->SetValue(wxString::Format("%f", leg_distancey));
-        }
-        if (speed < 0) {
-          speed = 0;
-          this->m_Speed_PS->SetValue(wxString::Format("%f", speed));
-        }
-        if (nlegs < 1) {
-          nlegs = 1;
-          this->m_n_PS->SetValue(wxString::Format("%d", nlegs));
-        }
-
-        /*pattern
-        *datum
-        *Start of search
-                datum +approach+90-->-dx/2
-        *Leg1
-        start+approach-->distance
-        pt1+approach+90-->width
-        *leg2
-        pt2+approach+180-->distance
-        pt3+approach-90-->width
-        leg3
-        pt4+approach-->distance
-        pt5+approach+90-->width
-        */
-
-        double latDatum, lonDatum;
-        latDatum = lat1;
-        lonDatum = lon1;
-
-        double lati, loni, ESheading, ESdistance;
-        double initDistance, initHdg;
-        double latTemp, lonTemp;
-
-        if (shipsAvailable != 0) {
-          initHdg = approach + 180;
-
-          initDistance = leg_distancex / 2;
-
-          destRhumb(latDatum, lonDatum, -initHdg, initDistance, &latTemp,
-                    &lonTemp);
-        }
-
-        switch (shipsAvailable) {
-          case 0:  // IAMSAR single unit
-          {
-            if (write_file) {
-              int ps = this->m_NPortStbd->GetSelection();
-              wxString colour = "Blue";
-              if (ps == 0)
-                colour = "Green";
-              else if (ps == 1)
-                colour = "Red";
-
-              RouteName->SetText(defaultFileName.mb_str());
-              Route->LinkEndChild(RouteName);
-
-              Extensions->LinkEndChild(textSpeed);
-
-              gpxxDisplayColor->SetText(colour.mb_str());
-              gpxx->LinkEndChild(gpxxDisplayColor);
-
-              Extensions->LinkEndChild(gpxx);
-              Route->LinkEndChild(Extensions);
-            }
-
-                    // wxMessageBox(wxString::Format("%f", ESdistance));
-
-                    // destRhumb(latTemp, lonTemp, -hdgTemp, distTemp, &lati,
-                    // &loni);
-
-                    // distRhumb(latDatum, lonDatum, lati, loni, &startSARdist,
-                    // &startCse);
-
-            if (write_file) {
-              AddPoint2(Route, wxString::Format("%f", lat1),
-                        wxString::Format("%f", lon1), "CSP", "diamond", "WPT");
-            }
-
-            int ps = PortStbd;
-
-                    // lat1 = lati;
-                    // lon1 = loni;
-
-            for (int x = 1; x <= nlegs; x++) {  // Loop over the number of legs
-              for (int y = 0; y <= 1; y++) {    // Loop over the tracks
-                if (y == 0) {
-                  if (x % 2 != 0) {
-                    ESheading = approach;
-                    wpt_title = "";
-                    if (writeWaypointNames) {
-                      wpt_title << "" << x << "." << y + 2 << "";
-                    }
-                  } else {
-                    ESheading = approach + 180.0;
-                    wpt_title = "";
-                    if (writeWaypointNames) {
-                      wpt_title << "" << x << "." << y + 2 << "";
-                    }
-                  }
-                  ESdistance = leg_distancex;
-                } else {
-                  if (x == nlegs) break;
-                  wpt_title = "";
-                  if (writeWaypointNames) {
-                    wpt_title << "" << x + 1 << "." << y << "";
-                  }
-                  ESdistance = leg_distancey;
-                  if (ps == 1) {
-                    ESheading = approach - 90.0;
-                  } else
-                    ESheading = approach + 90.0;
-                }
-
-                destRhumb(lat1, lon1, -ESheading, ESdistance, &lati, &loni);
-                SAR_distance += ESdistance;
-
-                if (showMarkIcons) {
-                  wpt_mark = "diamond";
-                } else {
-                  wpt_mark = "Marks-Blank";
-                }
-
-                if (write_file) {
-                  AddPoint2(Route, wxString::Format("%f", lati),
-                            wxString::Format("%f", loni), wpt_title, wpt_mark,
-                            "WPT");
-                }
-
-                lat1 = lati;
-                lon1 = loni;
-              }
-            }
-
-            if (write_file) pRoot->LinkEndChild(Route);
-
-            this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
-            if (speed <= 0.0) {
-              m_Hours->SetLabel("--");
-              m_Minutes->SetLabel("--");
-              m_Seconds->SetLabel("--");
-            } else {
-              double sTime = SAR_distance / speed;  // decimal hours
-
-              int hours = static_cast<int>(sTime);
-              double fractionalHours = sTime - hours;
-              int minutes = static_cast<int>(fractionalHours * 60);
-              double fractionalMinutes = (fractionalHours * 60) - minutes;
-              int seconds = static_cast<int>(fractionalMinutes * 60);
-
-              m_Hours->SetLabel(wxString::Format("%d", hours));
-              m_Minutes->SetLabel(wxString::Format("%d", minutes));
-              m_Seconds->SetLabel(wxString::Format("%d", seconds));
-            }
-            break;
-          }
-          // end single unit - parallel-iamsar
-          case 1:  // two units - iamsar
-          {
-            if (write_file) {
-              RouteName->SetText("PS-AB-1");
-              Route->LinkEndChild(RouteName);
-
-              Extensions->LinkEndChild(textSpeed);
-
-              gpxxDisplayColor->SetText("Green");
-              gpxx->LinkEndChild(gpxxDisplayColor);
-
-              Extensions->LinkEndChild(gpxx);
-              Route->LinkEndChild(Extensions);
-            }
-
-            for (i = 1; i <= 2; i++) {
-              if (i == 1) {
-                if (write_file) {
-                  AddPoint2(Route, wxString::Format("%f", latDatum),
-                            wxString::Format("%f", lonDatum), "Datum",
-                            "diamond", "WPT");
-                }
-                ESheading = approach - 90.0;
-                ESdistance = leg_distancey / 2;
-                destRhumb(latTemp, lonTemp, -ESheading, ESdistance, &lati,
-                          &loni);
-                distRhumb(latDatum, lonDatum, lati, loni, &startSARdist,
-                          &startCse);
-                SAR_distance += startSARdist;
-                wpt_title = "";
-                if (writeWaypointNames) {
-                  wpt_title << "" << 1 << "." << 1 << "";
-                }
-                if (showMarkIcons) {
-                  wpt_mark = "diamond";
-                } else {
-                  wpt_mark = "Marks-Blank";
-                }
-                if (write_file) {
-                  AddPoint2(Route, wxString::Format("%f", lati),
-                            wxString::Format("%f", loni), wpt_title, wpt_mark,
-                            "WPT");
-                }
-                lat1 = lati;
-                lon1 = loni;
-              }
-
-                      // calculate start position
-
-              if (i == 2) {
-                if (write_file) {
-                  AddPoint2(Route2, wxString::Format("%f", latDatum),
-                            wxString::Format("%f", lonDatum), _T(""), "",
-                            "WPT");
-                }
-                ESheading = approach + 90.0;
-                ESdistance = leg_distancey / 2;
-                destRhumb(latTemp, lonTemp, -ESheading, ESdistance, &lati,
-                          &loni);
-                distRhumb(latDatum, lonDatum, lati, loni, &startSARdist,
-                          &startCse);
-                SAR_distance += startSARdist;
-                wpt_title = "";
-                if (writeWaypointNames) {
-                  wpt_title << "" << 1 << "." << 1 << "";
-                }
-
-                if (showMarkIcons) {
-                  wpt_mark = "diamond";
-                } else {
-                  wpt_mark = "Marks-Blank";
-                }
-                if (write_file) {
-                  AddPoint2(Route2, wxString::Format("%f", lati),
-                            wxString::Format("%f", loni), wpt_title, wpt_mark,
-                            "WPT");
-                }
-                lat1 = lati;
-                lon1 = loni;
-              }
-              wpt_title << "";
-              wpt_title << "Start " << i << "." << 1 << "";
-
-              for (int x = 1; x <= nlegs;
-                   x++) {                       // Loop over the number of legs
-                for (int y = 0; y <= 1; y++) {  // Loop over the tracks
-                  if (y == 0) {
-                    if (x % 2 != 0) {
-                      ESheading = approach;
-                      wpt_title = "";
-                      if (writeWaypointNames) {
-                        wpt_title << "" << x << "." << y + 2 << "";
-                      }
-                    } else {
-                      ESheading = approach + 180.0;
-                      wpt_title = "";
-                      if (writeWaypointNames) {
-                        wpt_title << "" << x << "." << y + 2 << "";
-                      }
-                    }
-                    ESdistance = leg_distancex;
-                  } else {
-                    if (x == nlegs) break;
-                    wpt_title = "";
-                    if (writeWaypointNames) {
-                      wpt_title << "" << x + 1 << "." << y << "";
-                    }
-                    ESdistance = leg_distancey;
-
-                    if (i == 1) ESheading = approach - 90.0;
-                    if (i == 2) ESheading = approach + 90.0;
-                  }
-
-                  destRhumb(lat1, lon1, -ESheading, ESdistance, &lati, &loni);
-                  SAR_distance += ESdistance;
-
-                  if (showMarkIcons) {
-                    wpt_mark = "diamond";
-                  } else {
-                    wpt_mark = "Marks-Blank";
-                  }
-
-                  if (i == 1) {
-                    if (write_file) {
-                      AddPoint2(Route, wxString::Format("%f", lati),
-                                wxString::Format("%f", loni), wpt_title,
-                                wpt_mark, "WPT");
-                    }
-                  } else {
-                    if (write_file) {
-                      AddPoint2(Route2, wxString::Format("%f", lati),
-                                wxString::Format("%f", loni), wpt_title,
-                                wpt_mark, "WPT");
-                    }
-                  }
-
-                  lat1 = lati;
-                  lon1 = loni;
-                }
-              }
-              if (write_file) pRoot->LinkEndChild(Route);
-              if (i == 1) {
-                if (write_file) {
-                  wxString routeNameText = "PS-AB-2";
-                  RouteName2->SetText(routeNameText.mb_str());
-                  Route2->LinkEndChild(RouteName2);
-
-                  Extensions2->LinkEndChild(textSpeed2);
-
-                  gpxxDisplayColor2->SetText("Red");
-                  gpxx2->LinkEndChild(gpxxDisplayColor2);
-
-                  Extensions2->LinkEndChild(gpxx2);
-                  Route2->LinkEndChild(Extensions2);
-                }
-              }
-              if (write_file) pRoot->LinkEndChild(Route2);
-            }
-
-            this->m_Distance->SetLabel(
-                wxString::Format("%g", SAR_distance / 2));
-            this->m_Hours->SetLabel(
-                wxString::Format("%g", (SAR_distance / speed) / 2));
-            break;
-          }
-
-                    // end two units both on same GPX
-        }
-
-        break;
-      }
-
-      // Expanding Square Search
-      case 2: {
-        if (dbg) cout << "Expanding Square Search\n";
-
-        if (write_file) {
-          RouteName->SetText(defaultFileName.mb_str());
-          Route->LinkEndChild(RouteName);
-
-          Extensions->LinkEndChild(textSpeed);
-
-          gpxxDisplayColor->SetText("Blue");
-          gpxx->LinkEndChild(gpxxDisplayColor);
-
-          Extensions->LinkEndChild(gpxx);
-          Route->LinkEndChild(Extensions);
-        }
-
-        double approach = 0.0;
-        double leg_distancex = 0.0;
-        long nlegs = 0.0;
-        double speed = 0.0;
-        double SAR_distance = 0;
-
-                // Get value or set default is input is empty
-        if (!this->m_Approach_ES->GetValue().ToDouble(&approach)) {
-          approach = 0.0;
-          this->m_Approach_ES->SetValue(wxString::Format("%f", approach));
-        }  // approach course
-        if (!this->m_dx_ES->GetValue().ToDouble(&leg_distancex)) {
-          leg_distancex = 1.0;
-          this->m_dx_ES->SetValue(wxString::Format("%f", leg_distancex));
-        }  // leg distance
-        if (!this->m_n_ES->GetValue().ToLong(&nlegs)) {
-          nlegs = 5;
-          this->m_n_ES->SetValue(wxString::Format("%d", nlegs));
-        }  // number of legs
-        if (!this->m_Speed_ES->GetValue().ToDouble(&speed)) {
-          speed = 5.0;
-          this->m_Speed_ES->SetValue(wxString::Format("%f", speed));
-        }  // search velocity
-
-                // Check for minimum values
-        if (leg_distancex < 0.00054) {
-          leg_distancex = 0.00054;
-          this->m_dx_ES->SetValue(wxString::Format("%f", leg_distancex));
-        }
-        if (speed < 0) {
-          speed = 0;
-          this->m_Speed_ES->SetValue(wxString::Format("%f", speed));
-        }
-        if (nlegs < 1) {
-          nlegs = 1;
-          this->m_n_ES->SetValue(wxString::Format("%d", nlegs));
-        }
-
-        /* Pattern
-        Datum
-        square 1
-        1 Datum+distance-->approach
-        2 pt1+distance-->approach+90
-        3 pt2+distancex2--approach+180
-        4 pt3+distancex2-->approach+270
-        5 pt4+distancex3-->approach
-        6 pt5+distancex3-->approach+90
-        7 pt6+distancex4-->approach+180
-        */
-
-                // add  datum
-        if (write_file) {
-          AddPoint2(Route, wxString::Format("%f", lat1),
-                    wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
-        }
-
-        int multiplier = 0;
-        double lati, loni;
-        int x = 1;
-        int count = 0;
-        for (x = 1; x <= nlegs;
-             x++) {  // Loop over the number of search squares
-          count++;
-
-          double ESheading = 0;
-          wxString wpt_title;
-
-          switch (count) {
-            case 1: {
-              ESheading = -approach;
-              multiplier++;
-              break;
-            }
-            case 2: {
-              ESheading = -approach - 90.0;
-              break;
-            }
-            case 3: {
-              ESheading = -approach - 180.0;
-              multiplier++;
-              break;
-            }
-            case 4: {
-              ESheading = -approach - 270.0;
-              count = 0;
-              break;
-            }
-          }
-          double ESdistance = leg_distancex * multiplier;
-
-          wpt_title = "";
-
-          if (writeWaypointNames) {
-            wpt_title << "E" << x;
-          }
-
-          destRhumb(lat1, lon1, ESheading, ESdistance, &lati, &loni);
-          SAR_distance += ESdistance;
-
-          if (showMarkIcons) {
-            wpt_mark = "diamond";
-          } else {
-            wpt_mark = "Marks-Blank";
-          }
-
-          if (write_file) {
-            AddPoint2(Route, wxString::Format("%f", lati),
-                      wxString::Format("%f", loni), wpt_title, wpt_mark, "WPT");
-          }
-          lat1 = lati;
-          lon1 = loni;
-        }
-        if (write_file) pRoot->LinkEndChild(Route);
-        this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
-        if (speed <= 0.0) {
-          m_Hours->SetLabel("--");
-          m_Minutes->SetLabel("--");
-          m_Seconds->SetLabel("--");
-        } else {
-          double sTime = SAR_distance / speed;  // decimal hours
-
-          int hours = static_cast<int>(sTime);
-          double fractionalHours = sTime - hours;
-          int minutes = static_cast<int>(fractionalHours * 60);
-          double fractionalMinutes = (fractionalHours * 60) - minutes;
-          int seconds = static_cast<int>(fractionalMinutes * 60);
-
-          m_Hours->SetLabel(wxString::Format("%d", hours));
-          m_Minutes->SetLabel(wxString::Format("%d", minutes));
-          m_Seconds->SetLabel(wxString::Format("%d", seconds));
-        }
-        break;
-      }
-
-      // Sector Search
-      case 3: {
-        // USCG
-        if (this->m_VSMethod->GetCurrentSelection() == 0) {
-          cout << "Sector Search USCG\n";
-
-          if (write_file) {
-            RouteName->SetText(defaultFileName.mb_str());
-            Route->LinkEndChild(RouteName);
-
-            Extensions->LinkEndChild(textSpeed);
-
-            gpxxDisplayColor->SetText("Red");
-            gpxx->LinkEndChild(gpxxDisplayColor);
-
-            Extensions->LinkEndChild(gpxx);
-            Route->LinkEndChild(Extensions);
-          }
-
-          double approach = 0;
-          double leg_distancex = 0;
-          double speed = 0;
-          double SAR_distance = 0;
-          bool two_cycles = false;
-
-                  // Get value or set default is input is empty
-          if (!this->m_Approach_SS->GetValue().ToDouble(&approach)) {
-            approach = 0.0;
-            this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
-          }  // approach course
-          if (!this->m_dx_SS->GetValue().ToDouble(&leg_distancex)) {
-            leg_distancex = 1.0;
-            this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
-          }  // leg distance
-          if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
-            speed = 5.0;
-            this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
-          }  // search velocity
-          if (this->m_Ncycles->GetCurrentSelection()) two_cycles = true;  // S=1
-
-                  // Check for minimum values
-          if (leg_distancex < 0.00054) {
-            leg_distancex = 0.00054;
-            this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
-          }
-          if (speed < 0) {
-            speed = 0;
-            this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
-          }
-
-          /* Pattern
-          Datum
-          Go Downwind for 1 mile,
-          *** alter 120 degrees to starboard, this course for 1 mile
-          then
-          Alter to starboard 120 degrees and go on this course for 2
-          miles going through datum then Alter to starboard 120
-          degrees for 1 mile then Alter to starboard 120 degrees for 2
-          miles going through datum
-
-              then
-              Alter to starboard 120 degrees for 1 mile
-              then
-              Alter 120 degrees to starboard for 1 mile back to datum
-              then go down the Blue track as follows
-              Alter 30 degrees to starboard for 1 mile
-              then go to the *** above and do the same again
-              */
-          // add  datum
-
-          double lati, loni;
-          double latDatum, lonDatum;
-          double ESheading = -approach;
-          double legStretch;
-
-          latDatum = lat1;
-          lonDatum = lon1;
-
-                  // Add the CSP to the pattern
-          if (write_file) {
-            AddPoint2(Route, wxString::Format("%f", lat1),
-                      wxString::Format("%f", lon1), "Datum", _T("diamond"),
-                      "WPT");
-          }
-
-          for (int x = 1; x <= ((two_cycles) ? 16 : 8);
-               x++) {  // Loop over the legs
-
-            wxString wpt_title;
-            wxString wpt_mark;
-
-            if (x % 2 == 0) {
-              legStretch = leg_distancex;  // the default
-
-            } else if (x < 12) {
-              if (x == 1 || x == 7 || x == 11) {
-                legStretch = leg_distancex;
-              } else {
-                legStretch = leg_distancex * 2;
-              }
-            }
-
-            if (x % 2 == 0 && x > 11) {
-              if (x == 16) {
-                legStretch = leg_distancex;
-              } else {
-                legStretch = leg_distancex * 2;  // the default
-              }
-
-            } else if (x > 11) {
-              legStretch = leg_distancex;
-            }
-
-                    // now the names of the waypoints
-
-            if (x < 7) {
-              wpt_title = "";
-              if (writeWaypointNames) {
-                wpt_title << "" << 1 << "." << x << "";
-              }
-            }
-
-            if (x == 7 || x == 9) {
-              wpt_title = "";
-              if (writeWaypointNames) {
-                wpt_title = "Datum";
-              }
-            }
-
-            if (x > 9) {
-              wpt_title = "";
-              if (writeWaypointNames) {
-                wpt_title << "" << 2 << "." << x - 9 << "";
-              }
-            }
-
-            if (x == 16) {
-              wpt_title = "";
-              if (writeWaypointNames) {
-                wpt_title = "Datum";
-              }
-            }
-
-                    // The key to not putting in a waypoint when second
-                    // route is included in the gpx.
-                    //*********************************************************
-            if (x != 9) {
-              destRhumb(lat1, lon1, ESheading, legStretch, &lati, &loni);
-              SAR_distance += legStretch;
-
-              if (x == 8) {
-                SAR_distance -= legStretch;
-              }
-            }
-            if (x == 9) {
-              lat1 = latDatum;
-              lon1 = lonDatum;
-            }
-            //*********************************************************
-            //
-            //
-            //
-            ESheading -= 120.0;
-
-            if (showMarkIcons) {
-              if (x > 8) {
-                wpt_mark = "Sea-Height-Blue";
-              } else {
-                wpt_mark = "Sea-Height-Red";
-              }
-            } else {
-              wpt_mark = "Marks-Blank";
-            }
-
-            if (x > 9) {
-              if (x == 16) {
-                if (write_file) {
-                  AddPoint2(Route2, wxString::Format("%f", latDatum),
-                            wxString::Format("%f", lonDatum), wpt_title,
-                            "Marks-Blank", "WPT");
-                }
-              } else {
-                if (write_file) {
-                  AddPoint2(Route2, wxString::Format("%f", lati),
-                            wxString::Format("%f", loni), wpt_title, wpt_mark,
-                            "WPT");
-                }
-              }
-            } else {
-              if (write_file && (x < 8)) {
-                AddPoint2(Route, wxString::Format("%f", lati),
-                          wxString::Format("%f", loni), wpt_title, wpt_mark,
-                          "WPT");
-              }
-            }
-
-            if (x == 9) {
-              if (write_file) {
-                AddPoint2(Route2, wxString::Format("%f", latDatum),
-                          wxString::Format("%f", lonDatum), wpt_title,
-                          "Marks-Blank", "WPT");
-              }
-              lati = latDatum;
-              loni = lonDatum;
-              ESheading -= 30;
-            }
-
-                    // if (x == 8 && !two_cycles) {
-                    // }
-            if (write_file) pRoot->LinkEndChild(Route);
-
-            if (x == 8 && two_cycles) {
-              if (write_file) {
-                wxString routeNameText = "";
-
-                if (this->m_Ncycles->GetCurrentSelection() == 1) {
-                  routeNameText = defaultFileName + "-2";
-                }
-
-                RouteName2->SetText(routeNameText.mb_str());
-                Route2->LinkEndChild(RouteName2);
-
-                Extensions2->LinkEndChild(textSpeed2);
-
-                gpxxDisplayColor2->SetText("Blue");
-                gpxx2->LinkEndChild(gpxxDisplayColor2);
-
-                Extensions2->LinkEndChild(gpxx2);
-
-                Route2->LinkEndChild(Extensions2);
-              }
-
-            } else {
-              lat1 = lati;
-              lon1 = loni;
-            }
-          }
-
-          if (write_file && two_cycles)
-            pRoot->LinkEndChild(Route2);
-
-          this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
-          if (speed <= 0.0) {
-            m_Hours->SetLabel("--");
-            m_Minutes->SetLabel("--");
-            m_Seconds->SetLabel("--");
-          } else {
-            double sTime = SAR_distance / speed;  // decimal hours
-
-            int hours = static_cast<int>(sTime);
-            double fractionalHours = sTime - hours;
-            int minutes = static_cast<int>(fractionalHours * 60);
-            double fractionalMinutes = (fractionalHours * 60) - minutes;
-            int seconds = static_cast<int>(fractionalMinutes * 60);
-
-            m_Hours->SetLabel(wxString::Format("%d", hours));
-            m_Minutes->SetLabel(wxString::Format("%d", minutes));
-            m_Seconds->SetLabel(wxString::Format("%d", seconds));
-          }
-        }
-
-                // IAMSAR
-        else if (this->m_VSMethod->GetCurrentSelection() == 1) {
-          if (dbg) cout << "Sector Search IAMSAR\n";
-
-          if (write_file) {
-            RouteName->SetText(defaultFileName.mb_str());
-            Route->LinkEndChild(RouteName);
-
-            Extensions->LinkEndChild(textSpeed);
-
-            gpxxDisplayColor->SetText("Red");
-            gpxx->LinkEndChild(gpxxDisplayColor);
-
-            Extensions->LinkEndChild(gpxx);
-            Route->LinkEndChild(Extensions);
-          }
-
-          double approach = 0;
-          double leg_distancex = 0;
-          double speed = 0;
-          double SAR_distance = 0;
-          bool two_cycles = false;
-
-                  // Get value or set default is input is empty
-          if (!this->m_Approach_SS->GetValue().ToDouble(&approach)) {
-            approach = 0.0;
-            this->m_Approach_SS->SetValue(wxString::Format("%f", approach));
-          }  // approach course
-          if (!this->m_dx_SS->GetValue().ToDouble(&leg_distancex)) {
-            leg_distancex = 1.0;
-            this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
-          }  // leg distance
-          if (!this->m_Speed_SS->GetValue().ToDouble(&speed)) {
-            speed = 5.0;
-            this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
-          }  // search velocity
-          if (this->m_Ncycles->GetSelection() == 1) two_cycles = true;  // S=1
-
-                  // Check for minimum values
-          if (leg_distancex < 0.00054) {
-            leg_distancex = 0.00054;
-            this->m_dx_SS->SetValue(wxString::Format("%f", leg_distancex));
-          }
-          if (speed < 0) {
-            speed = 0;
-            this->m_Speed_SS->SetValue(wxString::Format("%f", speed));
-          }
-
-          /* Pattern
-          Datum
-          Go Downwind for 1 mile,
-          *** alter 120 degrees to starboard, this course for 1 mile
-          then
-          Alter to starboard 120 degrees and go on this course for 2 miles
-          going through datum then Alter to starboard 120 degrees for 1
-          mile then Alter to starboard 120 degrees for 2 miles going
-          through datum
-
-           then
-           Alter to starboard 120 degrees for 1 mile
-           then
-           Alter 120 degrees to starboard for 1 mile back to datum
-           then go down the Blue track as follows
-           Alter 30 degrees to starboard for 1 mile
-           then go to the *** above and do the same again
-           */
-          // add  datum
-
-          double lati, loni;
-          double latDatum, lonDatum;
-          double ESheading = -approach;
-          double legStretch;
-
-          destRhumb(lat1, lon1, ESheading - 180, leg_distancex, &lati, &loni);
-          latDatum = lat1;
-          lonDatum = lon1;
-
-                  // Add the CSP to the pattern
-          if (write_file) {
-            AddPoint2(Route, wxString::Format("%f", lati),
-                      wxString::Format("%f", loni), "CSP", _T("circle"), "WPT");
-          }
-          if (write_file) {
-            AddPoint2(Route, wxString::Format("%f", lat1),
-                      wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
-          }
-
-          lat1 = lati;
-          lon1 = loni;
-
-          for (int x = 1; x <= ((two_cycles) ? 16 : 6);
-               x++) {  // Loop over the legs
-
-            wxString wpt_title;
-            wxString wpt_mark;
-
-            if (x % 2 == 0) {
-              legStretch = leg_distancex;  // the default
-
-            } else if (x < 12) {
-              if (x == 7 || x == 11) {
-                legStretch = leg_distancex;
-              } else {
-                legStretch = leg_distancex * 2;
-              }
-            }
-
-            if (x % 2 == 0 && x > 11) {
-              if (x == 16) {
-                legStretch = leg_distancex;
-              } else {
-                legStretch = leg_distancex * 2;  // the default
-              }
-
-            } else if (x > 11) {
-              legStretch = leg_distancex;
-            }
-
-            if (x < 7) {
-              wpt_title = "";
-              if (writeWaypointNames) {
-                wpt_title << "" << 1 << "." << x << "";
-              }
-            }
-
-            if (x == 7 || x == 9) {
-              wpt_title = "";
-              if (writeWaypointNames) {
-                wpt_title = "Datum";
-              }
-            }
-
-            if (x > 9) {
-              wpt_title = "";
-              if (writeWaypointNames) {
-                wpt_title << "" << 2 << "." << x - 9 << "";
-              }
-            }
-
-            if (x == 16) {
-              wpt_title = "";
-              if (writeWaypointNames) {
-                wpt_title = "Datum";
-              }
-            }
-
-                    // The key to not putting in a waypoint when second route is
-                    // included in the gpx.
-                    //*********************************************************
-            if (x != 9)
-              destRhumb(lat1, lon1, ESheading, legStretch, &lati, &loni);
-            //*********************************************************
-            //
-            SAR_distance += legStretch;
-            //
-            //
-            ESheading -= 120.0;
-
-            if (showMarkIcons) {
-              if (x > 8) {
-                wpt_mark = "Sea-Height-Blue";
-              } else {
-                wpt_mark = "Sea-Height-Red";
-              }
-            } else {
-              wpt_mark = "Marks-Blank";
-            }
-
-            if (x > 9) {
-              if (write_file) {
-                AddPoint2(Route2, wxString::Format("%f", lati),
-                          wxString::Format("%f", loni), wpt_title, wpt_mark,
-                          "WPT");
-              }
-            } else {
-              if (write_file && (x < 8)) {
-                AddPoint2(Route, wxString::Format("%f", lati),
-                          wxString::Format("%f", loni), wpt_title, wpt_mark,
-                          "WPT");
-              }
-            }
-
-            if (x == 9) {
-              if (write_file) {
-                AddPoint2(Route2, wxString::Format("%f", latDatum),
-                          wxString::Format("%f", lonDatum), wpt_title, "",
-                          "WPT");
-              }
-              lati = latDatum;
-              loni = lonDatum;
-              ESheading -= 30;
-            }
-
-            if (write_file) pRoot->LinkEndChild(Route);
-
-            if (write_file) {
-              if (x == 8 && two_cycles) {
-                if (write_file) {
-                  wxString routeNameText;
-                  if (this->m_Ncycles->GetSelection() == 0) {
-                    routeNameText = "";
-
-                  } else if (this->m_Ncycles->GetSelection() == 1) {
-                    routeNameText = "-2";
-                    wxString newName = defaultFileName + routeNameText;
-                    RouteName2->SetText(newName.mb_str());
-                    Route2->LinkEndChild(RouteName2);
-                  }
-
-                  Extensions2->LinkEndChild(textSpeed2);
-
-                  gpxxDisplayColor2->SetText("Blue");
-                  gpxx2->LinkEndChild(gpxxDisplayColor2);
-
-                  Extensions2->LinkEndChild(gpxx2);
-
-                  Route2->LinkEndChild(Extensions2);
-                }
-
-              } else {
-                lat1 = lati;
-                lon1 = loni;
-              }
-            }
-          }
-
-          if (two_cycles) SAR_distance -= leg_distancex * 3;
-
-          if (write_file && two_cycles)
-            pRoot->LinkEndChild(Route2);
-
-          this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
-          if (speed <= 0.0) {
-            m_Hours->SetLabel("--");
-            m_Minutes->SetLabel("--");
-            m_Seconds->SetLabel("--");
-          } else {
-            double sTime = SAR_distance / speed;  // decimal hours
-
-            int hours = static_cast<int>(sTime);
-            double fractionalHours = sTime - hours;
-            int minutes = static_cast<int>(fractionalHours * 60);
-            double fractionalMinutes = (fractionalHours * 60) - minutes;
-            int seconds = static_cast<int>(fractionalMinutes * 60);
-
-            m_Hours->SetLabel(wxString::Format("%d", hours));
-            m_Minutes->SetLabel(wxString::Format("%d", minutes));
-            m_Seconds->SetLabel(wxString::Format("%d", seconds));
-          }
-          //
-          // IAMSAR Sector search end
-          //
-        }
-
-        break;
-      }
-
-      // Quadrant Search (Oil Rig)
-      case 4: {
-        if (dbg) cout << "Quadrant Search (Oil Rig)\n";
-
-        if (write_file) {
-          RouteName->SetText(defaultFileName.mb_str());
-          Route->LinkEndChild(RouteName);
-
-          Extensions->LinkEndChild(textSpeed);
-
-          gpxxDisplayColor->SetText("Blue");
-          gpxx->LinkEndChild(gpxxDisplayColor);
-
-          Extensions->LinkEndChild(gpxx);
-          Route->LinkEndChild(Extensions);
-        }
-
-        double approach = 0;
-        double leg_distancex = 0;
-        long nlegs = 0;
-        double speed = 0;
-        double SAR_distance = 0;
-
-                // Get value or set default is input is empty
-        if (!this->m_Approach_OR->GetValue().ToDouble(&approach)) {
-          approach = 0.0;
-          this->m_Approach_OR->SetValue(wxString::Format("%f", approach));
-        }  // approach course
-        if (!this->m_dx_OR->GetValue().ToDouble(&leg_distancex)) {
-          leg_distancex = 1.0;
-          this->m_dx_OR->SetValue(wxString::Format("%f", leg_distancex));
-        }  // leg distance
-        if (!this->m_NLegs_OR->GetValue().ToLong(&nlegs)) {
-          nlegs = 3;
-          this->m_NLegs_OR->SetValue(wxString::Format("%d", nlegs));
-        }  // number of legs
-        if (!this->m_Speed_OR->GetValue().ToDouble(&speed)) {
-          speed = 5.0;
-          this->m_Speed_OR->SetValue(wxString::Format("%f", speed));
-        }  // search velocity
-
-        if (leg_distancex < 0.00054) {
-          leg_distancex = 0.00054;
-          this->m_dx_OR->SetValue(wxString::Format("%f", leg_distancex));
-        }
-        if (speed < 0) {
-          speed = 0;
-          this->m_Speed_OR->SetValue(wxString::Format("%f", speed));
-        }
-        if (nlegs < 1) {
-          nlegs = 1;
-          this->m_NLegs_OR->SetValue(wxString::Format("%d", nlegs));
-        }
-
-        /*pattern
-        datum
-        *Leg1
-        datum+approach-->dx
-        pt1+approach+90-->dx
-        *leg2
-        pt2+approach-->dx
-        pt3+approach-90-->dx*3
-        leg3
-        pt4+approach-->dx
-        pt5+approach+90-->dx*7
-        */
-
-                // add  datum
-        if (write_file) {
-          AddPoint2(Route, wxString::Format("%f", lat1),
-                    wxString::Format("%f", lon1), "Datum", "diamond", "WPT");
-        }
-        int n = 0;
-        int multiplier = 1;
-        double lati, loni, ESheading, ESdistance;
-        bool sign_flipper = false;
-        wxString wpt_title;
-        for (int x = 1; x <= nlegs; x++) {  // Loop over the number of legs
-          for (int y = 1; y <= 2; y++) {    // Loop over the tracks
-            if (y == 1) {
-              ESheading = approach;
-              ESdistance = leg_distancex;
-            } else {
-              ESdistance = leg_distancex * multiplier;
-              multiplier += 2;
-              if (sign_flipper) {
-                ESheading = approach - 90;
-                sign_flipper = false;
-              } else {
-                ESheading = approach + 90;
-                sign_flipper = true;
-              }
-            }
-            n++;
-            wpt_title = "";
-            if (writeWaypointNames) {
-              wpt_title << "" << x << "." << y << "";
-            }
-            destRhumb(lat1, lon1, -ESheading, ESdistance, &lati, &loni);
-            SAR_distance += ESdistance;
-
-            if (showMarkIcons) {
-              wpt_mark = "diamond";
-            } else {
-              wpt_mark = "Marks-Blank";
-            }
-
-            if (write_file) {
-              AddPoint2(Route, wxString::Format("%f", lati),
-                        wxString::Format("%f", loni), wpt_title, wpt_mark,
-                        "WPT");
-            }
-            lat1 = lati;
-            lon1 = loni;
-          }
-        }
-        if (write_file) pRoot->LinkEndChild(Route);
-        this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
-        if (speed <= 0.0) {
-          m_Hours->SetLabel("--");
-          m_Minutes->SetLabel("--");
-          m_Seconds->SetLabel("--");
-        } else {
-          double sTime = SAR_distance / speed;  // decimal hours
-
-          int hours = static_cast<int>(sTime);
-          double fractionalHours = sTime - hours;
-          int minutes = static_cast<int>(fractionalHours * 60);
-          double fractionalMinutes = (fractionalHours * 60) - minutes;
-          int seconds = static_cast<int>(fractionalMinutes * 60);
-
-          m_Hours->SetLabel(wxString::Format("%d", hours));
-          m_Minutes->SetLabel(wxString::Format("%d", minutes));
-          m_Seconds->SetLabel(wxString::Format("%d", seconds));
-        }
-
-        break;
-      }
-
-      default: {
-        if (dbg) cout << "Error, bad input, quitting\n";
-        break;
-      }
-    }
-
-    if (write_file) {
-      // check if string ends with .gpx or .GPX
-      if (!s.EndsWith(_T(".gpx"))) {
-        s = s + _T(".gpx");
-      }
-      wxCharBuffer buffer = s.ToUTF8();
-      if (dbg) std::cout << buffer.data() << std::endl;
-      xmlDoc.SaveFile(buffer.data());
-      xmlDoc.Clear();
-
-      if (m_bChartRoute) CreateRoute(s);
-    }
-  }
-}
