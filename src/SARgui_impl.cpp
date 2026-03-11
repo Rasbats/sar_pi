@@ -1912,7 +1912,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
             }
           }
 
-          if (write_file) pRoot->LinkEndChild(Route2);
+          if (write_file && two_cycles)
+            pRoot->LinkEndChild(Route2);
+
           this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
           if (speed <= 0.0) {
             m_Hours->SetLabel("--");
@@ -2161,7 +2163,9 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
 
           if (two_cycles) SAR_distance -= leg_distancex * 3;
 
-          if (write_file) pRoot->LinkEndChild(Route2);
+          if (write_file && two_cycles)
+            pRoot->LinkEndChild(Route2);
+
           this->m_Distance->SetLabel(wxString::Format("%g", SAR_distance));
           if (speed <= 0.0) {
             m_Hours->SetLabel("--");
