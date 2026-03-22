@@ -2103,7 +2103,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
       xmlDoc.SaveFile(buffer.data());
       xmlDoc.Clear();
 
-      if (m_bChartRoute)
+      if (m_bChartRoute || m_bSaveRTZ)
         CreateRoute(fileName);
     }
   }
