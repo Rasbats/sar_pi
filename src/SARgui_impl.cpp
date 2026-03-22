@@ -628,8 +628,7 @@ void Dlg::OnGenerateRoute(wxCommandEvent& event) {
 void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
   shipsAvailable = this->m_Nship->GetSelection();
   PortStbd = this->m_NPortStbd->GetSelection();
-
-  m_bChartRoute = false;
+  m_bChartRoute = this->m_checkBox_AddToRouteManager->IsChecked();
 
   wxString defaultFileName = "";
   int df = PortStbd;
@@ -839,7 +838,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         textSpeed->SetText(mySpeed.mb_str());
         int nShips = this->m_Nship->GetSelection();
         if (nShips == 1) textSpeed2->SetText(mySpeed.mb_str());
-        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
         break;
       }
 
@@ -848,7 +846,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         mySpeed = m_Speed_ES->GetValue();
         if (mySpeed == "") mySpeed = "6";
         textSpeed->SetText(mySpeed.mb_str());
-        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
         break;
       }
 
@@ -859,7 +856,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         textSpeed->SetText(mySpeed.mb_str());
         int nCycles = this->m_Ncycles->GetSelection();
         if (nCycles == 1) textSpeed2->SetText(mySpeed.mb_str());
-        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
         break;
       }
 
@@ -868,7 +864,6 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
         mySpeed = m_Speed_OR->GetValue();
         if (mySpeed == "") mySpeed = "6";
         textSpeed->SetText(mySpeed.mb_str());
-        if (this->m_checkBox_AddToRouteManager->IsChecked()) m_bChartRoute = true;
         break;
       }
 
