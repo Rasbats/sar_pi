@@ -1,0 +1,418 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: opencpn\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-14 07:08+0100\n"
+"PO-Revision-Date: 2025-03-28 07:01\n"
+"Last-Translator: \n"
+"Language-Team: Spanish (Modern)\n"
+"Language: es_EM\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Crowdin-Project: opencpn\n"
+"X-Crowdin-Project-ID: 49843\n"
+"X-Crowdin-Language: es-EM\n"
+"X-Crowdin-File: /plugins/SAR_pi/po/SAR_pi.pot\n"
+"X-Crowdin-File-ID: 145\n"
+
+#: src/SAR_pi.cpp:90
+msgid "SAR panel icon has NOT been loaded"
+msgstr "crwdns29158:0crwdne29158:0"
+
+#: src/SAR_pi.cpp:116 src/SAR_pi.cpp:119 src/SARgui.h:232
+msgid "SAR"
+msgstr "crwdns5784:0crwdne5784:0"
+
+#: src/SAR_pi.cpp:128
+msgid "Select SAR Datum Point"
+msgstr "crwdns20084:0crwdne20084:0"
+
+#: src/SAR_pi.cpp:199
+msgid "Search and Rescue Patterns"
+msgstr "crwdns20086:0crwdne20086:0"
+
+#: src/SAR_pi.cpp:204
+msgid "Creates GPX files with Search and Rescue patterns"
+msgstr "crwdns20190:0crwdne20190:0"
+
+#: src/SAR_pi.cpp:296
+msgid "Route Preferences"
+msgstr "crwdns5849:0crwdne5849:0"
+
+#: src/SARgui.h:256 src/SARgui_impl.h:77
+msgid "SAR preferences"
+msgstr "crwdns5785:0crwdne5785:0"
+
+#: src/SARgui.cpp:33
+msgid "Initial leg course        "
+msgstr "crwdns20092:0crwdne20092:0"
+
+#: src/SARgui.cpp:42 src/SARgui.cpp:264 src/SARgui.cpp:424 src/SARgui.cpp:603
+msgid "Degrees"
+msgstr "crwdns5788:0crwdne5788:0"
+
+#: src/SARgui.cpp:52
+msgid "Search Leg length     "
+msgstr "crwdns20094:0crwdne20094:0"
+
+#: src/SARgui.cpp:61 src/SARgui.cpp:80 src/SARgui.cpp:284 src/SARgui.cpp:444
+#: src/SARgui.cpp:623 src/SARgui.cpp:1047
+msgid "NM"
+msgstr "crwdns5790:0crwdne5790:0"
+
+#: src/SARgui.cpp:71
+msgid "Track space (S)          "
+msgstr "crwdns20096:0crwdne20096:0"
+
+#: src/SARgui.cpp:90
+msgid "Number of Legs        "
+msgstr "crwdns20098:0crwdne20098:0"
+
+#: src/SARgui.cpp:99 src/SARgui.cpp:303 src/SARgui.cpp:642
+msgid "n"
+msgstr "crwdns5793:0crwdne5793:0"
+
+#: src/SARgui.cpp:109
+msgid "Search Speed             "
+msgstr "crwdns5794:0crwdne5794:0"
+
+#: src/SARgui.cpp:118 src/SARgui.cpp:322 src/SARgui.cpp:463 src/SARgui.cpp:661
+msgid "kts"
+msgstr "crwdns5795:0crwdne5795:0"
+
+#: src/SARgui.cpp:134 src/SARgui.cpp:352 src/SARgui.cpp:509 src/SARgui.cpp:691
+msgid "Generate &GPX"
+msgstr "crwdns5800:0crwdne5800:0"
+
+#: src/SARgui.cpp:139 src/SARgui.cpp:357 src/SARgui.cpp:514 src/SARgui.cpp:697
+msgid "Add to route manager"
+msgstr "crwdns29180:0crwdne29180:0"
+
+#: src/SARgui.cpp:148 src/SARgui.cpp:366 src/SARgui.cpp:523 src/SARgui.cpp:706
+msgid "Generate &RTZ"
+msgstr "crwdns29166:0crwdne29166:0"
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
+msgid "v1.0"
+msgstr "crwdns29168:0crwdne29168:0"
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
+msgid "v1.1"
+msgstr "crwdns29170:0crwdne29170:0"
+
+#: src/SARgui.cpp:154 src/SARgui.cpp:372 src/SARgui.cpp:529 src/SARgui.cpp:712
+msgid "v1.2"
+msgstr "crwdns29172:0crwdne29172:0"
+
+#: src/SARgui.cpp:190
+msgid "Route for Ship           "
+msgstr "crwdns20100:0crwdne20100:0"
+
+#: src/SARgui.cpp:194
+msgid "1 unit only"
+msgstr "crwdns20102:0crwdne20102:0"
+
+#: src/SARgui.cpp:194
+msgid "2 units A&B"
+msgstr "crwdns20104:0crwdne20104:0"
+
+#: src/SARgui.cpp:206
+msgid "First turn                    "
+msgstr "crwdns20106:0crwdne20106:0"
+
+#: src/SARgui.cpp:210
+msgid "STARBOARD"
+msgstr "crwdns20108:0crwdne20108:0"
+
+#: src/SARgui.cpp:210
+msgid "PORT"
+msgstr "crwdns20110:0crwdne20110:0"
+
+#: src/SARgui.cpp:222 src/SARgui.cpp:338 src/SARgui.cpp:495
+msgid "Waypoint names     "
+msgstr "crwdns20112:0crwdne20112:0"
+
+#: src/SARgui.cpp:226 src/SARgui.cpp:342 src/SARgui.cpp:499 src/SARgui.cpp:681
+msgid "Icons "
+msgstr "crwdns20114:0crwdne20114:0"
+
+#: src/SARgui.cpp:240
+msgid "Parallel Track"
+msgstr "crwdns20116:0crwdne20116:0"
+
+#: src/SARgui.cpp:255
+msgid "Initial course    "
+msgstr "crwdns20118:0crwdne20118:0"
+
+#: src/SARgui.cpp:274
+msgid "Leg Spacing (S)       "
+msgstr "crwdns20120:0crwdne20120:0"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:617
+msgid "3"
+msgstr "crwdns20122:0crwdne20122:0"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:477 src/SARgui.cpp:617
+msgid "2"
+msgstr "crwdns5798:0crwdne5798:0"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:477 src/SARgui.cpp:617
+msgid "1"
+msgstr "crwdns5797:0crwdne5797:0"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:438 src/SARgui.cpp:617
+msgid "0.5"
+msgstr "crwdns20124:0crwdne20124:0"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:617
+msgid "0.2"
+msgstr "crwdns20126:0crwdne20126:0"
+
+#: src/SARgui.cpp:278 src/SARgui.cpp:617
+msgid "0.1"
+msgstr "crwdns20128:0crwdne20128:0"
+
+#: src/SARgui.cpp:294
+msgid "Number of Legs      "
+msgstr "crwdns20130:0crwdne20130:0"
+
+#: src/SARgui.cpp:313
+msgid "Search Speed           "
+msgstr "crwdns20132:0crwdne20132:0"
+
+#: src/SARgui.cpp:400
+msgid "Expanding Square"
+msgstr "crwdns20134:0crwdne20134:0"
+
+#: src/SARgui.cpp:415
+msgid "Initial course        "
+msgstr "crwdns20136:0crwdne20136:0"
+
+#: src/SARgui.cpp:434
+msgid "Search Radius      "
+msgstr "crwdns20138:0crwdne20138:0"
+
+#: src/SARgui.cpp:438
+msgid "5"
+msgstr "crwdns20140:0crwdne20140:0"
+
+#: src/SARgui.cpp:438
+msgid "4"
+msgstr "crwdns20142:0crwdne20142:0"
+
+#: src/SARgui.cpp:454 src/SARgui.cpp:652
+msgid "Search Speed       "
+msgstr "crwdns20144:0crwdne20144:0"
+
+#: src/SARgui.cpp:473
+msgid "Number of passes"
+msgstr "crwdns20146:0crwdne20146:0"
+
+#: src/SARgui.cpp:559
+msgid "Search Method  "
+msgstr "crwdns20148:0crwdne20148:0"
+
+#: src/SARgui.cpp:563
+msgid "IAMSAR"
+msgstr "crwdns20150:0crwdne20150:0"
+
+#: src/SARgui.cpp:563
+msgid "USCG"
+msgstr "crwdns20152:0crwdne20152:0"
+
+#: src/SARgui.cpp:579
+msgid "Sector Search"
+msgstr "crwdns5806:0crwdne5806:0"
+
+#: src/SARgui.cpp:594
+msgid "Initial course"
+msgstr "crwdns20154:0crwdne20154:0"
+
+#: src/SARgui.cpp:613
+msgid "Leg Space             "
+msgstr "crwdns20156:0crwdne20156:0"
+
+#: src/SARgui.cpp:633
+msgid "Number of Legs  "
+msgstr "crwdns20158:0crwdne20158:0"
+
+#: src/SARgui.cpp:677
+msgid "Waypoint names "
+msgstr "crwdns20160:0crwdne20160:0"
+
+#: src/SARgui.cpp:740
+msgid "Oil Rig (Quadrant Single)"
+msgstr "crwdns20162:0crwdne20162:0"
+
+#: src/SARgui.cpp:753
+msgid "DATUM / CSP (Start of Search)"
+msgstr "crwdns20164:0crwdne20164:0"
+
+#: src/SARgui.cpp:764
+msgid "Latitude    "
+msgstr "crwdns29174:0crwdne29174:0"
+
+#: src/SARgui.cpp:771 src/SARgui.cpp:788 src/SARgui.cpp:847 src/SARgui.cpp:877
+#: src/SARgui.cpp:937 src/SARgui.cpp:974
+msgid "deg"
+msgstr "crwdns29160:0crwdne29160:0"
+
+#: src/SARgui.cpp:781
+msgid "Longitude"
+msgstr "crwdns5819:0crwdne5819:0"
+
+#: src/SARgui.cpp:802
+msgid "Ship"
+msgstr "crwdns5820:0crwdne5820:0"
+
+#: src/SARgui.cpp:803
+msgid "Copy ship position (GPS fix required)"
+msgstr "crwdns5821:0crwdne5821:0"
+
+#: src/SARgui.cpp:807
+msgid "Cursor"
+msgstr "crwdns5822:0crwdne5822:0"
+
+#: src/SARgui.cpp:826
+msgid "D.ddd"
+msgstr "crwdns20168:0crwdne20168:0"
+
+#: src/SARgui.cpp:832 src/SARgui.cpp:922
+msgid "Datum (Start of Search)"
+msgstr "crwdns29162:0crwdne29162:0"
+
+#: src/SARgui.cpp:840 src/SARgui.cpp:930
+msgid "Lat "
+msgstr "crwdns5826:0crwdne5826:0"
+
+#: src/SARgui.cpp:854 src/SARgui.cpp:884 src/SARgui.cpp:944 src/SARgui.cpp:981
+msgid "'"
+msgstr "crwdns5827:0crwdne5827:0"
+
+#: src/SARgui.cpp:858 src/SARgui.cpp:955
+msgid "N"
+msgstr "crwdns5829:0crwdne5829:0"
+
+#: src/SARgui.cpp:858 src/SARgui.cpp:955
+msgid "S"
+msgstr "crwdns5830:0crwdne5830:0"
+
+#: src/SARgui.cpp:870 src/SARgui.cpp:967
+msgid "Lon"
+msgstr "crwdns5831:0crwdne5831:0"
+
+#: src/SARgui.cpp:888 src/SARgui.cpp:992
+msgid "E"
+msgstr "crwdns5832:0crwdne5832:0"
+
+#: src/SARgui.cpp:888 src/SARgui.cpp:992
+msgid "W"
+msgstr "crwdns5833:0crwdne5833:0"
+
+#: src/SARgui.cpp:906 src/SARgui.cpp:1010
+msgid "Convert to Degree"
+msgstr "crwdns5834:0crwdne5834:0"
+
+#: src/SARgui.cpp:916
+msgid "D MM.mmm"
+msgstr "crwdns20170:0crwdne20170:0"
+
+#: src/SARgui.cpp:951 src/SARgui.cpp:988
+msgid "\""
+msgstr "crwdns5828:0crwdne5828:0"
+
+#: src/SARgui.cpp:1020
+msgid "D MM SS"
+msgstr "crwdns20172:0crwdne20172:0"
+
+#: src/SARgui.cpp:1034
+msgid "Calculate"
+msgstr "crwdns5799:0crwdne5799:0"
+
+#: src/SARgui.cpp:1037
+msgid "Search Distance / Time"
+msgstr "crwdns20174:0crwdne20174:0"
+
+#: src/SARgui.cpp:1060
+msgid "hr"
+msgstr "crwdns5839:0crwdne5839:0"
+
+#: src/SARgui.cpp:1153
+msgid "General settings"
+msgstr "crwdns5840:0crwdne5840:0"
+
+#: src/SARgui.cpp:1160
+msgid "Opacity"
+msgstr "crwdns5841:0crwdne5841:0"
+
+#: src/SARgui.cpp:1174
+msgid "CPU saving settings"
+msgstr "crwdns5842:0crwdne5842:0"
+
+#: src/SARgui.cpp:1184
+msgid "Capture Ship Position"
+msgstr "crwdns5843:0crwdne5843:0"
+
+#: src/SARgui.cpp:1186
+msgid "Leave ticked, so you can use ship's position"
+msgstr "crwdns5844:0crwdne5844:0"
+
+#: src/SARgui.cpp:1190
+msgid "Capture Cursor Position"
+msgstr "crwdns5845:0crwdne5845:0"
+
+#: src/SARgui.cpp:1192
+msgid "Leave ticked, so that you can use cursor position."
+msgstr "crwdns5846:0crwdne5846:0"
+
+#: src/SARgui_impl.cpp:398 src/SARgui_impl.cpp:437
+msgid "RTZ for this pattern is not available"
+msgstr "crwdns29176:0crwdne29176:0"
+
+#: src/SARgui_impl.cpp:544
+msgid "No Datum Point has been entered"
+msgstr "crwdns20176:0crwdne20176:0"
+
+#: src/SARgui_impl.cpp:544
+msgid "Error"
+msgstr "crwdns20178:0crwdne20178:0"
+
+#: src/SARgui_impl.cpp:552
+msgid "For this search pattern the Start Point entered is the CSP"
+msgstr "crwdns20180:0crwdne20180:0"
+
+#: src/SARgui_impl.cpp:553
+msgid "Start Position"
+msgstr "crwdns20182:0crwdne20182:0"
+
+#: src/SARgui_impl.cpp:558
+msgid "Export SAR track GPX file as"
+msgstr "crwdns5850:0crwdne5850:0"
+
+#: src/SARgui_impl.cpp:593
+msgid "error in input range validation"
+msgstr "crwdns5851:0crwdne5851:0"
+
+#: src/SARgui_impl.cpp:725
+msgid "Error occurred, aborting SAR calc!"
+msgstr "crwdns20080:0crwdne20080:0"
+
+#: src/SARgui_impl.cpp:1827 src/SARgui_impl.cpp:1828
+msgid "Error in calculation. Please check input!"
+msgstr "crwdns5853:0crwdne5853:0"
+
+#: src/SARgui_impl.cpp:1960
+msgid "To copy the cursor location place the cursor on the chart \n"
+"     ...and press <CTRL>+S"
+msgstr "crwdns20184:0crwdne20184:0"
+
+#: src/SARgui_impl.cpp:2200
+msgid "Save in RTZ format"
+msgstr "crwdns29178:0crwdne29178:0"
+
+#: src/SARgui_impl.h:86
+msgid "SAR Plugin by SaltyPaws/Rasbats"
+msgstr "crwdns20186:0crwdne20186:0"
+
