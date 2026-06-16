@@ -22,9 +22,6 @@ image::sar_liferaft.jpeg[]
 
 * Source: https://github.com/Rasbats/sar_pi[Github Repository]
 
-* Releases:
-https://github.com/Rasbats/sar_pi/releases/tag/v2.6.9.1[Github Releases]
-
 * Forum:
 https://www.cruisersforum.com/forums/f134/sar-plugin-233875-13.html[SAR Plugin Thread]
 
