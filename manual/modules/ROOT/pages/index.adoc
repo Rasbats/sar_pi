@@ -342,9 +342,7 @@ will take 8.2 hours to complete.
 
 image::3.11.jpeg[]
 
-If you want the search pattern to start at your *ship's* position and
-the GPS is feeding OpenCPN with that information, you go to the bottom
-half of the window and click “Ship”.
+If you want the search pattern to start at your *ship's* position you go to the bottom half of the window and click “Copy ship position”.
 
 image::3.02.jpeg[]
 
@@ -373,8 +371,8 @@ image::3.14.jpeg[]
 
 Now click “Generate GPX”.
 
-We save the file in a folder where we can easily find it. For instance
-in the folder “SAR”.
+We save the file in a folder where it can easily be found. For instance
+in a folder “SAR”.
 
 Abbreviations are used professionally for the different search patterns.
 The plugin tries to reflect these, not only in the default GPX file
@@ -398,9 +396,7 @@ image::3.18.jpeg[]
 
 The search pattern will show up as a new route. Make sure it is
 “visible” (the “eye” should be open). You can inspect the properties of
-the route. If you have upgraded to OpenCPN 5.2 the speed you choose for
-the search will be used for the route calculations. For OpenCPN 5.0 you
-need to enter the speed and update the route properties.
+the route. The speed you choose for the search will be used for the route calculations and will appear in the route manager.
 
 image::3.19.jpeg[]
 
@@ -577,9 +573,7 @@ image::3.18.jpeg[]
 
 The search pattern will show up as a new route. Make sure it is
 “visible” (the “eye” should be open). You can inspect the properties of
-the route. If you have upgraded to OpenCPN 5.2 the speed you choose for
-the search will be used for the route calculations. For OpenCPN 5.0 you
-need to enter the speed and update the route properties.
+the route. The speed you choose for the search will be used for the route calculations. 
 
 image::3.19.jpeg[]
 
