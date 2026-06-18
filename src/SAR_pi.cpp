@@ -45,12 +45,11 @@ extern "C" DECL_EXP opencpn_plugin *create_pi(void *ppimgr) {
 
 extern "C" DECL_EXP void destroy_pi(opencpn_plugin *p) { delete p; }
 
-
 /*****************************/
 /** Classes Initialization  **/
 /*****************************/
-SAR_pi::SAR_pi(void *ppimgr) : opencpn_plugin_118(ppimgr), m_show_sar_icon(false)
-{
+SAR_pi::SAR_pi(void *ppimgr)
+    : opencpn_plugin_118(ppimgr), m_show_sar_icon(false) {
   initialize_images();
   initialize_bitmaps();
 
@@ -154,7 +153,6 @@ bool SAR_pi::DeInit(void) {
   return true;
 }
 
-
 /**************************/
 /** Plugin Get Functions **/
 /**************************/
@@ -173,14 +171,9 @@ const char *GetPlugInVersionPre() { return PKG_PRERELEASE; }
 const char *GetPlugInVersionBuild() { return PKG_BUILD_INFO; }
 
 wxBitmap *SAR_pi::GetPlugInBitmap() { return &m_panel_bitmap; }
-wxString SAR_pi::GetCommonName() { return "sar"; }
-wxString SAR_pi::GetShortDescription() {
-  return _("Search and Rescue Patterns");
-}
-wxString SAR_pi::GetLongDescription() {
-  return _("Creates GPX files with Search and Rescue patterns");
-}
-
+wxString SAR_pi::GetCommonName() { return PLUGIN_API_NAME; }
+wxString SAR_pi::GetShortDescription() { return PKG_SUMMARY; }
+wxString SAR_pi::GetLongDescription() { return PKG_DESCRIPTION; }
 
 /**************/
 /** Settings **/
@@ -197,7 +190,6 @@ bool SAR_pi::LoadConfig(void) {
     m_route_dialog_y = pConf->Read(_T ( "DialogPosY" ), 20L);
     m_bCaptureCursor = pConf->Read(_T ( "CaptureCursor" ), true);
     m_bCaptureShip = pConf->Read(_T ( "CaptureShip" ), true);
-
 
     if ((m_route_dialog_x < 0) || (m_route_dialog_x > m_display_width))
       m_route_dialog_x = 5;
@@ -224,7 +216,6 @@ bool SAR_pi::SaveConfig(void) {
     return false;
 }
 
-
 /*************/
 /** Setters **/
 /*************/
@@ -244,13 +235,10 @@ void SAR_pi::SetPositionFix(PlugIn_Position_Fix &pfix) {
   m_ship_lat = pfix.Lat;
 }
 
-
 /************/
 /** Others **/
 /************/
-int SAR_pi::GetToolbarToolCount(void) {
-  return 1;
-}
+int SAR_pi::GetToolbarToolCount(void) { return 1; }
 
 void SAR_pi::OnToolbarToolCallback(int id) {
   if (NULL == m_pDialog) {

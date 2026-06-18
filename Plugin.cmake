@@ -35,8 +35,8 @@ set(PKG_NAME sar_pi)
 set(PKG_VERSION  4.3.0)
 set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 
-set(DISPLAY_NAME SAR)    # Dialogs, installer artifacts, ...
-set(PLUGIN_API_NAME SAR) # As of GetCommonName() in plugin API
+set(DISPLAY_NAME sar)    # Dialogs, installer artifacts, ...
+set(PLUGIN_API_NAME sar) # As of GetCommonName() in plugin API
 set(PKG_SUMMARY "Produces SAR search patterns as GPX files")
 set(PKG_DESCRIPTION [=[
 Enables production of SAR search patterns, in GPX format, that can
