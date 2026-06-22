@@ -32,7 +32,7 @@ set(OCPN_RELEASE_REPO
 # -------  Plugin setup --------
 #
 set(PKG_NAME sar_pi)
-set(PKG_VERSION  4.3.0)
+set(PKG_VERSION  4.4.0)
 set(PKG_PRERELEASE "")  # Empty, or a tag like 'beta'
 
 set(DISPLAY_NAME sar)    # Dialogs, installer artifacts, ...
