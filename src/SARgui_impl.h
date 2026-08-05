@@ -41,6 +41,7 @@
 #include "tinyxml2.h"
 #include <wx/string.h>
 #include <wx/event.h>
+#include <wx/datetime.h>
 
 using namespace std;
 

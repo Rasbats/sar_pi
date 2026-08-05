@@ -633,11 +633,11 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
   wxString defaultFileName = "";
   int df = PortStbd;
 
+  //Select file name
   switch (Pattern) {
     // Parallel Track Search (PS)
     case 1: {
       int ch = shipsAvailable;
-      wxString chText;
 
       // Single unit
       if (ch == 0) {
@@ -650,8 +650,7 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
 
       // 2 units AB
       else if (ch == 1) {
-        chText = "PS-AB";
-        defaultFileName = chText;
+        defaultFileName = "PS-AB";
       }
       break;
     }
@@ -695,6 +694,12 @@ void Dlg::Calculate(wxCommandEvent& event, bool write_file, int Pattern) {
       defaultFileName = wxEmptyString;
       break;
     }
+  }
+
+  // Append timestamp to file name (YYYYMMDD_HHMMSS)
+  if (!defaultFileName.IsEmpty()) {
+    wxString timestamp = wxDateTime::Now().Format("_%Y%m%d_%H%M%S");
+    defaultFileName += timestamp;
   }
 
   bool error_occurred = false;
