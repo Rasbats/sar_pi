@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6-dirty)
+// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -540,7 +540,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_Degrees->SetSizer( bSizer_Dddd );
 	m_panel_Degrees->Layout();
 	bSizer_Dddd->Fit( m_panel_Degrees );
-	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), true );
+	m_notebook_CSP->AddPage( m_panel_Degrees, _("D.ddd"), false );
 	m_panel_DegreesMinutes = new wxPanel( m_notebook_CSP, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL );
 	wxBoxSizer* bSizer4011;
 	bSizer4011 = new wxBoxSizer( wxVERTICAL );
@@ -714,7 +714,7 @@ DlgDef::DlgDef( wxWindow* parent, wxWindowID id, const wxString& title, const wx
 	m_panel_DegreesMinutesSeconds->SetSizer( bSizer401 );
 	m_panel_DegreesMinutesSeconds->Layout();
 	bSizer401->Fit( m_panel_DegreesMinutesSeconds );
-	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), false );
+	m_notebook_CSP->AddPage( m_panel_DegreesMinutesSeconds, _("D MM SS"), true );
 
 	sbSizer_DatumCSP->Add( m_notebook_CSP, 1, wxEXPAND, 5 );
 

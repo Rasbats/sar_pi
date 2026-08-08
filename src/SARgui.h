@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////////////////
-// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6-dirty)
+// C++ code generated with wxFormBuilder (version 4.2.1-0-g80c4cb6)
 // http://www.wxformbuilder.org/
 //
 // PLEASE DO *NOT* EDIT THIS FILE!
@@ -124,13 +124,11 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText333131;
 		wxTextCtrl* m_Lat1_m1;
 		wxStaticText* m_staticText11431;
-		wxChoice* m_Lat1_NS1;
 		wxStaticText* m_staticText3231121;
 		wxTextCtrl* m_Lon1_d1;
 		wxStaticText* m_staticText3331121;
 		wxTextCtrl* m_Lon1_m1;
 		wxStaticText* m_staticText114121;
-		wxChoice* m_Lon1_EW1;
 		wxButton* m_button_DMMmmm_ConvertDegree;
 		wxPanel* m_panel_DegreesMinutesSeconds;
 		wxStaticText* m_staticText32313;
@@ -140,7 +138,6 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText1143;
 		wxTextCtrl* m_Lat1_s;
 		wxStaticText* m_staticText1153;
-		wxChoice* m_Lat1_NS;
 		wxStaticText* m_staticText323112;
 		wxTextCtrl* m_Lon1_d;
 		wxStaticText* m_staticText333112;
@@ -148,7 +145,6 @@ class DlgDef : public wxDialog
 		wxStaticText* m_staticText11412;
 		wxTextCtrl* m_Lon1_s;
 		wxStaticText* m_staticText11512;
-		wxChoice* m_Lon1_EW;
 		wxButton* m_button_DMMSS_ConvertDegree;
 		wxCheckBox* m_checkBox_ShowWaypoints;
 		wxCheckBox* m_checkBox_ShowIcons;
@@ -188,6 +184,10 @@ class DlgDef : public wxDialog
 
 	public:
 		wxBoxSizer* bSizer_Main;
+		wxChoice* m_Lat1_NS1;
+		wxChoice* m_Lon1_EW1;
+		wxChoice* m_Lat1_NS;
+		wxChoice* m_Lon1_EW;
 		wxString m_validator_string1;
 		wxString m_validator_string2;
 		wxString m_validator_string3;

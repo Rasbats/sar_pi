@@ -116,6 +116,11 @@ private:
       double m_ship_lon,m_ship_lat,m_cursor_lon,m_cursor_lat;
       bool              m_show_sar_icon;
 	  bool				m_show_sar;
+      int m_NS_DDMMMmmm;
+      int m_EW_DDMMMmmm;
+      int m_NS_DDMMMSS;
+      int m_EW_DDMMMSS;
+
 	 
 };
 
