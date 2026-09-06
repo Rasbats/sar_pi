@@ -1,5 +1,5 @@
 ---
-version: 2.2
+version: 2.1
 
 debian-steps: &debian-steps
   steps:
@@ -119,7 +119,7 @@ jobs:
     resource_class: arm.medium
     environment:
       - TARGET_TUPLE: debian-armhf;13;armhf
-      - OCPN_TARGET: bookworm
+      - OCPN_TARGET: trixie
       - CMAKE_BUILD_PARALLEL_LEVEL: 2
     steps:
       - checkout
@@ -271,12 +271,6 @@ workflows:
           <<: *std-filters
 
       - build-macos-universal:
-          <<: *std-filters
-
-      - build-bullseye-wx32:
-          <<: *std-filters
-
-      - build-bullseye:
           <<: *std-filters
 
       - build-bookworm-arm64:
