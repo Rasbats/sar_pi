@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-08-07 19:50+0200\n"
+"POT-Creation-Date: 2026-09-30 08:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: src/SARgui_impl.h:79 src/SARgui.h:235
+msgid "SAR settings"
+msgstr ""
+
+#: src/SARgui_impl.h:91
+msgid "Search And Rescue"
+msgstr ""
 
 #: src/SARgui.cpp:24 src/SARgui.cpp:171 src/SARgui.cpp:259 src/SARgui.cpp:382
 msgid "Route Settings"
@@ -288,8 +296,20 @@ msgstr ""
 msgid "Select SAR Datum Point"
 msgstr ""
 
-#: src/SAR_pi.cpp:260
+#: src/SAR_pi.cpp:283
 msgid "SAR Preferences"
+msgstr ""
+
+#: src/SARgui.h:205
+msgid "SAR"
+msgstr ""
+
+#: src/SVGicons.cpp:86
+msgid "Failed to load all SAR_pi icons, check OCPN log for details"
+msgstr ""
+
+#: src/SVGicons.cpp:86
+msgid "OpenCPN Alert"
 msgstr ""
 
 #: src/SARgui_impl.cpp:46
@@ -300,7 +320,7 @@ msgstr ""
 msgid "Invalid input for conversion"
 msgstr ""
 
-#: src/SARgui_impl.cpp:330 src/SARgui_impl.cpp:344 src/SARgui_impl.cpp:733
+#: src/SARgui_impl.cpp:330 src/SARgui_impl.cpp:344 src/SARgui_impl.cpp:738
 msgid "Error"
 msgstr ""
 
@@ -317,42 +337,22 @@ msgstr ""
 msgid "RTZ for this pattern is not available"
 msgstr ""
 
-#: src/SARgui_impl.cpp:733
+#: src/SARgui_impl.cpp:738
 msgid "No Datum has been entered"
 msgstr ""
 
-#: src/SARgui_impl.cpp:742
+#: src/SARgui_impl.cpp:748
 msgid "Export SAR track GPX file as"
 msgstr ""
 
-#: src/SARgui_impl.cpp:778
+#: src/SARgui_impl.cpp:780
 msgid "Error : invalid input range validation"
 msgstr ""
 
-#: src/SARgui_impl.cpp:907
+#: src/SARgui_impl.cpp:909
 msgid "Error occurred, aborting SAR calc!"
 msgstr ""
 
-#: src/SARgui_impl.cpp:2240
+#: src/SARgui_impl.cpp:2247
 msgid "Save in RTZ format"
-msgstr ""
-
-#: src/SARgui_impl.h:78 src/SARgui.h:235
-msgid "SAR settings"
-msgstr ""
-
-#: src/SARgui_impl.h:90
-msgid "Search And Rescue"
-msgstr ""
-
-#: src/SVGicons.cpp:86
-msgid "Failed to load all SAR_pi icons, check OCPN log for details"
-msgstr ""
-
-#: src/SVGicons.cpp:86
-msgid "OpenCPN Alert"
-msgstr ""
-
-#: src/SARgui.h:205
-msgid "SAR"
 msgstr ""
